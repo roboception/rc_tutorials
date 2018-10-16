@@ -61,10 +61,9 @@ from the
 rc_visard
 
  using "rc_genicam_api" and how to convert them to an OpenCV
-representation. The example can be downloaded from our GitHub
-repository
+representation. The example can be downloaded from our
 
-TODO:
+GitHub repository
 
 .
 

@@ -66,7 +66,8 @@ Compiling the example program
 We provide an example program which shows how to receive image streams from
 the |rc_visard| using |rcgenapi| and how to convert them to an
 |opencv| representation. 
-The example can be downloaded from our GitHub repository |TODO|.
+The example can be downloaded from our 
+`GitHub repository <https://github.com/roboception/rc_visard_opencv_example>`_.
 
 To successfully compile the program, above prerequisites should be met. 
 
