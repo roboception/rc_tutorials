@@ -1,0 +1,303 @@
+.. include:: ../global_rst.glb
+
+Recording data with |rc_visard|
+===============================
+
+This tutorial shows how to record sample data sets with the |rc_visard|.
+
+Before we start
+---------------
+
+Before going through this tutorial, the following prerequisites should be met.
+
+.. rubric:: The |rc_visard| is up and running:
+
+#. The |rc_visard| is running and connected properly to the host.
+   One can verify that with our `discovery tool <https://roboception.com/en/download/>`_.
+#. One should know the serial number or user defined name of the |rc_visard|.
+   The serial number is of the format 029xxxxx.
+   It will be referred to as ``rc_visard_id`` in the remainder of this tutorial.
+
+.. rubric:: Download and install the following required client software:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+        #. Download `rc_genicam_api <https://github.com/roboception/rc_genicam_api/releases>`_
+        #. Download `rc_dynamics_api <https://github.com/roboception/rc_dynamics_api/releases>`_
+
+        For Ubuntu, we provide ready-to-use Debian packages.
+
+    .. group-tab:: Windows
+
+        For Windows, all required software is bundled with the recording scripts,
+        so no download is necessary.
+
+.. rubric:: Optional software for viewing the recorded images can be installed:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+        Download `cvkit <https://github.com/roboception/cvkit/releases>`_.
+
+        For Linux, it is easiest to download the source code and build it by entering
+        the main directory and typing:
+
+        .. code-block:: bash
+
+            mkdir build
+            cd build
+            cmake ..
+            make
+            sudo make install
+
+        Images can be viewed using the viewer ``sv``. Disparity images, i.e.
+        with the suffix *.pfm* can be viewed in 3D by pressing 'p' or calling
+        ``plyv`` with the disparity image as argument. Both tools show a help
+        page with all key codes by pressing 'h'.
+
+    .. group-tab:: Windows
+
+        Download `cvkit <https://github.com/roboception/cvkit/releases>`_.
+
+        For Windows, pre-compiled software is available in a ZIP archive. The
+        archive contains a self-installing executable.
+
+        After installation, images can be viewed by double clicking on them in
+        the explorer. Disparity images, i.e. with the suffix *.pfm* can be
+        viewed in 3D by pressing 'p'. Both tools show a help page with all key
+        codes by pressing 'h'.
+
+.. _data-recording-network-optimization:
+
+.. rubric:: The network configuration is optimized:
+
+Enable "Jumbo frames" by setting the MTU to 9000.
+
+.. tabs::
+
+    .. group-tab:: Ubuntu
+
+            .. rubric:: Temporarily
+
+            Enter the following command in the terminal.
+
+            .. code-block:: bash
+
+                ifconfig <interface> mtu 9000
+
+            .. rubric:: Persistently
+
+            #. Open the network manager
+            #. Select interface and edit settings
+            #. On "Ethernet" tab, change MTU to 9000
+
+    .. group-tab:: Windows 10
+
+            #. Open "Network Connections"
+            #. Right-click on the network interface
+            #. Choose "Properties"
+            #. Click "Configure"
+            #. On the "Advanced" tab, choose "Jumbo Packet"
+            #. Select "9014 Bytes"
+
+Recording data
+--------------
+
+We provide scripts for Linux and Windows to record data in our 
+``rc_visard_offboard_record`` `GitHub repository <https://github.com/roboception/rc_visard_offboard_record>`_.
+
+The script offers two modes:
+An interactive mode that is started if the script is launched via a double-click
+or called without any arguments from a terminal/command line window.
+In that mode, the user is asked by the script for the ``rc_visard_id``.
+In standard mode, in contrast, the ``rc_visard_id`` is passed to the
+script as command line argument, optionally next to other arguments.
+
+Each time, the script runs, it creates a new folder in the working
+directory (i.e. the place the script was started in) and writes all data to 
+that folder. 
+The folder's name is of the format ``rc-visard_<SN>_<T>``, 
+where ``<SN>`` is replaced by the ``rc_visard_id`` and ``<T>`` by the current time. 
+The images are stored in PGM or PPM format, which are supported 
+by many image viewers. 
+All other files are stored as text.
+
+.. caution:: On Windows, proper configuration of the firewall is important.
+  On the first run of the script, the user will be asked whether the
+  ``rc_genicam_api`` and ``rc_dynamics_api`` tools should be allowed to
+  access the network.
+  This needs to be allowed, otherwise the script will not work properly.
+  In case of problems with data recording, temporarily disabling the firewall
+  can help to pinpoint the source of the problem.
+  It may be necessary to manually whitelist ``gc_info.exe``, ``gc_config.exe`` 
+  and ``gc_stream.exe`` that are located in the folder ``rc_genicam_api-*``, and 
+  ``rcdynamics_stream.exe`` that can be found in the folder 
+  ``rc_dynamics_api-*``.
+
+Interactive mode
+''''''''''''''''
+
+Start the script via double-click.
+The script asks for the ``rc_visard_id``, i.e. the serial number 
+(which is of the format 029xxxxx) or user defined name.
+By entering ``L``, all available |rc_visard| devices are listed.
+Interactive mode does not allow changing of script parameters other than
+the ``rc_visard_id``.
+If that is required, the standard mode should be chosen, as it offers more
+flexibility.
+
+Standard mode
+'''''''''''''
+
+In standard mode, the script is called from a terminal/command line window.
+
+The basic usage is as follows:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            #. Open a terminal.
+            #. Change to the script folder.
+            #. Launch the ``rc_visard_record.sh``:
+
+                .. code-block:: bash
+
+                    ./rc_visard_record.sh [options] <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            #. Open a terminal.
+            #. Change to the script folder.
+            #. Launch the ``rc_visard_record.bat``:
+
+                .. code-block:: bash
+
+                    rc_visard_record.bat [options] <rc_visard_id>
+
+The script offers optional arguments, which can be listed with the `-h` flag:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh -h
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -h
+
+By default, the script will run until it is stopped with ``Enter`` and record
+images from the left camera, disparity images, confidence images and error images.
+
+This behavior can be changed by passing different arguments to the script.
+For example, to record only the left camera images and stop
+after 10 images, the following command can be used:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh --number=10 --left=true --right=false --disparity=false --confidence=false --error=false <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -n 10 -left true -right false -disparity false -confidence false -error false <rc_visard_id>
+
+The ``cam-params`` argument allows to also record the current camera parameters
+including the camera calibration.
+It will write the parameters to the given file, below called `params.txt`.
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh --cam-params=params.txt <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -cam-params params.txt <rc_visard_id>
+
+The script also supports recording of the SLAM trajectory,
+which can be enabled with the ``slam`` argument.
+The script will automatically start and stop SLAM, and eventually write
+the trajectory to the given file (`trajectory.json` in the example).
+The trajectory is written when image grabbing is finished, which is either
+when the user presses ``Enter`` during or enough data sets are recorded
+according to the ``number`` argument.
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh --slam=trajectory.json <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -slam trajectory.json <rc_visard_id>
+
+Troubleshooting
+---------------
+
+.. _faq-data-recording-gc-not-found:
+.. toggle-header::
+   :header: **The script writes "gc_stream is not found" or "gc_info is not found"**
+
+    ``rc_genicam_api`` is not installed properly.
+
+.. _faq-data-recording-dyn-stream-not-found:
+.. toggle-header::
+   :header: **The script writes "rcdynamics_stream is not found"**
+
+    ``rc_dynamics_api`` is not installed properly.
+
+.. _faq-data-recording-sensor-not-found:
+.. toggle-header::
+   :header: **The script writes "Cannot find device: 01234567" or "Device 01234567 not found"**
+
+    The script could not find the |rc_visard| with the given serial number.
+    Are serial number and network configuration correct?
+
+.. _faq-data-recording-incomplete-buffer:
+.. toggle-header::
+   :header: **The script writes "storeBuffer(): Received incomplete buffer"**
+
+    The network configuration may be slow or not optimized properly.
+    Is the |rc_visard| connected via a 1 GBit/s wired ethernet connection?
+    Please follow :ref:`network optimization <data-recording-network-optimization>`.
+    Try to connect the |rc_visard| to the host directly.
+
+.. _faq-data-recording-device-open-failed:
+.. toggle-header::
+   :header: **The script writes "Device::open() failed"**
+
+    The |rc_visard| may have not booted completely yet, 
+    or another client may already be connected to the |rc_visard|.
+
+.. _faq-data-recording-cannot-grab-images:
+.. toggle-header::
+   :header: **The script writes "Cannot grab images"**
+
+    The network may not be configured properly.
+    On Windows, the firewall may block the network connection.
+    Temporarily disabling the firewall can help to pinpoint the source of the problem.
+    Try to connect the |rc_visard| to the host directly.

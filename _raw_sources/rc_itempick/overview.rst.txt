@@ -1,0 +1,13 @@
+.. include:: ../global_rst.glb
+
+ItemPick tutorials
+==================
+
+This is the landing page for the :doc:`rcvisard:itempick`' tutorials.
+
+.. toctree::
+   :maxdepth: 2
+
+   getting_started
+   bin_picking_no_robot
+   troubleshooting

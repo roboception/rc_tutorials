@@ -1,0 +1,495 @@
+Tuning of Image Parameters
+
+Parameters like the frame rate, exposure time and gain factor
+determine when and how images are captured. They have a huge impact on
+all image processing modules on the
+
+rc_visard
+
+. Additionally, the quality of the depth image can often be improved
+by tuning stereo matching parameters.
+
+This tutorial describes the steps for tuning parameters to get the
+best quality for stereo and depth images.
+
+Before we Start
+
+This tutorial applies to all
+
+rc_visard
+
+ models. However, it does not focus on parameters related to color
+sensors as most modules are based on monochrome images.
+
+The rc_visard must be running and connected to a network or directly
+to a computer.
+
+The Web GUI of the rc_visard should be opened in a Web browser. This
+can be done with the discovery tool from Roboception.
+
+This tutorial focusses on the Web GUI to set the parameters. It is
+also possible to use
+
+GigE Vision 2.0/GenICam image interface
+
+ and the
+
+REST-API interface
+
+ for setting the parameters.
+
+Note: After changing parameters, it is necessary to save them in
+  order to make them persistent after reboot. This can be done by
+  clicking the ‘save’ button of the corresponding module in the Web
+  GUI.
+
+Camera Parameters
+
+The camera panel of the Web GUI shows the left and right images and
+permits changing and saving the parameters.
+
+Frames per Second (FPS)
+
+An important issue is the frequency with which the
+
+rc_visard
+
+ delivers images. Internally, the
+
+rc_visard
+
+ always captures images with 25 Hz as some on-board modules, like
+visual odometry, require a constant frame rate. The FPS setting
+determines how many of the internally captured images are sent out via
+the GigE Vision interface. Reducing the FPS significantly reduces the
+network load as well as some computational burden of the
+
+rc_visard
+
+ and the receiving host computer. Therefore, in many applications, the
+FPS can and should be reduced.
+
+However, some on-board modules like stereo matching and others only
+work on images that are also sent via GigE Vision to ensure that the
+output of the modules can always be accompanied by their input images.
+This means that the FPS setting also has an effect on the maximum
+frame rate of other modules. Furthermore, a lower FPS setting can
+increase the latency, i.e. the time it takes until a module can start
+working and delivering a result.
+
+Note: The optimal FPS setting very much depends on the application.
+  In the case that images are streamed via GigE Vision, it is
+  recommended to reduce the FPS setting if possible, but keeping the
+  drawback of higher latency in mind.
+
+Exposure and Gain Settings
+
+The exposure time is the time during which the light of the scene is
+collected. It influences how bright the captured image appears. The
+exposure time is typically in the order of several milliseconds. If
+there is less light in the scene, then a longer exposure time is
+required. However, long exposure times cause bluring, if objects in
+the scene or the
+
+rc_visard
+
+ itself moves.
+
+The second parameter that influences the image brightness is the gain
+factor. It amplifies the signal in the chip and makes the image appear
+brighter, but it also increases image noise. The gain can only be set
+in steps of 6 dB. Each step doubles the brightness.
+
+
+Automatic Mode
+
+The automatic mode is the default for the
+
+rc_visard
+
+ and is is recommended for most cases. It tries to maintain an average
+image brightness by using the exposure time up to a limit that can be
+changed depending on the movement of the scene or the sensor. If the
+scene or the sensor moves fast, the maximum exposure time should be
+low to avoid image blur during movements. The automatic mode always
+keeps the exposure time below the maximum setting and uses the gain
+factor to increase the image brightness if neccessary. As mentioned
+above, this introduces noise.
+
+Therefore, the maximum exposure time should be increased if image
+capture during scene or sensor movements is not required or if these
+movements are rather slow. In such  cases, the exposure time should be
+large enough to achieve a very small gain factor, ideally 0.0 dB.
+
+In automatic mode, it may take a few seconds until the exposure and
+gain settings become stable, especially if the scene contains very
+dark and very bright regions.
+
+Note: The automatic mode is recommended in most situations,
+  especially if the scene content or the lighting can change.If images
+  relevant for the application are taken during movement of the
+
+  rc_visard
+
+   or the scene, then the maximum exposure time should be limited,
+  depending the speed of movement. 5 ms to 7 ms is a good starting
+  point. In case of high gain values, it should be considered to
+  increase lighting.If relevant images are only taken while the scene
+  and
+
+  rc_visard
+
+   are static, then the maximum exposure time should be increased to
+  the maximum, especially in situations without sufficient light.
+
+Using an Exposure Region
+
+In many applications, only a part of the images is relevant. If the
+relevant image part is known and does not change, then an exposure
+region can be defined around it. In this case, the automatic mode
+optimizes the exposure and gain settings only for the content of the
+exposure region and neglects all other images parts. This can be a
+very powerful tool as very dark or very bright areas outside the
+exposure region cannot negatively influence the relevant image part
+inside the exposure region.
+
+Currently, it is not possible to specify the exposure region from the
+Web GUI. Instead, it can be set via the REST-API interface (
+
+REST-API interface
+
+). However, if an exposure region is specified, it is visualized as a
+rectangle in the left camera image in the Web GUI.
+
+There are four parameters that defines the exposure region:
+"exp_offset_x", "exp_offset_y", "exp_height" and "exp_width".
+
+
+For setting the exposure region via REST-API, a PUT request must be
+sent to the URL
+"http://<rc_visard_ip>/api/v1/nodes/rc_stereocamera/parameters", where
+"<rc-visard-ip>" should be replaced by the actual IP of the
+
+rc_visard
+
+. For setting the exposure region to a size of 800x600 pixels that
+starts in image column 150 and image row 80, the following data must
+be sent:
+
+   [
+     { "name": "exp_offset_x", "value": 150 },
+     { "name": "exp_offset_y", "value":  80 },
+     { "name": "exp_width",    "value": 800 },
+     { "name": "exp_height",   "value": 600 }
+   ]
+
+This can be done via the built-in Swagger UI, or from a shell via
+
+curl
+
+:
+
+Swagger UI
+
+curl (Linux)
+
+curl (Windows)
+
+PowerShell
+
+The Swagger UI for setting camera parameters is located at: http
+://<rc-visard-ip>/api.
+
+Select PUT /nodes/{node}/parameters
+
+Try out the call with the following values:  node: rc_stereocamera
+parameters:  [   { "name": "exp_offset_x", "value": 150 },   { "name":
+"exp_offset_y", "value":  80 },   { "name": "exp_width",    "value":
+800 },   { "name": "exp_height",   "value": 600 } ]
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "RC_VISARD_IP=10.0.2.90").
+
+   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   "[ \
+      { \"name\": \"exp_offset_x\", \"value\": 150 }, \
+      { \"name\": \"exp_offset_y\", \"value\":  80 }, \
+      { \"name\": \"exp_width\",    \"value\": 800 }, \
+      { \"name\": \"exp_height\",   \"value\": 600 } \
+   ]"
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "set RC_VISARD_IP=10.0.2.90") and the
+
+curl
+
+ command is in the path.
+
+   curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   "[ ^
+      { \"name\": \"exp_offset_x\", \"value\": 150 }, ^
+      { \"name\": \"exp_offset_y\", \"value\":  80 }, ^
+      { \"name\": \"exp_width\",    \"value\": 800 }, ^
+      { \"name\": \"exp_height\",   \"value\": 600 } ^
+   ]"
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "$RC_VISARD_IP="10.0.2.90"").
+
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -ContentType 'application/json' -Method Put -Body '
+   [
+      { "name": "exp_offset_x", "value": 150 },
+      { "name": "exp_offset_y", "value":  80 },
+      { "name": "exp_width",    "value": 800 },
+      { "name": "exp_height",   "value": 600 }
+   ]' | ConvertTo-Json -Depth 6
+
+
+Note: It is recommended to use an exposure region if only a part if
+  the images is relevant for the application and if this part does not
+  change.
+
+Manual Exposure and Gain
+
+In cases where the lighting is constant and the scene always has a
+similar overall brightness, then exposure and gain can be set
+manually.
+
+Setting the exposure time and the gain factor manually permits to
+focus on scene parts that are relevant to the application, e.g. some
+objects in the middle of the scene. Thus, overexposure within the area
+of interest must be avoided, but can be tolerated in scene parts that
+are not relevant for the application.
+
+As a general rule, overexposure is worse than underexposure for image
+processing, because the information in overexposued regions is lost
+due to saturation of pixel values. In contrast, underexposed regions
+often contain enough information for image processing modules.
+Therefore, it is better to set parameters such that images are darker.
+
+
+The gain factor should only be increased in low lighting conditions or
+to reduce the exposure time for avoiding motion blur. As a general
+rule, the gain factor should always be set as low as possible.
+
+Note: It is recommended to set exposure and gain manually only if
+  the lighting and scene content does not change. The gain factor
+  should be chosen as low as possible. Overexposure in relevant scene
+  parts or on relevant objects must be avoided. Underexposure can be
+  acceptable.
+
+Depth Image Tuning
+
+The depth image panel of the Web GUI shows the left, disparity and
+confidence image and permits changing and saving depth image related
+parameters.
+
+Working Range
+
+First, the working range of the application should be considered.
+Setting the
+
+Maximum Distance
+
+ parameter to a certain value invalidates all pixels in the depth
+image that are further away. This is an easy way for excluding scene
+parts that are not relevant for an application.
+
+Similarly, the
+
+Minimum Distance
+
+ parameter can be increased if it is
+
+certain
+
+ that no object will ever be closer to the
+
+rc_visard
+
+ than the given distance. Increasing the minimum distance has the
+benefit that it also reduces the runtime for computing the depth image
+and therefor increases the frame rate.
+
+The
+
+Disparity Range
+
+ parameter is closely linked the minimum distance as reducing the
+disparity range by factor two increases the effective minimum distance
+by a factor of two. However, the disparity range parameter is not as
+intuitive to use as the minimum distance and it is therefor
+recommended to use the minimum distance setting instead of the
+disparity range.
+
+Frequency
+
+In some applications, the frequency or latency with which depth images
+are computed is more relevant than the quality of depth values. In
+this case, the default
+
+Quality
+
+
+High
+
+ can be reduced to
+
+Medium
+
+ or
+
+Low
+
+. Depth images of a lower quality are computed by reducing the image
+resolution before stereo matching. This reduces the runtime and
+increases the possible framerate significantly. However, the framerate
+for computing depth images is always limited by the camera framerate
+setting.
+
+As discussed above, the minimum distance should be increased if
+possible for the application as this also helps to reduce runtime and
+increase the frequency.
+
+Increasing Density
+
+Depth images often contain invalid values that appear black in the
+depth image that is shown in the Web GUI. This happens for scene parts
+that are outside the defined working range, as discussed above, as
+well as on the left side of objects, because here, a part of the
+background is not visible in the right camera image. This is called an
+occlusion and absolutely normal.
+
+
+Other cases of invalid pixels are typically unwanted. In general,
+invalid pixels are due to the inability of the stereo matching method
+to compute depth. There are various reasons for it. Overexposed areas
+do not contain enough information for matching and therefor appear
+invalid. Furthermore, areas may appear invalid if the image noise is
+stronger than the texture. Both problems can be solved by setting the
+exposure and gain settings correctly as explained in Section
+
+Exposure and Gain Settings
+
+.
+
+If the scene and the
+
+rc_visard
+
+ do not move during image capturing, then the
+
+Static
+
+ quality mode is recommended. In this mode, the
+
+rc_visard
+
+ internally accumulates eight consecutive images with 25 Hz
+(regardless of the user framerate setting) and averages these images
+to reduce noise. This permits to even matching very weak textured
+objects and makes the depth image often much more dense.
+
+One common case for missing objects in depth images is due to the
+horizontal orientation of straight objects. This alignment along image
+rows (that also means parallel to the baseline of the stereo system)
+can make stereo matching impossible. It can be easily determined if
+this the case by slightly rotating the
+
+rc_visard
+
+ or the object and observing if the orientation has an effect on the
+appearance of the object in the depth image. If this is the case, then
+an orientation should be chosen to avoid it.
+
+One of the most common reasons for invalid areas in indoor
+environments is the lack of texture as well as strongly repetitive
+texture. Typically, walls and tables are unicolor without any texture.
+Other structures are highly repetitive. Both does not permit unique
+stereo matching. These objects and scene parts may not be important
+for the application, but if they are, then the only way is add an
+artificial texture by projection. Random dot projectors are best
+suited in this case, but not discussed in this tutorial.
+
+Finally, there are many ways to filter possible errors as explained in
+the
+
+Error Filtering
+
+ Section. Filtering errors means to set the critical depth values to
+invalid. The
+
+Fill-in
+
+ parameter can be used to interpolate small areas that are typically
+caused by error filtering. Higher fill-in values increase the number
+of areas that can be interpolated. The size of areas that are
+interpolated directly depends on the
+
+segmentation
+
+ setting for error filtering.
+
+Error Filtering
+
+Errors fall into two categories. Outliers, which are typically small
+patches of depth values that can appear anywhere in the working range
+and geometric errors that are close to the real depth.
+
+
+Outliers can be filtered out using the
+
+Segmentation
+
+ parameter. The parameter gives the maximum number of connected pixels
+that are filtered out. All patches with less than this amount of
+pixels are set to invalid. The size is also used for the fill-in
+paramter that is explained in the
+
+Increasing Density
+
+ Section, so that holes that are caused by this filter are typically
+interpolated.
+
+Another way to reduce the likelyhood of outliers is to increase the
+
+Minimum Confidence
+
+ as the confidence is the probability that a pixel is not an outlier.
+
+Depth values that have a potentially high geometric error can be
+filtered using the
+
+Maximum Depth Error
+
+ parameter.
+
+Reduce Noise
+
+For some applications, it is necessary that the surfaces in the depth
+image are smooth. This is supported by post-processing using a
+
+Median
+
+ filter. Higher values increase smoothing but also increase
+computation time.
+
+Finally, increasing texture also reduces noise in the depth image. As
+mentioned in the
+
+Increasing Density
+
+ Section, a separate random dot projector can be used to add texture
+to the scene.

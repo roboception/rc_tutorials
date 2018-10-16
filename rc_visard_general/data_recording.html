@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Recording data with rc_visard &mdash; Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation" href="../index.html"/>
+        <link rel="up" title="rc_visard tutorials" href="overview.html"/>
+        <link rel="next" title="Getting started with rc_visard and OpenCV" href="opencv_example.html"/>
+        <link rel="prev" title="Tuning of Image Parameters" href="parameters.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Recording data with <em>rc_visard</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recording-data">Recording data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interactive-mode">Interactive mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-mode">Standard mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+        
+      <li>Recording data with <em>rc_visard</em></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="recording-data-with-rc-visard">
+<h1>Recording data with <em>rc_visard</em><a class="headerlink" href="#recording-data-with-rc-visard" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to record sample data sets with the <em>rc_visard</em>.</p>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>Before going through this tutorial, the following prerequisites should be met.</p>
+<p class="rubric">The <em>rc_visard</em> is up and running:</p>
+<ol class="arabic simple">
+<li>The <em>rc_visard</em> is running and connected properly to the host.
+One can verify that with our <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a>.</li>
+<li>One should know the serial number or user defined name of the <em>rc_visard</em>.
+The serial number is of the format 029xxxxx.
+It will be referred to as <code class="docutils literal"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</li>
+</ol>
+<p class="rubric">Download and install the following required client software:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="https://github.com/roboception/rc_genicam_api/releases">rc_genicam_api</a></li>
+<li>Download <a class="reference external" href="https://github.com/roboception/rc_dynamics_api/releases">rc_dynamics_api</a></li>
+</ol>
+<p>For Ubuntu, we provide ready-to-use Debian packages.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+For Windows, all required software is bundled with the recording scripts,
+so no download is necessary.</div>
+</div>
+<p class="rubric">Optional software for viewing the recorded images can be installed:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<p>Download <a class="reference external" href="https://github.com/roboception/cvkit/releases">cvkit</a>.</p>
+<p>For Linux, it is easiest to download the source code and build it by entering
+the main directory and typing:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+</div>
+<p>Images can be viewed using the viewer <code class="docutils literal"><span class="pre">sv</span></code>. Disparity images, i.e.
+with the suffix <em>.pfm</em> can be viewed in 3D by pressing ‘p’ or calling
+<code class="docutils literal"><span class="pre">plyv</span></code> with the disparity image as argument. Both tools show a help
+page with all key codes by pressing ‘h’.</p>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<p>Download <a class="reference external" href="https://github.com/roboception/cvkit/releases">cvkit</a>.</p>
+<p>For Windows, pre-compiled software is available in a ZIP archive. The
+archive contains a self-installing executable.</p>
+<p>After installation, images can be viewed by double clicking on them in
+the explorer. Disparity images, i.e. with the suffix <em>.pfm</em> can be
+viewed in 3D by pressing ‘p’. Both tools show a help page with all key
+codes by pressing ‘h’.</p>
+</div>
+</div>
+<p class="rubric" id="data-recording-network-optimization">The network configuration is optimized:</p>
+<p>Enable “Jumbo frames” by setting the MTU to 9000.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-VWJ1bnR1 docutils container">
+<div class="docutils container">
+Ubuntu</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cyAxMA== docutils container">
+<div class="docutils container">
+Windows 10</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-VWJ1bnR1 active docutils container">
+<p class="rubric">Temporarily</p>
+<p>Enter the following command in the terminal.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
+</pre></div>
+</div>
+<p class="rubric">Persistently</p>
+<ol class="arabic simple">
+<li>Open the network manager</li>
+<li>Select interface and edit settings</li>
+<li>On “Ethernet” tab, change MTU to 9000</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cyAxMA== docutils container">
+<ol class="arabic simple">
+<li>Open “Network Connections”</li>
+<li>Right-click on the network interface</li>
+<li>Choose “Properties”</li>
+<li>Click “Configure”</li>
+<li>On the “Advanced” tab, choose “Jumbo Packet”</li>
+<li>Select “9014 Bytes”</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="recording-data">
+<h2>Recording data<a class="headerlink" href="#recording-data" title="Permalink to this headline">¶</a></h2>
+<p>We provide scripts for Linux and Windows to record data in our
+<code class="docutils literal"><span class="pre">rc_visard_offboard_record</span></code> <a class="reference external" href="https://github.com/roboception/rc_visard_offboard_record">GitHub repository</a>.</p>
+<p>The script offers two modes:
+An interactive mode that is started if the script is launched via a double-click
+or called without any arguments from a terminal/command line window.
+In that mode, the user is asked by the script for the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>.
+In standard mode, in contrast, the <code class="docutils literal"><span class="pre">rc_visard_id</span></code> is passed to the
+script as command line argument, optionally next to other arguments.</p>
+<p>Each time, the script runs, it creates a new folder in the working
+directory (i.e. the place the script was started in) and writes all data to
+that folder.
+The folder’s name is of the format <code class="docutils literal"><span class="pre">rc-visard_&lt;SN&gt;_&lt;T&gt;</span></code>,
+where <code class="docutils literal"><span class="pre">&lt;SN&gt;</span></code> is replaced by the <code class="docutils literal"><span class="pre">rc_visard_id</span></code> and <code class="docutils literal"><span class="pre">&lt;T&gt;</span></code> by the current time.
+The images are stored in PGM or PPM format, which are supported
+by many image viewers.
+All other files are stored as text.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">On Windows, proper configuration of the firewall is important.
+On the first run of the script, the user will be asked whether the
+<code class="docutils literal"><span class="pre">rc_genicam_api</span></code> and <code class="docutils literal"><span class="pre">rc_dynamics_api</span></code> tools should be allowed to
+access the network.
+This needs to be allowed, otherwise the script will not work properly.
+In case of problems with data recording, temporarily disabling the firewall
+can help to pinpoint the source of the problem.
+It may be necessary to manually whitelist <code class="docutils literal"><span class="pre">gc_info.exe</span></code>, <code class="docutils literal"><span class="pre">gc_config.exe</span></code>
+and <code class="docutils literal"><span class="pre">gc_stream.exe</span></code> that are located in the folder <code class="docutils literal"><span class="pre">rc_genicam_api-*</span></code>, and
+<code class="docutils literal"><span class="pre">rcdynamics_stream.exe</span></code> that can be found in the folder
+<code class="docutils literal"><span class="pre">rc_dynamics_api-*</span></code>.</p>
+</div>
+<div class="section" id="interactive-mode">
+<h3>Interactive mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h3>
+<p>Start the script via double-click.
+The script asks for the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>, i.e. the serial number
+(which is of the format 029xxxxx) or user defined name.
+By entering <code class="docutils literal"><span class="pre">L</span></code>, all available <em>rc_visard</em> devices are listed.
+Interactive mode does not allow changing of script parameters other than
+the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>.
+If that is required, the standard mode should be chosen, as it offers more
+flexibility.</p>
+</div>
+<div class="section" id="standard-mode">
+<h3>Standard mode<a class="headerlink" href="#standard-mode" title="Permalink to this headline">¶</a></h3>
+<p>In standard mode, the script is called from a terminal/command line window.</p>
+<p>The basic usage is as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<ol class="arabic">
+<li><p class="first">Open a terminal.</p>
+</li>
+<li><p class="first">Change to the script folder.</p>
+</li>
+<li><p class="first">Launch the <code class="docutils literal"><span class="pre">rc_visard_record.sh</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<ol class="arabic">
+<li><p class="first">Open a terminal.</p>
+</li>
+<li><p class="first">Change to the script folder.</p>
+</li>
+<li><p class="first">Launch the <code class="docutils literal"><span class="pre">rc_visard_record.bat</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<p>The script offers optional arguments, which can be listed with the <cite>-h</cite> flag:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh -h
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -h
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the script will run until it is stopped with <code class="docutils literal"><span class="pre">Enter</span></code> and record
+images from the left camera, disparity images, confidence images and error images.</p>
+<p>This behavior can be changed by passing different arguments to the script.
+For example, to record only the left camera images and stop
+after 10 images, the following command can be used:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">false</span> --disparity<span class="o">=</span><span class="nb">false</span> --confidence<span class="o">=</span><span class="nb">false</span> --error<span class="o">=</span><span class="nb">false</span> &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">false</span> -disparity <span class="nb">false</span> -confidence <span class="nb">false</span> -error <span class="nb">false</span> &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">cam-params</span></code> argument allows to also record the current camera parameters
+including the camera calibration.
+It will write the parameters to the given file, below called <cite>params.txt</cite>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -cam-params params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The script also supports recording of the SLAM trajectory,
+which can be enabled with the <code class="docutils literal"><span class="pre">slam</span></code> argument.
+The script will automatically start and stop SLAM, and eventually write
+the trajectory to the given file (<cite>trajectory.json</cite> in the example).
+The trajectory is written when image grabbing is finished, which is either
+when the user presses <code class="docutils literal"><span class="pre">Enter</span></code> during or enough data sets are recorded
+according to the <code class="docutils literal"><span class="pre">number</span></code> argument.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --slam<span class="o">=</span>trajectory.json &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -slam trajectory.json &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p class="toggle-header" id="faq-data-recording-gc-not-found"><strong>The script writes “gc_stream is not found” or “gc_info is not found”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div><code class="docutils literal"><span class="pre">rc_genicam_api</span></code> is not installed properly.</div></blockquote>
+</div>
+<p class="toggle-header" id="faq-data-recording-dyn-stream-not-found"><strong>The script writes “rcdynamics_stream is not found”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div><code class="docutils literal"><span class="pre">rc_dynamics_api</span></code> is not installed properly.</div></blockquote>
+</div>
+<p class="toggle-header" id="faq-data-recording-sensor-not-found"><strong>The script writes “Cannot find device: 01234567” or “Device 01234567 not found”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div>The script could not find the <em>rc_visard</em> with the given serial number.
+Are serial number and network configuration correct?</div></blockquote>
+</div>
+<p class="toggle-header" id="faq-data-recording-incomplete-buffer"><strong>The script writes “storeBuffer(): Received incomplete buffer”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div>The network configuration may be slow or not optimized properly.
+Is the <em>rc_visard</em> connected via a 1 GBit/s wired ethernet connection?
+Please follow <a class="reference internal" href="#data-recording-network-optimization"><span class="std std-ref">network optimization</span></a>.
+Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
+</div>
+<p class="toggle-header" id="faq-data-recording-device-open-failed"><strong>The script writes “Device::open() failed”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div>The <em>rc_visard</em> may have not booted completely yet,
+or another client may already be connected to the <em>rc_visard</em>.</div></blockquote>
+</div>
+<p class="toggle-header" id="faq-data-recording-cannot-grab-images"><strong>The script writes “Cannot grab images”</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div>The network may not be configured properly.
+On Windows, the firewall may block the network connection.
+Temporarily disabling the firewall can help to pinpoint the source of the problem.
+Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opencv_example.html" class="btn btn-neutral float-right" title="Getting started with rc_visard and OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="parameters.html" class="btn btn-neutral" title="Tuning of Image Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0-43-g5b4b0d0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

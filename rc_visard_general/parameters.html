@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation" href="../index.html"/>
+        <link rel="up" title="rc_visard tutorials" href="overview.html"/>
+        <link rel="next" title="Recording data with rc_visard" href="data_recording.html"/>
+        <link rel="prev" title="rc_visard tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning of Image Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-parameters">Camera Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#frames-per-second-fps">Frames per Second (FPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exposure-and-gain-settings">Exposure and Gain Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#depth-image-tuning">Depth Image Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#working-range">Working Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency">Frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#increasing-density">Increasing Density</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-filtering">Error Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reduce-noise">Reduce Noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+        
+      <li>Tuning of Image Parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tuning-of-image-parameters">
+<span id="general-tuning-image-parmeters"></span><h1>Tuning of Image Parameters<a class="headerlink" href="#tuning-of-image-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Parameters like the frame rate, exposure time and gain factor determine when and how images are captured.
+They have a huge impact on all image processing modules on the <em>rc_visard</em>. Additionally, the quality of
+the depth image can often be improved by tuning stereo matching parameters.</p>
+<p>This tutorial describes the steps for tuning parameters to get the best quality for stereo and depth images.</p>
+<div class="section" id="before-we-start">
+<h2>Before we Start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial applies to all <em>rc_visard</em> models. However, it does not focus on parameters
+related to color sensors as most modules are based on monochrome images.</p>
+<ul class="simple">
+<li>The <em>rc_visard</em> must be running and connected to a network or directly to a computer.</li>
+<li>The Web GUI of the <em>rc_visard</em> should be opened in a Web browser. This can be done with the
+<a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
+</ul>
+<p>This tutorial focusses on the Web GUI to set the parameters. It is also possible to use
+<a class="reference external" href="http://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v1.3)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="http://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.3)"><span>REST-API interface</span></a> for setting the parameters.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">After changing parameters, it is necessary to save them in order to make them persistent after reboot.
+This can be done by clicking the ‘save’ button of the corresponding module in the Web GUI.</p>
+</div>
+</div>
+<div class="section" id="camera-parameters">
+<span id="general-tuning-camera-parmeters"></span><h2>Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The camera panel of the Web GUI shows the left and right images and permits changing and
+saving the parameters.</p>
+<div class="section" id="frames-per-second-fps">
+<span id="general-camera-fps"></span><h3>Frames per Second (FPS)<a class="headerlink" href="#frames-per-second-fps" title="Permalink to this headline">¶</a></h3>
+<p>An important issue is the frequency with which the <em>rc_visard</em> delivers images. Internally, the
+<em>rc_visard</em> always captures images with 25 Hz as some on-board modules, like visual odometry,
+require a constant frame rate. The FPS setting determines how many of the internally captured images
+are sent out via the GigE Vision interface. Reducing the FPS significantly reduces the network load
+as well as some computational burden of the <em>rc_visard</em> and the receiving host computer. Therefore,
+in many applications, the FPS can and should be reduced.</p>
+<p>However, some on-board modules like stereo matching and others only work on images that are also
+sent via GigE Vision to ensure that the output of the modules can always be accompanied by their
+input images. This means that the FPS setting also has an effect on the maximum frame rate of other
+modules. Furthermore, a lower FPS setting can increase the latency, i.e. the time it takes until
+a module can start working and delivering a result.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The optimal FPS setting very much depends on the application. In the case that images are
+streamed via GigE Vision, it is recommended to reduce the FPS setting if possible, but keeping
+the drawback of higher latency in mind.</p>
+</div>
+</div>
+<div class="section" id="exposure-and-gain-settings">
+<span id="general-exposure-gain"></span><h3>Exposure and Gain Settings<a class="headerlink" href="#exposure-and-gain-settings" title="Permalink to this headline">¶</a></h3>
+<p>The exposure time is the time during which the light of the scene is collected. It influences how
+bright the captured image appears. The exposure time is typically in the order of several
+milliseconds. If there is less light in the scene, then a longer exposure time is required. However,
+long exposure times cause bluring, if objects in the scene or the <em>rc_visard</em> itself moves.</p>
+<p>The second parameter that influences the image brightness is the gain factor. It amplifies the signal
+in the chip and makes the image appear brighter, but it also increases image noise. The gain can
+only be set in steps of 6 dB. Each step doubles the brightness.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/overexposed2.png"><img alt="../_images/overexposed2.png" src="../_images/overexposed2.png" style="width: 1003.0px; height: 376.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The picture on the left is overexposed on the table in front as well as in the relevant scene
+part that contains objects. This should be avoided. The image on the right is overexposed
+on the table, but the relevant scene part is properly exposed.</span></p>
+</div>
+<div class="section" id="automatic-mode">
+<span id="general-auto-exposure"></span><h4>Automatic Mode<a class="headerlink" href="#automatic-mode" title="Permalink to this headline">¶</a></h4>
+<p>The automatic mode is the default for the <em>rc_visard</em> and is is recommended for most cases.
+It tries to maintain an average image brightness by using the exposure time up to a limit that
+can be changed depending on the movement of the scene or the sensor. If the scene or the sensor
+moves fast, the maximum exposure time should be low to avoid image blur during movements. The
+automatic mode always keeps the exposure time below the maximum setting and uses the gain
+factor to increase the image brightness if neccessary. As mentioned above, this introduces noise.</p>
+<p>Therefore, the maximum exposure time should be increased if image capture during scene or sensor
+movements is not required or if these movements are rather slow. In such  cases, the exposure
+time should be large enough to achieve a very small gain factor, ideally 0.0 dB.</p>
+<p>In automatic mode, it may take a few seconds until the exposure and gain settings become stable,
+especially if the scene contains very dark and very bright regions.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The automatic mode is recommended in most situations, especially if the scene content or the
+lighting can change.</p>
+<p>If images relevant for the application are taken during movement of the <em>rc_visard</em> or the
+scene, then the maximum exposure time should be limited, depending the speed of movement.
+5 ms to 7 ms is a good starting point. In case of high gain values, it should be considered
+to increase lighting.</p>
+<p class="last">If relevant images are only taken while the scene and <em>rc_visard</em> are static, then the
+maximum exposure time should be increased to the maximum, especially in situations without
+sufficient light.</p>
+</div>
+<div class="section" id="using-an-exposure-region">
+<span id="general-exposure-region"></span><h5>Using an Exposure Region<a class="headerlink" href="#using-an-exposure-region" title="Permalink to this headline">¶</a></h5>
+<p>In many applications, only a part of the images is relevant. If the relevant image part is
+known and does not change, then an exposure region can be defined around it. In this case,
+the automatic mode optimizes the exposure and gain settings only for the content of the
+exposure region and neglects all other images parts. This can be a very powerful tool as
+very dark or very bright areas outside the exposure region cannot negatively influence
+the relevant image part inside the exposure region.</p>
+<p>Currently, it is not possible to specify the exposure region from the Web GUI.
+Instead, it can be set via the REST-API interface (<a class="reference external" href="http://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.3)"><span>REST-API interface</span></a>).
+However, if an exposure region is specified, it is visualized as a rectangle in the left
+camera image in the Web GUI.</p>
+<p>There are four parameters that defines the exposure region: <code class="docutils literal"><span class="pre">exp_offset_x</span></code>, <code class="docutils literal"><span class="pre">exp_offset_y</span></code>,
+<code class="docutils literal"><span class="pre">exp_height</span></code> and <code class="docutils literal"><span class="pre">exp_width</span></code>.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/exposure_region_schema.png"><img alt="../_images/exposure_region_schema.png" src="../_images/exposure_region_schema.png" style="width: 701.0px; height: 450.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The outer rectangle represent the whole image and the inner rectangle represents chosen exposure regions.</span></p>
+</div>
+<p>For setting the exposure region via REST-API, a PUT request must be sent to the URL
+<code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/v1/nodes/rc_stereocamera/parameters</span></code>, where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</span></code>
+should be replaced by the actual IP of the <em>rc_visard</em>. For setting the exposure region to
+a size of 800x600 pixels that starts in image column 150 and image row 80, the following
+data must be sent:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_offset_x&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_offset_y&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span>  <span class="mi">80</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_width&quot;</span><span class="p">,</span>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">800</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_height&quot;</span><span class="p">,</span>   <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">600</span> <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This can be done via the built-in Swagger UI, or from a shell via <a class="reference external" href="https://curl.haxx.se/">curl</a>:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<div class="docutils container">
+Swagger UI</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<div class="docutils container">
+curl (Linux)</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="docutils container">
+curl (Windows)</div>
+</div>
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<div class="docutils container">
+PowerShell</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== active docutils container">
+<ol class="arabic">
+<li><p class="first">The Swagger UI for setting camera parameters is located at:
+<code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>.</p>
+</li>
+<li><p class="first">Select <code class="docutils literal"><span class="pre">PUT</span> <span class="pre">/nodes/{node}/parameters</span></code></p>
+</li>
+<li><p class="first">Try out the call with the following values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>node:</strong> <code class="docutils literal"><span class="pre">rc_stereocamera</span></code></li>
+<li><strong>parameters:</strong></li>
+</ul>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_offset_x&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_offset_y&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span>  <span class="mi">80</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_width&quot;</span><span class="p">,</span>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">800</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;exp_height&quot;</span><span class="p">,</span>   <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">600</span> <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<span class="s2">&quot;[ \</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, \</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, \</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_width\&quot;,    \&quot;value\&quot;: 800 }, \</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_height\&quot;,   \&quot;value\&quot;: 600 } \</span>
+<span class="s2">]&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<span class="s2">&quot;[ ^</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, ^</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, ^</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_width\&quot;,    \&quot;value\&quot;: 800 }, ^</span>
+<span class="s2">   { \&quot;name\&quot;: \&quot;exp_height\&quot;,   \&quot;value\&quot;: 600 } ^</span>
+<span class="s2">]&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<span class="s1">[</span>
+<span class="s1">   { &quot;name&quot;: &quot;exp_offset_x&quot;, &quot;value&quot;: 150 },</span>
+<span class="s1">   { &quot;name&quot;: &quot;exp_offset_y&quot;, &quot;value&quot;:  80 },</span>
+<span class="s1">   { &quot;name&quot;: &quot;exp_width&quot;,    &quot;value&quot;: 800 },</span>
+<span class="s1">   { &quot;name&quot;: &quot;exp_height&quot;,   &quot;value&quot;: 600 }</span>
+<span class="s1">]&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/exposureregion2.png"><img alt="../_images/exposureregion2.png" src="../_images/exposureregion2.png" style="width: 1003.0px; height: 376.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Both pictures were taken in auto exposure mode with the same exposure parameters.
+When the second picture was taken the exposure region was set (represented by the green frame).</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended to use an exposure region if only a part if the images is relevant for the
+application and if this part does not change.</p>
+</div>
+</div>
+</div>
+<div class="section" id="manual-exposure-and-gain">
+<span id="general-manual-exposure"></span><h4>Manual Exposure and Gain<a class="headerlink" href="#manual-exposure-and-gain" title="Permalink to this headline">¶</a></h4>
+<p>In cases where the lighting is constant and the scene always has a similar overall brightness,
+then exposure and gain can be set manually.</p>
+<p>Setting the exposure time and the gain factor manually permits to focus on scene parts that are
+relevant to the application, e.g. some objects in the middle of the scene. Thus, overexposure
+within the area of interest must be avoided, but can be tolerated in scene parts that are not
+relevant for the application.</p>
+<p>As a general rule, overexposure is worse than underexposure for image processing, because the
+information in overexposued regions is lost due to saturation of pixel values. In contrast,
+underexposed regions often contain enough information for image processing modules. Therefore,
+it is better to set parameters such that images are darker.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/overexposed2.png"><img alt="../_images/overexposed2.png" src="../_images/overexposed2.png" style="width: 1003.0px; height: 376.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The picture on the left is overexposed on the table in front as well as in the relevant scene
+part that contains objects. This should be avoided. The image on the right is overexposed
+on the table, but the relevant scene part is properly exposed.</span></p>
+</div>
+<p>The gain factor should only be increased in low lighting conditions or to reduce the exposure
+time for avoiding motion blur. As a general rule, the gain factor should always be set as low
+as possible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended to set exposure and gain manually only if the lighting and scene content
+does not change. The gain factor should be chosen as low as possible. Overexposure in
+relevant scene parts or on relevant objects must be avoided. Underexposure can be acceptable.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="depth-image-tuning">
+<span id="general-tuning-depth-parmeters"></span><h2>Depth Image Tuning<a class="headerlink" href="#depth-image-tuning" title="Permalink to this headline">¶</a></h2>
+<p>The depth image panel of the Web GUI shows the left, disparity and confidence image and
+permits changing and saving depth image related parameters.</p>
+<div class="section" id="working-range">
+<h3>Working Range<a class="headerlink" href="#working-range" title="Permalink to this headline">¶</a></h3>
+<p>First, the working range of the application should be considered. Setting the <em>Maximum
+Distance</em> parameter to a certain value invalidates all pixels in the depth image that are further
+away. This is an easy way for excluding scene parts that are not relevant for an
+application.</p>
+<p>Similarly, the <em>Minimum Distance</em> parameter can be increased if it is <em>certain</em> that no object
+will ever be closer to the <em>rc_visard</em> than the given distance. Increasing the minimum
+distance has the benefit that it also reduces the runtime for computing the depth
+image and therefor increases the frame rate.</p>
+<p>The <em>Disparity Range</em> parameter is closely linked the minimum distance as reducing the disparity
+range by factor two increases the effective minimum distance by a factor of two. However,
+the disparity range parameter is not as intuitive to use as the minimum distance and
+it is therefor recommended to use the minimum distance setting instead of the disparity
+range.</p>
+</div>
+<div class="section" id="frequency">
+<h3>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h3>
+<p>In some applications, the frequency or latency with which depth images are computed is
+more relevant than the quality of depth values. In this case, the default <em>Quality</em> <em>High</em> can
+be reduced to <em>Medium</em> or <em>Low</em>. Depth images of a lower quality are computed by reducing
+the image resolution before stereo matching. This reduces the runtime and increases the
+possible framerate significantly. However, the framerate for computing depth images is always
+limited by the camera framerate setting.</p>
+<p>As discussed above, the minimum distance should be increased if possible for the application
+as this also helps to reduce runtime and increase the frequency.</p>
+</div>
+<div class="section" id="increasing-density">
+<span id="general-increasing-density"></span><h3>Increasing Density<a class="headerlink" href="#increasing-density" title="Permalink to this headline">¶</a></h3>
+<p>Depth images often contain invalid values that appear black in the depth image that is shown
+in the Web GUI. This happens for scene parts that are outside the defined working range, as
+discussed above, as well as on the left side of objects, because here, a part of the background
+is not visible in the right camera image. This is called an occlusion and absolutely normal.</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/fruit_left_disp.png"><img alt="../_images/fruit_left_disp.png" src="../_images/fruit_left_disp.png" style="width: 1290.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Left camera image and colored, dense disparity image. Blue means far away and red means
+close. All black areas are invalid, i.e. depth cannot be determined. Invalid areas on the
+left side of objects are due to occlusions, which is normal. Untextured areas are typically
+invalid as well.</span></p>
+</div>
+<p>Other cases of invalid pixels are typically unwanted. In general, invalid pixels are due to
+the inability of the stereo matching method to compute depth. There are various reasons for it.
+Overexposed areas do not contain enough information for matching and therefor appear invalid.
+Furthermore, areas may appear invalid if the image noise is stronger than the texture. Both
+problems can be solved by setting the exposure and gain settings correctly as explained in
+Section <a class="reference internal" href="#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>.</p>
+<p>If the scene and the <em>rc_visard</em> do not move during image capturing, then the <em>Static</em> quality
+mode is recommended. In this mode, the <em>rc_visard</em> internally accumulates eight consecutive
+images with 25 Hz (regardless of the user framerate setting) and averages these images to
+reduce noise. This permits to even matching very weak textured objects and makes the depth
+image often much more dense.</p>
+<p>One common case for missing objects in depth images is due to the horizontal orientation of
+straight objects. This alignment along image rows (that also means parallel to the baseline
+of the stereo system) can make stereo matching impossible. It can be easily determined if
+this the case by slightly rotating the <em>rc_visard</em> or the object and observing if the
+orientation has an effect on the appearance of the object in the depth image. If this is
+the case, then an orientation should be chosen to avoid it.</p>
+<p>One of the most common reasons for invalid areas in indoor environments is the lack of
+texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
+without any texture. Other structures are highly repetitive. Both does not permit
+unique stereo matching. These objects and scene parts may not be important for the application,
+but if they are, then the only way is add an artificial texture by projection. Random dot
+projectors are best suited in this case, but not discussed in this tutorial.</p>
+<p>Finally, there are many ways to filter possible errors as explained in the
+<a class="reference internal" href="#general-error-filtering"><span class="std std-ref">Error Filtering</span></a> Section. Filtering errors means to set the
+critical depth values to invalid. The <em>Fill-in</em> parameter can be used to interpolate small
+areas that are typically caused by error filtering. Higher fill-in values increase the
+number of areas that can be interpolated. The size of areas that are interpolated
+directly depends on the <a class="reference internal" href="#general-error-filtering"><span class="std std-ref">segmentation</span></a> setting for
+error filtering.</p>
+</div>
+<div class="section" id="error-filtering">
+<span id="general-error-filtering"></span><h3>Error Filtering<a class="headerlink" href="#error-filtering" title="Permalink to this headline">¶</a></h3>
+<p>Errors fall into two categories. Outliers, which are typically small patches of depth
+values that can appear anywhere in the working range and geometric errors that are
+close to the real depth.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/rctable_disp_outlier.png"><img alt="../_images/rctable_disp_outlier.png" src="../_images/rctable_disp_outlier.png" style="width: 1290.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Disparity image with small outlier regions in the left, visible as spots in different
+colors. The image on the right shows the result after applying the segmentation filter and
+fill-in, for removing outliers and filling small invalid areas.</span></p>
+</div>
+<p>Outliers can be filtered out using the <em>Segmentation</em> parameter. The parameter gives the maximum
+number of connected pixels that are filtered out. All patches with less than this amount
+of pixels are set to invalid. The size is also used for the fill-in paramter that is
+explained in the <a class="reference internal" href="#general-increasing-density"><span class="std std-ref">Increasing Density</span></a> Section, so that
+holes that are caused by this filter are typically interpolated.</p>
+<p>Another way to reduce the likelyhood of outliers is to increase the <em>Minimum Confidence</em>
+as the confidence is the probability that a pixel is not an outlier.</p>
+<p>Depth values that have a potentially high geometric error can be filtered using the
+<em>Maximum Depth Error</em> parameter.</p>
+</div>
+<div class="section" id="reduce-noise">
+<h3>Reduce Noise<a class="headerlink" href="#reduce-noise" title="Permalink to this headline">¶</a></h3>
+<p>For some applications, it is necessary that the surfaces in the depth image are smooth.
+This is supported by post-processing using a <em>Median</em> filter. Higher values increase
+smoothing but also increase computation time.</p>
+<p>Finally, increasing texture also reduces noise in the depth image. As mentioned in the
+<a class="reference internal" href="#general-increasing-density"><span class="std std-ref">Increasing Density</span></a> Section, a separate random dot
+projector can be used to add texture to the scene.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_recording.html" class="btn btn-neutral float-right" title="Recording data with rc_visard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="rc_visard tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0-43-g5b4b0d0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

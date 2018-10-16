@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rc_visard tutorials &mdash; Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-43-g5b4b0d0
+ documentation" href="../index.html"/>
+        <link rel="next" title="Tuning of Image Parameters" href="parameters.html"/>
+        <link rel="prev" title="Roboception Tutorials" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rc_visard tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>rc_visard tutorials</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rc-visard-tutorials">
+<h1>rc_visard tutorials<a class="headerlink" href="#rc-visard-tutorials" title="Permalink to this headline">¶</a></h1>
+<p>This is the landing page for the <em>rc_visard</em>’ tutorials.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#before-we-start">Before we Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#camera-parameters">Camera Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#frames-per-second-fps">Frames per Second (FPS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#exposure-and-gain-settings">Exposure and Gain Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html#depth-image-tuning">Depth Image Tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#working-range">Working Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#frequency">Frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#increasing-density">Increasing Density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#error-filtering">Error Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters.html#reduce-noise">Reduce Noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html#before-we-start">Before we start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html#recording-data">Recording data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_recording.html#interactive-mode">Interactive mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_recording.html#standard-mode">Standard mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html#before-we-start">Before we start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html#compiling-the-example-program">Compiling the example program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html#running-the-example-program">Running the example program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html#explanation-of-the-example-s-source-code">Explanation of the example’s source code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opencv_example.html#project-structure">Project structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opencv_example.html#library-structure">Library structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opencv_example.html#enabling-image-streams">Enabling image streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opencv_example.html#converting-genicam-images-to-opencv">Converting GenICam images to OpenCV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="parameters.html" class="btn btn-neutral float-right" title="Tuning of Image Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Roboception Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.0-43-g5b4b0d0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

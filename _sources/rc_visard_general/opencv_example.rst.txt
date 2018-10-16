@@ -1,0 +1,377 @@
+Getting started with rc_visard and OpenCV
+
+This tutorial shows how to get started with the
+
+rc_visard
+
+ and OpenCV. We will show how to receive image streams from the
+
+rc_visard
+
+ with OpenCV via Roboception’s GenICam Convenience Layer
+"rc_genicam_api".
+
+Before we start
+
+Before going through this tutorial, the following prerequisites should
+be met.
+
+-[ The
+
+rc_visard
+
+ is up and running: ]-
+
+The rc_visard is running and connected properly to a network or
+directly to a computer. One can verify that with our discovery tool.
+
+One should know the serial number or user defined name of the
+rc_visard. The serial number is of the format 029xxxxx. It will be
+referred to as rc_visard_id in the remainder of this tutorial.
+
+-[ Download and install the following required client software: ]-
+
+Linux
+
+Windows
+
+Install rc_genicam_api. The minimum required version is 2.0.
+
+Install OpenCV. The minimum required version is 2.0.  For Ubuntu,
+installation can be done from the terminal with:  apt install
+libopencv-dev
+
+Install cmake. The minimum required version is 2.8.12.  For Ubuntu,
+installation can be done from the terminal with:  apt install cmake
+
+Download rc_genicam_api
+
+Install OpenCV. The minimum required version is 2.0.  Pre-built
+binaries can be downloaded here.
+
+Install cmake. The minimum required version is 2.8.12.
+
+Install Microsoft Visual Studio-IDE
+
+Compiling the example program
+
+We provide an example program which shows how to receive image streams
+from the
+
+rc_visard
+
+ using "rc_genicam_api" and how to convert them to an OpenCV
+representation. The example can be downloaded from our GitHub
+repository
+
+TODO:
+
+.
+
+To successfully compile the program, above prerequisites should be
+met.
+
+Linux
+
+Windows
+
+After downloading or cloning the repository, change into the
+repository’s directory. In a terminal, run the following commands:
+
+   mkdir build    # make a build directory
+   cd build       # change to that directory
+   cmake ..       # run cmake to configure the build
+   make           # build the example
+
+Create a folder build in the repository.
+
+Run CMake (cmake-gui)
+
+In cmake, set the source code location to the repository folder
+
+Set the binaries location to the just created build folder
+
+Click Configure
+
+A pop-up will open, asking for the generator
+
+Choose the installed version of Visual Studio
+
+Click finish
+
+Wait until configuration is finished
+
+Most likely, an error about not finding OpenCV will occur  Set
+OpenCV_DIR to the subfolder build\x64\vc15\lib of the OpenCV
+installation path  Again, click Configure
+
+Most likely, an error about not finding rc_genicam_api will occur  Set
+RC_GENICAM_API_DIR to the subfolder lib\rc_genicam_api of the
+rc_genicam_api installation path  Again, click Configure
+
+Set CMAKE_INSTALL_PREFIX to the folder the example should be installed
+in (e.g. install in the repository)
+
+Click Generate
+
+Click Open Project. Microsoft Visual Studio-IDE will open
+
+In Visual Studio, right-click on ALL_BUILD and choose Build
+
+Right-click on INSTALL and choose Build
+
+The build will yield a shared library ("rc_visard_opencv_example") and
+an executable ("rc_visard_show_streams"), which uses the shared
+library.
+
+Running the example program
+
+The example executable "rc_visard_show_streams" shows live image
+streams in an OpenCV window. One can specify which streams to enable
+by setting command line options.
+
+Linux
+
+Windows
+
+In case above build instructions were used, one should first change to
+the "tools" directory in "build" before running the program:
+
+   cd tools
+
+To run the program, the general syntax is:
+
+   ./rc_visard_show_streams [options] <rc_visard_id>
+
+In the following we assume that above build instructions were followed
+and that the example program was installed into "install" in the
+repository folder.
+
+Open the install folder
+
+In the address bar of the Windows Explorer window, type cmd to open a
+command line window
+
+To run the program, use the following command
+rc_visard_show_streams.exe [options] <rc_visard_id>
+
+Note: The "PATH" environment variable should be set to the
+  appropriate folders containing the OpenCV and "rc_genicam_api" DLLs.
+  Otherwise, an error will occur when running
+  "rc_visard_show_streams".
+
+"<rc_visard_id>" is to be replaced by the
+
+rc_visard
+
+ serial number, GenTL ID or user defined ID.
+
+"[options]" can be
+
+--left: connect to the left image stream
+
+--right: connect to the right image stream
+
+--disparity: connect to the disparity image stream
+
+--confidence: connect to the confidence image stream
+
+--error: connect to the error image stream
+
+--synchronize: synchronize the received images by their timestamp
+
+For example, to show the left and right image, run:
+
+Linux
+
+Windows
+
+   ./rc_visard_show_streams --left --right <rc_visard_id>
+
+   rc_visard_show_streams.exe --left --right <rc_visard_id>
+
+While the program is running, press "n" (next), "p" (previous) to
+cycle through the enabled image streams. Press "q" to exit the
+program.
+
+Explanation of the example’s source code
+
+The example is documented using
+
+Doxygen
+
+. To generate the source code documentation, perform the following
+steps:
+
+Linux
+
+Windows
+
+In the "build" directory, run:
+
+   make doc
+
+Afterwards, open "index.html" in "doc/html".
+
+Install Doxygen
+
+In the cmake-gui, click on Configure and then Generate
+
+Click on Open Project
+
+In Microsoft Visual Studio-IDE, right-click on doc and choose BUILD
+
+Go to the build\doc\html subfolder of the repository
+
+Open index.html
+
+Project structure
+
+
+The example consists of a shared library "rc_visard_opencv_example"
+and an executable "rc_visard_show_streams". The library is designed to
+make it easy to reuse it for other projects that require OpenCV
+images. Below, the library will be described in more detail.
+
+Both the library and the executable depend on OpenCV. "rc_genicam_api"
+is hidden by the shared library "rc_visard_opencv_example".
+
+Library structure
+
+
+The core class of "rc_visard_opencv_example" is "GcReceiver". It wraps
+"rc_genicam_api", takes care of bootstrapping and shutting down the
+connection to the
+
+rc_visard
+
+, and delegates decoding of image streams to the appropriate
+"ImageReceiver".
+
+"ImageReceiver" is an abstract base class of the concrete classes
+"IntensityReceiver", "DisparityReceiver", "ConfidenceReceiver" and
+"ErrorReceiver", each of which is responsible for receiving one kind
+of image stream. Each concrete "ImageReceiver" implements a) enabling
+of the image stream from the
+
+rc_visard
+
+ and b) converting the GenICam representation of the image to an
+OpenCV representation.
+
+The user of the library decides which image streams to enable by
+passing a list of "ImageReceiverFactory"s to "GcReceiver". For each
+concrete "ImageReceiver" there is child class of
+"ImageReceiverFactory", e.g. "IntensityReceiverFactory".
+
+To set up streaming of images, the following steps are required:
+
+Create a new GcReceiver. Its constructor requires the rc_visard_id.
+
+Call GcReceiver::open() to open the connection to the rc_visard.
+
+Call GcReceiver::initializeStreams() and pass the list of
+ImageReceiverFactorys.
+
+After set-up was successful, we can start receiving images. For that,
+"GcReceiver::receive()" needs to be called. It grabs the latest image
+from the GenICam buffer and passes it to each "ImageReceiver" via its
+"process()" method, until one of them takes responsibility for it. The
+image buffer is then stored in a queue in the "ImageReceiver".
+Afterwards, the image can be extracted from the queue and converted to
+an OpenCV representation by calling "ImageReceiver::grab()" and
+passing the timestamp of the image. This all happens inside
+"GcReceiver::receive()", so the user does not need to care about it.
+"receive()" will return an "ImageSet" with all received images
+contained.
+
+"ImageSet" is an aggregation of "Image"s, one for each image type, so
+left, right, confidence, disparity and error image. Depending on
+whether synchronization is enabled (see
+
+command line options
+
+), the returned ImageSet either contains a complete set of
+synchronized images or only the one image that was just received.
+
+Enabling image streams
+
+To get some insights into what is happening internally of
+"rc_visard_opencv_example", this and the following section will
+explain how image streams are enabled and how the GenICam
+representation of images is converted to OpenCV.
+
+Before enabling image streams, the connection to the
+
+rc_visard
+
+ needs to be set up.
+
+   // Implemented in gc_receiver.cc
+
+   std::string rc_visard_id = "rc_visard";
+   // search for the device
+   std::shared_ptr<rcg::Device> device = rcg::getDevice(rc_visard_id.c_str());
+   // open the connection
+   device->open(rcg::Device::CONTROL);
+
+The following code exemplarily shows how to enable streaming of the
+intensity image, which contains the left camera image.
+
+   // Implemented in gc_receiver.cc and image_receiver.cc
+
+   // get the node map
+   std::shared_ptr<GenApi::CNodeMapRef> node_map = device->getRemoteNodeMap();
+   // select the component "Intensity"
+   rcg::setEnum(node_map, "ComponentSelector", "Intensity");
+   // enable the selected component
+   rcg::setBoolean(node_map, "ComponentEnable", true);
+
+   // start streaming
+   std::vector<std::shared_ptr<Stream>> streams = device->getStreams();
+   streams[0]->open();
+   streams[0]->startStreaming();
+
+Converting GenICam images to OpenCV
+
+Depending on the image type, there is a different conversion required
+to get from the GenICam representation to the OpenCV representation of
+an image. Here, we will show the simple example of converting the
+GenICam monochrome intensity stream to an OpenCV "cv::Mat". For the
+other conversions, please refer to "image_receiver.cc" in the
+repository.
+
+The queue in "ImageReceiver" provides images of type "rcg::Image".
+Internally, the image data is stored in a contiguous block of memory
+in an eight bit representation, so each byte represents one monochrome
+pixel. Since "cv::Mat" uses the same eight bit representation, we
+don’t need any byte-to-byte conversion.
+
+Yet, a simple copy of the memory block of "rcg::Image" into a
+"cv::Mat" is not ideal because "rcg::Image" may contain padding bytes
+appended to each image row. Therefore, we copy each row separately,
+while skipping the padding bytes, in order to generate a continuous
+cv::Mat.
+
+   // Implemented in image_receiver.cc
+
+   cv::Mat convert(const rcg::Image &buffer)
+   {
+     const int width = static_cast<int>(buffer.getWidth());
+     const int height = static_cast<int>(buffer.getHeight());
+
+     cv::Mat img(height, width, CV_8UC1);
+     // width of a row in the GenICam buffer including padding
+     const int buffer_step = width + static_cast<int>(buffer.getXPadding());
+     // data start pointer
+     const uint8_t *buffer_row_ptr = buffer.getPixels();
+     // iterate image rows
+     for (int row_idx = 0; row_idx < height; ++row_idx)
+     {
+       uint8_t *const img_row = img.ptr<uint8_t>(row_idx);
+       // plain byte-wise copy of one row from the buffer to the cv::Mat
+       std::copy(buffer_row_ptr, buffer_row_ptr + width, img_row);
+       buffer_row_ptr += buffer_step;
+     }
+     return img;
+   }
