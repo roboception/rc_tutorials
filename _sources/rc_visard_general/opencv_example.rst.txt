@@ -33,8 +33,6 @@ referred to as rc_visard_id in the remainder of this tutorial.
 
 Linux
 
-Windows
-
 Install rc_genicam_api. The minimum required version is 2.0.
 
 Install OpenCV. The minimum required version is 2.0.  For Ubuntu,
@@ -43,6 +41,8 @@ libopencv-dev
 
 Install cmake. The minimum required version is 2.8.12.  For Ubuntu,
 installation can be done from the terminal with:  apt install cmake
+
+Windows
 
 Download rc_genicam_api
 
@@ -72,8 +72,6 @@ met.
 
 Linux
 
-Windows
-
 After downloading or cloning the repository, change into the
 repository’s directory. In a terminal, run the following commands:
 
@@ -81,6 +79,8 @@ repository’s directory. In a terminal, run the following commands:
    cd build       # change to that directory
    cmake ..       # run cmake to configure the build
    make           # build the example
+
+Windows
 
 Create a folder build in the repository.
 
@@ -108,8 +108,8 @@ Most likely, an error about not finding rc_genicam_api will occur  Set
 RC_GENICAM_API_DIR to the subfolder lib\rc_genicam_api of the
 rc_genicam_api installation path  Again, click Configure
 
-Set CMAKE_INSTALL_PREFIX to the folder the example should be installed
-in (e.g. install in the repository)
+Set CMAKE_INSTALL_PREFIX to the folder where the example is installed
+(e.g. install in the repository)
 
 Click Generate
 
@@ -131,8 +131,6 @@ by setting command line options.
 
 Linux
 
-Windows
-
 In case above build instructions were used, one should first change to
 the "tools" directory in "build" before running the program:
 
@@ -141,6 +139,8 @@ the "tools" directory in "build" before running the program:
 To run the program, the general syntax is:
 
    ./rc_visard_show_streams [options] <rc_visard_id>
+
+Windows
 
 In the following we assume that above build instructions were followed
 and that the example program was installed into "install" in the
@@ -183,9 +183,9 @@ For example, to show the left and right image, run:
 
 Linux
 
-Windows
-
    ./rc_visard_show_streams --left --right <rc_visard_id>
+
+Windows
 
    rc_visard_show_streams.exe --left --right <rc_visard_id>
 
@@ -204,13 +204,13 @@ steps:
 
 Linux
 
-Windows
-
 In the "build" directory, run:
 
    make doc
 
 Afterwards, open "index.html" in "doc/html".
+
+Windows
 
 Install Doxygen
 
@@ -284,9 +284,9 @@ passing the timestamp of the image. This all happens inside
 "receive()" will return an "ImageSet" with all received images
 contained.
 
-"ImageSet" is an aggregation of "Image"s, one for each image type, so
-left, right, confidence, disparity and error image. Depending on
-whether synchronization is enabled (see
+"ImageSet" is an aggregation of "Image"s, one for each image type,
+including left, right, confidence, disparity and error image.
+Depending on whether synchronization is enabled (see
 
 command line options
 
@@ -295,7 +295,7 @@ synchronized images or only the one image that was just received.
 
 Enabling image streams
 
-To get some insights into what is happening internally of
+To get some insights into the internal working of
 "rc_visard_opencv_example", this and the following section will
 explain how image streams are enabled and how the GenICam
 representation of images is converted to OpenCV.

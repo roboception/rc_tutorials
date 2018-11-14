@@ -1,0 +1,195 @@
+.. include:: ../global_rst.glb
+
+Obtain dense depth images with the |projector|
+======================================================
+
+This tutorial shows how to set up the |rcvisard| with the
+`RandomDot Projector <https://roboception.com/product/random-dot-projector/>`_ to increase the
+density of depth images, as shown in :numref:`fig-general-projector-compare`.
+This is particularly recommended for objects and workspaces with little or no visual texture.
+
+.. _fig-general-projector-compare:
+.. figure:: ../images/general/projector_compare.png
+  :width: 100%
+  :align: center
+
+  A scene including objects without visual texture (i.e. the intensity of the image
+  is uniform over the whole object) and the reconstructed depth image without |projector| (center)
+  and with |projector| (right).
+
+.. note::
+
+    This tutorial assumes that the previous tutorial :ref:`general-tuning-image-parmeters`
+    has been completed.
+
+.. _general-projector-before:
+
+Before we start
+---------------
+
+Before going through this tutorial, the following prerequisites should be met.
+
+#. The |rc_visard|'s image version is at least 1.4 and
+   the |rc_visard|'s license includes the
+   `IOControl component <https://roboception.com/product/rc_reason-iocontrol/>`_.
+   This can be verified on the :ref:`sect-web-gui`'s *System* panel.
+
+
+#. The |projector|, its Y-cable, and a 24 V, 60 W power supply are available.
+
+.. warning::
+
+  The |rcvisard| is operated with a 24 V, 30 W power supply which is not suitable for the
+  |rcvisard| and |projector| combination. A stronger power supply with 60 W must be used.
+
+.. NOTE Do not mention that our |projector| has a special version of
+.. the electronics compared to the one sold by Effilux, since this tutorial refers only to the
+.. projector that we sell
+
+.. note::
+
+    The |projector| is controlled via the GPIO Out 1 of the |rcvisard|
+    (cfr. :ref:`sect-iocontrol`).
+    In this tutorial, Out 1 mode refers to the |projector| mode.
+
+.. _general-projector-mounting:
+
+Mounting the projector
+----------------------
+
+The |projector| should be mounted as close as possible to the |rcvisard| in order to avoid
+occlusions. When possible, we recommended to attach the |projector| directly onto the |rcvisard|
+using the mechanical adapter included in the delivery.
+
+Once the |projector| has been mounted, it can be powered using the Y-cable.
+The Y-cable must be connected to (1) the |rcvisard| power and GPIO connector,
+(2) the |projector| power connector, and (3) the power supply.
+
+.. _fig-general-projector-mounting:
+.. figure:: ../images/general/projector_mounting.png
+  :width: 70%
+  :align: center
+
+  Different possibilities for the mounting of the |projector|: side-by-side with the |rcvisard|
+  (left) and directly onto the |rcvisard| (right).
+
+.. _general-projector-focus:
+
+Focusing the projector
+----------------------
+
+For the focus configuration, one should turn the |projector| permanently on.
+This can be done on the |webgui|'s *IOControl* panel available in the *Modules* tab
+by setting the Out 1 mode to *High*.
+
+The focus is adjusted by rotating one of the rings of the lens until the random dot pattern is
+sharp (:numref:`fig-general-projector-focus`).
+
+.. _fig-general-projector-focus:
+.. figure:: ../images/general/projector_focus.png
+  :width: 100%
+  :align: center
+
+  Blurred (left) and sharp (right) random dot pattern.
+
+.. _general-projector-aperture:
+
+Configuring the aperture of the projector
+-----------------------------------------
+
+For the aperture configuration, one should set the Exposure mode to *Auto* in the |webgui|'s
+*Camera* panel.
+
+The aperture controls the brightness of the image with the random dot pattern and is adjusted
+by rotating one of the rings of the lens.
+
+For its configuration, one should look at the *Confidence* image in the |webgui|'s *Depth Image*
+panel and reduce the aperture as much as possible, while still achieving good confidence over
+the whole image (i.e. as much white pixels as possible, :numref:`fig-general-projector-aperture`).
+
+.. _fig-general-projector-aperture:
+.. figure:: ../images/general/projector_aperture.png
+  :width: 80%
+  :align: center
+
+  Maximum (top) and optimal (bottom) aperture of the projector. The confidence images do not
+  present significant differences.
+
+.. _general-projector-out1-mode:
+
+Selecting the Out 1 mode
+------------------------
+
+By default, the Out 1 mode of the |rcvisard| is set to *ExposureActive*. This means that the
+|projector| is on only for the exposure time of every image.
+
+Typically, the user needs to select the *ExposureAlternateActive* Out 1 mode, in which the
+|projector| is on only for the exposure time of every second image. Images with projected
+pattern are used for computing depth images. Images without projected pattern can be used
+as texture or for other image processing modules.
+
+This mode can be selected on the |webgui|'s *IOControl* panel.
+
+.. warning::
+
+  The |projector| must not be turned on permanently during normal operation (Out 1 mode set to
+  *High*), since it may eventually start flickering to protect the projector from overheating.
+
+.. _general-projector-exposure:
+
+Configuring the exposure
+------------------------
+
+As last step, one needs to go back to the |webgui|'s *Camera* panel and set the exposure time as
+explained in the :ref:`general-exposure-gain` section of the :ref:`general-tuning-image-parmeters`
+tutorial.
+
+.. In case Out 1 mode is set to *ExposureAlternateActive*, it is important to verify the exposure
+.. of both camera images with the random dot pattern and camera images without the pattern
+.. (:numref:`fig-general-projector-exposure`).
+.. To this purpose, Out 1 mode can be temporary set to *High* and *Low* to visualize only
+.. images with and without the pattern respectively.
+..
+.. .. _fig-general-projector-exposure:
+.. .. figure:: ../images/general/projector_exposure.png
+..   :width: 100%
+..   :align: center
+..
+..   Camera image with pattern (left) and without pattern (right) in
+..   *ExposureAlternateActive* Out 1 mode.
+
+.. note::
+
+  In *ExposureAlternateActive* mode, the auto exposure algorithm adjusts the exposure time by
+  considering only camera images for
+  which Out 1 is *High*. This means that the exposure time is optimized such that camera images
+  with the random dot pattern are well-exposed.
+
+.. note::
+
+  If the exposure is configured to automatic mode, when the projector is turned on, it may take
+  a few seconds until the exposure and gain settings become stable.
+
+.. _general-projector-tricks:
+
+More optimization tricks
+------------------------
+
+In some cases, the density of the depth image can be further optimized by changing the focus of
+the |projector| to introduce some blur in the projected pattern.
+This can be done while looking at the *Confidence* image in the |webgui|'s *Depth Image*
+panel and trying to obtain as much white pixels as possible.
+
+If the camera image includes highlights that are not reconstructed in the depth image
+(:numref:`fig-general-projector-highlights`), one can
+verify whether these highlights are introduced by the |projector| (e.g. by simply turning the
+projector off). In such case, we recommend to change the mounting of the |projector|,
+in order to have a different angle between the |rcvisard| and the projector itself. Reducing the
+aperture of the projector can also help in removing highlights.
+
+.. _fig-general-projector-highlights:
+.. figure:: ../images/general/projector_highlights.png
+  :width: 100%
+  :align: center
+
+  Highlight in the camera image due to the |projector|.

@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
+ documentation" href="../index.html"/>
+        <link rel="up" title="rc_visard tutorials" href="overview.html"/>
+        <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
+        <link rel="prev" title="Getting started with rc_visard and OpenCV" href="opencv_example.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Obtain dense depth images with the RandomDot Projector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mounting-the-projector">Mounting the projector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#focusing-the-projector">Focusing the projector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-aperture-of-the-projector">Configuring the aperture of the projector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-the-out-1-mode">Selecting the Out 1 mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-exposure">Configuring the exposure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-optimization-tricks">More optimization tricks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+        
+      <li>Obtain dense depth images with the RandomDot Projector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="obtain-dense-depth-images-with-the-projector">
+<h1>Obtain dense depth images with the RandomDot Projector<a class="headerlink" href="#obtain-dense-depth-images-with-the-projector" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to set up the <em>rc_visard</em> with the
+<a class="reference external" href="https://roboception.com/product/random-dot-projector/">RandomDot Projector</a> to increase the
+density of depth images, as shown in <a class="reference internal" href="#fig-general-projector-compare"><span class="std std-numref">Fig. 11</span></a>.
+This is particularly recommended for objects and workspaces with little or no visual texture.</p>
+<div class="figure align-center" id="id1">
+<span id="fig-general-projector-compare"></span><a class="reference internal image-reference" href="../_images/projector_compare.png"><img alt="../_images/projector_compare.png" src="../_images/projector_compare.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">A scene including objects without visual texture (i.e. the intensity of the image
+is uniform over the whole object) and the reconstructed depth image without RandomDot Projector (center)
+and with RandomDot Projector (right).</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tutorial assumes that the previous tutorial <a class="reference internal" href="parameters.html#general-tuning-image-parmeters"><span class="std std-ref">Tuning of Image Parameters</span></a>
+has been completed.</p>
+</div>
+<div class="section" id="before-we-start">
+<span id="general-projector-before"></span><h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>Before going through this tutorial, the following prerequisites should be met.</p>
+<ol class="arabic simple">
+<li>The <em>rc_visard</em>’s image version is at least 1.4 and
+the <em>rc_visard</em>’s license includes the
+<a class="reference external" href="https://roboception.com/product/rc_reason-iocontrol/">IOControl component</a>.
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.4)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+<li>The RandomDot Projector, its Y-cable, and a 24 V, 60 W power supply are available.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <em>rc_visard</em> is operated with a 24 V, 30 W power supply which is not suitable for the
+<em>rc_visard</em> and RandomDot Projector combination. A stronger power supply with 60 W must be used.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The RandomDot Projector is controlled via the GPIO Out 1 of the <em>rc_visard</em>
+(cfr. <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v1.4)"><span>IO and Projector Control</span></a>).
+In this tutorial, Out 1 mode refers to the RandomDot Projector mode.</p>
+</div>
+</div>
+<div class="section" id="mounting-the-projector">
+<span id="general-projector-mounting"></span><h2>Mounting the projector<a class="headerlink" href="#mounting-the-projector" title="Permalink to this headline">¶</a></h2>
+<p>The RandomDot Projector should be mounted as close as possible to the <em>rc_visard</em> in order to avoid
+occlusions. When possible, we recommended to attach the RandomDot Projector directly onto the <em>rc_visard</em>
+using the mechanical adapter included in the delivery.</p>
+<p>Once the RandomDot Projector has been mounted, it can be powered using the Y-cable.
+The Y-cable must be connected to (1) the <em>rc_visard</em> power and GPIO connector,
+(2) the RandomDot Projector power connector, and (3) the power supply.</p>
+<div class="figure align-center" id="id2">
+<span id="fig-general-projector-mounting"></span><a class="reference internal image-reference" href="../_images/projector_mounting.png"><img alt="../_images/projector_mounting.png" src="../_images/projector_mounting.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Different possibilities for the mounting of the RandomDot Projector: side-by-side with the <em>rc_visard</em>
+(left) and directly onto the <em>rc_visard</em> (right).</span></p>
+</div>
+</div>
+<div class="section" id="focusing-the-projector">
+<span id="general-projector-focus"></span><h2>Focusing the projector<a class="headerlink" href="#focusing-the-projector" title="Permalink to this headline">¶</a></h2>
+<p>For the focus configuration, one should turn the RandomDot Projector permanently on.
+This can be done on the Web GUI’s <em>IOControl</em> panel available in the <em>Modules</em> tab
+by setting the Out 1 mode to <em>High</em>.</p>
+<p>The focus is adjusted by rotating one of the rings of the lens until the random dot pattern is
+sharp (<a class="reference internal" href="#fig-general-projector-focus"><span class="std std-numref">Fig. 13</span></a>).</p>
+<div class="figure align-center" id="id3">
+<span id="fig-general-projector-focus"></span><a class="reference internal image-reference" href="../_images/projector_focus.png"><img alt="../_images/projector_focus.png" src="../_images/projector_focus.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Blurred (left) and sharp (right) random dot pattern.</span></p>
+</div>
+</div>
+<div class="section" id="configuring-the-aperture-of-the-projector">
+<span id="general-projector-aperture"></span><h2>Configuring the aperture of the projector<a class="headerlink" href="#configuring-the-aperture-of-the-projector" title="Permalink to this headline">¶</a></h2>
+<p>For the aperture configuration, one should set the Exposure mode to <em>Auto</em> in the Web GUI’s
+<em>Camera</em> panel.</p>
+<p>The aperture controls the brightness of the image with the random dot pattern and is adjusted
+by rotating one of the rings of the lens.</p>
+<p>For its configuration, one should look at the <em>Confidence</em> image in the Web GUI’s <em>Depth Image</em>
+panel and reduce the aperture as much as possible, while still achieving good confidence over
+the whole image (i.e. as much white pixels as possible, <a class="reference internal" href="#fig-general-projector-aperture"><span class="std std-numref">Fig. 14</span></a>).</p>
+<div class="figure align-center" id="id4">
+<span id="fig-general-projector-aperture"></span><a class="reference internal image-reference" href="../_images/projector_aperture.png"><img alt="../_images/projector_aperture.png" src="../_images/projector_aperture.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Maximum (top) and optimal (bottom) aperture of the projector. The confidence images do not
+present significant differences.</span></p>
+</div>
+</div>
+<div class="section" id="selecting-the-out-1-mode">
+<span id="general-projector-out1-mode"></span><h2>Selecting the Out 1 mode<a class="headerlink" href="#selecting-the-out-1-mode" title="Permalink to this headline">¶</a></h2>
+<p>By default, the Out 1 mode of the <em>rc_visard</em> is set to <em>ExposureActive</em>. This means that the
+RandomDot Projector is on only for the exposure time of every image.</p>
+<p>Typically, the user needs to select the <em>ExposureAlternateActive</em> Out 1 mode, in which the
+RandomDot Projector is on only for the exposure time of every second image. Images with projected
+pattern are used for computing depth images. Images without projected pattern can be used
+as texture or for other image processing modules.</p>
+<p>This mode can be selected on the Web GUI’s <em>IOControl</em> panel.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The RandomDot Projector must not be turned on permanently during normal operation (Out 1 mode set to
+<em>High</em>), since it may eventually start flickering to protect the projector from overheating.</p>
+</div>
+</div>
+<div class="section" id="configuring-the-exposure">
+<span id="general-projector-exposure"></span><h2>Configuring the exposure<a class="headerlink" href="#configuring-the-exposure" title="Permalink to this headline">¶</a></h2>
+<p>As last step, one needs to go back to the Web GUI’s <em>Camera</em> panel and set the exposure time as
+explained in the <a class="reference internal" href="parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a> section of the <a class="reference internal" href="parameters.html#general-tuning-image-parmeters"><span class="std std-ref">Tuning of Image Parameters</span></a>
+tutorial.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In <em>ExposureAlternateActive</em> mode, the auto exposure algorithm adjusts the exposure time by
+considering only camera images for
+which Out 1 is <em>High</em>. This means that the exposure time is optimized such that camera images
+with the random dot pattern are well-exposed.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the exposure is configured to automatic mode, when the projector is turned on, it may take
+a few seconds until the exposure and gain settings become stable.</p>
+</div>
+</div>
+<div class="section" id="more-optimization-tricks">
+<span id="general-projector-tricks"></span><h2>More optimization tricks<a class="headerlink" href="#more-optimization-tricks" title="Permalink to this headline">¶</a></h2>
+<p>In some cases, the density of the depth image can be further optimized by changing the focus of
+the RandomDot Projector to introduce some blur in the projected pattern.
+This can be done while looking at the <em>Confidence</em> image in the Web GUI’s <em>Depth Image</em>
+panel and trying to obtain as much white pixels as possible.</p>
+<p>If the camera image includes highlights that are not reconstructed in the depth image
+(<a class="reference internal" href="#fig-general-projector-highlights"><span class="std std-numref">Fig. 15</span></a>), one can
+verify whether these highlights are introduced by the RandomDot Projector (e.g. by simply turning the
+projector off). In such case, we recommend to change the mounting of the RandomDot Projector,
+in order to have a different angle between the <em>rc_visard</em> and the projector itself. Reducing the
+aperture of the projector can also help in removing highlights.</p>
+<div class="figure align-center" id="id5">
+<span id="fig-general-projector-highlights"></span><a class="reference internal image-reference" href="../_images/projector_highlights.png"><img alt="../_images/projector_highlights.png" src="../_images/projector_highlights.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Highlight in the camera image due to the RandomDot Projector.</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rc_itempick/overview.html" class="btn btn-neutral float-right" title="ItemPick tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="opencv_example.html" class="btn btn-neutral" title="Getting started with rc_visard and OpenCV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0-1-g489efb0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

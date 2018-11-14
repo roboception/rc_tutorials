@@ -108,8 +108,7 @@ To successfully compile the program, above prerequisites should be met.
            #. Set ``RC_GENICAM_API_DIR`` to the subfolder ``lib\rc_genicam_api`` of the |rcgenapi| installation path
            #. Again, click *Configure*
 
-        #. Set ``CMAKE_INSTALL_PREFIX`` to the folder the example should
-           be installed in (e.g. ``install`` in the repository)
+        #. Set ``CMAKE_INSTALL_PREFIX`` to the folder where the example is installed (e.g. ``install`` in the repository)
         #. Click *Generate*
         #. Click *Open Project*. Microsoft Visual Studio-IDE will open
         #. In Visual Studio, right-click on *ALL_BUILD* and choose *Build*
@@ -317,7 +316,7 @@ This all happens inside ``GcReceiver::receive()``, so the user does not
 need to care about it.
 ``receive()`` will return an ``ImageSet`` with all received images contained.
 
-``ImageSet`` is an aggregation of ``Image``\ s, one for each image type, so 
+``ImageSet`` is an aggregation of ``Image``\ s, one for each image type, including 
 left, right, confidence, disparity and error image. 
 Depending on whether synchronization is enabled 
 (see :ref:`command line options<opencv-running-example-program>`), the returned 
@@ -328,7 +327,7 @@ one image that was just received.
 Enabling image streams
 ''''''''''''''''''''''
 
-To get some insights into what is happening internally of |library|, this 
+To get some insights into the internal working of |library|, this 
 and the following section will explain how image streams are enabled and 
 how the |genicam| representation of images is converted to |opencv|.
 

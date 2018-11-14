@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Recording data with rc_visard &mdash; Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+  <title>Recording data with rc_visard &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with rc_visard and OpenCV" href="opencv_example.html"/>
@@ -88,7 +88,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -114,6 +114,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Recording data with <em>rc_visard</em></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
@@ -126,6 +127,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
@@ -209,39 +211,39 @@ It will be referred to as <code class="docutils literal"><span class="pre">rc_vi
 <p class="rubric">Download and install the following required client software:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-0-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-0-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-TGludXg= active docutils container">
 <ol class="arabic simple">
 <li>Download <a class="reference external" href="https://github.com/roboception/rc_genicam_api/releases">rc_genicam_api</a></li>
 <li>Download <a class="reference external" href="https://github.com/roboception/rc_dynamics_api/releases">rc_dynamics_api</a></li>
 </ol>
 <p>For Ubuntu, we provide ready-to-use Debian packages.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-V2luZG93cw== docutils container">
 For Windows, all required software is bundled with the recording scripts,
 so no download is necessary.</div>
 </div>
 <p class="rubric">Optional software for viewing the recorded images can be installed:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-1-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-1-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-TGludXg= active docutils container">
 <p>Download <a class="reference external" href="https://github.com/roboception/cvkit/releases">cvkit</a>.</p>
 <p>For Linux, it is easiest to download the source code and build it by entering
 the main directory and typing:</p>
@@ -257,7 +259,7 @@ with the suffix <em>.pfm</em> can be viewed in 3D by pressing ‘p’ or calling
 <code class="docutils literal"><span class="pre">plyv</span></code> with the disparity image as argument. Both tools show a help
 page with all key codes by pressing ‘h’.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-V2luZG93cw== docutils container">
 <p>Download <a class="reference external" href="https://github.com/roboception/cvkit/releases">cvkit</a>.</p>
 <p>For Windows, pre-compiled software is available in a ZIP archive. The
 archive contains a self-installing executable.</p>
@@ -271,16 +273,16 @@ codes by pressing ‘h’.</p>
 <p>Enable “Jumbo frames” by setting the MTU to 9000.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-VWJ1bnR1 docutils container">
+<div class="active item sphinx-data-tab-2-VWJ1bnR1 docutils container">
 <div class="docutils container">
 Ubuntu</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cyAxMA== docutils container">
+<div class="item sphinx-data-tab-2-V2luZG93cyAxMA== docutils container">
 <div class="docutils container">
 Windows 10</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-VWJ1bnR1 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-VWJ1bnR1 active docutils container">
 <p class="rubric">Temporarily</p>
 <p>Enter the following command in the terminal.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
@@ -293,7 +295,7 @@ Windows 10</div>
 <li>On “Ethernet” tab, change MTU to 9000</li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cyAxMA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-V2luZG93cyAxMA== docutils container">
 <ol class="arabic simple">
 <li>Open “Network Connections”</li>
 <li>Right-click on the network interface</li>
@@ -354,16 +356,16 @@ flexibility.</p>
 <p>The basic usage is as follows:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-3-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-3-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-TGludXg= active docutils container">
 <ol class="arabic">
 <li><p class="first">Open a terminal.</p>
 </li>
@@ -378,7 +380,7 @@ Windows</div>
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-V2luZG93cw== docutils container">
 <ol class="arabic">
 <li><p class="first">Open a terminal.</p>
 </li>
@@ -397,21 +399,21 @@ Windows</div>
 <p>The script offers optional arguments, which can be listed with the <cite>-h</cite> flag:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-4-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-4-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-TGludXg= active docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh -h
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-V2luZG93cw== docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -h
 </pre></div>
 </div>
@@ -424,21 +426,21 @@ For example, to record only the left camera images and stop
 after 10 images, the following command can be used:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-5-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-5-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-TGludXg= active docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">false</span> --disparity<span class="o">=</span><span class="nb">false</span> --confidence<span class="o">=</span><span class="nb">false</span> --error<span class="o">=</span><span class="nb">false</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5-V2luZG93cw== docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">false</span> -disparity <span class="nb">false</span> -confidence <span class="nb">false</span> -error <span class="nb">false</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
@@ -449,21 +451,21 @@ including the camera calibration.
 It will write the parameters to the given file, below called <cite>params.txt</cite>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-6-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-6-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-TGludXg= active docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6-V2luZG93cw== docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -cam-params params.txt &lt;rc_visard_id&gt;
 </pre></div>
 </div>
@@ -474,25 +476,25 @@ which can be enabled with the <code class="docutils literal"><span class="pre">s
 The script will automatically start and stop SLAM, and eventually write
 the trajectory to the given file (<cite>trajectory.json</cite> in the example).
 The trajectory is written when image grabbing is finished, which is either
-when the user presses <code class="docutils literal"><span class="pre">Enter</span></code> during or enough data sets are recorded
+when the user presses <code class="docutils literal"><span class="pre">Enter</span></code> or enough data sets are recorded
 according to the <code class="docutils literal"><span class="pre">number</span></code> argument.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-7-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-7-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-TGludXg= active docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --slam<span class="o">=</span>trajectory.json &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7-V2luZG93cw== docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -slam trajectory.json &lt;rc_visard_id&gt;
 </pre></div>
 </div>
@@ -585,7 +587,7 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0-44-gfeadae1',
+            VERSION:'0.2.0-1-g489efb0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -600,6 +602,7 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
       <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

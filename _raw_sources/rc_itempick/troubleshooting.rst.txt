@@ -38,9 +38,9 @@ FAQs and troublehooting
 
 .. _itempick-faq-lc-not-on-horizontal-surface:
 .. toggle-header::
-   :header: **The load carrier is placed not on a horizontal surface**
+   :header: **The load carrier is not placed on a horizontal surface**
 
-   By default, |itempick| makes the assumption that the load carrier is located on a horizontal
+   By default, |itempick| assumes that the load carrier is located on a horizontal
    surface. If that's not the case, one needs to provide the load carrier orientation as a prior
    with the load carrier model.
    
@@ -54,8 +54,10 @@ FAQs and troublehooting
    .. figure:: ../images/itempick/load_carrier_tilted.png
       :width: 700px
       :align: center
+      
+      Load carrier not placed on a horizontal surface
     
-   In the left case, the load carrier (``tilted-load-carrier-ext``)
+   In the left case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-ext``)
    is rotated by an angle :math:`\theta` around the :math:`y`
    axis of the *external* coordinate system. The load carrier orientation is given by the
    following quaternion: :math:`\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]`.
@@ -103,7 +105,7 @@ FAQs and troublehooting
            }
          }
    
-   In the right case, the load carrier (``tilted-load-carrier-cam``) is parallel to the image plane.
+   In the right case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-cam``) is parallel to the image plane.
    Its orientation in the *camera* coordinate system is
    :math:`\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]`.
 
@@ -188,6 +190,8 @@ FAQs and troublehooting
    .. figure:: ../images/itempick/load_carrier_floor.png
       :width: 700px
       :align: center
+      
+      Removing detection of the bin floor
 
 .. _itempick-faq-no-grasps-on-lc-floor:
 .. toggle-header::
@@ -210,7 +214,7 @@ FAQs and troublehooting
 .. toggle-header::
    :header: **My load carrier doesn't move. How do I speed up my application?**
   
-   In case of static load carriers, the processing time for getting grasp inside the load carrier
+   In case of static load carriers, the processing time for getting grasp points inside the load carrier
    can be reduced, by avoiding detecting the same load carrier over multiple frames.
    The load carrier detection can be triggered once and then, for the next iterations, a region of
    interest inside the load carrier can be used instead.
@@ -219,6 +223,7 @@ FAQs and troublehooting
 .. toggle-header::
    :header: **There are no grasps detected on the objects**
 
+    * Do objects appear in the depth image? (an additional pattern projector might be needed)
     * Do the workpieces appear in the depth image without holes? (cfr. :ref:`itempick-getting-started-configure-image`)
     * Are the workpieces inside the region of interest (if specified)?
     * Is the load carrier detected (if specified)?

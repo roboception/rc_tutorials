@@ -28,13 +28,13 @@ referred to as rc_visard_id in the remainder of this tutorial.
 
 Linux
 
-Windows
-
 Download rc_genicam_api
 
 Download rc_dynamics_api
 
 For Ubuntu, we provide ready-to-use Debian packages.
+
+Windows
 
 For Windows, all required software is bundled with the recording
 scripts, so no download is necessary.
@@ -43,8 +43,6 @@ scripts, so no download is necessary.
 ]-
 
 Linux
-
-Windows
 
 Download
 
@@ -70,6 +68,8 @@ with the suffix
 disparity image as argument. Both tools show a help page with all key
 codes by pressing ‘h’.
 
+Windows
+
 Download
 
 cvkit
@@ -93,8 +93,6 @@ Enable “Jumbo frames” by setting the MTU to 9000.
 
 Ubuntu
 
-Windows 10
-
 -[ Temporarily ]-
 
 Enter the following command in the terminal.
@@ -108,6 +106,8 @@ Open the network manager
 Select interface and edit settings
 
 On “Ethernet” tab, change MTU to 9000
+
+Windows 10
 
 Open “Network Connections”
 
@@ -177,14 +177,14 @@ The basic usage is as follows:
 
 Linux
 
-Windows
-
 Open a terminal.
 
 Change to the script folder.
 
 Launch the rc_visard_record.sh:  ./rc_visard_record.sh [options]
 <rc_visard_id>
+
+Windows
 
 Open a terminal.
 
@@ -198,9 +198,9 @@ The script offers optional arguments, which can be listed with the
 
 Linux
 
-Windows
-
    ./rc_visard_record.sh -h
+
+Windows
 
    rc_visard_record.bat -h
 
@@ -214,9 +214,9 @@ after 10 images, the following command can be used:
 
 Linux
 
-Windows
-
    ./rc_visard_record.sh --number=10 --left=true --right=false --disparity=false --confidence=false --error=false <rc_visard_id>
+
+Windows
 
    rc_visard_record.bat -n 10 -left true -right false -disparity false -confidence false -error false <rc_visard_id>
 
@@ -226,9 +226,9 @@ parameters to the given file, below called *params.txt*.
 
 Linux
 
-Windows
-
    ./rc_visard_record.sh --cam-params=params.txt <rc_visard_id>
+
+Windows
 
    rc_visard_record.bat -cam-params params.txt <rc_visard_id>
 
@@ -237,14 +237,14 @@ be enabled with the "slam" argument. The script will automatically
 start and stop SLAM, and eventually write the trajectory to the given
 file (*trajectory.json* in the example). The trajectory is written
 when image grabbing is finished, which is either when the user presses
-"Enter" during or enough data sets are recorded according to the
-"number" argument.
+"Enter" or enough data sets are recorded according to the "number"
+argument.
 
 Linux
 
-Windows
-
    ./rc_visard_record.sh --slam=trajectory.json <rc_visard_id>
+
+Windows
 
    rc_visard_record.bat -slam trajectory.json <rc_visard_id>
 

@@ -2,13 +2,19 @@ Configuring ItemPick for Bin-Picking
 
 This tutorial shows how to configure the ItemPick component to work in
 a bin-picking application. More specifically, the bin (or so-called
-*sect-itempick-load-carrier*) is configured in ItemPick and detected
-in the scene, in order to compute grasps only for items inside the bin
-itself.
+
+Load Carrier
+
+) is configured in ItemPick and detected in the scene, in order to
+compute grasps only for items inside the bin itself.
 
 The tutorial covers all the steps from configuration of a load carrier
 up to getting grasps for items inside the load carrier. For this, we
-will call the offered *ItemPick services* using the
+will call the offered
+
+ItemPick services
+
+ using the
 
 rc_visard
 
@@ -93,7 +99,7 @@ Load carriers with a continuous rim (type 1)
 
 The first model is the load carrier at the top left corner of
 
-Fig. 12
+Fig. 19
 
 . It will be configured in the ItemPick component with the unique id
 
@@ -110,19 +116,11 @@ These values can be directly entered in the
 Load Carriers
 
  configuration panel of the Web GUI, with the only difference that the
-values needs to be converted to meters.
+values need to be converted to meters.
 
 REST-API request for configuring my-load-carrier1
 
 REST-API
-
-Swagger UI
-
-curl (Linux)
-
-curl (Windows)
-
-PowerShell
 
 To trigger the "set_load_carrier" service via the REST-API for
 
@@ -156,6 +154,8 @@ The PUT body should include the following data, in JSON:
      }
    }
 
+Swagger UI
+
 The Swagger UI for putting a service request is located at http://<rc
 _visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
 rvice, where <rc-visard-ip> should be replaced by the actual IP of the
@@ -167,6 +167,8 @@ node rc_itempick  service set_load_carrier  service args  {   "args":
 "outer_dimensions": {         "x": 0.4,         "y": 0.3,         "z":
 0.22       },       "inner_dimensions": {         "x": 0.37,
 "y": 0.27,         "z": 0.215       }     }   } }
+
+curl (Linux)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -193,6 +195,8 @@ rc_visard
            } \
        } \
    }"
+
+curl (Windows)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -224,6 +228,8 @@ curl
        } ^
    }"
 
+PowerShell
+
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
 
@@ -254,7 +260,7 @@ Load carriers with a stepped rim (type 2)
 
 The second model is the load carrier at the top right corner of
 
-Fig. 12
+Fig. 19
 
 . This load carrier will be configured in the ItemPick component with
 the unique id
@@ -282,14 +288,6 @@ my-load-carrier1
 REST-API request for configuring my-load-carrier2
 
 REST-API
-
-Swagger UI
-
-curl (Linux)
-
-curl (Windows)
-
-PowerShell
 
 To trigger the "set_load_carrier" service via the REST-API for
 
@@ -327,6 +325,8 @@ The PUT body should include the following data, in JSON:
      }
    }
 
+Swagger UI
+
 The Swagger UI for putting a service request is located at http://<rc
 _visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
 rvice, where <rc-visard-ip> should be replaced by the actual IP of the
@@ -339,6 +339,8 @@ node rc_itempick  service set_load_carrier  service args  {   "args":
 0.147       },       "inner_dimensions": {         "x": 0.243,
 "y": 0.162,         "z": 0.1295       },       "rim_thickness": {
 "x": 0.013,         "y": 0.013       }     }   } }
+
+curl (Linux)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -369,6 +371,8 @@ rc_visard
            } \
        } \
    }"
+
+curl (Windows)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -403,6 +407,8 @@ curl
            } ^
        } ^
    }"
+
+PowerShell
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -457,20 +463,15 @@ load carrier id
 
 Detect
 
- button. As for the REST-API, ItemPick offers a *detect_load_carriers*
-service to trigger such detections.
+ button. As for the REST-API, ItemPick offers a
+
+detect_load_carriers
+
+ service to trigger such detections.
 
 REST-API request for detecting my-load-carrier1
 
    REST-API
-
-   Swagger UI
-
-   curl (Linux)
-
-   curl (Windows)
-
-   PowerShell
 
    To trigger the "detect_load_carriers" service via the REST-API, one
    needs to send a PUT request to the URL "http://<rc-visard-
@@ -492,22 +493,19 @@ REST-API request for detecting my-load-carrier1
         }
       }
 
-   #. The Swagger UI for putting a service request is located at "htt
-   p://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_s
-   ervices_service", where "<rc-visard-ip>" should be replaced by the
-   actual IP of the
+   Swagger UI
 
-   rc_visard
+   The Swagger UI for putting a service request is located at http://
+   <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
+   ces_service, where <rc-visard-ip> should be replaced by the actual
+   IP of the rc_visard.
 
-   . #. The following values are required to fill the request to the
-   REST-API:
+   The following values are required to fill the request to the REST-
+   API:  node rc_itempick  service detect_load_carriers  service args
+   {   "args": {     "pose_frame": "camera",     "load_carrier_ids": [
+   "my-load-carrier1"     ]   } }
 
-      node rc_itempick
-
-      service detect_load_carriers
-
-      service args  {   "args": {     "pose_frame": "camera",
-      "load_carrier_ids": [         "my-load-carrier1"     ]   } }
+   curl (Linux)
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -525,6 +523,8 @@ REST-API request for detecting my-load-carrier1
           ] \
         } \
       }"
+
+   curl (Windows)
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -546,6 +546,8 @@ REST-API request for detecting my-load-carrier1
           ] ^
         } ^
       }"
+
+   PowerShell
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -620,14 +622,6 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
    REST-API
 
-   Swagger UI
-
-   curl (Linux)
-
-   curl (Windows)
-
-   PowerShell
-
    To trigger the "compute_grasp" service via the REST-API, one needs
    to send a PUT request to the URL "http://<rc-visard-
    ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
@@ -648,6 +642,8 @@ Request to the REST-API for getting grasps inside my-load-carrier1
         }
       }
 
+   Swagger UI
+
    The Swagger UI for putting a service request is located at http://
    <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
    ces_service, where <rc-visard-ip> should be replaced by the actual
@@ -658,6 +654,8 @@ Request to the REST-API for getting grasps inside my-load-carrier1
    "args": {     "pose_frame": "camera",     "load_carrier_id": "my-
    load-carrier1",     "suction_surface_length": 0.02,
    "suction_surface_width": 0.02   } }
+
+   curl (Linux)
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -675,6 +673,8 @@ Request to the REST-API for getting grasps inside my-load-carrier1
               \"suction_surface_width\": 0.02 \
           } \
       }"
+
+   curl (Windows)
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -696,6 +696,8 @@ Request to the REST-API for getting grasps inside my-load-carrier1
               \"suction_surface_width\": 0.02 ^
           } ^
       }"
+
+   PowerShell
 
    The following command assumes that the variable "RC_VISARD_IP" is
    set to the actual IP of the
@@ -740,7 +742,7 @@ The compartment is a box whose "pose" is defined with respect to the
 load carrier reference frame. In this section we show how to select
 the compartment in
 
-Fig. 16
+Fig. 23
 
 .
 
@@ -758,7 +760,7 @@ the compartment center, the following translation needs to be applied:
 
 Since the compartment volume is intersected with the load carrier
 inner volume, the box z dimension can also be set to the load carrier
-outer dimension, without appling any translation along z.
+outer dimension, without applying any translation along z.
 
 The code below shows how to place a "compute_grasps" request for items
 inside this compartment of
@@ -768,14 +770,6 @@ my-load-carrier1
 .
 
 REST-API
-
-Swagger UI
-
-curl (Linux)
-
-curl (Windows)
-
-PowerShell
 
 To trigger the "compute_grasp" service via the REST-API, one needs to
 send a PUT request to the URL "http://<rc-visard-
@@ -817,6 +811,8 @@ The PUT body should include the following data, in JSON:
      }
    }
 
+Swagger UI
+
 The Swagger UI for putting a service request is located at http://<rc
 _visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
 rvice, where <rc-visard-ip> should be replaced by the actual IP of the
@@ -832,6 +828,8 @@ node rc_itempick  service compute_grasps  service args  {   "args": {
 0,           "z": 0,           "w": 1         }       }     },
 "suction_surface_length": 0.02,     "suction_surface_width": 0.02   }
 }
+
+curl (Linux)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -869,6 +867,8 @@ rc_visard
            \"suction_surface_width\": 0.02 \
        } \
    }"
+
+curl (Windows)
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the
@@ -910,6 +910,8 @@ curl
            \"suction_surface_width\": 0.02 ^
        } ^
    }"
+
+PowerShell
 
 The following command assumes that the variable "RC_VISARD_IP" is set
 to the actual IP of the

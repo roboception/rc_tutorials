@@ -51,7 +51,7 @@ without any occlusion by its walls -- as shown in the sample setup below.
   :align: center
 
   Sample setup. The |rcvisard| 160 is mounted on static support above the load carrier,
-  approximately 1.15 m away from the floor.
+  approximately 1.15 m away from the bin.
 
 The placement should also ensure that the rim of of the load carrier is visible in the depth image.
 Occlusions of the rim are acceptable, as long as all edges are at least partially visible.
@@ -88,7 +88,7 @@ The manufacturer's website reports the following dimensions:
 * Inner dimensions: 37 x 27 x 21.5 cm
 
 These values can be directly entered in the *Load Carriers* configuration panel of the |webgui|,
-with the only difference that the values needs to be converted to meters.
+with the only difference that the values need to be converted to meters.
 
 .. toggle-header::
    :header: **REST-API request for configuring my-load-carrier1**
@@ -462,10 +462,10 @@ trigger such detections.
     .. group-tab:: Swagger UI
 
       #. The Swagger UI for putting a service request is located at
-      ``http://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_service``,
-      where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
+         ``http://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_service``,
+         where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
       #. The following values are required to fill the request to the REST-API:
-
+      
           * **node** ``rc_itempick``
           * **service** ``detect_load_carriers``
           * **service args**
@@ -542,7 +542,7 @@ The detected load carrier is highlighted in blue, while its content is highlight
   :width: 600px
   :align: center
   
-  Detection result for *my-load-carrier1* (top) and *my-load-carrier2* (bottom).
+  Detection result for *my-load-carrier1* (left) and *my-load-carrier2* (right).
 
 .. note::
   While the ``detect_load_carriers`` service supports a list of ``load_carrier_ids``
@@ -711,7 +711,7 @@ the following translation needs to be applied:
   \left(\frac{\text{inner\_dimensions.x}}{4}, 0, \frac{\text{outer\_dimensions.z}-\text{inner\_dimensions.z}}{2}\right)^T
 
 Since the compartment volume is intersected with the load carrier inner volume, the box :math:`z`
-dimension can also be set to the load carrier outer dimension, without appling any
+dimension can also be set to the load carrier outer dimension, without applying any
 translation along :math:`z`.
 
 The code below shows how to place a ``compute_grasps`` request for items inside this compartment of

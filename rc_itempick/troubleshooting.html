@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FAQs and troublehooting &mdash; Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+  <title>FAQs and troublehooting &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation</title>
   
 
@@ -46,7 +46,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="prev" title="Configuring ItemPick for Bin-Picking" href="bin_picking_no_robot.html"/> 
@@ -79,7 +79,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -209,28 +209,29 @@ to the maximum value).</p>
 </ul>
 </div></blockquote>
 </div>
-<p class="toggle-header" id="itempick-faq-lc-not-on-horizontal-surface"><strong>The load carrier is placed not on a horizontal surface</strong></p>
+<p class="toggle-header" id="itempick-faq-lc-not-on-horizontal-surface"><strong>The load carrier is not placed on a horizontal surface</strong></p>
 <div class="toggle-content docutils container">
-<p>By default, ItemPick makes the assumption that the load carrier is located on a horizontal
+<p>By default, ItemPick assumes that the load carrier is located on a horizontal
 surface. If that’s not the case, one needs to provide the load carrier orientation as a prior
 with the load carrier model.</p>
 <p>This is currently not possible in the Web GUI’s <em>ItemPick</em> panel.
-Instead, it can be set via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.3)"><span>REST-API interface</span></a>.</p>
-<p>Two sample cases are shown in <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 17</span></a> for the <em>external</em> pose frame
+Instead, it can be set via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.4)"><span>REST-API interface</span></a>.</p>
+<p>Two sample cases are shown in <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a> for the <em>external</em> pose frame
 (left) and the <em>camera</em> pose frame (right).</p>
-<div class="figure align-center" id="fig-itempick-faq-tilted-lc">
-<a class="reference internal image-reference" href="../_images/load_carrier_tilted.png"><img alt="../_images/load_carrier_tilted.png" src="../_images/load_carrier_tilted.png" style="width: 700px;" /></a>
+<div class="figure align-center" id="id1">
+<span id="fig-itempick-faq-tilted-lc"></span><a class="reference internal image-reference" href="../_images/load_carrier_tilted.png"><img alt="../_images/load_carrier_tilted.png" src="../_images/load_carrier_tilted.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Load carrier not placed on a horizontal surface</span></p>
 </div>
-<p>In the left case, the load carrier (<code class="docutils literal"><span class="pre">tilted-load-carrier-ext</span></code>)
-is rotated by an angle <img class="math" src="../_images/math/1ba96861cc209d6dad8ec4ead893f2765d30a243.svg" alt="\theta"/> around the <img class="math" src="../_images/math/a05051f753c22b8c45499b6c5c7a4448aee8149d.svg" alt="y"/>
+<p>In the left case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a>, the load carrier (<code class="docutils literal"><span class="pre">tilted-load-carrier-ext</span></code>)
+is rotated by an angle <span class="math">\(\theta\)</span> around the <span class="math">\(y\)</span>
 axis of the <em>external</em> coordinate system. The load carrier orientation is given by the
-following quaternion: <img class="math" src="../_images/math/2bc9764e691ffe127a05a31f30da1ce38c9bb631.svg" alt="\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]"/>.</p>
+following quaternion: <span class="math">\(\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]\)</span>.</p>
 <blockquote>
 <div><p class="toggle-header"><strong>Request to the REST-API for configuring tilted-load-carrier-ext</strong></p>
 <div class="toggle-content docutils container">
 <p>Here we make the assumption that <code class="docutils literal"><span class="pre">tilted-load-carrier-ext</span></code> has the same dimensions of
 <code class="docutils literal"><span class="pre">my-load-carrier-1</span></code> (cfr. <a class="reference internal" href="bin_picking_no_robot.html#itempick-bin-picking-no-robot-configure"><span class="std std-ref">Configuring the load carrier</span></a>) and that the
-angle <img class="math" src="../_images/math/1ba96861cc209d6dad8ec4ead893f2765d30a243.svg" alt="\theta"/> is 30 deg.</p>
+angle <span class="math">\(\theta\)</span> is 30 deg.</p>
 <p>To trigger the <code class="docutils literal"><span class="pre">set_load_carrier</span></code> service via the REST-API for <code class="docutils literal"><span class="pre">tilted-load-carrier-ext</span></code>,
 one needs to send a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
@@ -266,9 +267,9 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </div>
 </div>
 </div></blockquote>
-<p>In the right case, the load carrier (<code class="docutils literal"><span class="pre">tilted-load-carrier-cam</span></code>) is parallel to the image plane.
+<p>In the right case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a>, the load carrier (<code class="docutils literal"><span class="pre">tilted-load-carrier-cam</span></code>) is parallel to the image plane.
 Its orientation in the <em>camera</em> coordinate system is
-<img class="math" src="../_images/math/44e5c1c9dd0e222fd07db56930d7fe3babbddc0b.svg" alt="\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]"/>.</p>
+<span class="math">\(\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]\)</span>.</p>
 <blockquote>
 <div><p class="toggle-header"><strong>Request to the REST-API for configuring tilted-load-carrier-cam</strong></p>
 <div class="toggle-content docutils container">
@@ -323,23 +324,24 @@ a region of interest inside the load carrier.</p>
 </div>
 <p class="toggle-header" id="itempick-faq-grasps-on-lc-floor"><strong>The load carrier floor is detected as load carrier content</strong></p>
 <div class="toggle-content docutils container">
-<p>This means that either the load carrier <img class="math" src="../_images/math/e384c498bed6317c89ca7482ac713cd590dfce07.svg" alt="z"/> inner dimension is too large or the
+<p>This means that either the load carrier <span class="math">\(z\)</span> inner dimension is too large or the
 reconstruction of the load carrier floor is noisy.</p>
-<p>To improve the detection result as shown in <a class="reference internal" href="#fig-itempick-faq-load-carrier-floor"><span class="std std-numref">Fig. 18</span></a>,
+<p>To improve the detection result as shown in <a class="reference internal" href="#fig-itempick-faq-load-carrier-floor"><span class="std std-numref">Fig. 25</span></a>,
 two options are available:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Decrease the load carrier <img class="math" src="../_images/math/e384c498bed6317c89ca7482ac713cd590dfce07.svg" alt="z"/> inner dimension</li>
+<li>Decrease the load carrier <span class="math">\(z\)</span> inner dimension</li>
 <li>Increase the <code class="docutils literal"><span class="pre">load_carrier_crop_distace</span></code> parameter (recommended for noisy data)</li>
 </ul>
 </div></blockquote>
-<div class="figure align-center" id="fig-itempick-faq-load-carrier-floor">
-<a class="reference internal image-reference" href="../_images/load_carrier_floor.png"><img alt="../_images/load_carrier_floor.png" src="../_images/load_carrier_floor.png" style="width: 700px;" /></a>
+<div class="figure align-center" id="id2">
+<span id="fig-itempick-faq-load-carrier-floor"></span><a class="reference internal image-reference" href="../_images/load_carrier_floor.png"><img alt="../_images/load_carrier_floor.png" src="../_images/load_carrier_floor.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Removing detection of the bin floor</span></p>
 </div>
 </div>
 <p class="toggle-header" id="itempick-faq-no-grasps-on-lc-floor"><strong>Objects on the load carrier floor are not detected as load carrier content</strong></p>
 <div class="toggle-content docutils container">
-This means that either the load carrier <img class="math" src="../_images/math/e384c498bed6317c89ca7482ac713cd590dfce07.svg" alt="z"/> inner dimension is too small or the
+This means that either the load carrier <span class="math">\(z\)</span> inner dimension is too small or the
 the <code class="docutils literal"><span class="pre">load_carrier_crop_distace</span></code> parameter is too large.</div>
 <p class="toggle-header" id="itempick-faq-multiple-lcs"><strong>There are multiple load carriers of the same type in the scene</strong></p>
 <div class="toggle-content docutils container">
@@ -350,7 +352,7 @@ one ore more regions of interest, each one including one load carrier instance.<
 </div>
 <p class="toggle-header" id="itempick-faq-speed-up-for-static-lc"><strong>My load carrier doesn’t move. How do I speed up my application?</strong></p>
 <div class="toggle-content docutils container">
-In case of static load carriers, the processing time for getting grasp inside the load carrier
+In case of static load carriers, the processing time for getting grasp points inside the load carrier
 can be reduced, by avoiding detecting the same load carrier over multiple frames.
 The load carrier detection can be triggered once and then, for the next iterations, a region of
 interest inside the load carrier can be used instead.</div>
@@ -358,6 +360,7 @@ interest inside the load carrier can be used instead.</div>
 <div class="toggle-content docutils container">
 <blockquote>
 <div><ul class="simple">
+<li>Do objects appear in the depth image? (an additional pattern projector might be needed)</li>
 <li>Do the workpieces appear in the depth image without holes? (cfr. <a class="reference internal" href="getting_started.html#itempick-getting-started-configure-image"><span class="std std-ref">Configuring image parameters</span></a>)</li>
 <li>Are the workpieces inside the region of interest (if specified)?</li>
 <li>Is the load carrier detected (if specified)?</li>
@@ -411,7 +414,7 @@ increased.</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0-44-gfeadae1',
+            VERSION:'0.2.0-1-g489efb0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -424,6 +427,7 @@ increased.</div>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

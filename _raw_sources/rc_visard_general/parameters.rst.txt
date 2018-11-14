@@ -95,10 +95,10 @@ only be set in steps of 6 dB. Each step doubles the brightness.
 Automatic Mode
 ..............
 
-The automatic mode is the default for the |rc_visard| and is is recommended for most cases.
+The automatic mode is the default for the |rc_visard| and is recommended for most cases.
 It tries to maintain an average image brightness by using the exposure time up to a limit that
 can be changed depending on the movement of the scene or the sensor. If the scene or the sensor
-moves fast, the maximum exposure time should be low to avoid image blur during movements. The
+move fast, the maximum exposure time should be low to avoid image blur during movements. The
 automatic mode always keeps the exposure time below the maximum setting and uses the gain
 factor to increase the image brightness if neccessary. As mentioned above, this introduces noise.
 
@@ -115,7 +115,7 @@ especially if the scene contains very dark and very bright regions.
   lighting can change.
 
   If images relevant for the application are taken during movement of the |rc_visard| or the
-  scene, then the maximum exposure time should be limited, depending the speed of movement.
+  scene, then the maximum exposure time should be limited, depending on the speed of movement.
   5 ms to 7 ms is a good starting point. In case of high gain values, it should be considered
   to increase lighting.
 
@@ -128,7 +128,7 @@ especially if the scene contains very dark and very bright regions.
 Using an Exposure Region
 ''''''''''''''''''''''''
 
-In many applications, only a part of the images is relevant. If the relevant image part is
+In many applications, only a part of the image is relevant. If the relevant image part is
 known and does not change, then an exposure region can be defined around it. In this case,
 the automatic mode optimizes the exposure and gain settings only for the content of the
 exposure region and neglects all other images parts. This can be a very powerful tool as
@@ -136,18 +136,18 @@ very dark or very bright areas outside the exposure region cannot negatively inf
 the relevant image part inside the exposure region.
 
 Currently, it is not possible to specify the exposure region from the |webgui|.
-Instead, it can be set via the REST-API interface (:doc:`rcvisard:rest_api`).
+Instead, it can be set via the (:doc:`rcvisard:rest_api`).
 However, if an exposure region is specified, it is visualized as a rectangle in the left
 camera image in the |webgui|.
 
-There are four parameters that defines the exposure region: ``exp_offset_x``, ``exp_offset_y``,
+There are four parameters that define the exposure region: ``exp_offset_x``, ``exp_offset_y``,
 ``exp_height`` and ``exp_width``.
 
 .. figure:: ../images/general/exposure_region_schema.png
    :scale: 100 %
    :align: center
 
-   The outer rectangle represent the whole image and the inner rectangle represents chosen exposure regions.
+   The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.
 
 For setting the exposure region via REST-API, a PUT request must be sent to the URL
 ``http://<rc_visard_ip>/api/v1/nodes/rc_stereocamera/parameters``, where ``<rc-visard-ip>``
@@ -237,11 +237,11 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
    :align: center
 
    Both pictures were taken in auto exposure mode with the same exposure parameters.
-   When the second picture was taken the exposure region was set (represented by the green frame).
+   The second picture was taken after defining an exposure region (represented by the green frame).
 
 .. note::
 
-  It is recommended to use an exposure region if only a part if the images is relevant for the
+  It is recommended to use an exposure region only if a part of the image is relevant for the
   application and if this part does not change.
 
 .. _general-manual-exposure:
@@ -258,7 +258,7 @@ within the area of interest must be avoided, but can be tolerated in scene parts
 relevant for the application.
 
 As a general rule, overexposure is worse than underexposure for image processing, because the
-information in overexposued regions is lost due to saturation of pixel values. In contrast,
+information in overexposed regions is lost due to saturation of pixel values. In contrast,
 underexposed regions often contain enough information for image processing modules. Therefore,
 it is better to set parameters such that images are darker.
 
@@ -277,7 +277,7 @@ as possible.
 .. note::
 
   It is recommended to set exposure and gain manually only if the lighting and scene content
-  does not change. The gain factor should be chosen as low as possible. Overexposure in
+  do not change. The gain factor should be chosen as low as possible. Overexposure in
   relevant scene parts or on relevant objects must be avoided. Underexposure can be acceptable.
 
 .. _general-tuning-depth-parmeters:
@@ -299,12 +299,12 @@ application.
 Similarly, the *Minimum Distance* parameter can be increased if it is *certain* that no object
 will ever be closer to the |rc_visard| than the given distance. Increasing the minimum
 distance has the benefit that it also reduces the runtime for computing the depth
-image and therefor increases the frame rate.
+image and therefore increases the frame rate.
 
-The *Disparity Range* parameter is closely linked the minimum distance as reducing the disparity
+The *Disparity Range* parameter is closely linked to the minimum distance as reducing the disparity
 range by factor two increases the effective minimum distance by a factor of two. However,
 the disparity range parameter is not as intuitive to use as the minimum distance and
-it is therefor recommended to use the minimum distance setting instead of the disparity
+it is therefore recommended to use the minimum distance setting instead of the disparity
 range.
 
 Frequency
@@ -328,7 +328,7 @@ Increasing Density
 Depth images often contain invalid values that appear black in the depth image that is shown
 in the |webgui|. This happens for scene parts that are outside the defined working range, as
 discussed above, as well as on the left side of objects, because here, a part of the background
-is not visible in the right camera image. This is called an occlusion and absolutely normal.
+is not visible in the right camera image. This is called an occlusion and it is absolutely normal.
 
 .. figure:: ../images/general/fruit_left_disp.png
    :scale: 100 %
@@ -341,15 +341,15 @@ is not visible in the right camera image. This is called an occlusion and absolu
 
 Other cases of invalid pixels are typically unwanted. In general, invalid pixels are due to
 the inability of the stereo matching method to compute depth. There are various reasons for it.
-Overexposed areas do not contain enough information for matching and therefor appear invalid.
+Overexposed areas do not contain enough information for matching and therefore appear invalid.
 Furthermore, areas may appear invalid if the image noise is stronger than the texture. Both
 problems can be solved by setting the exposure and gain settings correctly as explained in
 Section :ref:`Exposure and Gain Settings<general-exposure-gain>`.
 
 If the scene and the |rc_visard| do not move during image capturing, then the *Static* quality
 mode is recommended. In this mode, the |rc_visard| internally accumulates eight consecutive
-images with 25 Hz (regardless of the user framerate setting) and averages these images to
-reduce noise. This permits to even matching very weak textured objects and makes the depth
+images at the frame rate of 25 Hz (regardless of the user framerate setting), and averages these images to
+reduce noise. This permits to make the stereo matching even for weakly textured objects, and makes the depth
 image often much more dense.
 
 One common case for missing objects in depth images is due to the horizontal orientation of
@@ -361,9 +361,9 @@ the case, then an orientation should be chosen to avoid it.
 
 One of the most common reasons for invalid areas in indoor environments is the lack of
 texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
-without any texture. Other structures are highly repetitive. Both does not permit
-unique stereo matching. These objects and scene parts may not be important for the application,
-but if they are, then the only way is add an artificial texture by projection. Random dot
+without any texture. Other structures are highly repetitive. Both cases do not permit
+a proper stereo matching process. These objects and scene parts may not be important for the application,
+but if they are, then the only way to capture them is by adding an artificial texture by projection. Random dot
 projectors are best suited in this case, but not discussed in this tutorial.
 
 Finally, there are many ways to filter possible errors as explained in the

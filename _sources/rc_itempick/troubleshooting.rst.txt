@@ -30,12 +30,11 @@ The load carrier is not detected or not detected robustly
 
    The load carrier is deformed
 
-The load carrier is placed not on a horizontal surface
+The load carrier is not placed on a horizontal surface
 
-By default, ItemPick makes the assumption that the load carrier is
-located on a horizontal surface. If that’s not the case, one needs to
-provide the load carrier orientation as a prior with the load carrier
-model.
+By default, ItemPick assumes that the load carrier is located on a
+horizontal surface. If that’s not the case, one needs to provide the
+load carrier orientation as a prior with the load carrier model.
 
 This is currently not possible in the Web GUI’s
 
@@ -49,7 +48,7 @@ REST-API interface
 
 Two sample cases are shown in
 
-Fig. 17
+Fig. 24
 
  for the
 
@@ -62,8 +61,12 @@ camera
  pose frame (right).
 
 
-In the left case, the load carrier ("tilted-load-carrier-ext") is
-rotated by an angle \theta around the y axis of the
+In the left case of
+
+Fig. 24
+
+, the load carrier ("tilted-load-carrier-ext") is rotated by an angle
+\theta around the y axis of the
 
 external
 
@@ -119,8 +122,12 @@ following quaternion: \left[0, \sin(\theta/2), 0,
         }
       }
 
-In the right case, the load carrier ("tilted-load-carrier-cam") is
-parallel to the image plane. Its orientation in the
+In the right case of
+
+Fig. 24
+
+, the load carrier ("tilted-load-carrier-cam") is parallel to the
+image plane. Its orientation in the
 
 camera
 
@@ -192,7 +199,7 @@ or the reconstruction of the load carrier floor is noisy.
 
 To improve the detection result as shown in
 
-Fig. 18
+Fig. 25
 
 , two options are available:
 
@@ -220,12 +227,15 @@ including one load carrier instance.
 My load carrier doesn’t move. How do I speed up my application?
 
 In case of static load carriers, the processing time for getting grasp
-inside the load carrier can be reduced, by avoiding detecting the same
-load carrier over multiple frames. The load carrier detection can be
-triggered once and then, for the next iterations, a region of interest
-inside the load carrier can be used instead.
+points inside the load carrier can be reduced, by avoiding detecting
+the same load carrier over multiple frames. The load carrier detection
+can be triggered once and then, for the next iterations, a region of
+interest inside the load carrier can be used instead.
 
 There are no grasps detected on the objects
+
+   Do objects appear in the depth image? (an additional pattern
+   projector might be needed)
 
    Do the workpieces appear in the depth image without holes? (cfr.
    Configuring image parameters)

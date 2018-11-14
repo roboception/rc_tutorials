@@ -238,7 +238,7 @@ which can be enabled with the ``slam`` argument.
 The script will automatically start and stop SLAM, and eventually write
 the trajectory to the given file (`trajectory.json` in the example).
 The trajectory is written when image grabbing is finished, which is either
-when the user presses ``Enter`` during or enough data sets are recorded
+when the user presses ``Enter`` or enough data sets are recorded
 according to the ``number`` argument.
 
 .. tabs::

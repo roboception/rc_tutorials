@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation</title>
   
 
@@ -54,10 +54,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.1.0-44-gfeadae1
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
-        <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
+        <link rel="next" title="Obtain dense depth images with the RandomDot Projector" href="projector.html"/>
         <link rel="prev" title="Recording data with rc_visard" href="data_recording.html"/> 
 
   
@@ -88,7 +88,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -114,6 +114,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with <em>rc_visard</em> and OpenCV</a><ul>
@@ -129,6 +130,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
@@ -214,16 +216,16 @@ It will be referred to as <code class="docutils literal"><span class="pre">rc_vi
 <p class="rubric">Download and install the following required client software:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-0-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-0-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-TGludXg= active docutils container">
 <ol class="arabic">
 <li><p class="first">Install <a class="reference external" href="https://github.com/roboception/rc_genicam_api/releases">rc_genicam_api</a>.
 The minimum required version is 2.0.</p>
@@ -242,7 +244,7 @@ The minimum required version is 2.0.</p>
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-V2luZG93cw== docutils container">
 <ol class="arabic">
 <li><p class="first">Download <a class="reference external" href="https://github.com/roboception/rc_genicam_api/releases">rc_genicam_api</a></p>
 </li>
@@ -267,16 +269,16 @@ The example can be downloaded from our
 <p>To successfully compile the program, above prerequisites should be met.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-1-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-1-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-TGludXg= active docutils container">
 <p>After downloading or cloning the repository, change into the
 repository’s directory.
 In a terminal, run the following commands:</p>
@@ -287,7 +289,7 @@ make           <span class="c1"># build the example</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-V2luZG93cw== docutils container">
 <ol class="arabic simple">
 <li>Create a folder <code class="docutils literal"><span class="pre">build</span></code> in the repository.</li>
 <li>Run <code class="docutils literal"><span class="pre">CMake</span> <span class="pre">(cmake-gui)</span></code></li>
@@ -309,8 +311,7 @@ of the OpenCV installation path</li>
 <li>Again, click <em>Configure</em></li>
 </ol>
 </li>
-<li>Set <code class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> to the folder the example should
-be installed in (e.g. <code class="docutils literal"><span class="pre">install</span></code> in the repository)</li>
+<li>Set <code class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> to the folder where the example is installed (e.g. <code class="docutils literal"><span class="pre">install</span></code> in the repository)</li>
 <li>Click <em>Generate</em></li>
 <li>Click <em>Open Project</em>. Microsoft Visual Studio-IDE will open</li>
 <li>In Visual Studio, right-click on <em>ALL_BUILD</em> and choose <em>Build</em></li>
@@ -327,16 +328,16 @@ an executable (<code class="docutils literal"><span class="pre">rc_visard_show_s
 One can specify which streams to enable by setting command line options.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-2-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-2-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-TGludXg= active docutils container">
 <p>In case above build instructions were used, one should first change to
 the <code class="docutils literal"><span class="pre">tools</span></code> directory in <code class="docutils literal"><span class="pre">build</span></code> before running the program:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> tools
@@ -347,7 +348,7 @@ the <code class="docutils literal"><span class="pre">tools</span></code> directo
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-V2luZG93cw== docutils container">
 <p>In the following we assume that above build instructions were followed
 and that the example program was installed into <code class="docutils literal"><span class="pre">install</span></code> in the
 repository folder.</p>
@@ -385,21 +386,21 @@ or user defined ID.</p>
 <p>For example, to show the left and right image, run:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-3-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-3-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-TGludXg= active docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_show_streams --left --right &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-V2luZG93cw== docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_show_streams.exe --left --right &lt;rc_visard_id&gt;
 </pre></div>
 </div>
@@ -414,23 +415,23 @@ to cycle through the enabled image streams. Press <code class="docutils literal"
 To generate the source code documentation, perform the following steps:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="active item sphinx-data-tab-4-TGludXg= docutils container">
 <div class="docutils container">
 Linux</div>
 </div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="item sphinx-data-tab-4-V2luZG93cw== docutils container">
 <div class="docutils container">
 Windows</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-TGludXg= active docutils container">
 <p>In the <code class="docutils literal"><span class="pre">build</span></code> directory, run:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>make doc
 </pre></div>
 </div>
 <p>Afterwards, open <code class="docutils literal"><span class="pre">index.html</span></code> in <code class="docutils literal"><span class="pre">doc/html</span></code>.</p>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-V2luZG93cw== docutils container">
 <ol class="arabic simple">
 <li>Install <a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/download.html#srcbin">Doxygen</a></li>
 <li>In the <code class="docutils literal"><span class="pre">cmake-gui</span></code>, click on <em>Configure</em> and then <em>Generate</em></li>
@@ -461,7 +462,7 @@ Windows</div>
    lib -&gt; opencv;
    lib -&gt; rcgenapi;
 }" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Dependency diagram</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Dependency diagram</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>The example consists of a shared library <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code> and an
 executable <code class="docutils literal"><span class="pre">rc_visard_show_streams</span></code>.
@@ -491,7 +492,7 @@ Below, the library will be described in more detail.</p>
 
    image -&gt; imageset [arrowhead=odiamond];
 }" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Simplified class diagram</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Simplified class diagram</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The core class of <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code> is <code class="docutils literal"><span class="pre">GcReceiver</span></code>.
 It wraps <code class="docutils literal"><span class="pre">rc_genicam_api</span></code>, takes care of bootstrapping and shutting down the
@@ -527,7 +528,7 @@ the timestamp of the image.
 This all happens inside <code class="docutils literal"><span class="pre">GcReceiver::receive()</span></code>, so the user does not
 need to care about it.
 <code class="docutils literal"><span class="pre">receive()</span></code> will return an <code class="docutils literal"><span class="pre">ImageSet</span></code> with all received images contained.</p>
-<p><code class="docutils literal"><span class="pre">ImageSet</span></code> is an aggregation of <code class="docutils literal"><span class="pre">Image</span></code>s, one for each image type, so
+<p><code class="docutils literal"><span class="pre">ImageSet</span></code> is an aggregation of <code class="docutils literal"><span class="pre">Image</span></code>s, one for each image type, including
 left, right, confidence, disparity and error image.
 Depending on whether synchronization is enabled
 (see <a class="reference internal" href="#opencv-running-example-program"><span class="std std-ref">command line options</span></a>), the returned
@@ -536,7 +537,7 @@ one image that was just received.</p>
 </div>
 <div class="section" id="enabling-image-streams">
 <h3>Enabling image streams<a class="headerlink" href="#enabling-image-streams" title="Permalink to this headline">¶</a></h3>
-<p>To get some insights into what is happening internally of <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code>, this
+<p>To get some insights into the internal working of <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code>, this
 and the following section will explain how image streams are enabled and
 how the GenICam representation of images is converted to OpenCV.</p>
 <p>Before enabling image streams, the connection to the <em>rc_visard</em> needs to
@@ -624,7 +625,7 @@ in order to generate a continuous cv::Mat.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../rc_itempick/overview.html" class="btn btn-neutral float-right" title="ItemPick tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="projector.html" class="btn btn-neutral float-right" title="Obtain dense depth images with the RandomDot Projector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="data_recording.html" class="btn btn-neutral" title="Recording data with rc_visard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -656,7 +657,7 @@ in order to generate a continuous cv::Mat.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0-44-gfeadae1',
+            VERSION:'0.2.0-1-g489efb0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -671,6 +672,7 @@ in order to generate a continuous cv::Mat.</p>
       <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
