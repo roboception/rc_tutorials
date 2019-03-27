@@ -5,6 +5,8 @@
 .. _static IP address: https://en.wikipedia.org/wiki/IP_address#Static_IP
 .. _jumbo frames: https://en.wikipedia.org/wiki/Jumbo_frame
 
+.. _general-network:
+
 Connecting and configuring |rcvisard| to a network
 ===================================================
 

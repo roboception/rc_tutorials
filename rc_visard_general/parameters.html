@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
+  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Recording data with rc_visard" href="data_recording.html"/>
@@ -138,6 +138,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -202,7 +203,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tuning-of-image-parameters">
-<span id="general-tuning-image-parmeters"></span><h1>Tuning of Image Parameters<a class="headerlink" href="#tuning-of-image-parameters" title="Permalink to this headline">¶</a></h1>
+<span id="general-tuning-image-parameters"></span><h1>Tuning of Image Parameters<a class="headerlink" href="#tuning-of-image-parameters" title="Permalink to this headline">¶</a></h1>
 <p>Parameters like the frame rate, exposure time and gain factor determine when and how images are captured.
 They have a huge impact on all image processing modules on the <em>rc_visard</em>. Additionally, the quality of
 the depth image can often be improved by tuning stereo matching parameters.</p>
@@ -217,7 +218,7 @@ related to color sensors as most modules are based on monochrome images.</p>
 <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
 </ul>
 <p>This tutorial focusses on the Web GUI to set the parameters. It is also possible to use
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v1.4)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.4)"><span>REST-API interface</span></a> for setting the parameters.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v1.5)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.5)"><span>REST-API interface</span></a> for setting the parameters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">After changing parameters, it is necessary to save them in order to make them persistent after reboot.
@@ -297,7 +298,7 @@ exposure region and neglects all other images parts. This can be a very powerful
 very dark or very bright areas outside the exposure region cannot negatively influence
 the relevant image part inside the exposure region.</p>
 <p>Currently, it is not possible to specify the exposure region from the Web GUI.
-Instead, it can be set via the (<a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.4)"><span>REST-API interface</span></a>).
+Instead, it can be set via the (<a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>).
 However, if an exposure region is specified, it is visualized as a rectangle in the left
 camera image in the Web GUI.</p>
 <p>There are four parameters that define the exposure region: <code class="docutils literal"><span class="pre">exp_offset_x</span></code>, <code class="docutils literal"><span class="pre">exp_offset_y</span></code>,
@@ -322,24 +323,24 @@ data must be sent:</p>
 <p>This can be done via the built-in Swagger UI, or from a shell via <a class="reference external" href="https://curl.haxx.se/">curl</a>:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-U3dhZ2dlciBVSQ== docutils container">
+<div class="active item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-0-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-0-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-0-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-U3dhZ2dlciBVSQ== active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== active docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for setting camera parameters is located at:
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>.</p>
@@ -364,7 +365,7 @@ PowerShell</div>
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -377,7 +378,7 @@ PowerShell</div>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -390,7 +391,7 @@ PowerShell</div>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -596,7 +597,7 @@ projector can be used to add texture to the scene.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-1-g489efb0',
+            VERSION:'0.2.0-34-gb3fc0de',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -19,7 +19,7 @@ This is particularly recommended for objects and workspaces with little or no vi
 
 .. note::
 
-    This tutorial assumes that the previous tutorial :ref:`general-tuning-image-parmeters`
+    This tutorial assumes that the previous tutorial :ref:`general-tuning-image-parameters`
     has been completed.
 
 .. _general-projector-before:
@@ -141,7 +141,7 @@ Configuring the exposure
 ------------------------
 
 As last step, one needs to go back to the |webgui|'s *Camera* panel and set the exposure time as
-explained in the :ref:`general-exposure-gain` section of the :ref:`general-tuning-image-parmeters`
+explained in the :ref:`general-exposure-gain` section of the :ref:`general-tuning-image-parameters`
 tutorial.
 
 .. In case Out 1 mode is set to *ExposureAlternateActive*, it is important to verify the exposure

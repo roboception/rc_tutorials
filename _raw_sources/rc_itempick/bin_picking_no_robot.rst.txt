@@ -56,7 +56,7 @@ without any occlusion by its walls -- as shown in the sample setup below.
 The placement should also ensure that the rim of of the load carrier is visible in the depth image.
 Occlusions of the rim are acceptable, as long as all edges are at least partially visible.
 If this is not the case, one can follow the recommendations for
-:ref:`tuning camera and image parameters <general-tuning-image-parmeters>`.
+:ref:`tuning camera and image parameters <general-tuning-image-parameters>`.
 
 .. _itempick-bin-picking-no-robot-configure:
 

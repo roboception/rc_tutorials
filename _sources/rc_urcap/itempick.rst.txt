@@ -1,0 +1,185 @@
+ItemPick
+
+This tutorial shows how to pick an object with the ItemPick module and
+Roboception’s URCap.
+
+Before we start
+
+This tutorials assumes that the tutorial
+
+Getting started with ItemPick
+
+ has been completed, and the valid hand eye calibration has been
+stored on the
+
+rc_visard
+
+ as described in
+
+Hand Eye Calibration
+
+.
+
+rc_visard ItemPick application
+
+
+1. Teach poses
+
+Three waypoints have to be taught before the application can be run:
+observe_pose, drop_pose and approach_pose. Their position in the
+workspace depends on the cell layout and ItemPick settings used to
+compute grasps.
+
+Depending on the scenario, there are different requirements for the
+robot pose at the waypoints and during movement between them:
+
+If no load carrier or region of interest is being used, the robot must
+be completely outside the field of view of the camera
+
+If a load carrier is used during the detection, the robot must not
+occlude the load carrier and the items to be grasped
+
+If the region of interest is used during the detection, the robot must
+be completely outside the region of interest and must not occlude the
+items that should be grasped
+
+
+2. Set ItemPick parameters
+
+In this node the parameters for grasp computation are defined. It is
+also possible to test and check the results of the last grasp
+computation.
+
+Note: The global parameters can only be set from the Web GUI.
+
+
+Suction surface
+
+These parameters defines the size of the suction cups that will be
+used to grasp an object.
+
+Load carrier
+
+Defines which load carrier should be used during grasp calculation.
+The load carrier has to be defined earlier, as described in
+
+Configuring the load carrier
+
+.
+
+Region of interest
+
+Defines which region of interest should be used during grasp
+calculation. The region of interest has to be defined prior.
+
+Use Projector
+
+This field is only active if there is valid IOControl license on the
+
+rc_visard
+
+ . If this field is checked, the RandomDot Projector will be enabled
+for the duration of the ItemPick grasp computation.
+
+3. Choose pick strategy
+
+This step will affect the structure of the generated program. There
+are three strategies to choose from:
+
+Do not check for part - after each pick the drop part procedure is
+performed
+
+Check for part, retry if failed - after each pick, part status is
+checked. If the part is not picked, the next pick is performed
+
+Check for part, no retry- after each pick, part status is checked. If
+the part is not picked, the robot is moving to the observe position
+and new ItemPick detection is triggered
+
+
+4. Define pick procedure
+
+The pick procedure consists of following steps:
+
+Getting next pick pose
+
+Calculating the pick orientation depending on the chosen option
+
+Moving to pre pick position with tool speed as defined in the ‘Pre
+pick speed’ variable and tool acceleration as defined in the ‘Pre pick
+acc’ variable.
+
+Moving to pick position with tool speed as defined in the ‘Pick speed’
+variable and tool acceleration of 500 mm/s2.
+
+Picking part
+
+Moving to post pick position (same as pre pick) with speed as defined
+in the ‘Pre pick speed’ variable and acceleration as defined in the
+‘Pre pick acc’ variable
+
+Note: It is not guarantied that the pick and pre-pick poses are
+  collision free
+
+
+Pre pick distance
+
+Pre pick distance is an offset in -Z direction of the TCP between pick
+pose and pre pick pose.
+
+Pick speed
+
+Speed during linear movement between pre/post pick positions and pick
+position.
+
+Pre pick speed
+
+Speed during linear movement to pre pick position.
+
+Pre pick acc
+
+Acceleration during linear movement to pre pick position.
+
+Pick approach angle
+
+With the
+
+‘Pick approach angle’
+
+ drop down menu it is possible to change the strategy of calculating
+the pick position angle. There are three different options to choose
+from:
+
+ItemPick the complete orientation computed by ItemPick module is used
+
+Itempick (only z-axis) only the orientation around z axis of the TCP
+is used (useful for non-symetrical grippers)
+
+Keep orientation orientation from ItemPick is ignored, instead the
+orientation of the last waypoint is used
+
+Pre pick distance
+
+Pre pick distance is an offset in -Z direction of the TCP between pick
+pose and pre pick pose.
+
+5. Set gripper control
+
+It is necessary to specify how the gripper is working. If the
+
+Do not check for part
+
+ option has been chosen at the beginning it is only necessary to
+define the pick and drop behavior in the
+
+Drop part
+
+ and
+
+Pick part
+
+ folders. Otherwise it is also necessary to finish the
+
+if
+
+ statement with a condition that indicates that the part is grasped.

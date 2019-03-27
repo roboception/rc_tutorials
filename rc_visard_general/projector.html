@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
+  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation</title>
   
 
@@ -46,7 +46,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
@@ -123,6 +123,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -200,7 +201,7 @@ and with RandomDot Projector (right).</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This tutorial assumes that the previous tutorial <a class="reference internal" href="parameters.html#general-tuning-image-parmeters"><span class="std std-ref">Tuning of Image Parameters</span></a>
+<p class="last">This tutorial assumes that the previous tutorial <a class="reference internal" href="parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a>
 has been completed.</p>
 </div>
 <div class="section" id="before-we-start">
@@ -210,7 +211,7 @@ has been completed.</p>
 <li>The <em>rc_visard</em>’s image version is at least 1.4 and
 the <em>rc_visard</em>’s license includes the
 <a class="reference external" href="https://roboception.com/product/rc_reason-iocontrol/">IOControl component</a>.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.4)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.5)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
 <li>The RandomDot Projector, its Y-cable, and a 24 V, 60 W power supply are available.</li>
 </ol>
 <div class="admonition warning">
@@ -221,7 +222,7 @@ This can be verified on the <a class="reference external" href="https://doc.rc-v
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The RandomDot Projector is controlled via the GPIO Out 1 of the <em>rc_visard</em>
-(cfr. <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v1.4)"><span>IO and Projector Control</span></a>).
+(cfr. <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v1.5)"><span>IO and Projector Control</span></a>).
 In this tutorial, Out 1 mode refers to the RandomDot Projector mode.</p>
 </div>
 </div>
@@ -284,7 +285,7 @@ as texture or for other image processing modules.</p>
 <div class="section" id="configuring-the-exposure">
 <span id="general-projector-exposure"></span><h2>Configuring the exposure<a class="headerlink" href="#configuring-the-exposure" title="Permalink to this headline">¶</a></h2>
 <p>As last step, one needs to go back to the Web GUI’s <em>Camera</em> panel and set the exposure time as
-explained in the <a class="reference internal" href="parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a> section of the <a class="reference internal" href="parameters.html#general-tuning-image-parmeters"><span class="std std-ref">Tuning of Image Parameters</span></a>
+explained in the <a class="reference internal" href="parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a> section of the <a class="reference internal" href="parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a>
 tutorial.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -360,7 +361,7 @@ aperture of the projector can also help in removing highlights.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-1-g489efb0',
+            VERSION:'0.2.0-34-gb3fc0de',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

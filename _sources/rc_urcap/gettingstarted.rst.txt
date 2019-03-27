@@ -1,0 +1,91 @@
+Getting started
+
+Note: Roboception URCap is working with software 3.7.0 or newer. In
+  case you are running an older software version, please update your
+  controller (files can be downloaded from the UR website:
+
+  https://www.universal-robots.com/download/
+
+  )
+
+Note: Roboception URCap is internally communicating with the daemon
+  on port 49285. In the unlikely event that it causes a conflict with
+  a URCap from a different vendor, please contact Roboception support.
+
+Roboception’s ItemPick kit fot Universal Robots contains everything
+required to calibrate the robot and the
+
+rc_visard
+
+ , and start your first program.
+
+The kit consists of:
+
+rc-visard 160 monochrome
+
+rc_reason ItemPick module
+
+Small calibration grid with pre-drilled mounting holes
+
+Connectivity kit with 5m network cable and adequate power supply
+
+Roboception’s URCap
+
+Is it also possible to to include the
+
+RandomDot Projector
+
+ and the corresponding
+
+rc_reason IOControl module
+
+Software installation
+
+Download the URCap from Roboception’s downland page
+
+Copy the URCap file to a USB flash drive
+
+Insert the drive into the USB port on the teach pendant or robot
+controller
+
+Add URCap in Polyscope
+
+Reboot the controller
+
+
+Connect the sensor
+
+You can connect the
+
+rc_visard
+
+ directly to the ethernet port of the Universal Robot controller, or
+through a network switch. During setup connecting via switch is
+recommended as some parts of the
+
+rc_visard
+
+ interface are not fully duplicated in URCap and are only available
+through the Web GUI . It might be necessary to use an external PC to
+configure the
+
+rc_visard
+
+ or its software modules.
+
+Detailed instructions about network setup can be found in
+
+Connecting and configuring rc_visard to a network
+
+ tutorial.
+
+Connect the rc_visard to the same network as the robot controller
+
+Enable networking in Polyscope
+
+In the installation node, set the IP address of the rc_visard
+
+Note: A link-local ip address might change after reboot, therefore,
+  we recommended assigning a static ip address or dhcp a server for
+  network configuration.
+

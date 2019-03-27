@@ -1,0 +1,88 @@
+.. include:: ../global_rst.glb
+
+.. _ur-expert_functions:
+
+Expert Functions
+==================
+
+Functions can be added to the program with Universal Robots Advanced Program Structure 'Script code'.
+
+.. _ur-expert_functions-set-param:
+
+rc_set_parameter
+-----------------------
+This function can be used to set all rc_visard parameters. Parameters set with this function are not saved and will not be available after reboot.
+
+Input
+''''''''''''''''''
+* node_name - name of the node as described in rc_visard manual
+* parameter_name - name of the parameter that should be changed as described in rc_visard manual
+* parameter_value - value of the parameter that should be changed as described in rc_visard manual
+
+Output
+''''''''''''''''''
+True if the parameter was successful, false otherwise.
+
+rc_turn_on_projector
+-----------------------
+This function sets the rc_visards 'out_1' to 'ExposureAlternateActive' mode.
+
+Input
+''''''''''''''''''
+This function requires no input parameters.
+
+Output
+''''''''''''''''''
+This function does not return anything.
+
+rc_turn_off_projector
+-----------------------
+This function set the |rc_visard|'s 'out_1' to 'Low' mode.
+
+Input
+''''''''''''''''''
+This function requires no input parameters.
+
+Output
+''''''''''''''''''
+This function does not return anything.
+
+rc_trigger_compute_grasps
+------------------------------
+This function triggers the grasp computation thread.
+
+Input
+''''''''''''''''''
+* suc_length_m - length of the suction cup in meters
+* suc_width_m - width of the suction cup in meters
+* lc_id - id of the load carrier that should be used (use '-1' if no load carrier should be used)
+* roi_id - id of the region of interest that should be used (use '-1' if no region of interest should be used)
+* use_projector - whether or not the projector should be used during grasp computation (boolean value)
+
+Output
+''''''''''''''''''
+This function does not return anything.
+
+is_grasp_available
+-----------------------
+This function checks if there are computed grasps available. The 'rc_trigger_compute_grasps' function has to be triggered prior.
+
+Input
+''''''''''''''''''
+This function requires no input parameters.
+
+Output
+''''''''''''''''''
+True if at least one grasp is available, false otherwise.
+
+rc_assign_grasp
+-----------------------
+This function returns the pose of a single computed grasp in the robot base coordinate system. The 'rc_trigger_compute_grasps' function has to be triggered prior.
+
+Input
+''''''''''''''''''
+This function requires no input parameters.
+
+Output
+''''''''''''''''''
+This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]

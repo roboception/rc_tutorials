@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Expert Functions &mdash; Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
+ documentation" href="../index.html"/>
+        <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
+        <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="ItemPick" href="itempick.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Expert Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rc-set-parameter">rc_set_parameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-turn-on-projector">rc_turn_on_projector</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-turn-off-projector">rc_turn_off_projector</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-trigger-compute-grasps">rc_trigger_compute_grasps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#is-grasp-available">is_grasp_available</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-assign-grasp">rc_assign_grasp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+        
+      <li>Expert Functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="expert-functions">
+<span id="ur-expert-functions"></span><h1>Expert Functions<a class="headerlink" href="#expert-functions" title="Permalink to this headline">¶</a></h1>
+<p>Functions can be added to the program with Universal Robots Advanced Program Structure ‘Script code’.</p>
+<div class="section" id="rc-set-parameter">
+<span id="ur-expert-functions-set-param"></span><h2>rc_set_parameter<a class="headerlink" href="#rc-set-parameter" title="Permalink to this headline">¶</a></h2>
+<p>This function can be used to set all rc_visard parameters. Parameters set with this function are not saved and will not be available after reboot.</p>
+<div class="section" id="input">
+<h3>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>node_name - name of the node as described in rc_visard manual</li>
+<li>parameter_name - name of the parameter that should be changed as described in rc_visard manual</li>
+<li>parameter_value - value of the parameter that should be changed as described in rc_visard manual</li>
+</ul>
+</div>
+<div class="section" id="output">
+<h3>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<p>True if the parameter was successful, false otherwise.</p>
+</div>
+</div>
+<div class="section" id="rc-turn-on-projector">
+<h2>rc_turn_on_projector<a class="headerlink" href="#rc-turn-on-projector" title="Permalink to this headline">¶</a></h2>
+<p>This function sets the rc_visards ‘out_1’ to ‘ExposureAlternateActive’ mode.</p>
+<div class="section" id="id1">
+<h3>Input<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>This function requires no input parameters.</p>
+</div>
+<div class="section" id="id2">
+<h3>Output<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>This function does not return anything.</p>
+</div>
+</div>
+<div class="section" id="rc-turn-off-projector">
+<h2>rc_turn_off_projector<a class="headerlink" href="#rc-turn-off-projector" title="Permalink to this headline">¶</a></h2>
+<p>This function set the <em>rc_visard</em>’s ‘out_1’ to ‘Low’ mode.</p>
+<div class="section" id="id3">
+<h3>Input<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This function requires no input parameters.</p>
+</div>
+<div class="section" id="id4">
+<h3>Output<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>This function does not return anything.</p>
+</div>
+</div>
+<div class="section" id="rc-trigger-compute-grasps">
+<h2>rc_trigger_compute_grasps<a class="headerlink" href="#rc-trigger-compute-grasps" title="Permalink to this headline">¶</a></h2>
+<p>This function triggers the grasp computation thread.</p>
+<div class="section" id="id5">
+<h3>Input<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>suc_length_m - length of the suction cup in meters</li>
+<li>suc_width_m - width of the suction cup in meters</li>
+<li>lc_id - id of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
+<li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>use_projector - whether or not the projector should be used during grasp computation (boolean value)</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Output<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>This function does not return anything.</p>
+</div>
+</div>
+<div class="section" id="is-grasp-available">
+<h2>is_grasp_available<a class="headerlink" href="#is-grasp-available" title="Permalink to this headline">¶</a></h2>
+<p>This function checks if there are computed grasps available. The ‘rc_trigger_compute_grasps’ function has to be triggered prior.</p>
+<div class="section" id="id7">
+<h3>Input<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>This function requires no input parameters.</p>
+</div>
+<div class="section" id="id8">
+<h3>Output<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>True if at least one grasp is available, false otherwise.</p>
+</div>
+</div>
+<div class="section" id="rc-assign-grasp">
+<h2>rc_assign_grasp<a class="headerlink" href="#rc-assign-grasp" title="Permalink to this headline">¶</a></h2>
+<p>This function returns the pose of a single computed grasp in the robot base coordinate system. The ‘rc_trigger_compute_grasps’ function has to be triggered prior.</p>
+<div class="section" id="id9">
+<h3>Input<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>This function requires no input parameters.</p>
+</div>
+<div class="section" id="id10">
+<h3>Output<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="FAQs and troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="itempick.html" class="btn btn-neutral" title="ItemPick" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0-34-gb3fc0de',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

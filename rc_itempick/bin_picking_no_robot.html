@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
+  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troublehooting" href="troubleshooting.html"/>
@@ -133,6 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troublehooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -199,13 +200,13 @@
   <div class="section" id="configuring-itempick-for-bin-picking">
 <span id="itempick-bin-picking-no-robot"></span><h1>Configuring ItemPick for Bin-Picking<a class="headerlink" href="#configuring-itempick-for-bin-picking" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to configure the ItemPick component to work in a bin-picking
-application. More specifically, the bin (or so-called <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-load-carrier" title="(in rc_visard v1.4)"><span>Load Carrier</span></a>)
+application. More specifically, the bin (or so-called <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-load-carrier" title="(in rc_visard v1.5)"><span>Load Carrier</span></a>)
 is configured in ItemPick and detected in the scene, in order to compute grasps only for items
 inside the bin itself.</p>
 <p>The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
 items inside the load carrier. For this, we will call the offered
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v1.4)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.4)"><span>REST-API interface</span></a>.
-This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.4)"><span>Swagger UI</span></a>, in command lines or scripts using
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v1.5)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>.
+This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.5)"><span>Swagger UI</span></a>, in command lines or scripts using
 <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically using a client library
 (e.g. from a robot controller). Here we focus on the first two options.</p>
 <div class="section" id="before-we-start">
@@ -233,18 +234,18 @@ approximately 1.15 m away from the bin.</span></p>
 <p>The placement should also ensure that the rim of of the load carrier is visible in the depth image.
 Occlusions of the rim are acceptable, as long as all edges are at least partially visible.
 If this is not the case, one can follow the recommendations for
-<a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parmeters"><span class="std std-ref">tuning camera and image parameters</span></a>.</p>
+<a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">tuning camera and image parameters</span></a>.</p>
 </div>
 <div class="section" id="configuring-the-load-carrier">
 <span id="itempick-bin-picking-no-robot-configure"></span><h2>Configuring the load carrier<a class="headerlink" href="#configuring-the-load-carrier" title="Permalink to this headline">¶</a></h2>
 <p>The easiest and recommended way configure a load carrier is using the <em>Load Carriers</em> section of
 the Web GUI’s <em>ItemPick</em> panel.
 However, in this tutorial we also introduce the programatic interface of ItemPick
-which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.4)"><span>REST-API interface</span></a>:</p>
+which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v1.4)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v1.4)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
-<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v1.4)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
 </ul>
 <p>In this section we show how to configure two
 different types of load carriers including some code examples.</p>
@@ -264,28 +265,28 @@ with the only difference that the values need to be converted to meters.</p>
 <div class="toggle-content docutils container">
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-UkVTVC1BUEk= docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
 <div class="docutils container">
 REST-API</div>
 </div>
-<div class="item sphinx-data-tab-0-U3dhZ2dlciBVSQ== docutils container">
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-0-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-0-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-0-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-UkVTVC1BUEk= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
 one needs to send a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
@@ -311,7 +312,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-U3dhZ2dlciBVSQ== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
 <code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
@@ -353,7 +354,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -377,7 +378,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -401,7 +402,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -447,28 +448,28 @@ and inner dimensions, as it was the case for <em>my-load-carrier1</em>.</p>
 <div class="toggle-content docutils container">
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1-UkVTVC1BUEk= docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
 <div class="docutils container">
 REST-API</div>
 </div>
-<div class="item sphinx-data-tab-1-U3dhZ2dlciBVSQ== docutils container">
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-1-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-1-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-1-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-UkVTVC1BUEk= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
 one needs to send a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
@@ -498,7 +499,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-U3dhZ2dlciBVSQ== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
 <code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
@@ -544,7 +545,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -572,7 +573,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -600,7 +601,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -645,35 +646,35 @@ The Web GUI’s <em>ItemPick</em> panel offers a <em>Try Out</em> section
 for this purpose. One simply needs to specifiy the respective <em>load carrier id</em> and hit the <em>Detect</em>
 button.
 As for the REST-API, ItemPick offers a
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v1.4)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
 trigger such detections.</p>
 <p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
 <blockquote>
 <div><div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2-UkVTVC1BUEk= docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
 <div class="docutils container">
 REST-API</div>
 </div>
-<div class="item sphinx-data-tab-2-U3dhZ2dlciBVSQ== docutils container">
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-2-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-2-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-2-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-UkVTVC1BUEk= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal"><span class="pre">detect_load_carriers</span></code> service via the REST-API, one needs to send
 a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/detect_load_carriers</span></code>,
@@ -690,7 +691,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-U3dhZ2dlciBVSQ== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
 <code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
@@ -723,7 +724,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/detect_load_carriers&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -738,7 +739,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">&quot;RC_VISARD_IP=10.0.2.90&quot;</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/detect_load_carriers&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -753,7 +754,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/detect_load_carriers&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -808,28 +809,28 @@ the <em>Try Out</em> section of the Web GUI’s <em>ItemPick</em> panel.</p>
 <blockquote>
 <div><div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3-UkVTVC1BUEk= docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
 <div class="docutils container">
 REST-API</div>
 </div>
-<div class="item sphinx-data-tab-3-U3dhZ2dlciBVSQ== docutils container">
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-3-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-3-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-3-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-UkVTVC1BUEk= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal"><span class="pre">compute_grasp</span></code> service via the REST-API, one needs to send
 a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/compute_grasp</span></code>,
@@ -846,7 +847,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-U3dhZ2dlciBVSQ== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
 <code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
@@ -879,7 +880,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -894,7 +895,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -909,7 +910,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -964,28 +965,28 @@ translation along <span class="math">\(z\)</span>.</p>
 <em>my-load-carrier1</em>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4-UkVTVC1BUEk= docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
 <div class="docutils container">
 REST-API</div>
 </div>
-<div class="item sphinx-data-tab-4-U3dhZ2dlciBVSQ== docutils container">
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <div class="docutils container">
 Swagger UI</div>
 </div>
-<div class="item sphinx-data-tab-4-Y3VybCAoTGludXgp docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <div class="docutils container">
 curl (Linux)</div>
 </div>
-<div class="item sphinx-data-tab-4-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <div class="docutils container">
 curl (Windows)</div>
 </div>
-<div class="item sphinx-data-tab-4-UG93ZXJTaGVsbA== docutils container">
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <div class="docutils container">
 PowerShell</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-UkVTVC1BUEk= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal"><span class="pre">compute_grasp</span></code> service via the REST-API, one needs to send
 a PUT request to the URL
 <code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/compute_grasp</span></code>,
@@ -1022,7 +1023,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-U3dhZ2dlciBVSQ== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
 <code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
@@ -1075,7 +1076,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-Y3VybCAoTGludXgp docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
@@ -1110,7 +1111,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
@@ -1145,7 +1146,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-UG93ZXJTaGVsbA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
@@ -1237,7 +1238,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-1-g489efb0',
+            VERSION:'0.2.0-34-gb3fc0de',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -32,7 +32,7 @@ In order to go through this tutorial, the following prerequisites should be met:
    :ref:`sect-web-gui`'s *Depth image* panel.
    If the workpiece presents holes or low confidence regions
    (i.e. average gray pixels in the Confidence image),
-   one can follow the :ref:`general-tuning-image-parmeters` tutorial.
+   one can follow the :ref:`general-tuning-image-parameters` tutorial.
 
 #. The workpiece has at least the minimum dimensions required by the |itempick| module. This threshold is set to 300
    pixels in the depth image, which approximately correspond to an object of size 0.04 m x 0.04 m
@@ -81,7 +81,7 @@ Configuring image parameters
 Once the scene has been set up, we recommend to check the |webgui|'s *Depth image*
 panel to verify that the images are well-exposed and the depth image is dense
 with no holes on the workpieces.
-The tutorial :ref:`general-tuning-image-parmeters` covers all required steps to get the best quality for stereo and depth images.
+The tutorial :ref:`general-tuning-image-parameters` covers all required steps to get the best quality for stereo and depth images.
 
 |itempick| provides its best results when the depth image quality is set to High.
 The Static mode might be beneficial in static scenes, but it increases the data acquisition time.

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connecting and configuring rc_visard to a network &mdash; Tutorials, FAQs, and more 0.2.0-1-g489efb0
+  <title>Connecting and configuring rc_visard to a network &mdash; Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-1-g489efb0
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-34-gb3fc0de
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Tuning of Image Parameters" href="parameters.html"/>
@@ -137,6 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -201,7 +202,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="connecting-and-configuring-rcvisard-to-a-network">
-<h1>Connecting and configuring <em>rc_visard</em> to a network<a class="headerlink" href="#connecting-and-configuring-rcvisard-to-a-network" title="Permalink to this headline">¶</a></h1>
+<span id="general-network"></span><h1>Connecting and configuring <em>rc_visard</em> to a network<a class="headerlink" href="#connecting-and-configuring-rcvisard-to-a-network" title="Permalink to this headline">¶</a></h1>
 <p>The <em>rc_visard</em> offers several options to connect and configure it
 to your network setup as shown below. In this tutorial we show how to properly configure
 the <em>rc_visard</em>’s IP settings as well as optimizing the host PC’s network settings
@@ -274,7 +275,7 @@ is in a totally different network.</span></p>
 <p class="last">The discovery tool is the central troubleshooting tool for checking
 whether Roboception sensors are properly connected and reachable by the host PC or not.
 For a detailed description, please refer to the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v1.4)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v1.5)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
 </div>
 <p>If the <em>rc_visard</em> is reachable, a simple double-click on the respective
 row opens the sensor’s Web GUI which let’s you explore and visualize the
@@ -454,16 +455,16 @@ administrator to enable jumbo frames on them.</p>
 <p>In the following we show examples how to set the host’s MTU to 9000 in Linux and Windows 10.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-VWJ1bnR1 docutils container">
+<div class="active item sphinx-data-tab-VWJ1bnR1 docutils container">
 <div class="docutils container">
 Ubuntu</div>
 </div>
-<div class="item sphinx-data-tab-0-V2luZG93cyAxMA== docutils container">
+<div class="item sphinx-data-tab-V2luZG93cyAxMA== docutils container">
 <div class="docutils container">
 Windows 10</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-VWJ1bnR1 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-VWJ1bnR1 active docutils container">
 <p class="rubric">Temporarily</p>
 <p>Enter the following command in the terminal.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
@@ -476,7 +477,7 @@ Windows 10</div>
 <li>On “Ethernet” tab, change MTU to 9000</li>
 </ol>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-V2luZG93cyAxMA== docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cyAxMA== docutils container">
 <p>In Windows the settings for jumbo frames can be found
 in the advanced settings of the network driver:</p>
 <blockquote>
@@ -543,7 +544,7 @@ the <code class="docutils literal"><span class="pre">Rerun</span> <span class="p
 device reboot. If no reaction is noticeable, the two minute time
 slot may have passed, requiring another reboot.</p>
 </div>
-<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v1.4)"><span class="xref std std-ref">default automatic network
+<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v1.5)"><span class="xref std std-ref">default automatic network
 configuration routine</span></a>
 and should either have an automatically assigned IP address from
 the DHCP server or a link-local address 169.254.x.x.</p>
@@ -615,7 +616,7 @@ for high loads</span></a>.</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-1-g489efb0',
+            VERSION:'0.2.0-34-gb3fc0de',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

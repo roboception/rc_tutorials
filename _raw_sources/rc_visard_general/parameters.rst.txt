@@ -1,6 +1,6 @@
 .. include:: ../global_rst.glb
 
-.. _general-tuning-image-parmeters:
+.. _general-tuning-image-parameters:
 
 Tuning of Image Parameters
 ==========================
