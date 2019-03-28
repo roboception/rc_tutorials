@@ -12,17 +12,24 @@ Getting started
 .. note::
   |company| URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact |company| support.
 
-|company|'s ItemPick kit fot Universal Robots contains everything required to calibrate the robot and the |rcvisard| , and start your first program.
+|company|'s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the |rcvisard| , and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.
 
-The kit consists of:
+The basic bundle consists of:
 
-* `rc-visard 160 monochrome <https://roboception.com/product/rc_visard-160-monochrome/>`_
-* `rc_reason ItemPick module <https://roboception.com/product/itempick/>`_
-* `Small calibration grid <https://roboception.com/product/calibrationgrid/>`_ with pre-drilled mounting holes
-* `Connectivity kit <https://roboception.com/product/connectivity-kit/>`_ with 5m network cable and adequate power supply
-* Roboception's URCap
+* `rc_visard 160 monochrome <https://roboception.com/product/rc_visard-160-monochrome/>`_
+* `rc_reason ItemPick Module <https://roboception.com/product/itempick/>`_
+* `Small Calibration-Grid <https://roboception.com/product/calibrationgrid/>`_ with pre-drilled mounting holes
+* `Connectivity Kit <https://roboception.com/product/connectivity-kit/>`_ with 5m network cable and 30W power supply
 
-Is it also possible to to include the `RandomDot Projector <https://roboception.com/product/random-dot-projector/>`_ and the corresponding `rc_reason IOControl module <https://roboception.com/product/rc_reason-iocontrol/>`_
+The kit including the projector consists of:
+
+* `rc_visard 160 monochrome <https://roboception.com/product/rc_visard-160-monochrome/>`_
+* `rc_reason ItemPick Module <https://roboception.com/product/itempick/>`_
+* `Small Calibration-Grid <https://roboception.com/product/calibrationgrid/>`_ with pre-drilled mounting holes
+* `Connectivity Kit <https://roboception.com/product/connectivity-kit/>`_ with 5m network cable and 60W power supply
+* `RandomDot Projector <https://roboception.com/product/random-dot-projector/>`_
+* `rc_reason IOControl Module <https://roboception.com/product/rc_reason-iocontrol/>`_
+
 
 Software installation
 ---------------------
@@ -30,12 +37,20 @@ Software installation
 
 #. Copy the URCap file to a USB flash drive
 
-#. Insert the drive into the USB port on the teach pendant or robot controller
+#. Insert the USB drive into the USB port of the teach pendant or robot controller
 
-#. Add URCap in Polyscope
+#. On the Welcome screen of the PolyScope Robot User Interface press the Setup Robot button first and then press the URCaps Setup button
+
+#. Click on the + button to install a new URCap application
+
+#. Navigate to the rc_visard_urcap file by clicking on your USB drive and selecting it. Confirm the selection by clicking on Open
 
 #. Reboot the controller
 
+After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window (see :numref:`fig_successful_installed_urcap`).
+
+
+.. _fig_successful_installed_urcap:
 .. figure:: ../images/urcap/urcap_setup.png
   :width: 300px
   :align: center 
@@ -49,16 +64,16 @@ Software installation
 Connect the sensor
 -----------------------
 
-You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup connecting via switch is recommended as some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui| . It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
+You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, sinche some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui| . It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
 
 Detailed instructions about network setup can be found in :ref:`general-network` tutorial.
 
 #. Connect the |rcvisard| to the same network as the robot controller
-#. Enable networking in Polyscope
+#. Enable networking in PolyScope
 #. In the installation node, set the IP address of the |rcvisard|
 
 .. note::
-    A link-local ip address might change after reboot, therefore, we recommended assigning a static ip address or dhcp a server for network configuration.
+    A link-local IP address might change after reboot, therefore, we recommended assigning a static IP address or DHCP a server for network configuration.
 
 .. figure:: ../images/urcap/installation_node.png
   :width: 300px
