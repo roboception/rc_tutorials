@@ -81,6 +81,10 @@ Region of interest
 
 Defines which region of interest should be used during grasp calculation. The region of interest has to be defined prior.
 
+.. note::
+  Since the frame of the chosen region of interest has to match the return frame of the requested grasp computation, only regions of interest defined with frame 'external' are listed in the drop down menu.
+
+
 Use Projector
 ..........................
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-36-gbf9d408
+  <title>Getting started with ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-36-gbf9d408
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="Configuring ItemPick for Bin-Picking" href="bin_picking_no_robot.html"/>
@@ -202,7 +202,7 @@ and guides the reader to the computation of the first grasps.</p>
 <ol class="arabic simple">
 <li>The <em>rc_visard</em>’s image version is at least 1.4 and
 the <em>rc_visard</em>’s license includes the ItemPick component.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.5)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.6)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
 </ol>
 <p class="rubric">One or more workpieces are in the field of view of the camera. They should meet the following requisites:</p>
 <ol class="arabic simple">
@@ -211,7 +211,7 @@ This can be verified on the <a class="reference external" href="https://doc.rc-v
 generate a suction force large enough to lift and move the workpiece).</li>
 <li>The workpiece surface appears in the depth image.
 This can be verified by placing the workpiece in front of the <em>rc_visard</em> and checking the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.5)"><span>Web GUI</span></a>’s <em>Depth image</em> panel.
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.6)"><span>Web GUI</span></a>’s <em>Depth image</em> panel.
 If the workpiece presents holes or low confidence regions
 (i.e. average gray pixels in the Confidence image),
 one can follow the <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a> tutorial.</li>
@@ -223,7 +223,7 @@ at a distance of 1.2 m from the sensor.</li>
 <div class="section" id="setting-up-the-scene">
 <span id="itempick-getting-started-setup"></span><h2>Setting up the scene<a class="headerlink" href="#setting-up-the-scene" title="Permalink to this headline">¶</a></h2>
 <p>We recommend to mount the <em>rc_visard</em> on a tripod or a static support as explained
-in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v1.5)"><span>Mechanical interface</span></a> description.</p>
+in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v1.6)"><span>Mechanical interface</span></a> description.</p>
 <p>Alternatively, the <em>rc_visard</em> can also be mounted on the end-effector of a robot, but
 the integration with the robot is not included in this tutorial
 (therefore, no hand-eye calibration is required to complete the tutorial).</p>
@@ -281,10 +281,10 @@ and depth image (right).</span></p>
 </div>
 <div class="section" id="computing-the-first-grasps">
 <span id="itempick-getting-started-first-grasps"></span><h2>Computing the first grasps<a class="headerlink" href="#computing-the-first-grasps" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-compute-grasps" title="(in rc_visard v1.5)"><span class="xref std std-ref">compute_grasps</span></a> service of the ItemPick module
+<p>The <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-compute-grasps" title="(in rc_visard v1.6)"><span class="xref std std-ref">compute_grasps</span></a> service of the ItemPick module
 triggers the computation of suction grasps in the scene.</p>
 <p>This section shows how to place a <code class="docutils literal"><span class="pre">compute_grasps</span></code> request to ItemPick
-using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>. This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.5)"><span>Swagger UI</span></a>,
+using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.6)"><span>REST-API interface</span></a>. This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.6)"><span>Swagger UI</span></a>,
 in command lines or scripts using <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically
 using a client library (e.g. from the robot controller).
 In this tutorial we focus on the first two options.</p>
@@ -478,7 +478,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-36-gbf9d408',
+            VERSION:'0.2.0-37-g849aca3',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

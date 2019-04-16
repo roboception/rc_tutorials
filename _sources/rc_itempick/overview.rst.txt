@@ -2,7 +2,7 @@ ItemPick tutorials
 
 This is the landing page for the
 
-ItemPick
+ItemPick and BoxPick
 
 ’ tutorials.
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.2.0-36-gbf9d408
+  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-36-gbf9d408
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troublehooting" href="troubleshooting.html"/>
@@ -200,13 +200,13 @@
   <div class="section" id="configuring-itempick-for-bin-picking">
 <span id="itempick-bin-picking-no-robot"></span><h1>Configuring ItemPick for Bin-Picking<a class="headerlink" href="#configuring-itempick-for-bin-picking" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to configure the ItemPick component to work in a bin-picking
-application. More specifically, the bin (or so-called <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-load-carrier" title="(in rc_visard v1.5)"><span>Load Carrier</span></a>)
+application. More specifically, the bin (or so-called <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-load-carrier" title="(in rc_visard v1.6)"><span>Load Carrier</span></a>)
 is configured in ItemPick and detected in the scene, in order to compute grasps only for items
 inside the bin itself.</p>
 <p>The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
 items inside the load carrier. For this, we will call the offered
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v1.5)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>.
-This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.5)"><span>Swagger UI</span></a>, in command lines or scripts using
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v1.6)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.6)"><span>REST-API interface</span></a>.
+This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.6)"><span>Swagger UI</span></a>, in command lines or scripts using
 <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically using a client library
 (e.g. from a robot controller). Here we focus on the first two options.</p>
 <div class="section" id="before-we-start">
@@ -241,11 +241,11 @@ If this is not the case, one can follow the recommendations for
 <p>The easiest and recommended way configure a load carrier is using the <em>Load Carriers</em> section of
 the Web GUI’s <em>ItemPick</em> panel.
 However, in this tutorial we also introduce the programatic interface of ItemPick
-which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.5)"><span>REST-API interface</span></a>:</p>
+which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.6)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
-<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v1.6)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v1.6)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v1.6)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
 </ul>
 <p>In this section we show how to configure two
 different types of load carriers including some code examples.</p>
@@ -646,7 +646,7 @@ The Web GUI’s <em>ItemPick</em> panel offers a <em>Try Out</em> section
 for this purpose. One simply needs to specifiy the respective <em>load carrier id</em> and hit the <em>Detect</em>
 button.
 As for the REST-API, ItemPick offers a
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v1.5)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v1.6)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
 trigger such detections.</p>
 <p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
@@ -1238,7 +1238,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-36-gbf9d408',
+            VERSION:'0.2.0-37-g849aca3',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
