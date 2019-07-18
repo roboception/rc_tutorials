@@ -1,7 +1,7 @@
 Expert Functions
 
 Functions can be added to the program with Universal Robots Advanced
-Program Structure ‘Script code’.
+Program Structure 'Script code'.
 
 rc_set_parameter
 
@@ -25,7 +25,7 @@ True if the parameter was successful, false otherwise.
 
 rc_turn_on_projector
 
-This function sets the rc_visards ‘out_1’ to ‘ExposureAlternateActive’
+This function sets the rc_visards 'out_1' to 'ExposureAlternateActive'
 mode.
 
 Input
@@ -42,7 +42,7 @@ This function set the
 
 rc_visard
 
-’s ‘out_1’ to ‘Low’ mode.
+'s 'out_1' to 'Low' mode.
 
 Input
 
@@ -62,10 +62,10 @@ suc_length_m - length of the suction cup in meters
 
 suc_width_m - width of the suction cup in meters
 
-lc_id - id of the load carrier that should be used (use ‘-1’ if no
+lc_id - id of the load carrier that should be used (use '-1' if no
 load carrier should be used)
 
-roi_id - id of the region of interest that should be used (use ‘-1’ if
+roi_id - id of the region of interest that should be used (use '-1' if
 no region of interest should be used)
 
 use_projector - whether or not the projector should be used during
@@ -78,7 +78,7 @@ This function does not return anything.
 is_grasp_available
 
 This function checks if there are computed grasps available. The
-‘rc_trigger_compute_grasps’ function has to be triggered prior.
+'rc_trigger_compute_grasps' function has to be triggered prior.
 
 Input
 
@@ -91,7 +91,7 @@ True if at least one grasp is available, false otherwise.
 rc_assign_grasp
 
 This function returns the pose of a single computed grasp in the robot
-base coordinate system. The ‘rc_trigger_compute_grasps’ function has
+base coordinate system. The 'rc_trigger_compute_grasps' function has
 to be triggered prior.
 
 Input

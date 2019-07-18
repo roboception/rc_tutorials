@@ -4,5 +4,5 @@ This is the landing page for the
 
 rc_visard
 
-’ tutorials.
+' tutorials.
 

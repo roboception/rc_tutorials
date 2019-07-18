@@ -18,7 +18,7 @@ ItemPick services
 
 rc_visard
 
-’s
+'s
 
 REST-API interface
 
@@ -51,7 +51,7 @@ Setting up the scene
 
 The load carrier should be placed in the field of view of the sensor.
 Optimally, the sensor should have a clear view onto all objects in the
-bin without any occlusion by its walls – as shown in the sample setup
+bin without any occlusion by its walls -- as shown in the sample setup
 below.
 
 
@@ -70,7 +70,7 @@ The easiest and recommended way configure a load carrier is using the
 
 Load Carriers
 
- section of the Web GUI’s
+ section of the Web GUI's
 
 ItemPick
 
@@ -80,7 +80,7 @@ carriers via the
 
 rc_visard
 
-’s
+'s
 
 REST-API interface
 
@@ -105,7 +105,7 @@ Fig. 19
 
 my-load-carrier1
 
-. The manufacturer’s website reports the following dimensions:
+. The manufacturer's website reports the following dimensions:
 
 Outer dimensions: 40 x 30 x 22 cm
 
@@ -267,7 +267,7 @@ the unique id
 
 my-load-carrier2
 
-. The manufacturer’s website reports the following dimensions:
+. The manufacturer's website reports the following dimensions:
 
 Outer dimensions: 30 x 20 x 14.7 cm
 
@@ -447,7 +447,7 @@ Note: Making a "set_load_carrier" request with an existing
 Detecting the load carrier
 
 After the load carrier has been configured, it is important to check
-that ItemPick can detect the load carrier in the scene. The Web GUI’s
+that ItemPick can detect the load carrier in the scene. The Web GUI's
 
 ItemPick
 
@@ -566,8 +566,8 @@ REST-API request for detecting my-load-carrier1
         }
       }' | ConvertTo-Json -Depth 6
 
-Detection results – no matter whether triggered via Web GUI or REST-
-API – are visualized in the Web GUI’s
+Detection results -- no matter whether triggered via Web GUI or REST-
+API -- are visualized in the Web GUI's
 
 ItemPick
 
@@ -612,7 +612,7 @@ As explained before, this is also possible in the
 
 Try Out
 
- section of the Web GUI’s
+ section of the Web GUI's
 
 ItemPick
 
@@ -732,7 +732,7 @@ Note: The "load_carrier_compartment" argument can not be specified
 
   Try Out
 
-   section of Web GUI’s
+   section of Web GUI's
 
   ItemPick
 
@@ -748,15 +748,17 @@ Fig. 23
 
 
 The compartment box dimensions are computed from the load carrier
-inner dimensions: \text{inner\_dimensions.x}/2\cdot\text{inner\_dimen
-sions.y}\cdot\text{inner\_dimensions.z}.
+inner dimensions:
+
+   \left(\frac{\text{inner_dimensions.x}}{2},
+   \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)^T.
 
 The load carrier reference frame is located at the center of the load
 carrier outer box. To move from the load carrier reference frame to
 the compartment center, the following translation needs to be applied:
 
-   \left(\frac{\text{inner\_dimensions.x}}{4}, 0, \frac{\text{outer\_
-   dimensions.z}-\text{inner\_dimensions.z}}{2}\right)^T
+   \left(\frac{\text{inner_dimensions.x}}{4}, 0, \frac{\text{outer_di
+   mensions.z}-\text{inner_dimensions.z}}{2}\right)^T.
 
 Since the compartment volume is intersected with the load carrier
 inner volume, the box z dimension can also be set to the load carrier

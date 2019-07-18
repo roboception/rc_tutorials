@@ -2,8 +2,8 @@
 
 .. _itempick-faq:
 
-FAQs and troublehooting
-=======================
+FAQs and troubleshooting
+========================
 
 .. _itempick-faq-lc-rim-not-visible:
 .. toggle-header::
@@ -26,7 +26,7 @@ FAQs and troublehooting
      * Does the load carrier rim appear in the depth image? (cfr. :ref:`itempick-bin-picking-no-robot-setup`)
      * Is the load carrier inside the region of interest (if specified)?
      * Are the dimensions of the load carrier model correct? (cfr. :ref:`itempick-bin-picking-no-robot-configure`)
-     
+
        The manufacturer's dimensions might not be completely accurate. If the load carrier is not
        detected, we recommended to double check the configured dimensions.
        Additionally, one can try increasing the ``load_carrier_model_tolerance`` parameter (e.g.
@@ -43,25 +43,25 @@ FAQs and troublehooting
    By default, |itempick| assumes that the load carrier is located on a horizontal
    surface. If that's not the case, one needs to provide the load carrier orientation as a prior
    with the load carrier model.
-   
+
    This is currently not possible in the |webgui|'s *ItemPick* panel.
    Instead, it can be set via the :doc:`rcvisard:rest_api`.
-   
+
    Two sample cases are shown in :numref:`fig-itempick-faq-tilted-lc` for the *external* pose frame
    (left) and the *camera* pose frame (right).
-   
+
    .. _fig-itempick-faq-tilted-lc:
    .. figure:: ../images/itempick/load_carrier_tilted.png
       :width: 700px
       :align: center
-      
+
       Load carrier not placed on a horizontal surface
-    
+
    In the left case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-ext``)
    is rotated by an angle :math:`\theta` around the :math:`y`
    axis of the *external* coordinate system. The load carrier orientation is given by the
    following quaternion: :math:`\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]`.
-   
+
      .. toggle-header::
        :header: **Request to the REST-API for configuring tilted-load-carrier-ext**
 
@@ -73,9 +73,9 @@ FAQs and troublehooting
        one needs to send a PUT request to the URL
        ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/set_load_carrier``,
        where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-       
+
        The PUT body should include the following data, in JSON:
-       
+
        .. code-block:: json
 
          {
@@ -104,7 +104,7 @@ FAQs and troublehooting
              }
            }
          }
-   
+
    In the right case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-cam``) is parallel to the image plane.
    Its orientation in the *camera* coordinate system is
    :math:`\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]`.
@@ -119,9 +119,9 @@ FAQs and troublehooting
        one needs to send a PUT request to the URL
        ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/set_load_carrier``,
        where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-       
+
        The PUT body should include the following data, in JSON:
-       
+
        .. code-block:: json
 
          {
@@ -179,31 +179,31 @@ FAQs and troublehooting
 
    This means that either the load carrier :math:`z` inner dimension is too large or the
    reconstruction of the load carrier floor is noisy.
-   
+
    To improve the detection result as shown in :numref:`fig-itempick-faq-load-carrier-floor`,
    two options are available:
 
      * Decrease the load carrier :math:`z` inner dimension
      * Increase the ``load_carrier_crop_distace`` parameter (recommended for noisy data)
-   
+
    .. _fig-itempick-faq-load-carrier-floor:
    .. figure:: ../images/itempick/load_carrier_floor.png
       :width: 700px
       :align: center
-      
+
       Removing detection of the bin floor
 
 .. _itempick-faq-no-grasps-on-lc-floor:
 .. toggle-header::
    :header: **Objects on the load carrier floor are not detected as load carrier content**
-   
+
    This means that either the load carrier :math:`z` inner dimension is too small or the
    the ``load_carrier_crop_distace`` parameter is too large.
 
 .. _itempick-faq-multiple-lcs:
 .. toggle-header::
    :header: **There are multiple load carriers of the same type in the scene**
-   
+
    In the current implementation, |itempick| detects one load carrier with each ``compute_grasps``
    or ``detect_load_carriers`` request.
 
@@ -213,7 +213,7 @@ FAQs and troublehooting
 .. _itempick-faq-speed-up-for-static-lc:
 .. toggle-header::
    :header: **My load carrier doesn't move. How do I speed up my application?**
-  
+
    In case of static load carriers, the processing time for getting grasp points inside the load carrier
    can be reduced, by avoiding detecting the same load carrier over multiple frames.
    The load carrier detection can be triggered once and then, for the next iterations, a region of

@@ -135,9 +135,8 @@ exposure region and neglects all other images parts. This can be a very powerful
 very dark or very bright areas outside the exposure region cannot negatively influence
 the relevant image part inside the exposure region.
 
-Currently, it is not possible to specify the exposure region from the |webgui|.
-Instead, it can be set via the (:doc:`rcvisard:rest_api`).
-However, if an exposure region is specified, it is visualized as a rectangle in the left
+The exposure region can be specified from the |webgui| and via the :doc:`rcvisard:rest_api`.
+If an exposure region is specified, it is visualized as a rectangle in the left
 camera image in the |webgui|.
 
 There are four parameters that define the exposure region: ``exp_offset_x``, ``exp_offset_y``,

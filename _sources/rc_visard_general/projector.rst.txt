@@ -27,9 +27,9 @@ Before we start
 Before going through this tutorial, the following prerequisites should
 be met.
 
-The rc_visard’s image version is at least 1.4 and the rc_visard’s
+The rc_visard's image version is at least 1.4 and the rc_visard's
 license includes the IOControl component. This can be verified on the
-Web GUI’s System panel.
+Web GUI's System panel.
 
 The RandomDot Projector, its Y-cable, and a 24 V, 60 W power supply
 are available.
@@ -83,7 +83,7 @@ connector, and (3) the power supply.
 Focusing the projector
 
 For the focus configuration, one should turn the RandomDot Projector
-permanently on. This can be done on the Web GUI’s
+permanently on. This can be done on the Web GUI's
 
 IOControl
 
@@ -111,7 +111,7 @@ For the aperture configuration, one should set the Exposure mode to
 
 Auto
 
- in the Web GUI’s
+ in the Web GUI's
 
 Camera
 
@@ -124,7 +124,7 @@ For its configuration, one should look at the
 
 Confidence
 
- image in the Web GUI’s
+ image in the Web GUI's
 
 Depth Image
 
@@ -159,7 +159,7 @@ exposure time of every second image. Images with projected pattern are
 used for computing depth images. Images without projected pattern can
 be used as texture or for other image processing modules.
 
-This mode can be selected on the Web GUI’s
+This mode can be selected on the Web GUI's
 
 IOControl
 
@@ -175,7 +175,7 @@ Warning: The RandomDot Projector must not be turned on permanently
 
 Configuring the exposure
 
-As last step, one needs to go back to the Web GUI’s
+As last step, one needs to go back to the Web GUI's
 
 Camera
 
@@ -213,7 +213,7 @@ blur in the projected pattern. This can be done while looking at the
 
 Confidence
 
- image in the Web GUI’s
+ image in the Web GUI's
 
 Depth Image
 

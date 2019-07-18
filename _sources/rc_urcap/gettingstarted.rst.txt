@@ -12,7 +12,7 @@ Note: Roboception URCap is internally communicating with the daemon
   on port 49285. In the unlikely event that it causes a conflict with
   a URCap from a different vendor, please contact Roboception support.
 
-Roboception’s ItemPick Bundle for Universal Robots contains everything
+Roboception's ItemPick Bundle for Universal Robots contains everything
 required to calibrate the robot and the
 
 rc_visard
@@ -46,7 +46,7 @@ rc_reason IOControl Module
 
 Software installation
 
-Download the URCap from Roboception’s downland page
+Download the URCap from Roboception's download page
 
 Copy the URCap file to a USB flash drive
 
@@ -79,7 +79,7 @@ rc_visard
 
  directly to the ethernet port of the Universal Robot controller, or
 through a network switch. During setup, it is recommended to establish
-a connection via switch, sinche some parts of the
+a connection via switch, since some parts of the
 
 rc_visard
 

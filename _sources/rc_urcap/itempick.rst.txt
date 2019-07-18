@@ -1,7 +1,7 @@
 ItemPick
 
 This tutorial shows how to pick an object with the ItemPick module and
-Roboception’s URCap.
+Roboception's URCap.
 
 Before we start
 
@@ -74,7 +74,7 @@ calculation. The region of interest has to be defined prior.
 
 Note: Since the frame of the chosen region of interest has to match
   the return frame of the requested grasp computation, only regions of
-  interest defined with frame ‘external’ are listed in the drop down
+  interest defined with frame 'external' are listed in the drop down
   menu.
 
 Use Projector
@@ -110,18 +110,18 @@ Getting next pick pose
 
 Calculating the pick orientation depending on the chosen option
 
-Moving to pre pick position with tool speed as defined in the ‘Pre
-pick speed’ variable and tool acceleration as defined in the ‘Pre pick
-acc’ variable.
+Moving to pre pick position with tool speed as defined in the 'Pre
+pick speed' variable and tool acceleration as defined in the 'Pre pick
+acc' variable.
 
-Moving to pick position with tool speed as defined in the ‘Pick speed’
+Moving to pick position with tool speed as defined in the 'Pick speed'
 variable and tool acceleration of 500 mm/s2.
 
 Picking part
 
 Moving to post pick position (same as pre pick) with speed as defined
-in the ‘Pre pick speed’ variable and acceleration as defined in the
-‘Pre pick acc’ variable
+in the 'Pre pick speed' variable and acceleration as defined in the
+'Pre pick acc' variable
 
 Note: It is not guarantied that the pick and pre-pick poses are
   collision free
@@ -149,7 +149,7 @@ Pick approach angle
 
 With the
 
-‘Pick approach angle’
+'Pick approach angle'
 
  drop down menu it is possible to change the strategy of calculating
 the pick position angle. There are three different options to choose

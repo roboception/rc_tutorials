@@ -10,7 +10,7 @@ configure the
 
 rc_visard
 
-’s IP settings as well as optimizing the host PC’s network settings
+'s IP settings as well as optimizing the host PC's network settings
 for the high data throughput.
 
 
@@ -32,14 +32,14 @@ be met.
 
 rc_visard
 
-’s serial number at hand ]-
+'s serial number at hand ]-
 
 It is an 8-digit number to be found on the device and will be referred
 to as "rc_visard_id" in the remainder of this tutorial.
 
 -[ Clarify network setup ]-
 
-Check the host’s network settings, i.e. IP address and sub-net mask.
+Check the host's network settings, i.e. IP address and sub-net mask.
 If you want to connect the rc_visard to the host via link-local please
 make sure the host is configured accordingly.
 
@@ -49,17 +49,17 @@ network?
 If connected to a larger network, contact your system administrator
 and check:  Is a DHCP server available in the network? In some
 networks, the DHCP server is configured so that it only accepts known
-devices. In this case, the sensor’s MAC address (to be found on the
-device’s label) needs to be configured in the DHCP server.  What kind
+devices. In this case, the sensor's MAC address (to be found on the
+device's label) needs to be configured in the DHCP server.  What kind
 of network switches are installed in that network? The switches should
 support jumbo frames and have a high enough switching bandwidth to not
 drop packets.
 
 -[ Download and install client software on host PC ]-
 
-Download and install Roboception’s discovery tool rcdiscover-gui.
+Download and install Roboception's discovery tool rcdiscover-gui.
 
-Download and install Roboception’s command line GenICam tools.
+Download and install Roboception's command line GenICam tools.
 
 Connect and discover rc_visard
 
@@ -67,8 +67,9 @@ Once the
 
 rc_visard
 
- is connected to the host PC – either directly or via a larger network
-– run Roboception’s discovery tool. A window will open showing all
+ is connected to the host PC -- either directly or via a larger
+network -- run Roboception's discovery tool. A window will open
+showing all
 
 rc_visard
 
@@ -83,7 +84,7 @@ Note: The discovery tool is the central troubleshooting tool for
   reachable by the host PC or not. For a detailed description, please
   refer to the
 
-  discovery tool’s manual page
+  discovery tool's manual page
 
   .
 
@@ -92,8 +93,8 @@ If the
 rc_visard
 
  is reachable, a simple double-click on the respective row opens the
-sensor’s Web GUI which let’s you explore and visualize the data from
-the device. In this case, no further configuration of the sensor’s
+sensor's Web GUI which let's you explore and visualize the data from
+the device. In this case, no further configuration of the sensor's
 network settings are required so that you might skip the next section
 and head over to
 
@@ -105,16 +106,16 @@ Otherwise, most probably the
 
 rc_visard
 
-’s network settings need to be configured according to your network
+'s network settings need to be configured according to your network
 setup as shown in the following.
 
-Configure rc_visard’s network settings
+Configure rc_visard's network settings
 
 In general, two options exist to configure the
 
 rc_visard
 
-’s network settings.
+'s network settings.
 
 Option 1: Assign a temporary IP address
 
@@ -126,7 +127,7 @@ temporarily
 
 rc_visard
 
-’s IP address and sub-network:
+'s IP address and sub-network:
 
 In the rcdiscover-gui click and select the row representing the non-
 reachable sensor.
@@ -135,7 +136,7 @@ Click the Set temporary IP address-button. The respective dialog
 window pops up.  Make sure the correct sensor is selected.  Change the
 IP and sub-net settings. As the goal is to temporarily put the sensor
 and the host into the same network, these temporary settings need to
-be chosen according to the host’s IP address and sub-net.  Click the
+be chosen according to the host's IP address and sub-net.  Click the
 Set temporary IP address-button and follow the dialog.
 
 Back in the main window, start a new discovery by clicking the Rerun
@@ -152,7 +153,7 @@ Note: Since these settings are applied only
 
   temporarily
 
-  , any reconnect – particularly any reboot – will set the
+  , any reconnect -- particularly any reboot -- will set the
 
   rc_visard
 
@@ -164,7 +165,7 @@ The command line GenICam tool "gc_config" gives full control over the
 
 rc_visard
 
-’s network settings and lets you
+'s network settings and lets you
 
 persistently
 
@@ -185,7 +186,7 @@ Note: As a preliminary for configuration via GenICam the sensor
 
 The following command configures an exemplary, static IP address of
 192.168.188.10 and a sub-net mask of 255.255.0.0, where "rc_visard_id"
-is to be replaced by the sensor’s serial number or user-defined name.
+is to be replaced by the sensor's serial number or user-defined name.
 
    gc_config <rc_visard_id> -d 0 -p 1 -i 192.168.188.10 -s 255.255.0.0
 
@@ -195,7 +196,7 @@ If a DHCP server is available, "gc_config" lets you enable the
 
 rc_visard
 
-’s auto-configuration option via:
+'s auto-configuration option via:
 
    gc_config <rc_visard_id> -d 1 -p 0
 
@@ -268,7 +269,7 @@ Ethernet connection.
 We therefore strongly recommend the following network optimizations if
 applicable.
 
-Enabling “jumbo frames”
+Enabling "jumbo frames"
 
 So called
 
@@ -291,13 +292,13 @@ connecting via GenICam. Hence, when directly connecting the
 
 rc_visard
 
- to the host, you only need to adapt the network interface card’s
+ to the host, you only need to adapt the network interface card's
 settings of that PC. However, if other network devices such as network
 switches are involved every individual device on the route needs to
 support jumbo frames and needs be configured properly. Please contact
 your network administrator to enable jumbo frames on them.
 
-In the following we show examples how to set the host’s MTU to 9000 in
+In the following we show examples how to set the host's MTU to 9000 in
 Linux and Windows 10.
 
 Ubuntu
@@ -314,28 +315,28 @@ Open the network manager
 
 Select interface and edit settings
 
-On “Ethernet” tab, change MTU to 9000
+On "Ethernet" tab, change MTU to 9000
 
 Windows 10
 
 In Windows the settings for jumbo frames can be found in the advanced
 settings of the network driver:
 
-   Open “Network Connections”
+   Open "Network Connections"
 
    Right-click on the network interface
 
-   Choose “Properties”
+   Choose "Properties"
 
-   Click “Configure”
+   Click "Configure"
 
-   On the “Advanced” tab, choose “Jumbo Packet”
+   On the "Advanced" tab, choose "Jumbo Packet"
 
-   Select “9014 Bytes”
+   Select "9014 Bytes"
 
 Increase the Receive Buffer Size (Linux only)
 
-Another helpful option is to increase the network stack’s receive
+Another helpful option is to increase the network stack's receive
 buffer size. Temporarily, this option can be set and tested via
 
    sudo sysctl -w net.core.rmem_max=33554432
@@ -424,7 +425,7 @@ A DHCP server is available but the rc_visard falls back to link-local
    label) needs to be configured in the DHCP server. Please contact
    your network administrator.
 
-I get many “incomplete buffer”-warnings
+I get many "incomplete buffer"-warnings
 
 This indicates that data packets got lost in your network setup and
 could not be re-sent by the

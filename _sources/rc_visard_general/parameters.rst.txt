@@ -40,7 +40,7 @@ REST-API interface
 
 Note: After changing parameters, it is necessary to save them in
   order to make them persistent after reboot. This can be done by
-  clicking the ‘save’ button of the corresponding module in the Web
+  clicking the 'save' button of the corresponding module in the Web
   GUI.
 
 Camera Parameters
@@ -153,13 +153,12 @@ very powerful tool as very dark or very bright areas outside the
 exposure region cannot negatively influence the relevant image part
 inside the exposure region.
 
-Currently, it is not possible to specify the exposure region from the
-Web GUI. Instead, it can be set via the (
+The exposure region can be specified from the Web GUI and via the
 
 REST-API interface
 
-). However, if an exposure region is specified, it is visualized as a
-rectangle in the left camera image in the Web GUI.
+. If an exposure region is specified, it is visualized as a rectangle
+in the left camera image in the Web GUI.
 
 There are four parameters that define the exposure region:
 "exp_offset_x", "exp_offset_y", "exp_height" and "exp_width".

@@ -3,7 +3,7 @@ FAQs and troubleshooting
 Note: For problems connected directly to one of the modules please
   refer to module tutorials.
 
-I can connect to rc_visard’s Web GUI but the sensor is not reachable
+I can connect to rc_visard's Web GUI but the sensor is not reachable
 from URCap
 
 Make sure that rc_visard and robot have a valid ip address in the same
@@ -14,9 +14,9 @@ Can I connect multiple rc_visards to my robot
 Currently it is not possible to work with multiple sensors connected
 to a single robot.
 
-I can not install Roboception’s URCap
+I can not install Roboception's URCap
 
-To install Roboception’s URCap, the controller version has to be 3.7.0
+To install Roboception's URCap, the controller version has to be 3.7.0
 or higher.
 
 Is it possible to set the parameters of the rc_visard directly in UR

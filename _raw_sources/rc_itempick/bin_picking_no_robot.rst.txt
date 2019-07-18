@@ -35,7 +35,7 @@ The upper limit for the load carrier dimensions is 1.3 m x 0.9 m x 1.0 m.
   :align: center
 
   Different models of load carriers.
-  
+
 .. _itempick-bin-picking-no-robot-setup:
 
 Setting up the scene
@@ -96,14 +96,14 @@ with the only difference that the values need to be converted to meters.
    .. tabs::
 
       .. group-tab:: REST-API
-        
+
         To trigger the ``set_load_carrier`` service via the REST-API for *my-load-carrier1*,
         one needs to send a PUT request to the URL
         ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/set_load_carrier``,
         where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-        
+
         The PUT body should include the following data, in JSON:
-        
+
         .. code-block:: json
 
           {
@@ -181,12 +181,12 @@ with the only difference that the values need to be converted to meters.
           }"
 
       .. group-tab:: curl (Windows)
-        
+
         The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
         |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
 
         .. code-block:: bash
-              
+
           curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
           "{ ^
               \"args\": { ^
@@ -257,14 +257,14 @@ and inner dimensions, as it was the case for *my-load-carrier1*.
  .. tabs::
 
     .. group-tab:: REST-API
-      
+
       To trigger the ``set_load_carrier`` service via the REST-API for *my-load-carrier2*,
       one needs to send a PUT request to the URL
       ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/set_load_carrier``,
       where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-      
+
       The PUT body should include the following data, in JSON:
-      
+
       .. code-block:: json
 
         {
@@ -354,12 +354,12 @@ and inner dimensions, as it was the case for *my-load-carrier1*.
         }"
 
     .. group-tab:: curl (Windows)
-      
+
       The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
       |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
 
       .. code-block:: bash
-            
+
         curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
         "{ ^
             \"args\": { ^
@@ -440,7 +440,7 @@ trigger such detections.
   .. tabs::
 
     .. group-tab:: REST-API
-    
+
       To trigger the ``detect_load_carriers`` service via the REST-API, one needs to send
       a PUT request to the URL
       ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/detect_load_carriers``,
@@ -465,7 +465,7 @@ trigger such detections.
          ``http://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_service``,
          where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
       #. The following values are required to fill the request to the REST-API:
-      
+
           * **node** ``rc_itempick``
           * **service** ``detect_load_carriers``
           * **service args**
@@ -541,7 +541,7 @@ The detected load carrier is highlighted in blue, while its content is highlight
 .. figure:: ../images/itempick/load_carriers_detected.png
   :width: 600px
   :align: center
-  
+
   Detection result for *my-load-carrier1* (left) and *my-load-carrier2* (right).
 
 .. note::
@@ -580,14 +580,14 @@ the *Try Out* section of the |webgui|'s *ItemPick* panel.
    .. tabs::
 
     .. group-tab:: REST-API
-      
+
       To trigger the ``compute_grasp`` service via the REST-API, one needs to send
       a PUT request to the URL
       ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/compute_grasp``,
       where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-      
+
       The PUT body should include the following data, in JSON:
-      
+
       .. code-block:: json
 
         {
@@ -598,7 +598,7 @@ the *Try Out* section of the |webgui|'s *ItemPick* panel.
             "suction_surface_width": 0.02
           }
         }
-    
+
     .. group-tab:: Swagger UI
 
       #. The Swagger UI for putting a service request is located at
@@ -638,7 +638,7 @@ the *Try Out* section of the |webgui|'s *ItemPick* panel.
         }"
 
     .. group-tab:: curl (Windows)
-    
+
       The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
       |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
 
@@ -695,12 +695,15 @@ In this section we show how to select the compartment in :numref:`fig-itempick-l
 .. figure:: ../images/itempick/load_carrier_compartment.png
   :width: 800px
   :align: center
-  
+
   Sample compartment inside a load carrier. The coordinate system shown in the image is the
   load carrier reference frame.
-  
+
 The compartment box dimensions are computed from the load carrier inner dimensions:
-:math:`\text{inner\_dimensions.x}/2\cdot\text{inner\_dimensions.y}\cdot\text{inner\_dimensions.z}`.
+
+.. math::
+
+  \left(\frac{\text{inner_dimensions.x}}{2}, \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)^T.
 
 The load carrier reference frame is located at the center of the load carrier outer box.
 To move from the load carrier reference frame to the compartment center,
@@ -708,7 +711,7 @@ the following translation needs to be applied:
 
 .. math::
 
-  \left(\frac{\text{inner\_dimensions.x}}{4}, 0, \frac{\text{outer\_dimensions.z}-\text{inner\_dimensions.z}}{2}\right)^T
+  \left(\frac{\text{inner_dimensions.x}}{4}, 0, \frac{\text{outer_dimensions.z}-\text{inner_dimensions.z}}{2}\right)^T.
 
 Since the compartment volume is intersected with the load carrier inner volume, the box :math:`z`
 dimension can also be set to the load carrier outer dimension, without applying any
@@ -720,14 +723,14 @@ The code below shows how to place a ``compute_grasps`` request for items inside 
 .. tabs::
 
   .. group-tab:: REST-API
-    
+
     To trigger the ``compute_grasp`` service via the REST-API, one needs to send
     a PUT request to the URL
     ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/compute_grasp``,
     where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-    
+
     The PUT body should include the following data, in JSON:
-    
+
     .. code-block:: json
 
       {
@@ -758,7 +761,7 @@ The code below shows how to place a ``compute_grasps`` request for items inside 
           "suction_surface_width": 0.02
         }
       }
-  
+
   .. group-tab:: Swagger UI
 
     #. The Swagger UI for putting a service request is located at
@@ -838,7 +841,7 @@ The code below shows how to place a ``compute_grasps`` request for items inside 
       }"
 
   .. group-tab:: curl (Windows)
-  
+
     The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
     |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
 

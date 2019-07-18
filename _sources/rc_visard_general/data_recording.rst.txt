@@ -64,9 +64,9 @@ with the suffix
 
 .pfm
 
- can be viewed in 3D by pressing ‘p’ or calling "plyv" with the
+ can be viewed in 3D by pressing 'p' or calling "plyv" with the
 disparity image as argument. Both tools show a help page with all key
-codes by pressing ‘h’.
+codes by pressing 'h'.
 
 Windows
 
@@ -84,12 +84,12 @@ the explorer. Disparity images, i.e. with the suffix
 
 .pfm
 
- can be viewed in 3D by pressing ‘p’. Both tools show a help page with
-all key codes by pressing ‘h’.
+ can be viewed in 3D by pressing 'p'. Both tools show a help page with
+all key codes by pressing 'h'.
 
 -[ The network configuration is optimized: ]-
 
-Enable “Jumbo frames” by setting the MTU to 9000.
+Enable "Jumbo frames" by setting the MTU to 9000.
 
 Ubuntu
 
@@ -105,21 +105,21 @@ Open the network manager
 
 Select interface and edit settings
 
-On “Ethernet” tab, change MTU to 9000
+On "Ethernet" tab, change MTU to 9000
 
 Windows 10
 
-Open “Network Connections”
+Open "Network Connections"
 
 Right-click on the network interface
 
-Choose “Properties”
+Choose "Properties"
 
-Click “Configure”
+Click "Configure"
 
-On the “Advanced” tab, choose “Jumbo Packet”
+On the "Advanced" tab, choose "Jumbo Packet"
 
-Select “9014 Bytes”
+Select "9014 Bytes"
 
 Recording data
 
@@ -139,7 +139,7 @@ argument, optionally next to other arguments.
 
 Each time, the script runs, it creates a new folder in the working
 directory (i.e. the place the script was started in) and writes all
-data to that folder. The folder’s name is of the format "rc-
+data to that folder. The folder's name is of the format "rc-
 visard_<SN>_<T>", where "<SN>" is replaced by the "rc_visard_id" and
 "<T>" by the current time. The images are stored in PGM or PPM format,
 which are supported by many image viewers. All other files are stored
@@ -250,16 +250,16 @@ Windows
 
 Troubleshooting
 
-The script writes “gc_stream is not found” or “gc_info is not found”
+The script writes "gc_stream is not found" or "gc_info is not found"
 
    "rc_genicam_api" is not installed properly.
 
-The script writes “rcdynamics_stream is not found”
+The script writes "rcdynamics_stream is not found"
 
    "rc_dynamics_api" is not installed properly.
 
-The script writes “Cannot find device: 01234567” or “Device 01234567
-not found”
+The script writes "Cannot find device: 01234567" or "Device 01234567
+not found"
 
    The script could not find the
 
@@ -268,7 +268,7 @@ not found”
     with the given serial number. Are serial number and network
    configuration correct?
 
-The script writes “storeBuffer(): Received incomplete buffer”
+The script writes "storeBuffer(): Received incomplete buffer"
 
    The network configuration may be slow or not optimized properly. Is
    the
@@ -285,7 +285,7 @@ The script writes “storeBuffer(): Received incomplete buffer”
 
     to the host directly.
 
-The script writes “Device::open() failed”
+The script writes "Device::open() failed"
 
    The
 
@@ -298,7 +298,7 @@ The script writes “Device::open() failed”
 
    .
 
-The script writes “Cannot grab images”
+The script writes "Cannot grab images"
 
    The network may not be configured properly. On Windows, the
    firewall may block the network connection. Temporarily disabling

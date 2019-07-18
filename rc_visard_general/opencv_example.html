@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
+  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation</title>
   
 
@@ -33,13 +33,15 @@
   
 
   
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
     <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
   
@@ -54,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Obtain dense depth images with the RandomDot Projector" href="projector.html"/>
@@ -202,7 +204,7 @@
 <h1>Getting started with <em>rc_visard</em> and OpenCV<a class="headerlink" href="#getting-started-with-rc-visard-and-opencv" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to get started with the <em>rc_visard</em> and OpenCV.
 We will show how to receive image streams from the <em>rc_visard</em> with OpenCV
-via Roboception’s GenICam Convenience Layer <code class="docutils literal"><span class="pre">rc_genicam_api</span></code>.</p>
+via Roboception’s GenICam Convenience Layer <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code>.</p>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
 <p>Before going through this tutorial, the following prerequisites should be met.</p>
@@ -212,7 +214,7 @@ via Roboception’s GenICam Convenience Layer <code class="docutils literal"><sp
 One can verify that with our <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a>.</li>
 <li>One should know the serial number or user defined name of the <em>rc_visard</em>.
 The serial number is of the format 029xxxxx.
-It will be referred to as <code class="docutils literal"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</li>
+It will be referred to as <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</li>
 </ol>
 <p class="rubric">Download and install the following required client software:</p>
 <div class="sphinx-tabs docutils container">
@@ -233,13 +235,13 @@ The minimum required version is 2.0.</p>
 </li>
 <li><p class="first">Install <a class="reference external" href="https://opencv.org/">OpenCV</a>. The minimum required version is 2.0.</p>
 <p>For Ubuntu, installation can be done from the terminal with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>apt install libopencv-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install libopencv-dev
 </pre></div>
 </div>
 </li>
 <li><p class="first">Install <a class="reference external" href="https://cmake.org/">cmake</a>. The minimum required version is 2.8.12.</p>
 <p>For Ubuntu, installation can be done from the terminal with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>apt install cmake
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install cmake
 </pre></div>
 </div>
 </li>
@@ -263,7 +265,7 @@ The minimum required version is 2.0.</p>
 <div class="section" id="compiling-the-example-program">
 <h2>Compiling the example program<a class="headerlink" href="#compiling-the-example-program" title="Permalink to this headline">¶</a></h2>
 <p>We provide an example program which shows how to receive image streams from
-the <em>rc_visard</em> using <code class="docutils literal"><span class="pre">rc_genicam_api</span></code> and how to convert them to an
+the <em>rc_visard</em> using <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> and how to convert them to an
 OpenCV representation.
 The example can be downloaded from our
 <a class="reference external" href="https://github.com/roboception/rc_visard_opencv_example">GitHub repository</a>.</p>
@@ -283,7 +285,7 @@ Windows</div>
 <p>After downloading or cloning the repository, change into the
 repository’s directory.
 In a terminal, run the following commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build    <span class="c1"># make a build directory</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build    <span class="c1"># make a build directory</span>
 <span class="nb">cd</span> build       <span class="c1"># change to that directory</span>
 cmake ..       <span class="c1"># run cmake to configure the build</span>
 make           <span class="c1"># build the example</span>
@@ -292,27 +294,27 @@ make           <span class="c1"># build the example</span>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
 <ol class="arabic simple">
-<li>Create a folder <code class="docutils literal"><span class="pre">build</span></code> in the repository.</li>
-<li>Run <code class="docutils literal"><span class="pre">CMake</span> <span class="pre">(cmake-gui)</span></code></li>
+<li>Create a folder <code class="docutils literal notranslate"><span class="pre">build</span></code> in the repository.</li>
+<li>Run <code class="docutils literal notranslate"><span class="pre">CMake</span> <span class="pre">(cmake-gui)</span></code></li>
 <li>In cmake, set the source code location to the repository folder</li>
-<li>Set the binaries location to the just created <code class="docutils literal"><span class="pre">build</span></code> folder</li>
+<li>Set the binaries location to the just created <code class="docutils literal notranslate"><span class="pre">build</span></code> folder</li>
 <li>Click <em>Configure</em></li>
 <li>A pop-up will open, asking for the <em>generator</em></li>
 <li>Choose the installed version of Visual Studio</li>
 <li>Click finish</li>
 <li>Wait until configuration is finished</li>
 <li>Most likely, an error about not finding OpenCV will occur<ol class="arabic">
-<li>Set <code class="docutils literal"><span class="pre">OpenCV_DIR</span></code> to the subfolder <code class="docutils literal"><span class="pre">build\x64\vc15\lib</span></code>
+<li>Set <code class="docutils literal notranslate"><span class="pre">OpenCV_DIR</span></code> to the subfolder <code class="docutils literal notranslate"><span class="pre">build\x64\vc15\lib</span></code>
 of the OpenCV installation path</li>
 <li>Again, click <em>Configure</em></li>
 </ol>
 </li>
-<li>Most likely, an error about not finding <code class="docutils literal"><span class="pre">rc_genicam_api</span></code> will occur<ol class="arabic">
-<li>Set <code class="docutils literal"><span class="pre">RC_GENICAM_API_DIR</span></code> to the subfolder <code class="docutils literal"><span class="pre">lib\rc_genicam_api</span></code> of the <code class="docutils literal"><span class="pre">rc_genicam_api</span></code> installation path</li>
+<li>Most likely, an error about not finding <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> will occur<ol class="arabic">
+<li>Set <code class="docutils literal notranslate"><span class="pre">RC_GENICAM_API_DIR</span></code> to the subfolder <code class="docutils literal notranslate"><span class="pre">lib\rc_genicam_api</span></code> of the <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> installation path</li>
 <li>Again, click <em>Configure</em></li>
 </ol>
 </li>
-<li>Set <code class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> to the folder where the example is installed (e.g. <code class="docutils literal"><span class="pre">install</span></code> in the repository)</li>
+<li>Set <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> to the folder where the example is installed (e.g. <code class="docutils literal notranslate"><span class="pre">install</span></code> in the repository)</li>
 <li>Click <em>Generate</em></li>
 <li>Click <em>Open Project</em>. Microsoft Visual Studio-IDE will open</li>
 <li>In Visual Studio, right-click on <em>ALL_BUILD</em> and choose <em>Build</em></li>
@@ -320,12 +322,12 @@ of the OpenCV installation path</li>
 </ol>
 </div>
 </div>
-<p>The build will yield a shared library (<code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code>) and
-an executable (<code class="docutils literal"><span class="pre">rc_visard_show_streams</span></code>), which uses the shared library.</p>
+<p>The build will yield a shared library (<code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code>) and
+an executable (<code class="docutils literal notranslate"><span class="pre">rc_visard_show_streams</span></code>), which uses the shared library.</p>
 </div>
 <div class="section" id="running-the-example-program">
 <span id="opencv-running-example-program"></span><h2>Running the example program<a class="headerlink" href="#running-the-example-program" title="Permalink to this headline">¶</a></h2>
-<p>The example executable <code class="docutils literal"><span class="pre">rc_visard_show_streams</span></code> shows live image streams in an OpenCV window.
+<p>The example executable <code class="docutils literal notranslate"><span class="pre">rc_visard_show_streams</span></code> shows live image streams in an OpenCV window.
 One can specify which streams to enable by setting command line options.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -340,49 +342,49 @@ Windows</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
 <p>In case above build instructions were used, one should first change to
-the <code class="docutils literal"><span class="pre">tools</span></code> directory in <code class="docutils literal"><span class="pre">build</span></code> before running the program:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> tools
+the <code class="docutils literal notranslate"><span class="pre">tools</span></code> directory in <code class="docutils literal notranslate"><span class="pre">build</span></code> before running the program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> tools
 </pre></div>
 </div>
 <p>To run the program, the general syntax is:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_show_streams <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_show_streams <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
 <p>In the following we assume that above build instructions were followed
-and that the example program was installed into <code class="docutils literal"><span class="pre">install</span></code> in the
+and that the example program was installed into <code class="docutils literal notranslate"><span class="pre">install</span></code> in the
 repository folder.</p>
 <ol class="arabic">
-<li><p class="first">Open the <code class="docutils literal"><span class="pre">install</span></code> folder</p>
+<li><p class="first">Open the <code class="docutils literal notranslate"><span class="pre">install</span></code> folder</p>
 </li>
-<li><p class="first">In the address bar of the Windows Explorer window, type <code class="docutils literal"><span class="pre">cmd</span></code>
+<li><p class="first">In the address bar of the Windows Explorer window, type <code class="docutils literal notranslate"><span class="pre">cmd</span></code>
 to open a command line window</p>
 </li>
 <li><p class="first">To run the program, use the following command</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_show_streams.exe <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_show_streams.exe <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">PATH</span></code> environment variable should be set to the
-appropriate folders containing the OpenCV and <code class="docutils literal"><span class="pre">rc_genicam_api</span></code>
-DLLs. Otherwise, an error will occur when running <code class="docutils literal"><span class="pre">rc_visard_show_streams</span></code>.</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable should be set to the
+appropriate folders containing the OpenCV and <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code>
+DLLs. Otherwise, an error will occur when running <code class="docutils literal notranslate"><span class="pre">rc_visard_show_streams</span></code>.</p>
 </div>
 </div>
 </div>
-<p><code class="docutils literal"><span class="pre">&lt;rc_visard_id&gt;</span></code> is to be replaced by the <em>rc_visard</em> serial number, GenTL ID
+<p><code class="docutils literal notranslate"><span class="pre">&lt;rc_visard_id&gt;</span></code> is to be replaced by the <em>rc_visard</em> serial number, GenTL ID
 or user defined ID.</p>
-<p><code class="docutils literal"><span class="pre">[options]</span></code> can be</p>
+<p><code class="docutils literal notranslate"><span class="pre">[options]</span></code> can be</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">--left</span></code>: connect to the left image stream</li>
-<li><code class="docutils literal"><span class="pre">--right</span></code>: connect to the right image stream</li>
-<li><code class="docutils literal"><span class="pre">--disparity</span></code>: connect to the disparity image stream</li>
-<li><code class="docutils literal"><span class="pre">--confidence</span></code>: connect to the confidence image stream</li>
-<li><code class="docutils literal"><span class="pre">--error</span></code>: connect to the error image stream</li>
-<li><code class="docutils literal"><span class="pre">--synchronize</span></code>: synchronize the received images by their timestamp</li>
+<li><code class="docutils literal notranslate"><span class="pre">--left</span></code>: connect to the left image stream</li>
+<li><code class="docutils literal notranslate"><span class="pre">--right</span></code>: connect to the right image stream</li>
+<li><code class="docutils literal notranslate"><span class="pre">--disparity</span></code>: connect to the disparity image stream</li>
+<li><code class="docutils literal notranslate"><span class="pre">--confidence</span></code>: connect to the confidence image stream</li>
+<li><code class="docutils literal notranslate"><span class="pre">--error</span></code>: connect to the error image stream</li>
+<li><code class="docutils literal notranslate"><span class="pre">--synchronize</span></code>: synchronize the received images by their timestamp</li>
 </ul>
 <p>For example, to show the left and right image, run:</p>
 <div class="sphinx-tabs docutils container">
@@ -397,18 +399,18 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_show_streams --left --right &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_show_streams --left --right &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_show_streams.exe --left --right &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_show_streams.exe --left --right &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>While the program is running, press <code class="docutils literal"><span class="pre">n</span></code> (next), <code class="docutils literal"><span class="pre">p</span></code> (previous)
-to cycle through the enabled image streams. Press <code class="docutils literal"><span class="pre">q</span></code> to exit the program.</p>
+<p>While the program is running, press <code class="docutils literal notranslate"><span class="pre">n</span></code> (next), <code class="docutils literal notranslate"><span class="pre">p</span></code> (previous)
+to cycle through the enabled image streams. Press <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit the program.</p>
 </div>
 <div class="section" id="explanation-of-the-example-s-source-code">
 <h2>Explanation of the example’s source code<a class="headerlink" href="#explanation-of-the-example-s-source-code" title="Permalink to this headline">¶</a></h2>
@@ -426,27 +428,27 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<p>In the <code class="docutils literal"><span class="pre">build</span></code> directory, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>make doc
+<p>In the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make doc
 </pre></div>
 </div>
-<p>Afterwards, open <code class="docutils literal"><span class="pre">index.html</span></code> in <code class="docutils literal"><span class="pre">doc/html</span></code>.</p>
+<p>Afterwards, open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in <code class="docutils literal notranslate"><span class="pre">doc/html</span></code>.</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
 <ol class="arabic simple">
 <li>Install <a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/download.html#srcbin">Doxygen</a></li>
-<li>In the <code class="docutils literal"><span class="pre">cmake-gui</span></code>, click on <em>Configure</em> and then <em>Generate</em></li>
+<li>In the <code class="docutils literal notranslate"><span class="pre">cmake-gui</span></code>, click on <em>Configure</em> and then <em>Generate</em></li>
 <li>Click on <em>Open Project</em></li>
 <li>In Microsoft Visual Studio-IDE, right-click on <em>doc</em> and choose <em>BUILD</em></li>
-<li>Go to the <code class="docutils literal"><span class="pre">build\doc\html</span></code> subfolder of the repository</li>
-<li>Open <code class="docutils literal"><span class="pre">index.html</span></code></li>
+<li>Go to the <code class="docutils literal notranslate"><span class="pre">build\doc\html</span></code> subfolder of the repository</li>
+<li>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code></li>
 </ol>
 </div>
 </div>
 <div class="section" id="project-structure">
 <h3>Project structure<a class="headerlink" href="#project-structure" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id4">
-<img src="../_images/graphviz-c7535791debe9593e4246b47a743e07f8ea9ea26.png" alt="digraph dependencies {
+<div class="graphviz"><img src="../_images/graphviz-6d1d6331d843fd56d26afbd8bc1842b7f7543c03.png" alt="digraph dependencies {
    rankdir=BT;
    splines=ortho;
    node [shape=record,
@@ -462,21 +464,21 @@ Windows</div>
    exe -&gt; opencv;
    lib -&gt; opencv;
    lib -&gt; rcgenapi;
-}" />
+}" class="graphviz" /></div>
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Dependency diagram</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-<p>The example consists of a shared library <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code> and an
-executable <code class="docutils literal"><span class="pre">rc_visard_show_streams</span></code>.
+<p>The example consists of a shared library <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code> and an
+executable <code class="docutils literal notranslate"><span class="pre">rc_visard_show_streams</span></code>.
 The library is designed to make it easy to reuse it for other projects that
 require OpenCV images.
 Below, the library will be described in more detail.</p>
 <p>Both the library and the executable depend on OpenCV.
-<code class="docutils literal"><span class="pre">rc_genicam_api</span></code> is hidden by the shared library <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> is hidden by the shared library <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code>.</p>
 </div>
 <div class="section" id="library-structure">
 <h3>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id5">
-<img src="../_images/graphviz-7d215fef78bf16a72fe2fb8f363933eebbfbcb17.png" alt="digraph class {
+<div class="graphviz"><img src="../_images/graphviz-828c920c6a81137aee5dabce5d4ec3723e09dcda.png" alt="digraph class {
    node [shape=record,
          style=filled,
          fillcolor=gray95,
@@ -492,44 +494,44 @@ Below, the library will be described in more detail.</p>
    imagereceiver -&gt; gcreceiver [arrowhead=diamond];
 
    image -&gt; imageset [arrowhead=odiamond];
-}" />
+}" class="graphviz" /></div>
 <p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Simplified class diagram</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>The core class of <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code> is <code class="docutils literal"><span class="pre">GcReceiver</span></code>.
-It wraps <code class="docutils literal"><span class="pre">rc_genicam_api</span></code>, takes care of bootstrapping and shutting down the
+<p>The core class of <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code> is <code class="docutils literal notranslate"><span class="pre">GcReceiver</span></code>.
+It wraps <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code>, takes care of bootstrapping and shutting down the
 connection to the <em>rc_visard</em>, and delegates decoding of image streams to
-the appropriate <code class="docutils literal"><span class="pre">ImageReceiver</span></code>.</p>
-<p><code class="docutils literal"><span class="pre">ImageReceiver</span></code> is an abstract base class of the concrete classes
-<code class="docutils literal"><span class="pre">IntensityReceiver</span></code>, <code class="docutils literal"><span class="pre">DisparityReceiver</span></code>, <code class="docutils literal"><span class="pre">ConfidenceReceiver</span></code> and
-<code class="docutils literal"><span class="pre">ErrorReceiver</span></code>, each of which is responsible for receiving one kind of
+the appropriate <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code> is an abstract base class of the concrete classes
+<code class="docutils literal notranslate"><span class="pre">IntensityReceiver</span></code>, <code class="docutils literal notranslate"><span class="pre">DisparityReceiver</span></code>, <code class="docutils literal notranslate"><span class="pre">ConfidenceReceiver</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ErrorReceiver</span></code>, each of which is responsible for receiving one kind of
 image stream.
-Each concrete <code class="docutils literal"><span class="pre">ImageReceiver</span></code> implements a) enabling of the image stream
+Each concrete <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code> implements a) enabling of the image stream
 from the <em>rc_visard</em> and b) converting the GenICam representation of the image
 to an OpenCV representation.</p>
 <p>The user of the library decides which image streams to enable by passing
-a list of <code class="docutils literal"><span class="pre">ImageReceiverFactory</span></code>s to <code class="docutils literal"><span class="pre">GcReceiver</span></code>.
-For each concrete <code class="docutils literal"><span class="pre">ImageReceiver</span></code> there is child class of
-<code class="docutils literal"><span class="pre">ImageReceiverFactory</span></code>, e.g. <code class="docutils literal"><span class="pre">IntensityReceiverFactory</span></code>.</p>
+a list of <code class="docutils literal notranslate"><span class="pre">ImageReceiverFactory</span></code>s to <code class="docutils literal notranslate"><span class="pre">GcReceiver</span></code>.
+For each concrete <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code> there is child class of
+<code class="docutils literal notranslate"><span class="pre">ImageReceiverFactory</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">IntensityReceiverFactory</span></code>.</p>
 <p>To set up streaming of images, the following steps are required:</p>
 <ol class="arabic simple">
-<li>Create a new <code class="docutils literal"><span class="pre">GcReceiver</span></code>. Its constructor requires the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>.</li>
-<li>Call <code class="docutils literal"><span class="pre">GcReceiver::open()</span></code> to open the connection to the <em>rc_visard</em>.</li>
-<li>Call <code class="docutils literal"><span class="pre">GcReceiver::initializeStreams()</span></code> and pass the list of
-<code class="docutils literal"><span class="pre">ImageReceiverFactory</span></code>s.</li>
+<li>Create a new <code class="docutils literal notranslate"><span class="pre">GcReceiver</span></code>. Its constructor requires the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code>.</li>
+<li>Call <code class="docutils literal notranslate"><span class="pre">GcReceiver::open()</span></code> to open the connection to the <em>rc_visard</em>.</li>
+<li>Call <code class="docutils literal notranslate"><span class="pre">GcReceiver::initializeStreams()</span></code> and pass the list of
+<code class="docutils literal notranslate"><span class="pre">ImageReceiverFactory</span></code>s.</li>
 </ol>
 <p>After set-up was successful, we can start receiving images.
-For that, <code class="docutils literal"><span class="pre">GcReceiver::receive()</span></code> needs to be called.
+For that, <code class="docutils literal notranslate"><span class="pre">GcReceiver::receive()</span></code> needs to be called.
 It grabs the latest image from the GenICam buffer and passes it to
-each <code class="docutils literal"><span class="pre">ImageReceiver</span></code> via its <code class="docutils literal"><span class="pre">process()</span></code> method, until one of them takes
+each <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code> via its <code class="docutils literal notranslate"><span class="pre">process()</span></code> method, until one of them takes
 responsibility for it.
-The image buffer is then stored in a queue in the <code class="docutils literal"><span class="pre">ImageReceiver</span></code>.
+The image buffer is then stored in a queue in the <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code>.
 Afterwards, the image can be extracted from the queue and converted to an
-OpenCV representation by calling <code class="docutils literal"><span class="pre">ImageReceiver::grab()</span></code> and passing
+OpenCV representation by calling <code class="docutils literal notranslate"><span class="pre">ImageReceiver::grab()</span></code> and passing
 the timestamp of the image.
-This all happens inside <code class="docutils literal"><span class="pre">GcReceiver::receive()</span></code>, so the user does not
+This all happens inside <code class="docutils literal notranslate"><span class="pre">GcReceiver::receive()</span></code>, so the user does not
 need to care about it.
-<code class="docutils literal"><span class="pre">receive()</span></code> will return an <code class="docutils literal"><span class="pre">ImageSet</span></code> with all received images contained.</p>
-<p><code class="docutils literal"><span class="pre">ImageSet</span></code> is an aggregation of <code class="docutils literal"><span class="pre">Image</span></code>s, one for each image type, including
+<code class="docutils literal notranslate"><span class="pre">receive()</span></code> will return an <code class="docutils literal notranslate"><span class="pre">ImageSet</span></code> with all received images contained.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ImageSet</span></code> is an aggregation of <code class="docutils literal notranslate"><span class="pre">Image</span></code>s, one for each image type, including
 left, right, confidence, disparity and error image.
 Depending on whether synchronization is enabled
 (see <a class="reference internal" href="#opencv-running-example-program"><span class="std std-ref">command line options</span></a>), the returned
@@ -538,12 +540,12 @@ one image that was just received.</p>
 </div>
 <div class="section" id="enabling-image-streams">
 <h3>Enabling image streams<a class="headerlink" href="#enabling-image-streams" title="Permalink to this headline">¶</a></h3>
-<p>To get some insights into the internal working of <code class="docutils literal"><span class="pre">rc_visard_opencv_example</span></code>, this
+<p>To get some insights into the internal working of <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code>, this
 and the following section will explain how image streams are enabled and
 how the GenICam representation of images is converted to OpenCV.</p>
 <p>Before enabling image streams, the connection to the <em>rc_visard</em> needs to
 be set up.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Implemented in gc_receiver.cc</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Implemented in gc_receiver.cc</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">rc_visard_id</span> <span class="o">=</span> <span class="s">&quot;rc_visard&quot;</span><span class="p">;</span>
 <span class="c1">// search for the device</span>
@@ -554,7 +556,7 @@ be set up.</p>
 </div>
 <p>The following code exemplarily shows how to enable streaming of the intensity
 image, which contains the left camera image.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Implemented in gc_receiver.cc and image_receiver.cc</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Implemented in gc_receiver.cc and image_receiver.cc</span>
 
 <span class="c1">// get the node map</span>
 <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GenApi</span><span class="o">::</span><span class="n">CNodeMapRef</span><span class="o">&gt;</span> <span class="n">node_map</span> <span class="o">=</span> <span class="n">device</span><span class="o">-&gt;</span><span class="n">getRemoteNodeMap</span><span class="p">();</span>
@@ -575,20 +577,20 @@ image, which contains the left camera image.</p>
 <p>Depending on the image type, there is a different conversion required to get
 from the GenICam representation to the OpenCV representation of an image.
 Here, we will show the simple example of converting the GenICam monochrome
-intensity stream to an OpenCV <code class="docutils literal"><span class="pre">cv::Mat</span></code>.
-For the other conversions, please refer to <code class="docutils literal"><span class="pre">image_receiver.cc</span></code> in the
+intensity stream to an OpenCV <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code>.
+For the other conversions, please refer to <code class="docutils literal notranslate"><span class="pre">image_receiver.cc</span></code> in the
 repository.</p>
-<p>The queue in <code class="docutils literal"><span class="pre">ImageReceiver</span></code> provides images of type <code class="docutils literal"><span class="pre">rcg::Image</span></code>.
+<p>The queue in <code class="docutils literal notranslate"><span class="pre">ImageReceiver</span></code> provides images of type <code class="docutils literal notranslate"><span class="pre">rcg::Image</span></code>.
 Internally, the image data is stored in a contiguous block of memory in an
 eight bit representation, so each byte represents one monochrome pixel.
-Since <code class="docutils literal"><span class="pre">cv::Mat</span></code> uses the same eight bit representation, we don’t need any
+Since <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code> uses the same eight bit representation, we don’t need any
 byte-to-byte conversion.</p>
-<p>Yet, a simple copy of the memory block of <code class="docutils literal"><span class="pre">rcg::Image</span></code> into a <code class="docutils literal"><span class="pre">cv::Mat</span></code>
-is not ideal because <code class="docutils literal"><span class="pre">rcg::Image</span></code> may contain padding bytes appended to
+<p>Yet, a simple copy of the memory block of <code class="docutils literal notranslate"><span class="pre">rcg::Image</span></code> into a <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code>
+is not ideal because <code class="docutils literal notranslate"><span class="pre">rcg::Image</span></code> may contain padding bytes appended to
 each image row.
 Therefore, we copy each row separately, while skipping the padding bytes,
 in order to generate a continuous cv::Mat.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Implemented in image_receiver.cc</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Implemented in image_receiver.cc</span>
 
 <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">convert</span><span class="p">(</span><span class="k">const</span> <span class="n">rcg</span><span class="o">::</span><span class="n">Image</span> <span class="o">&amp;</span><span class="n">buffer</span><span class="p">)</span>
 <span class="p">{</span>
@@ -658,7 +660,7 @@ in order to generate a continuous cv::Mat.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-37-g849aca3',
+            VERSION:'0.2.0-41-gc4bb476',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -669,11 +671,12 @@ in order to generate a continuous cv::Mat.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

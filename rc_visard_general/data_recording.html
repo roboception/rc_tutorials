@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Recording data with rc_visard &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
+  <title>Recording data with rc_visard &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation</title>
   
 
@@ -33,13 +33,15 @@
   
 
   
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
     <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
   
@@ -54,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with rc_visard and OpenCV" href="opencv_example.html"/>
@@ -207,7 +209,7 @@
 One can verify that with our <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a>.</li>
 <li>One should know the serial number or user defined name of the <em>rc_visard</em>.
 The serial number is of the format 029xxxxx.
-It will be referred to as <code class="docutils literal"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</li>
+It will be referred to as <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</li>
 </ol>
 <p class="rubric">Download and install the following required client software:</p>
 <div class="sphinx-tabs docutils container">
@@ -248,16 +250,16 @@ Windows</div>
 <p>Download <a class="reference external" href="https://github.com/roboception/cvkit/releases">cvkit</a>.</p>
 <p>For Linux, it is easiest to download the source code and build it by entering
 the main directory and typing:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
 <span class="nb">cd</span> build
 cmake ..
 make
 sudo make install
 </pre></div>
 </div>
-<p>Images can be viewed using the viewer <code class="docutils literal"><span class="pre">sv</span></code>. Disparity images, i.e.
+<p>Images can be viewed using the viewer <code class="docutils literal notranslate"><span class="pre">sv</span></code>. Disparity images, i.e.
 with the suffix <em>.pfm</em> can be viewed in 3D by pressing ‘p’ or calling
-<code class="docutils literal"><span class="pre">plyv</span></code> with the disparity image as argument. Both tools show a help
+<code class="docutils literal notranslate"><span class="pre">plyv</span></code> with the disparity image as argument. Both tools show a help
 page with all key codes by pressing ‘h’.</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
@@ -286,7 +288,7 @@ Windows 10</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-VWJ1bnR1 active docutils container">
 <p class="rubric">Temporarily</p>
 <p>Enter the following command in the terminal.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
 </pre></div>
 </div>
 <p class="rubric">Persistently</p>
@@ -311,18 +313,18 @@ Windows 10</div>
 <div class="section" id="recording-data">
 <h2>Recording data<a class="headerlink" href="#recording-data" title="Permalink to this headline">¶</a></h2>
 <p>We provide scripts for Linux and Windows to record data in our
-<code class="docutils literal"><span class="pre">rc_visard_offboard_record</span></code> <a class="reference external" href="https://github.com/roboception/rc_visard_offboard_record">GitHub repository</a>.</p>
+<code class="docutils literal notranslate"><span class="pre">rc_visard_offboard_record</span></code> <a class="reference external" href="https://github.com/roboception/rc_visard_offboard_record">GitHub repository</a>.</p>
 <p>The script offers two modes:
 An interactive mode that is started if the script is launched via a double-click
 or called without any arguments from a terminal/command line window.
-In that mode, the user is asked by the script for the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>.
-In standard mode, in contrast, the <code class="docutils literal"><span class="pre">rc_visard_id</span></code> is passed to the
+In that mode, the user is asked by the script for the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code>.
+In standard mode, in contrast, the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> is passed to the
 script as command line argument, optionally next to other arguments.</p>
 <p>Each time, the script runs, it creates a new folder in the working
 directory (i.e. the place the script was started in) and writes all data to
 that folder.
-The folder’s name is of the format <code class="docutils literal"><span class="pre">rc-visard_&lt;SN&gt;_&lt;T&gt;</span></code>,
-where <code class="docutils literal"><span class="pre">&lt;SN&gt;</span></code> is replaced by the <code class="docutils literal"><span class="pre">rc_visard_id</span></code> and <code class="docutils literal"><span class="pre">&lt;T&gt;</span></code> by the current time.
+The folder’s name is of the format <code class="docutils literal notranslate"><span class="pre">rc-visard_&lt;SN&gt;_&lt;T&gt;</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;SN&gt;</span></code> is replaced by the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;T&gt;</span></code> by the current time.
 The images are stored in PGM or PPM format, which are supported
 by many image viewers.
 All other files are stored as text.</p>
@@ -330,24 +332,24 @@ All other files are stored as text.</p>
 <p class="first admonition-title">Caution</p>
 <p class="last">On Windows, proper configuration of the firewall is important.
 On the first run of the script, the user will be asked whether the
-<code class="docutils literal"><span class="pre">rc_genicam_api</span></code> and <code class="docutils literal"><span class="pre">rc_dynamics_api</span></code> tools should be allowed to
+<code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> and <code class="docutils literal notranslate"><span class="pre">rc_dynamics_api</span></code> tools should be allowed to
 access the network.
 This needs to be allowed, otherwise the script will not work properly.
 In case of problems with data recording, temporarily disabling the firewall
 can help to pinpoint the source of the problem.
-It may be necessary to manually whitelist <code class="docutils literal"><span class="pre">gc_info.exe</span></code>, <code class="docutils literal"><span class="pre">gc_config.exe</span></code>
-and <code class="docutils literal"><span class="pre">gc_stream.exe</span></code> that are located in the folder <code class="docutils literal"><span class="pre">rc_genicam_api-*</span></code>, and
-<code class="docutils literal"><span class="pre">rcdynamics_stream.exe</span></code> that can be found in the folder
-<code class="docutils literal"><span class="pre">rc_dynamics_api-*</span></code>.</p>
+It may be necessary to manually whitelist <code class="docutils literal notranslate"><span class="pre">gc_info.exe</span></code>, <code class="docutils literal notranslate"><span class="pre">gc_config.exe</span></code>
+and <code class="docutils literal notranslate"><span class="pre">gc_stream.exe</span></code> that are located in the folder <code class="docutils literal notranslate"><span class="pre">rc_genicam_api-*</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">rcdynamics_stream.exe</span></code> that can be found in the folder
+<code class="docutils literal notranslate"><span class="pre">rc_dynamics_api-*</span></code>.</p>
 </div>
 <div class="section" id="interactive-mode">
 <h3>Interactive mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h3>
 <p>Start the script via double-click.
-The script asks for the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>, i.e. the serial number
+The script asks for the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code>, i.e. the serial number
 (which is of the format 029xxxxx) or user defined name.
-By entering <code class="docutils literal"><span class="pre">L</span></code>, all available <em>rc_visard</em> devices are listed.
+By entering <code class="docutils literal notranslate"><span class="pre">L</span></code>, all available <em>rc_visard</em> devices are listed.
 Interactive mode does not allow changing of script parameters other than
-the <code class="docutils literal"><span class="pre">rc_visard_id</span></code>.
+the <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code>.
 If that is required, the standard mode should be chosen, as it offers more
 flexibility.</p>
 </div>
@@ -372,9 +374,9 @@ Windows</div>
 </li>
 <li><p class="first">Change to the script folder.</p>
 </li>
-<li><p class="first">Launch the <code class="docutils literal"><span class="pre">rc_visard_record.sh</span></code>:</p>
+<li><p class="first">Launch the <code class="docutils literal notranslate"><span class="pre">rc_visard_record.sh</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div></blockquote>
@@ -387,9 +389,9 @@ Windows</div>
 </li>
 <li><p class="first">Change to the script folder.</p>
 </li>
-<li><p class="first">Launch the <code class="docutils literal"><span class="pre">rc_visard_record.bat</span></code>:</p>
+<li><p class="first">Launch the <code class="docutils literal notranslate"><span class="pre">rc_visard_record.bat</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat <span class="o">[</span>options<span class="o">]</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div></blockquote>
@@ -410,17 +412,17 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh -h
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh -h
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -h
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -h
 </pre></div>
 </div>
 </div>
 </div>
-<p>By default, the script will run until it is stopped with <code class="docutils literal"><span class="pre">Enter</span></code> and record
+<p>By default, the script will run until it is stopped with <code class="docutils literal notranslate"><span class="pre">Enter</span></code> and record
 images from the left camera, disparity images, confidence images and error images.</p>
 <p>This behavior can be changed by passing different arguments to the script.
 For example, to record only the left camera images and stop
@@ -437,17 +439,17 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">false</span> --disparity<span class="o">=</span><span class="nb">false</span> --confidence<span class="o">=</span><span class="nb">false</span> --error<span class="o">=</span><span class="nb">false</span> &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">false</span> --disparity<span class="o">=</span><span class="nb">false</span> --confidence<span class="o">=</span><span class="nb">false</span> --error<span class="o">=</span><span class="nb">false</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">false</span> -disparity <span class="nb">false</span> -confidence <span class="nb">false</span> -error <span class="nb">false</span> &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">false</span> -disparity <span class="nb">false</span> -confidence <span class="nb">false</span> -error <span class="nb">false</span> &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">cam-params</span></code> argument allows to also record the current camera parameters
+<p>The <code class="docutils literal notranslate"><span class="pre">cam-params</span></code> argument allows to also record the current camera parameters
 including the camera calibration.
 It will write the parameters to the given file, below called <cite>params.txt</cite>.</p>
 <div class="sphinx-tabs docutils container">
@@ -462,23 +464,23 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -cam-params params.txt &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -cam-params params.txt &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>The script also supports recording of the SLAM trajectory,
-which can be enabled with the <code class="docutils literal"><span class="pre">slam</span></code> argument.
+which can be enabled with the <code class="docutils literal notranslate"><span class="pre">slam</span></code> argument.
 The script will automatically start and stop SLAM, and eventually write
 the trajectory to the given file (<cite>trajectory.json</cite> in the example).
 The trajectory is written when image grabbing is finished, which is either
-when the user presses <code class="docutils literal"><span class="pre">Enter</span></code> or enough data sets are recorded
-according to the <code class="docutils literal"><span class="pre">number</span></code> argument.</p>
+when the user presses <code class="docutils literal notranslate"><span class="pre">Enter</span></code> or enough data sets are recorded
+according to the <code class="docutils literal notranslate"><span class="pre">number</span></code> argument.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-TGludXg= docutils container">
@@ -491,12 +493,12 @@ Windows</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./rc_visard_record.sh --slam<span class="o">=</span>trajectory.json &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --slam<span class="o">=</span>trajectory.json &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>rc_visard_record.bat -slam trajectory.json &lt;rc_visard_id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -slam trajectory.json &lt;rc_visard_id&gt;
 </pre></div>
 </div>
 </div>
@@ -508,12 +510,12 @@ Windows</div>
 <p class="toggle-header" id="faq-data-recording-gc-not-found"><strong>The script writes “gc_stream is not found” or “gc_info is not found”</strong></p>
 <div class="toggle-content docutils container">
 <blockquote>
-<div><code class="docutils literal"><span class="pre">rc_genicam_api</span></code> is not installed properly.</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code> is not installed properly.</div></blockquote>
 </div>
 <p class="toggle-header" id="faq-data-recording-dyn-stream-not-found"><strong>The script writes “rcdynamics_stream is not found”</strong></p>
 <div class="toggle-content docutils container">
 <blockquote>
-<div><code class="docutils literal"><span class="pre">rc_dynamics_api</span></code> is not installed properly.</div></blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">rc_dynamics_api</span></code> is not installed properly.</div></blockquote>
 </div>
 <p class="toggle-header" id="faq-data-recording-sensor-not-found"><strong>The script writes “Cannot find device: 01234567” or “Device 01234567 not found”</strong></p>
 <div class="toggle-content docutils container">
@@ -588,7 +590,7 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-37-g849aca3',
+            VERSION:'0.2.0-41-gc4bb476',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -599,11 +601,12 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

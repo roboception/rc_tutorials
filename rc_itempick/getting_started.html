@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
+  <title>Getting started with ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation</title>
   
 
@@ -33,13 +33,15 @@
   
 
   
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
     <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
   
@@ -54,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="Configuring ItemPick for Bin-Picking" href="bin_picking_no_robot.html"/>
@@ -124,7 +126,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bin_picking_no_robot.html">Configuring ItemPick for Bin-Picking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troublehooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
@@ -283,16 +285,16 @@ and depth image (right).</span></p>
 <span id="itempick-getting-started-first-grasps"></span><h2>Computing the first grasps<a class="headerlink" href="#computing-the-first-grasps" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-compute-grasps" title="(in rc_visard v1.6)"><span class="xref std std-ref">compute_grasps</span></a> service of the ItemPick module
 triggers the computation of suction grasps in the scene.</p>
-<p>This section shows how to place a <code class="docutils literal"><span class="pre">compute_grasps</span></code> request to ItemPick
+<p>This section shows how to place a <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code> request to ItemPick
 using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v1.6)"><span>REST-API interface</span></a>. This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-swagger-ui" title="(in rc_visard v1.6)"><span>Swagger UI</span></a>,
 in command lines or scripts using <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically
 using a client library (e.g. from the robot controller).
 In this tutorial we focus on the first two options.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">compute_grasp</span></code> can also be triggered in the <code class="docutils literal"><span class="pre">Try</span> <span class="pre">Out</span></code> section of the Web GUI’s <em>ItemPick</em> panel.
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">compute_grasp</span></code> can also be triggered in the <code class="docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Out</span></code> section of the Web GUI’s <em>ItemPick</em> panel.
 The required arguments are pre-set with default values,
-therefore the service can directly be called by hitting the <code class="docutils literal"><span class="pre">Detect</span></code> button.</p>
+therefore the service can directly be called by hitting the <code class="docutils literal notranslate"><span class="pre">Detect</span></code> button.</p>
 </div>
 <p>In the below examples, the service will be triggered with the minimum set of required arguments.
 For this reason, the results might be sub-optimal
@@ -323,12 +325,12 @@ PowerShell</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
-<p>To trigger the <code class="docutils literal"><span class="pre">compute_grasp</span></code> service via the REST-API, one needs to send
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">compute_grasp</span></code> service via the REST-API, one needs to send
 a PUT request to the URL
-<code class="docutils literal"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/compute_grasp</span></code>,
-where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/compute_grasp</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
     <span class="nt">&quot;suction_surface_length&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
@@ -341,19 +343,19 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
 <li><p class="first">The Swagger UI for putting a service request is located at
-<code class="docutils literal"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
-where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 </li>
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal"><span class="pre">rc_itempick</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_itempick</span></code></p>
 </li>
-<li><p class="first"><strong>service</strong> <code class="docutils literal"><span class="pre">compute_grasps</span></code></p>
+<li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code></p>
 </li>
 <li><dl class="first docutils">
 <dt><strong>service args</strong></dt>
-<dd><div class="first last highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<dd><div class="first last highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
     <span class="nt">&quot;suction_surface_length&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
@@ -371,9 +373,9 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </ol>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
-<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
-<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;pose_frame\&quot;: \&quot;camera\&quot;, \</span>
@@ -385,9 +387,9 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
-<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
-<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;pose_frame\&quot;: \&quot;camera\&quot;, ^</span>
@@ -399,9 +401,9 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
-<p>The following command assumes that the variable <code class="docutils literal"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
-<em>rc_visard</em> (e.g. <code class="docutils literal"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;pose_frame&quot;: &quot;camera&quot;,</span>
@@ -417,7 +419,7 @@ where <code class="docutils literal"><span class="pre">&lt;rc-visard-ip&gt;</spa
 <span id="fig-itempick-getting-started-grasps"></span><a class="reference internal image-reference" href="../_images/getting_started_grasps.png"><img alt="../_images/getting_started_grasps.png" src="../_images/getting_started_grasps.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Sample results on the scene shown above: surfaces image on the left and computed grasps on the
 right (including the available suction surface). By default, maximally 5 grasps are returned
-by the <code class="docutils literal"><span class="pre">compute_grasps</span></code> service. The sorting of the grasps takes into account the gravity
+by the <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code> service. The sorting of the grasps takes into account the gravity
 vector, so that objects on top of a pile are grasped first.</span></p>
 </div>
 <div class="admonition note">
@@ -478,7 +480,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-37-g849aca3',
+            VERSION:'0.2.0-41-gc4bb476',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -489,11 +491,12 @@ the monochrome images provided by the sensor, as shown in the result pictures in
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

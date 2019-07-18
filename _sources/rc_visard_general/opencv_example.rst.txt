@@ -8,7 +8,7 @@ rc_visard
 
 rc_visard
 
- with OpenCV via Roboception’s GenICam Convenience Layer
+ with OpenCV via Roboception's GenICam Convenience Layer
 "rc_genicam_api".
 
 Before we start
@@ -73,7 +73,7 @@ met.
 Linux
 
 After downloading or cloning the repository, change into the
-repository’s directory. In a terminal, run the following commands:
+repository's directory. In a terminal, run the following commands:
 
    mkdir build    # make a build directory
    cd build       # change to that directory
@@ -193,7 +193,7 @@ While the program is running, press "n" (next), "p" (previous) to
 cycle through the enabled image streams. Press "q" to exit the
 program.
 
-Explanation of the example’s source code
+Explanation of the example's source code
 
 The example is documented using
 
@@ -344,7 +344,7 @@ The queue in "ImageReceiver" provides images of type "rcg::Image".
 Internally, the image data is stored in a contiguous block of memory
 in an eight bit representation, so each byte represents one monochrome
 pixel. Since "cv::Mat" uses the same eight bit representation, we
-don’t need any byte-to-byte conversion.
+don't need any byte-to-byte conversion.
 
 Yet, a simple copy of the memory block of "rcg::Image" into a
 "cv::Mat" is not ideal because "rcg::Image" may contain padding bytes

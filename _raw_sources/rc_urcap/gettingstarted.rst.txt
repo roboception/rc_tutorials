@@ -33,7 +33,7 @@ The kit including the projector consists of:
 
 Software installation
 ---------------------
-#. Download the URCap from `Roboception's downland page <https://roboception.com/en/download/>`_
+#. Download the URCap from `Roboception's download page <https://roboception.com/en/download/>`_
 
 #. Copy the URCap file to a USB flash drive
 
@@ -53,7 +53,7 @@ After rebooting the robot, the rc_visard_urcap application should be marked by a
 .. _fig_successful_installed_urcap:
 .. figure:: ../images/urcap/urcap_setup.png
   :width: 300px
-  :align: center 
+  :align: center
 
   Successfully installed |rcvisard| URCap.
 
@@ -64,7 +64,7 @@ After rebooting the robot, the rc_visard_urcap application should be marked by a
 Connect the sensor
 -----------------------
 
-You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, sinche some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui| . It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
+You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui| . It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
 
 Detailed instructions about network setup can be found in :ref:`general-network` tutorial.
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connecting and configuring rc_visard to a network &mdash; Tutorials, FAQs, and more 0.2.0-37-g849aca3
+  <title>Connecting and configuring rc_visard to a network &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation</title>
   
 
@@ -33,13 +33,15 @@
   
 
   
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
     <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
   
@@ -54,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-37-g849aca3
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Tuning of Image Parameters" href="parameters.html"/>
@@ -227,7 +229,7 @@ network with possibly many switches, a DHCP server, and the like.</p>
 <p>Before going through this tutorial, the following prerequisites should be met.</p>
 <p class="rubric">Have the <em>rc_visard</em>’s serial number at hand</p>
 <p>It is an 8-digit number to be found on the device and will
-be referred to as <code class="docutils literal"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</p>
+be referred to as <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> in the remainder of this tutorial.</p>
 <p class="rubric">Clarify network setup</p>
 <ol class="arabic simple">
 <li>Check the host’s network settings, i.e. IP address and sub-net mask.
@@ -260,15 +262,15 @@ similar to the figure below.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/rcdiscover-gui.png"><img alt="../_images/rcdiscover-gui.png" src="../_images/rcdiscover-gui.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Roboception’s discovery tool found two devices in the network.
-The device named named <code class="docutils literal"><span class="pre">rc_visard</span></code> is reachable from the host PC
+The device named named <code class="docutils literal notranslate"><span class="pre">rc_visard</span></code> is reachable from the host PC
 (because in this example the host was in the same subnet 10.0.2.x).
-The second device <code class="docutils literal"><span class="pre">demo</span></code> is not reachable as it’s IP address
+The second device <code class="docutils literal notranslate"><span class="pre">demo</span></code> is not reachable as it’s IP address
 is in a totally different network.</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You can re-run the discovery process any-time by clicking the
-<code class="docutils literal"><span class="pre">Rerun</span> <span class="pre">Discovery</span></code>-button.</p>
+<code class="docutils literal notranslate"><span class="pre">Rerun</span> <span class="pre">Discovery</span></code>-button.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -294,19 +296,19 @@ as shown in the following.</p>
 <p>The discovery tool can be used to <strong>temporarily</strong> configure the <em>rc_visard</em>’s
 IP address and sub-network:</p>
 <ol class="arabic simple">
-<li>In the <code class="docutils literal"><span class="pre">rcdiscover-gui</span></code> click and select the row representing the
+<li>In the <code class="docutils literal notranslate"><span class="pre">rcdiscover-gui</span></code> click and select the row representing the
 non-reachable sensor.</li>
-<li>Click the <code class="docutils literal"><span class="pre">Set</span> <span class="pre">temporary</span> <span class="pre">IP</span> <span class="pre">address</span></code>-button. The respective dialog
+<li>Click the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">temporary</span> <span class="pre">IP</span> <span class="pre">address</span></code>-button. The respective dialog
 window pops up.<ol class="loweralpha">
 <li>Make sure the correct sensor is selected.</li>
 <li>Change the IP and sub-net settings. As the goal is to temporarily
 put the sensor and the host into the same network, these temporary
 settings need to be chosen according to the host’s IP address and
 sub-net.</li>
-<li>Click the <code class="docutils literal"><span class="pre">Set</span> <span class="pre">temporary</span> <span class="pre">IP</span> <span class="pre">address</span></code>-button and follow the dialog.</li>
+<li>Click the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">temporary</span> <span class="pre">IP</span> <span class="pre">address</span></code>-button and follow the dialog.</li>
 </ol>
 </li>
-<li>Back in the main window, start a new discovery by clicking the <code class="docutils literal"><span class="pre">Rerun</span>
+<li>Back in the main window, start a new discovery by clicking the <code class="docutils literal notranslate"><span class="pre">Rerun</span>
 <span class="pre">Discovery</span></code>-button.</li>
 </ol>
 <p>The <em>rc_visard</em> should now be discovered with the new, temporary IP address,
@@ -320,7 +322,7 @@ network settings.</p>
 </div>
 <div class="section" id="option-2-persistent-configuration-via-genicam">
 <span id="sect-network-persistent-ip"></span><h3>Option 2: Persistent configuration via GenICam<a class="headerlink" href="#option-2-persistent-configuration-via-genicam" title="Permalink to this headline">¶</a></h3>
-<p>The command line GenICam tool <code class="docutils literal"><span class="pre">gc_config</span></code> gives full control
+<p>The command line GenICam tool <code class="docutils literal notranslate"><span class="pre">gc_config</span></code> gives full control
 over the <em>rc_visard</em>’s network settings and lets you <strong>persistently</strong>
 configure any IP address, sub-net and gateway according to
 your network setup.</p>
@@ -333,22 +335,22 @@ by means of the discovery tool.</p>
 </div>
 <p class="rubric">Example 1 - Static IP address</p>
 <p>The following command configures an exemplary, static IP address of
-192.168.188.10 and a sub-net mask of 255.255.0.0, where <code class="docutils literal"><span class="pre">rc_visard_id</span></code> is to
+192.168.188.10 and a sub-net mask of 255.255.0.0, where <code class="docutils literal notranslate"><span class="pre">rc_visard_id</span></code> is to
 be replaced by the sensor’s serial number or user-defined name.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">0</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">i</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">188.10</span> <span class="o">-</span><span class="n">s</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">0</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1</span> <span class="o">-</span><span class="n">i</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">188.10</span> <span class="o">-</span><span class="n">s</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">0.0</span>
 </pre></div>
 </div>
 <p class="rubric">Example 2 - DHCP (fall back to link-local)</p>
-<p>If a DHCP server is available, <code class="docutils literal"><span class="pre">gc_config</span></code> lets you enable the
+<p>If a DHCP server is available, <code class="docutils literal notranslate"><span class="pre">gc_config</span></code> lets you enable the
 <em>rc_visard</em>’s auto-configuration option via:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>If no DHCP server is found by the device, it falls back to link-local.</p>
 <p class="rubric">Example 3 - Link-local only</p>
-<p>If you explicitly want to connect via link-local, <code class="docutils literal"><span class="pre">gc_config</span></code> lets
+<p>If you explicitly want to connect via link-local, <code class="docutils literal notranslate"><span class="pre">gc_config</span></code> lets
 you disable both the static IP option and the DHCP option via:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">0</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc_config</span> <span class="o">&lt;</span><span class="n">rc_visard_id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="mi">0</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p class="rubric">Reconnect <em>rc_visard</em> and confirm proper network settings</p>
@@ -359,9 +361,9 @@ Here several options exist:</p>
 <li><p class="first">Initiate a reconnect via the discovery tool:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>In the <code class="docutils literal"><span class="pre">rcdiscover-gui</span></code> click and select the respective sensor.</li>
-<li>Click <code class="docutils literal"><span class="pre">Reconnect</span> <span class="pre">rc_visard</span></code>. The reconnecting dialog window pops up.</li>
-<li>Make sure the correct sensor is selected, click the <code class="docutils literal"><span class="pre">Reconnect</span></code>-button
+<li>In the <code class="docutils literal notranslate"><span class="pre">rcdiscover-gui</span></code> click and select the respective sensor.</li>
+<li>Click <code class="docutils literal notranslate"><span class="pre">Reconnect</span> <span class="pre">rc_visard</span></code>. The reconnecting dialog window pops up.</li>
+<li>Make sure the correct sensor is selected, click the <code class="docutils literal notranslate"><span class="pre">Reconnect</span></code>-button
 and follow the dialog.</li>
 </ol>
 </div></blockquote>
@@ -382,7 +384,7 @@ and that the <em>rc_visard</em> is reachable from your host.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">It is strongly recommended to not skip this section
 as most default settings will lead to improper network load.
-A typical indicator for this is a <code class="docutils literal"><span class="pre">received</span> <span class="pre">incomplete</span> <span class="pre">buffer</span></code>
+A typical indicator for this is a <code class="docutils literal notranslate"><span class="pre">received</span> <span class="pre">incomplete</span> <span class="pre">buffer</span></code>
 warning issued by the GenICam driver.</p>
 </div>
 <p>When working with the <em>rc_visard</em>, image data streaming causes
@@ -467,7 +469,7 @@ Windows 10</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-VWJ1bnR1 active docutils container">
 <p class="rubric">Temporarily</p>
 <p>Enter the following command in the terminal.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ifconfig &lt;interface&gt; mtu <span class="m">9000</span>
 </pre></div>
 </div>
 <p class="rubric">Persistently</p>
@@ -497,15 +499,15 @@ in the advanced settings of the network driver:</p>
 <h3>Increase the Receive Buffer Size (Linux only)<a class="headerlink" href="#increase-the-receive-buffer-size-linux-only" title="Permalink to this headline">¶</a></h3>
 <p>Another helpful option is to increase the network stack’s receive buffer size.
 Temporarily, this option can be set and tested via</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo sysctl -w net.core.rmem_max<span class="o">=</span><span class="m">33554432</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo sysctl -w net.core.rmem_max<span class="o">=</span><span class="m">33554432</span>
 </pre></div>
 </div>
-<p>To make the changes persistent place a file <code class="docutils literal"><span class="pre">10-gev-perf.conf</span></code>
+<p>To make the changes persistent place a file <code class="docutils literal notranslate"><span class="pre">10-gev-perf.conf</span></code>
 with the line</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>net.core.rmem_max<span class="o">=</span><span class="m">33554432</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>net.core.rmem_max<span class="o">=</span><span class="m">33554432</span>
 </pre></div>
 </div>
-<p>into the directory <code class="docutils literal"><span class="pre">/etc/sysctl.d</span></code>.</p>
+<p>into the directory <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.d</span></code>.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting">
@@ -525,18 +527,18 @@ if the debian package for rc_genicam_api is used.</p>
 startup. Hence, please reboot sensor if required, e.g. via power cycling.</p>
 <ol class="arabic simple">
 <li><dl class="first docutils">
-<dt>Open the <code class="docutils literal"><span class="pre">rcdiscover-gui</span></code>, wait until the sensor is rebooted, which</dt>
+<dt>Open the <code class="docutils literal notranslate"><span class="pre">rcdiscover-gui</span></code>, wait until the sensor is rebooted, which</dt>
 <dd>is indicated by a green LED, and start a discovery by pressing
-the <code class="docutils literal"><span class="pre">Rerun</span> <span class="pre">discovery</span></code> button.</dd>
+the <code class="docutils literal notranslate"><span class="pre">Rerun</span> <span class="pre">discovery</span></code> button.</dd>
 </dl>
 </li>
 <li>Click and select the row representing the respective device.</li>
-<li>Press the <code class="docutils literal"><span class="pre">Reset</span> <span class="pre">rc_visard</span></code>-button. The resetting dialog window pops up.</li>
-<li>Click the <code class="docutils literal"><span class="pre">Reset</span> <span class="pre">network</span></code>-button and follow the dialog.</li>
-<li>Back in the main window, click <code class="docutils literal"><span class="pre">Reconnect</span> <span class="pre">rc_visard</span></code>. The reconnecting dialog window pops up.</li>
-<li>Make sure the correct sensor is selected, click the <code class="docutils literal"><span class="pre">Reconnect</span></code>-button and confirm.</li>
+<li>Press the <code class="docutils literal notranslate"><span class="pre">Reset</span> <span class="pre">rc_visard</span></code>-button. The resetting dialog window pops up.</li>
+<li>Click the <code class="docutils literal notranslate"><span class="pre">Reset</span> <span class="pre">network</span></code>-button and follow the dialog.</li>
+<li>Back in the main window, click <code class="docutils literal notranslate"><span class="pre">Reconnect</span> <span class="pre">rc_visard</span></code>. The reconnecting dialog window pops up.</li>
+<li>Make sure the correct sensor is selected, click the <code class="docutils literal notranslate"><span class="pre">Reconnect</span></code>-button and confirm.</li>
 <li>Close the reconnecting dialog window.</li>
-<li>Start a new discovery by clicking the <code class="docutils literal"><span class="pre">Rerun</span> <span class="pre">Discovery</span></code>-button.</li>
+<li>Start a new discovery by clicking the <code class="docutils literal notranslate"><span class="pre">Rerun</span> <span class="pre">Discovery</span></code>-button.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -616,7 +618,7 @@ for high loads</span></a>.</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-37-g849aca3',
+            VERSION:'0.2.0-41-gc4bb476',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -627,11 +629,12 @@ for high loads</span></a>.</div>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
