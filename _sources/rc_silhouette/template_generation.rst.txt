@@ -1,0 +1,165 @@
+Template generation
+
+The SilhouetteMatch module requires special object templates for each
+type of object to be detected. Roboception offers a template
+generation service on their
+
+website
+
+, where the user can request these object templates.
+
+This tutorial shows how to gather the data required to request and
+generate a new object template.
+
+Obtaining the object model
+
+CAD model
+
+Sending the CAD model of the part is the easiest and most
+straightforward way of providing the object model. The model does not
+have to include any information about inner parts, texture or
+material. A 2D model of the object could also be used, as long as all
+edges that should be used for matching are visible.
+
+Note: The reference position of the generated template is based on
+  the reference frame of the model.
+
+
+With the rc_visard
+
+If the CAD model of the object is not available or it can not not be
+sent, it is also possible to generate a template based on data
+captured with an
+
+rc_visard
+
+.
+
+
+The procedure for recording the required data consists of the
+following steps:
+
+Place the object on a flat, monochrome surface in contrasting color.
+
+Place 3 AprilTags on the surface to form a triangle around the object.
+A sample background with AprilTags can be downloaded here.
+
+Connect the rc_visard to your PC and open the Camera tab in the Web
+GUI.
+
+Place the rc_visard perpendicular to the flat surface on which the
+object lies. The distance of the rc_visard to the surface depends on
+the rc_visard model:  approximately 300 mm for rc_visard 65
+approximately 500 mm for rc_visard 160  The object should be visible
+in both the left and right camera images. The distance should be
+increased if the object is not fully visible at the recommended value.
+
+In the Camera tab, select an Exposure region around the object and
+check the illumination of the scene. To get the best result, the gain
+of the rc_visard should be 0 db (the current value is printed below
+the images) and the object should not cast any significant shadow.
+Sample scene with proper lighting conditions. The gain value is 0 dB
+and there are no shadows on the object and its vicinity.    Sample
+scene with too little light. The gain value is too high.    Sample
+scene with too strong direct light. The object casts shadows.
+
+Follow the Recording data with rc_visard tutorial to capture the
+required images. The command that should be used is:
+
+Linux
+
+   ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
+
+Windows
+
+   rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+
+Measuring the object height
+
+The object height is the distance from the bottom of the object to the
+plane on which most of the edges that can be used for matching are
+lying. This is not always the highest point! It is crucial to measure
+this value correctly. The returned pose of the detected object depends
+on this value.
+
+
+Is the object orientation needed?
+
+For some objects it is possible to create a simplified template that
+will be detected faster. This is possible only if the object rotation
+on the plane is not required for grasping and placing. Sample images
+of such objects can be found below.
+
+
+Recording the scene
+
+The final step is to record images of the object in the actual
+environment in which the object needs to be detected. Roboception will
+use these images to test the generated template and, if necessary,
+suggest changes to improve the detection performances.
+
+For recording the scene, 3
+
+AprilTags
+
+ should be placed in the field of view of both cameras. If a RandomDot
+Projector is available, the plane calibration can also be performed
+using depth data. In this case, the RandomDot Projector should be
+setup as described in the
+
+Obtain dense depth images with the RandomDot Projector
+
+ tutorial and the Out 1 mode of the
+
+rc_visard
+
+ should be set to
+
+ExposureAlternateActive
+
+.
+
+
+With the rc_visard
+
+Follow the
+
+Recording data with rc_visard
+
+ tutorial to capture the required images. The recording command that
+should be used is:
+
+Linux
+
+   ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
+
+Windows
+
+   rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+
+Without the rc_visard
+
+Note: It is possible to test the template detection only on images
+  recorded with the
+
+  rc_visard
+
+  . If another camera is used, Roboception will only be able to check
+  the scene and give some general remarks about background and
+  illumination.
+
+If the
+
+rc_visard
+
+ can not be used to capture the data, it is also possible to use any
+other camera. In order to capture the most valuable data, the camera
+should be placed in the same position where the
+
+rc_visard
+
+ will be mounted during production. The picture has to be sharp and
+taken without using the flash, as this alters the normal lighting
+conditions. If it is not possible to take a sharp picture without a
+flash, it is strongly recommended to add an additional external light
+source.

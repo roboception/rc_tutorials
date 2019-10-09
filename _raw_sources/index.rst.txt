@@ -13,6 +13,7 @@ Tutorials for the rc_visard_ and additionally available software modules.
 
    rc_visard_general/overview
    rc_itempick/overview
+   rc_silhouette/overview
    rc_urcap/overview
 
 .. _rc_visard: http://rc-visard.com

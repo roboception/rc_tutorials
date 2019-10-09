@@ -1,5 +1,7 @@
 .. include:: ../global_rst.glb
 
+.. _general-projector:
+
 Obtain dense depth images with the |projector|
 ======================================================
 

@@ -10,6 +10,10 @@ In this tutorial you will learn how to connect, configure, and use rc_visard wit
 
     gettingstarted
     handeyecalibration
+    rc_visard
     itempick
+    boxpick
+    silhouette
+    sampleprogram
     expertfunctions
     troubleshooting

@@ -30,4 +30,4 @@ rc_visard
 
 rc_set_parameter
 
- Expert Function.
+ Expert Function and Set Parameter common node.

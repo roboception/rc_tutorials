@@ -7,10 +7,10 @@ Getting started
 
 .. note::
 
-  |company| URCap is working with software 3.7.0 or newer. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: https://www.universal-robots.com/download/)
+  |company|'s URCap is working with software 3.7.0 or newer. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: https://www.universal-robots.com/download/)
 
 .. note::
-  |company| URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact |company| support.
+  |company|'s URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact |company| support.
 
 |company|'s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the |rcvisard| , and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.
 
@@ -64,7 +64,7 @@ After rebooting the robot, the rc_visard_urcap application should be marked by a
 Connect the sensor
 -----------------------
 
-You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui| . It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
+You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui|. It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
 
 Detailed instructions about network setup can be found in :ref:`general-network` tutorial.
 

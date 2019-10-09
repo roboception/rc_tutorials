@@ -1,0 +1,39 @@
+Generic rc_visard node
+
+This tutorial shows how to use the generic rc_visard node to control
+the
+
+rc_visard
+
+ sensor and the corresponding software modules. The rc_visard node is
+the most flexible way to receive data from
+
+rc_visard
+
+ sensor. You can use up to three rc_visards with the generic node.
+
+Select sensor
+
+Select which sensor to use. The sensor ip and name can be configured
+in the installation node.
+
+
+Select module
+
+Select software module, either ItemPick, BoxPick or Common. ItemPick
+and BoxPick nodes offer functionality to tirgger the corresponding
+services. The common module is used for setting parameters.
+
+
+Select function
+
+Select function for the module. The available functions depend on the
+selected module.
+
+
+Configure action
+
+After you have selected sensor, module and function a subpanel appears
+that enables you to set parameters, trigger computation or receive
+data.
+

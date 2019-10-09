@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Template generation &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation" href="../index.html"/>
+        <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
+        <link rel="next" title="Universal Robots tutorials" href="../rc_urcap/overview.html"/>
+        <link rel="prev" title="SilhouetteMatch tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">SilhouetteMatch tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Template generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#obtaining-the-object-model">Obtaining the object model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cad-model">CAD model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#with-the-rc-visard">With the <em>rc_visard</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#measuring-the-object-height">Measuring the object height</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is-the-object-orientation-needed">Is the object orientation needed?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recording-the-scene">Recording the scene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">With the <em>rc_visard</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#without-the-rc-visard">Without the <em>rc_visard</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">SilhouetteMatch tutorials</a> &raquo;</li>
+        
+      <li>Template generation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="template-generation">
+<span id="id1"></span><h1>Template generation<a class="headerlink" href="#template-generation" title="Permalink to this headline">¶</a></h1>
+<p>The SilhouetteMatch module requires special object templates for each type
+of object to be detected.
+Roboception offers a template generation service on their
+<a class="reference external" href="https://roboception.com/en/template-request/">website</a>,
+where the user can request these object templates.</p>
+<p>This tutorial shows how to gather the data required to request and
+generate a new object template.</p>
+<div class="section" id="obtaining-the-object-model">
+<h2>Obtaining the object model<a class="headerlink" href="#obtaining-the-object-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cad-model">
+<h3>CAD model<a class="headerlink" href="#cad-model" title="Permalink to this headline">¶</a></h3>
+<p>Sending the CAD model of the part is the easiest and most straightforward way of providing the object model.
+The model does not have to include any information about inner parts, texture or material.
+A 2D model of the object could also be used, as long as all edges that should be used for matching are visible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The reference position of the generated template is based on the reference frame of the model.</p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/cad_model.png"><img alt="../_images/cad_model.png" src="../_images/cad_model.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Sample CAD model with its reference frame.</span></p>
+</div>
+</div>
+<div class="section" id="with-the-rc-visard">
+<h3>With the <em>rc_visard</em><a class="headerlink" href="#with-the-rc-visard" title="Permalink to this headline">¶</a></h3>
+<p>If the CAD model of the object is not available or it can not not be sent,
+it is also possible to generate a template based on data captured with an <em>rc_visard</em>.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/template_scene.jpg"><img alt="../_images/template_scene.jpg" src="../_images/template_scene.jpg" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Sample setup scene for template generation.</span></p>
+</div>
+<p>The procedure for recording the required data consists of the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Place the object on a flat, monochrome surface in contrasting color.</p>
+</li>
+<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v1.8)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.
+A sample background with AprilTags can be downloaded <a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connect the rc_visard to your PC</span></a> and open the <em>Camera</em> tab in the Web GUI.</p>
+</li>
+<li><p class="first">Place the <em>rc_visard</em> perpendicular to the flat surface on which the object lies.
+The distance of the <em>rc_visard</em> to the surface depends on the <em>rc_visard</em> model:</p>
+<blockquote>
+<div><ul class="simple">
+<li>approximately 300 mm for rc_visard 65</li>
+<li>approximately 500 mm for rc_visard 160</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The object should be visible in both the left and right camera images.
+The distance should be increased if the object is not fully visible at the recommended value.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">In the <em>Camera</em> tab, select an <em>Exposure region</em> around the object and check the illumination of the scene.
+To get the best result, the gain of the <em>rc_visard</em> should be 0 db (the current value is printed below the images)
+and the object should not cast any significant shadow.</p>
+<blockquote>
+<div><div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/screenshot_template_good.png"><img alt="../_images/screenshot_template_good.png" src="../_images/screenshot_template_good.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Sample scene with proper lighting conditions.
+The gain value is 0 dB and there are no shadows on the object and its vicinity.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/screenshot_template_gain_too_high.png"><img alt="../_images/screenshot_template_gain_too_high.png" src="../_images/screenshot_template_gain_too_high.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Sample scene with too little light. The gain value is too high.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../_images/screenshot_template_shadow.png"><img alt="../_images/screenshot_template_shadow.png" src="../_images/screenshot_template_shadow.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Sample scene with too strong direct light. The object casts shadows.</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Follow the <a class="reference internal" href="../rc_visard_general/data_recording.html#data-recording"><span class="std std-ref">Recording data with rc_visard</span></a> tutorial to capture the required images. The command that should be used is:</p>
+</li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">true</span> --disparity<span class="o">=</span><span class="nb">true</span> --confidence<span class="o">=</span><span class="nb">true</span> --error<span class="o">=</span><span class="nb">true</span> --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">true</span> -disparity <span class="nb">true</span> -confidence <span class="nb">true</span> -error <span class="nb">true</span> -cam-params params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="measuring-the-object-height">
+<h2>Measuring the object height<a class="headerlink" href="#measuring-the-object-height" title="Permalink to this headline">¶</a></h2>
+<p>The object height is the distance from the bottom of the object to the plane
+on which most of the edges that can be used for matching are lying.
+This is not always the highest point! It is crucial to measure this value correctly.
+The returned pose of the detected object depends on this value.</p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/object_height.png"><img alt="../_images/object_height.png" src="../_images/object_height.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Visualization of how different object heights (left) affect generated template (right).</span></p>
+</div>
+</div>
+<div class="section" id="is-the-object-orientation-needed">
+<h2>Is the object orientation needed?<a class="headerlink" href="#is-the-object-orientation-needed" title="Permalink to this headline">¶</a></h2>
+<p>For some objects it is possible to create a simplified template that will be detected faster.
+This is possible only if the object rotation on the plane is not required for grasping and placing.
+Sample images of such objects can be found below.</p>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/tamplate_orientation_example.png"><img alt="../_images/tamplate_orientation_example.png" src="../_images/tamplate_orientation_example.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">3D model of a round part and two templates generated from it.
+With the first template, the object will be detected with full orientation.
+If the second template is used, the rotation of the object on the plane will be ignored.</span></p>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/tamplate_orientation_example_2.png"><img alt="../_images/tamplate_orientation_example_2.png" src="../_images/tamplate_orientation_example_2.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">3D model of a part with one axis of symmetry and two templates generated from it.
+With the first template, the object will be detected with full orientation.
+If the second template is used, the detected object might be flipped.</span></p>
+</div>
+</div>
+<div class="section" id="recording-the-scene">
+<h2>Recording the scene<a class="headerlink" href="#recording-the-scene" title="Permalink to this headline">¶</a></h2>
+<p>The final step is to record images of the object in the actual environment
+in which the object needs to be detected.
+Roboception will use these images to test the generated template and, if necessary,
+suggest changes to improve the detection performances.</p>
+<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v1.8)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
+If a RandomDot Projector is available, the plane calibration can also be performed using depth data.
+In this case, the RandomDot Projector should be setup as described in the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the RandomDot Projector</span></a>
+tutorial and the Out 1 mode of the <em>rc_visard</em> should be set to <em>ExposureAlternateActive</em>.</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/example_scene.png"><img alt="../_images/example_scene.png" src="../_images/example_scene.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Sample recorded scene with 3 AprilTags.</span></p>
+</div>
+<div class="section" id="id2">
+<h3>With the <em>rc_visard</em><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Follow the <a class="reference internal" href="../rc_visard_general/data_recording.html#data-recording"><span class="std std-ref">Recording data with rc_visard</span></a> tutorial to capture the required images.
+The recording command that should be used is:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-TGludXg= docutils container">
+<div class="docutils container">
+Linux</div>
+</div>
+<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="docutils container">
+Windows</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">true</span> --disparity<span class="o">=</span><span class="nb">true</span> --confidence<span class="o">=</span><span class="nb">true</span> --error<span class="o">=</span><span class="nb">true</span> --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">true</span> -disparity <span class="nb">true</span> -confidence <span class="nb">true</span> -error <span class="nb">true</span> -cam-params params.txt &lt;rc_visard_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="without-the-rc-visard">
+<h3>Without the <em>rc_visard</em><a class="headerlink" href="#without-the-rc-visard" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is possible to test the template detection only on images recorded with the <em>rc_visard</em>.
+If another camera is used, Roboception will only be able to check the scene and
+give some general remarks about background and illumination.</p>
+</div>
+<p>If the <em>rc_visard</em> can not be used to capture the data, it is also possible to use any other camera.
+In order to capture the most valuable data, the camera should be placed in the same position
+where the <em>rc_visard</em> will be mounted during production.
+The picture has to be sharp and taken without using the flash, as this alters the normal lighting conditions.
+If it is not possible to take a sharp picture without a flash, it is strongly recommended
+to add an additional external light source.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rc_urcap/overview.html" class="btn btn-neutral float-right" title="Universal Robots tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="SilhouetteMatch tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0-70-g75b5dd5',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

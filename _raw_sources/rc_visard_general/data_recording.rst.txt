@@ -1,5 +1,7 @@
 .. include:: ../global_rst.glb
 
+.. _data-recording:
+
 Recording data with |rc_visard|
 ===============================
 
@@ -106,7 +108,7 @@ Enable "Jumbo frames" by setting the MTU to 9000.
 Recording data
 --------------
 
-We provide scripts for Linux and Windows to record data in our 
+We provide scripts for Linux and Windows to record data in our
 ``rc_visard_offboard_record`` `GitHub repository <https://github.com/roboception/rc_visard_offboard_record>`_.
 
 The script offers two modes:
@@ -117,12 +119,12 @@ In standard mode, in contrast, the ``rc_visard_id`` is passed to the
 script as command line argument, optionally next to other arguments.
 
 Each time, the script runs, it creates a new folder in the working
-directory (i.e. the place the script was started in) and writes all data to 
-that folder. 
-The folder's name is of the format ``rc-visard_<SN>_<T>``, 
-where ``<SN>`` is replaced by the ``rc_visard_id`` and ``<T>`` by the current time. 
-The images are stored in PGM or PPM format, which are supported 
-by many image viewers. 
+directory (i.e. the place the script was started in) and writes all data to
+that folder.
+The folder's name is of the format ``rc-visard_<SN>_<T>``,
+where ``<SN>`` is replaced by the ``rc_visard_id`` and ``<T>`` by the current time.
+The images are stored in PGM or PPM format, which are supported
+by many image viewers.
 All other files are stored as text.
 
 .. caution:: On Windows, proper configuration of the firewall is important.
@@ -132,16 +134,16 @@ All other files are stored as text.
   This needs to be allowed, otherwise the script will not work properly.
   In case of problems with data recording, temporarily disabling the firewall
   can help to pinpoint the source of the problem.
-  It may be necessary to manually whitelist ``gc_info.exe``, ``gc_config.exe`` 
-  and ``gc_stream.exe`` that are located in the folder ``rc_genicam_api-*``, and 
-  ``rcdynamics_stream.exe`` that can be found in the folder 
+  It may be necessary to manually whitelist ``gc_info.exe``, ``gc_config.exe``
+  and ``gc_stream.exe`` that are located in the folder ``rc_genicam_api-*``, and
+  ``rcdynamics_stream.exe`` that can be found in the folder
   ``rc_dynamics_api-*``.
 
 Interactive mode
 ''''''''''''''''
 
 Start the script via double-click.
-The script asks for the ``rc_visard_id``, i.e. the serial number 
+The script asks for the ``rc_visard_id``, i.e. the serial number
 (which is of the format 029xxxxx) or user defined name.
 By entering ``L``, all available |rc_visard| devices are listed.
 Interactive mode does not allow changing of script parameters other than
@@ -290,7 +292,7 @@ Troubleshooting
 .. toggle-header::
    :header: **The script writes "Device::open() failed"**
 
-    The |rc_visard| may have not booted completely yet, 
+    The |rc_visard| may have not booted completely yet,
     or another client may already be connected to the |rc_visard|.
 
 .. _faq-data-recording-cannot-grab-images:

@@ -1,0 +1,54 @@
+.. include:: ../global_rst.glb
+
+.. _generic-rc-visard:
+
+Generic rc_visard node
+======================
+
+This tutorial shows how to use the generic rc_visard node to control the |rcvisard| sensor and the corresponding software modules.
+The rc_visard node is the most flexible way to receive data from |rcvisard| sensor. You can use up to three rc_visards with the generic node.
+
+Select sensor
+-------------
+
+Select which sensor to use. The sensor ip and name can be configured in the installation node.
+
+.. figure:: ../images/urcap/rc_visard_gn_select_sensor.png
+  :width: 800px
+  :align: center
+
+.. _urcap-ur_generic_select_sensor:
+
+Select module
+-------------
+
+Select software module, either ItemPick, BoxPick or Common. ItemPick and BoxPick nodes offer functionality to tirgger the corresponding services. The common module is used for setting parameters.
+
+.. figure:: ../images/urcap/rc_visard_gn_select_module.png
+  :width: 800px
+  :align: center
+
+.. _urcap-ur_generic_select_module:
+
+Select function
+---------------
+
+Select function for the module. The available functions depend on the selected module.
+
+.. figure:: ../images/urcap/rc_visard_gn_select_function.png
+  :width: 800px
+  :align: center
+
+.. _urcap-ur_generic_select_function:
+
+Configure action
+----------------
+
+After you have selected sensor, module and function a subpanel appears that enables you to set parameters, trigger computation or receive data.
+
+.. figure:: ../images/urcap/rc_visard_gn_subpanel.png
+  :width: 800px
+  :align: center
+
+  Sample of compute grasp function in itempick module..
+.. _urcap-ur_generic_node_sample:

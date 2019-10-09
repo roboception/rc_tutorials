@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sample program &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation" href="../index.html"/>
+        <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
+        <link rel="next" title="Expert Functions" href="expertfunctions.html"/>
+        <link rel="prev" title="SilhouetteMatch" href="silhouette.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sample program</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-the-program">Load the program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-program">Setting up the program</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-itempick-module">Setting up ItemPick module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-gripper-actions">Setting up gripper actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#teaching-poses">Teaching poses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="expertfunctions.html">Expert Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+        
+      <li>Sample program</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-program">
+<span id="sampleprogram-ur"></span><h1>Sample program<a class="headerlink" href="#sample-program" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows example program that uses ItemPick Module. Programs with similar structure can also be downloaded for SilhouetteMatch and BoxPick Modules.</p>
+<p>This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/ip_program.png"><img alt="../_images/ip_program.png" src="../_images/ip_program.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Program structure</span></p>
+</div>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>This tutorials assumes that the tutorial <a class="reference internal" href="../rc_itempick/getting_started.html#itempick-getting-started"><span class="std std-ref">Getting started with ItemPick</span></a> has
+been completed, and the valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
+</div>
+<div class="section" id="load-the-program">
+<h2>Load the program<a class="headerlink" href="#load-the-program" title="Permalink to this headline">¶</a></h2>
+<p>The roboception picking sample program can be downloaded from TODO. The program can be then used and loaded as every standard program.</p>
+</div>
+<div class="section" id="setting-up-the-program">
+<h2>Setting up the program<a class="headerlink" href="#setting-up-the-program" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-itempick-module">
+<h3>Setting up ItemPick module<a class="headerlink" href="#setting-up-itempick-module" title="Permalink to this headline">¶</a></h3>
+<p>To ensure proper working of the detection module it is necessary to setup and test the parameters in ComputeGrasp node. For details on how to do this see <a class="reference internal" href="itempick.html#ur-ip"><span class="std std-ref">ItemPick</span></a></p>
+<p>Depending on the application it also might be necessary to change the pose orientation in GetNextGrasp node. The variable name for the pose should not be changed, since it is used later in the program.</p>
+</div>
+<div class="section" id="setting-up-gripper-actions">
+<h3>Setting up gripper actions<a class="headerlink" href="#setting-up-gripper-actions" title="Permalink to this headline">¶</a></h3>
+<p>If the program is left as it is, the robot will just go to computed poses, but no grasping action will be performed. Therefore
+it is necessary to specify how the gripper is working. Parts of the programs that should be filled are marked with a comment.</p>
+</div>
+<div class="section" id="teaching-poses">
+<h3>Teaching poses<a class="headerlink" href="#teaching-poses" title="Permalink to this headline">¶</a></h3>
+<p>Two waypoints have to be taught before the application can be run: observe_pose and drop_pose. Their position in the workspace depends on the cell layout and ItemPick settings used to compute grasps.</p>
+<p>When the rc_visard is mounted externally, depending on the scenario, there are different requirements for the robot pose at the waypoints and during movement between them:</p>
+<ul class="simple">
+<li>If no load carrier or region of interest is being used, the robot must be completely outside the field of view of the camera</li>
+<li>If a load carrier is used during the detection, the robot must not occlude the load carrier and the items to be grasped</li>
+<li>If the region of interest is used during the detection, the robot must be completely outside the region of interest and must not occlude the items that should be grasped</li>
+</ul>
+<p>For the robot mounted sensor in the observe_pose all objects of interest has to be in the field of view of the sensor.</p>
+<p>Additionally the pre pick distance can be changed by changing the value of the ‘prepick_offset’ variable in ‘BeforeStart’ tab.</p>
+<p>TODO image</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="expertfunctions.html" class="btn btn-neutral float-right" title="Expert Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="silhouette.html" class="btn btn-neutral" title="SilhouetteMatch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0-70-g75b5dd5',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,16 +1,17 @@
 Getting started
 
-Note: Roboception URCap is working with software 3.7.0 or newer. In
-  case you are running an older software version, please update your
-  controller (files can be downloaded from the UR website:
+Note: Roboception's URCap is working with software 3.7.0 or newer.
+  In case you are running an older software version, please update
+  your controller (files can be downloaded from the UR website:
 
   https://www.universal-robots.com/download/
 
   )
 
-Note: Roboception URCap is internally communicating with the daemon
-  on port 49285. In the unlikely event that it causes a conflict with
-  a URCap from a different vendor, please contact Roboception support.
+Note: Roboception's URCap is internally communicating with the
+  daemon on port 49285. In the unlikely event that it causes a
+  conflict with a URCap from a different vendor, please contact
+  Roboception support.
 
 Roboception's ItemPick Bundle for Universal Robots contains everything
 required to calibrate the robot and the
@@ -66,7 +67,7 @@ Reboot the controller
 After rebooting the robot, the rc_visard_urcap application should be
 marked by a green tick in the URCaps Setup window (see
 
-Fig. 26
+Fig. 35
 
 ).
 
@@ -84,7 +85,7 @@ a connection via switch, since some parts of the
 rc_visard
 
  interface are not fully duplicated in URCap and are only available
-through the Web GUI . It might be necessary to use an external PC to
+through the Web GUI. It might be necessary to use an external PC to
 configure the
 
 rc_visard

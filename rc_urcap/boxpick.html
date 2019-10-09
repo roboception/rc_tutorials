@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BoxPick &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+ documentation" href="../index.html"/>
+        <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
+        <link rel="next" title="SilhouetteMatch" href="silhouette.html"/>
+        <link rel="prev" title="ItemPick" href="itempick.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BoxPick</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overivew">Overivew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detectitems">DetectItems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getnextitem">GetNextItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbplcpose">GetBpLcPose</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampleprogram.html">Sample program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expertfunctions.html">Expert Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+        
+      <li>BoxPick</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="boxpick">
+<h1>BoxPick<a class="headerlink" href="#boxpick" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to use the BoxPick Module with Roboception’s URCap.</p>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>This tutorials assumes that you are familiar with the <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> and that a valid hand-eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
+</div>
+<div class="section" id="overivew">
+<h2>Overivew<a class="headerlink" href="#overivew" title="Permalink to this headline">¶</a></h2>
+<p>The boxpick functionality is available in the generic rc_visard node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
+<p>The following functions are available for BoxPick:</p>
+<ul class="simple">
+<li><strong>DetectItems:</strong> Triggers detection of boxes</li>
+<li><strong>GetNextItem:</strong> Gets the next item after detection has been triggered</li>
+<li><strong>GetLCPose:</strong> Returns the pose of the detected load carrier.</li>
+</ul>
+</div>
+<div class="section" id="detectitems">
+<h2>DetectItems<a class="headerlink" href="#detectitems" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/bp_detect_items.png"><img alt="../_images/bp_detect_items.png" src="../_images/bp_detect_items.png" style="width: 800px;" /></a>
+</div>
+<p>It is mandatory to set the minimum and maximum length and width of the item model. If necessary enter a load carrier id and/or a region of interest id, but it’s not mandatory.</p>
+</div>
+<div class="section" id="getnextitem">
+<h2>GetNextItem<a class="headerlink" href="#getnextitem" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/bp_get_next_item.png"><img alt="../_images/bp_get_next_item.png" src="../_images/bp_get_next_item.png" style="width: 800px;" /></a>
+</div>
+<p>This functions requires that DetectItems has been triggered before. It returns the next available item/box that was detected and stores the pose in PolyScope’s variable format (e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).
+If no box was detected, the call returns a zero pose (p[0,0,0,0,0,0]).
+It also returns the size of the detected object in vector format (e.g. [0.04, 0.02] for a box with 4 x 2 centimeters)</p>
+<p>If no reachable object is detected and <strong>Stop program when pose is not available</strong> checkbox is checked, popup will appear and the program will be terminated. If the checkbox is not checked zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+</div>
+<p>With the <em>‘Pick approach angle’</em> drop down menu it is possible to change the strategy of calculating the angle of the returned position.
+There are three different options to choose from:</p>
+<ul class="simple">
+<li><strong>Orientation from pick module</strong> the complete orientation computed by BoxPick module is used</li>
+<li><strong>Only z-axis from pick module</strong> only the orientation around z axis of the TCP is used (useful for non-symmetrical grippers)</li>
+<li><strong>Last pose orientation</strong> orientation from BoxPick is ignored, instead the orientation of the last waypoint is used</li>
+</ul>
+</div>
+<div class="section" id="getbplcpose">
+<h2>GetBpLcPose<a class="headerlink" href="#getbplcpose" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/bp_get_lc_pose.png"><img alt="../_images/bp_get_lc_pose.png" src="../_images/bp_get_lc_pose.png" style="width: 800px;" /></a>
+</div>
+<p>This function requires that DetectItems has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier was detected, a zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="silhouette.html" class="btn btn-neutral float-right" title="SilhouetteMatch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="itempick.html" class="btn btn-neutral" title="ItemPick" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0-70-g75b5dd5',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

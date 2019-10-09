@@ -25,5 +25,4 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **Is it possible to set the parameters of the rc_visard directly in UR program?**
 
-   It is possible to set |rc_visard| parameters with the :ref:`rc_set_parameter <ur-expert_functions-set-param>` Expert Function.
-
+   It is possible to set |rc_visard| parameters with the :ref:`rc_set_parameter <ur-expert_functions-set-param>` Expert Function and Set Parameter common node.

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
+  <title>ItemPick &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
  documentation</title>
   
 
@@ -48,11 +48,11 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
-        <link rel="next" title="Expert Functions" href="expertfunctions.html"/>
-        <link rel="prev" title="Hand Eye Calibration" href="handeyecalibration.html"/> 
+        <link rel="next" title="BoxPick" href="boxpick.html"/>
+        <link rel="prev" title="Generic rc_visard node" href="rc_visard.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -109,21 +109,22 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ItemPick</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rc-visard-itempick-application">rc_visard ItemPick application</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#teach-poses">1. Teach poses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#set-itempick-parameters">2. Set ItemPick parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#choose-pick-strategy">3. Choose pick strategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#define-pick-procedure">4. Define pick procedure</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#set-gripper-control">5. Set gripper control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overivew">Overivew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computegrasps">ComputeGrasps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getnextgrasp">GetNextGrasp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbplcpose">GetBpLcPose</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampleprogram.html">Sample program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expertfunctions.html">Expert Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
@@ -192,138 +193,62 @@
            <div itemprop="articleBody">
             
   <div class="section" id="itempick">
-<h1>ItemPick<a class="headerlink" href="#itempick" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to pick an object with the ItemPick module and Roboception’s URCap.</p>
+<span id="ur-ip"></span><h1>ItemPick<a class="headerlink" href="#itempick" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to use the ItemPick Module with Roboception’s URCap.</p>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
 <p>This tutorials assumes that the tutorial <a class="reference internal" href="../rc_itempick/getting_started.html#itempick-getting-started"><span class="std std-ref">Getting started with ItemPick</span></a> has
-been completed, and the valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand Eye Calibration</span></a>.</p>
+been completed, and the valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
 </div>
-<div class="section" id="rc-visard-itempick-application">
-<h2>rc_visard ItemPick application<a class="headerlink" href="#rc-visard-itempick-application" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/rc_itempick_application.png"><img alt="../_images/rc_itempick_application.png" src="../_images/rc_itempick_application.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Start empty program and add rc ItemPick.</span></p>
-</div>
-<div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="../_images/URProg.jpg"><img alt="../_images/URProg.jpg" src="../_images/URProg.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Program flow of generated ItemPick application</span></p>
-</div>
-<div class="section" id="teach-poses">
-<span id="urcap-rc-itempick-application"></span><h3>1. Teach poses<a class="headerlink" href="#teach-poses" title="Permalink to this headline">¶</a></h3>
-<p>Three waypoints have to be taught before the application can be run: observe_pose, drop_pose and approach_pose. Their position in the workspace depends on the cell layout and ItemPick settings used to compute grasps.</p>
-<p>Depending on the scenario, there are different requirements for the robot pose at the waypoints and during movement between them:</p>
+<div class="section" id="overivew">
+<h2>Overivew<a class="headerlink" href="#overivew" title="Permalink to this headline">¶</a></h2>
+<p>The ItemPick functionality is available in the generic rc_visard node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
+<p>The following functions are available for ItemPick:</p>
 <ul class="simple">
-<li>If no load carrier or region of interest is being used, the robot must be completely outside the field of view of the camera</li>
-<li>If a load carrier is used during the detection, the robot must not occlude the load carrier and the items to be grasped</li>
-<li>If the region of interest is used during the detection, the robot must be completely outside the region of interest and must not occlude the items that should be grasped</li>
+<li><strong>ComputeGrasps:</strong> Triggers grasp computation</li>
+<li><strong>GetNextGrasp:</strong> Gets the next grasp after detection has been triggered</li>
+<li><strong>GetLCPose:</strong> Returns the pose of the detected load carrier.</li>
 </ul>
-<div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/rc_itempick_set_poses.png"><img alt="../_images/rc_itempick_set_poses.png" src="../_images/rc_itempick_set_poses.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">The nodes marked in yellow show the three poses to teach - observe, drop and approach pose.</span></p>
 </div>
-</div>
-<div class="section" id="set-itempick-parameters">
-<span id="urcap-rc-itempick-set-poses"></span><h3>2. Set ItemPick parameters<a class="headerlink" href="#set-itempick-parameters" title="Permalink to this headline">¶</a></h3>
-<p>In this node the parameters for grasp computation are defined. It is also possible to test and check the results of the last grasp computation.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The global parameters can only be set from the Web GUI.</p>
-</div>
-<div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/rc_itempick_compute_grasps.png"><img alt="../_images/rc_itempick_compute_grasps.png" src="../_images/rc_itempick_compute_grasps.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Setting for a gripper with a suction cup surface of 17 mm.</span></p>
-</div>
-<div class="section" id="suction-surface">
-<span id="urcap-rc-itempick-compute-grasps"></span><h4>Suction surface<a class="headerlink" href="#suction-surface" title="Permalink to this headline">¶</a></h4>
-<p>These parameters defines the size of the suction cups that will be used to grasp an object.</p>
-</div>
-<div class="section" id="load-carrier">
-<h4>Load carrier<a class="headerlink" href="#load-carrier" title="Permalink to this headline">¶</a></h4>
-<p>Defines which load carrier should be used during grasp calculation. The load carrier has to be defined earlier, as described in <a class="reference internal" href="../rc_itempick/bin_picking_no_robot.html#itempick-bin-picking-no-robot-configure"><span class="std std-ref">Configuring the load carrier</span></a>.</p>
-</div>
-<div class="section" id="region-of-interest">
-<h4>Region of interest<a class="headerlink" href="#region-of-interest" title="Permalink to this headline">¶</a></h4>
-<p>Defines which region of interest should be used during grasp calculation. The region of interest has to be defined prior.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Since the frame of the chosen region of interest has to match the return frame of the requested grasp computation, only regions of interest defined with frame ‘external’ are listed in the drop down menu.</p>
-</div>
-</div>
-<div class="section" id="use-projector">
-<h4>Use Projector<a class="headerlink" href="#use-projector" title="Permalink to this headline">¶</a></h4>
-<p>This field is only active if there is valid IOControl license on the <em>rc_visard</em> . If this field is checked, the RandomDot Projector will be enabled for the duration of the ItemPick grasp computation.</p>
-</div>
-</div>
-<div class="section" id="choose-pick-strategy">
-<h3>3. Choose pick strategy<a class="headerlink" href="#choose-pick-strategy" title="Permalink to this headline">¶</a></h3>
-<p>This step will affect the structure of the generated program. There are three strategies to choose from:</p>
-<ul class="simple">
-<li><strong>Do not check for part</strong> - after each pick the drop part procedure is performed</li>
-<li><strong>Check for part, retry if failed</strong> - after each pick, part status is checked. If the part is not picked, the next pick is performed</li>
-<li><strong>Check for part, no retry</strong>- after each pick, part status is checked. If the part is not picked, the robot is moving to the observe position and new ItemPick detection is triggered</li>
-</ul>
+<div class="section" id="computegrasps">
+<h2>ComputeGrasps<a class="headerlink" href="#computegrasps" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/rc_itempick_pick_procedure.png"><img alt="../_images/rc_itempick_pick_procedure.png" src="../_images/rc_itempick_pick_procedure.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/ip_compute_grasps.png"><img alt="../_images/ip_compute_grasps.png" src="../_images/ip_compute_grasps.png" style="width: 800px;" /></a>
 </div>
-<div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/Grasp_strategies.jpg"><img alt="../_images/Grasp_strategies.jpg" src="../_images/Grasp_strategies.jpg" style="width: 900px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Program flows for different variants of pick procedure. From left: ‘Do not check for part’, ‘Check for part, no retry’ and ‘Check for part, retry if failed’.</span></p>
-</div>
-</div>
-<div class="section" id="define-pick-procedure">
-<span id="urcap-rc-itempick-pick-procedure"></span><h3>4. Define pick procedure<a class="headerlink" href="#define-pick-procedure" title="Permalink to this headline">¶</a></h3>
-<p id="urcap-rc-itempick-pick-settings">The pick procedure consists of following steps:</p>
-<ol class="arabic simple">
-<li>Getting next pick pose</li>
-<li>Calculating the pick orientation depending on the chosen option</li>
-<li>Moving to pre pick position with tool speed as defined in the <em>‘Pre pick speed’</em> variable and tool acceleration as defined in the <em>‘Pre pick acc’</em> variable.</li>
-<li>Moving to pick position with tool speed as defined in the <em>‘Pick speed’</em> variable and tool acceleration of 500 mm/s2.</li>
-<li>Picking part</li>
-<li>Moving to post pick position (same as pre pick) with speed as defined in the <em>‘Pre pick speed’</em> variable and acceleration as defined in the <em>‘Pre pick acc’</em> variable</li>
-</ol>
+<p>It is mandatory to set the minimum and maximum length and width of the suction cup. If necessary enter a load carrier id and/or a region of interest id, but it’s not mandatory.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is not guarantied that the pick and pre-pick poses are collision free</p>
+<p class="last">The region of interest and load carrier have to be defined in the Web GUI of the sensor. Only the regions of interest defined in ‘external’ frame are shown in the URCap.</p>
 </div>
+</div>
+<div class="section" id="getnextgrasp">
+<h2>GetNextGrasp<a class="headerlink" href="#getnextgrasp" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/rc_itempick_pick_settings.png"><img alt="../_images/rc_itempick_pick_settings.png" src="../_images/rc_itempick_pick_settings.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/ip_get_next_grasp.png"><img alt="../_images/ip_get_next_grasp.png" src="../_images/ip_get_next_grasp.png" style="width: 800px;" /></a>
 </div>
-<div class="section" id="pre-pick-distance">
-<h4>Pre pick distance<a class="headerlink" href="#pre-pick-distance" title="Permalink to this headline">¶</a></h4>
-<p>Pre pick distance is an offset in -Z direction of the TCP between pick pose and pre pick pose.</p>
+<p>This functions requires that ComputeGrasps has been triggered before. It assigned the next available grasp pose and stores the pose in PolyScope’s variable format (e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).</p>
+<p>If no reachable grasp is detected and <strong>Stop program when pose is not available</strong> checkbox is checked, popup will appear and the program will be terminated. If the checkbox is not checked zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
-<div class="section" id="pick-speed">
-<h4>Pick speed<a class="headerlink" href="#pick-speed" title="Permalink to this headline">¶</a></h4>
-<p>Speed during linear movement between pre/post pick positions and pick position.</p>
-</div>
-<div class="section" id="pre-pick-speed">
-<h4>Pre pick speed<a class="headerlink" href="#pre-pick-speed" title="Permalink to this headline">¶</a></h4>
-<p>Speed during linear movement to pre pick position.</p>
-</div>
-<div class="section" id="pre-pick-acc">
-<h4>Pre pick acc<a class="headerlink" href="#pre-pick-acc" title="Permalink to this headline">¶</a></h4>
-<p>Acceleration during linear movement to pre pick position.</p>
-</div>
-<div class="section" id="pick-approach-angle">
-<h4>Pick approach angle<a class="headerlink" href="#pick-approach-angle" title="Permalink to this headline">¶</a></h4>
-<p>With the <em>‘Pick approach angle’</em> drop down menu it is possible to change the strategy of calculating the pick position angle.
+<p>With the <em>‘Pose orientation’</em> drop down menu it is possible to change the strategy of calculating the angle of the returned position.
 There are three different options to choose from:</p>
 <ul class="simple">
-<li><strong>ItemPick</strong> the complete orientation computed by ItemPick module is used</li>
-<li><strong>Itempick (only z-axis)</strong> only the orientation around z axis of the TCP is used (useful for non-symetrical grippers)</li>
-<li><strong>Keep orientation</strong> orientation from ItemPick is ignored, instead the orientation of the last waypoint is used</li>
+<li><strong>Orientation from pick module</strong> the complete orientation computed by ItemPick module is used</li>
+<li><strong>Only z-axis from pick module</strong> only the orientation around z axis of the TCP is used (useful for non-symmetrical grippers)</li>
+<li><strong>Last pose orientation</strong> orientation from ItemPick is ignored, instead the orientation of the last waypoint is used</li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h4>Pre pick distance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Pre pick distance is an offset in -Z direction of the TCP between pick pose and pre pick pose.</p>
+<div class="section" id="getbplcpose">
+<h2>GetBpLcPose<a class="headerlink" href="#getbplcpose" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/ip_get_lc_pose.png"><img alt="../_images/ip_get_lc_pose.png" src="../_images/ip_get_lc_pose.png" style="width: 800px;" /></a>
 </div>
-</div>
-<div class="section" id="set-gripper-control">
-<h3>5. Set gripper control<a class="headerlink" href="#set-gripper-control" title="Permalink to this headline">¶</a></h3>
-<p>It is necessary to specify how the gripper is working. If the <strong>Do not check for part</strong> option has been chosen at the beginning it is only
-necessary to define the pick and drop behavior in the <strong>Drop part</strong> and <strong>Pick part</strong> folders. Otherwise it is also necessary to finish the <strong>if</strong> statement with a condition that indicates that the part is grasped.</p>
+<p>This function requires that DetectItems has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier was detected, a zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 </div>
 </div>
@@ -338,10 +263,10 @@ necessary to define the pick and drop behavior in the <strong>Drop part</strong>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="expertfunctions.html" class="btn btn-neutral float-right" title="Expert Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="boxpick.html" class="btn btn-neutral float-right" title="BoxPick" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="handeyecalibration.html" class="btn btn-neutral" title="Hand Eye Calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rc_visard.html" class="btn btn-neutral" title="Generic rc_visard node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -370,7 +295,7 @@ necessary to define the pick and drop behavior in the <strong>Drop part</strong>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-41-gc4bb476',
+            VERSION:'0.2.0-70-g75b5dd5',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

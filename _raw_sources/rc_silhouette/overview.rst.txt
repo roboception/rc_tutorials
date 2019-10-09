@@ -1,0 +1,11 @@
+.. include:: ../global_rst.glb
+
+SilhouetteMatch tutorials
+=========================
+
+This is the landing page for the :doc:`rcvisard:silhouettematch` tutorials.
+
+.. toctree::
+   :maxdepth: 2
+
+   template_generation

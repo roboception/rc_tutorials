@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started &mdash; Tutorials, FAQs, and more 0.2.0-41-gc4bb476
+  <title>Getting started &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
  documentation</title>
   
 
@@ -48,10 +48,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-41-gc4bb476
+    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
-        <link rel="next" title="Hand Eye Calibration" href="handeyecalibration.html"/>
+        <link rel="next" title="Hand-Eye Calibration" href="handeyecalibration.html"/>
         <link rel="prev" title="Universal Robots tutorials" href="overview.html"/> 
 
   
@@ -109,14 +109,19 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#software-installation">Software installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connect-the-sensor">Connect the sensor</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampleprogram.html">Sample program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expertfunctions.html">Expert Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
@@ -188,11 +193,11 @@
 <span id="ur-getting-started"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Roboception URCap is working with software 3.7.0 or newer. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: <a class="reference external" href="https://www.universal-robots.com/download/">https://www.universal-robots.com/download/</a>)</p>
+<p class="last">Roboception’s URCap is working with software 3.7.0 or newer. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: <a class="reference external" href="https://www.universal-robots.com/download/">https://www.universal-robots.com/download/</a>)</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Roboception URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact Roboception support.</p>
+<p class="last">Roboception’s URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact Roboception support.</p>
 </div>
 <p>Roboception’s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the <em>rc_visard</em> , and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.</p>
 <p>The basic bundle consists of:</p>
@@ -222,15 +227,15 @@
 <li>Navigate to the rc_visard_urcap file by clicking on your USB drive and selecting it. Confirm the selection by clicking on Open</li>
 <li>Reboot the controller</li>
 </ol>
-<p>After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window (see <a class="reference internal" href="#fig-successful-installed-urcap"><span class="std std-numref">Fig. 26</span></a>).</p>
+<p>After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window (see <a class="reference internal" href="#fig-successful-installed-urcap"><span class="std std-numref">Fig. 35</span></a>).</p>
 <div class="figure align-center" id="id5">
 <span id="fig-successful-installed-urcap"></span><a class="reference internal image-reference" href="../_images/urcap_setup.png"><img alt="../_images/urcap_setup.png" src="../_images/urcap_setup.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Successfully installed <em>rc_visard</em> URCap.</span></p>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Successfully installed <em>rc_visard</em> URCap.</span></p>
 </div>
 </div>
 <div class="section" id="connect-the-sensor">
 <span id="urcap-urcap-setup-image"></span><h2>Connect the sensor<a class="headerlink" href="#connect-the-sensor" title="Permalink to this headline">¶</a></h2>
-<p>You can connect the <em>rc_visard</em> directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the <em>rc_visard</em> interface are not fully duplicated in URCap and are only available through the Web GUI . It might be necessary to use an external PC to configure the <em>rc_visard</em> or its software modules.</p>
+<p>You can connect the <em>rc_visard</em> directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the <em>rc_visard</em> interface are not fully duplicated in URCap and are only available through the Web GUI. It might be necessary to use an external PC to configure the <em>rc_visard</em> or its software modules.</p>
 <p>Detailed instructions about network setup can be found in <a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connecting and configuring rc_visard to a network</span></a> tutorial.</p>
 <ol class="arabic simple">
 <li>Connect the <em>rc_visard</em> to the same network as the robot controller</li>
@@ -243,7 +248,7 @@
 </div>
 <div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/installation_node.png"><img alt="../_images/installation_node.png" src="../_images/installation_node.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Sample setup. The robot has established a connection to <em>rc_visard</em> and displays status information, rectified left image, and depth image.</span></p>
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Sample setup. The robot has established a connection to <em>rc_visard</em> and displays status information, rectified left image, and depth image.</span></p>
 </div>
 <span class="target" id="urcap-installation-node-image"></span></div>
 </div>
@@ -258,7 +263,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="handeyecalibration.html" class="btn btn-neutral float-right" title="Hand Eye Calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="handeyecalibration.html" class="btn btn-neutral float-right" title="Hand-Eye Calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="Universal Robots tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -290,7 +295,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-41-gc4bb476',
+            VERSION:'0.2.0-70-g75b5dd5',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

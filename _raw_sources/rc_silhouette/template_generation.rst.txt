@@ -1,0 +1,197 @@
+.. include:: ../global_rst.glb
+
+.. _template-generation:
+
+Template generation
+===================
+
+The SilhouetteMatch module requires special object templates for each type
+of object to be detected.
+|company| offers a template generation service on their
+`website <https://roboception.com/en/template-request/>`_,
+where the user can request these object templates.
+
+This tutorial shows how to gather the data required to request and
+generate a new object template.
+
+Obtaining the object model
+--------------------------
+
+CAD model
+`````````
+
+Sending the CAD model of the part is the easiest and most straightforward way of providing the object model.
+The model does not have to include any information about inner parts, texture or material.
+A 2D model of the object could also be used, as long as all edges that should be used for matching are visible.
+
+.. note::
+  The reference position of the generated template is based on the reference frame of the model.
+
+.. figure:: ../images/silhouette/cad_model.png
+  :width: 400px
+  :align: center
+
+  Sample CAD model with its reference frame.
+
+With the |rc-visard|
+````````````````````
+
+If the CAD model of the object is not available or it can not not be sent,
+it is also possible to generate a template based on data captured with an |rc_visard|.
+
+.. figure:: ../images/silhouette/template_scene.jpg
+  :width: 500px
+  :align: center
+
+  Sample setup scene for template generation.
+
+The procedure for recording the required data consists of the following steps:
+
+#. Place the object on a flat, monochrome surface in contrasting color.
+
+#. Place 3 :ref:`AprilTags<sect-apriltag>` on the surface to form a triangle around the object.
+   A sample background with AprilTags can be downloaded `here <http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf>`_.
+
+#. :ref:`Connect the rc_visard to your PC <general-network>` and open the *Camera* tab in the |webgui|.
+
+#. Place the |rc_visard| perpendicular to the flat surface on which the object lies.
+   The distance of the |rc_visard| to the surface depends on the |rc_visard| model:
+
+    - approximately 300 mm for rc_visard 65
+    - approximately 500 mm for rc_visard 160
+
+    .. note::
+      The object should be visible in both the left and right camera images.
+      The distance should be increased if the object is not fully visible at the recommended value.
+
+#. In the *Camera* tab, select an *Exposure region* around the object and check the illumination of the scene.
+   To get the best result, the gain of the |rc_visard| should be 0 db (the current value is printed below the images)
+   and the object should not cast any significant shadow.
+
+    .. figure:: ../images/silhouette/screenshot_template_good.png
+      :width: 750px
+      :align: center
+
+      Sample scene with proper lighting conditions.
+      The gain value is 0 dB and there are no shadows on the object and its vicinity.
+
+    .. figure:: ../images/silhouette/screenshot_template_gain_too_high.png
+      :width: 750px
+      :align: center
+
+      Sample scene with too little light. The gain value is too high.
+
+    .. figure:: ../images/silhouette/screenshot_template_shadow.png
+      :width: 750px
+      :align: center
+
+      Sample scene with too strong direct light. The object casts shadows.
+
+#. Follow the :ref:`data-recording` tutorial to capture the required images. The command that should be used is:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+
+
+Measuring the object height
+---------------------------
+
+The object height is the distance from the bottom of the object to the plane
+on which most of the edges that can be used for matching are lying.
+This is not always the highest point! It is crucial to measure this value correctly.
+The returned pose of the detected object depends on this value.
+
+.. figure:: ../images/silhouette/object_height.png
+  :width: 750px
+  :align: center
+
+  Visualization of how different object heights (left) affect generated template (right).
+
+Is the object orientation needed?
+---------------------------------
+
+For some objects it is possible to create a simplified template that will be detected faster.
+This is possible only if the object rotation on the plane is not required for grasping and placing.
+Sample images of such objects can be found below.
+
+.. figure:: ../images/silhouette/tamplate_orientation_example.png
+  :width: 750px
+  :align: center
+
+  3D model of a round part and two templates generated from it.
+  With the first template, the object will be detected with full orientation.
+  If the second template is used, the rotation of the object on the plane will be ignored.
+
+
+.. figure:: ../images/silhouette/tamplate_orientation_example_2.png
+  :width: 750px
+  :align: center
+
+  3D model of a part with one axis of symmetry and two templates generated from it.
+  With the first template, the object will be detected with full orientation.
+  If the second template is used, the detected object might be flipped.
+
+
+Recording the scene
+-------------------
+
+The final step is to record images of the object in the actual environment
+in which the object needs to be detected.
+|company| will use these images to test the generated template and, if necessary,
+suggest changes to improve the detection performances.
+
+For recording the scene, 3 :ref:`AprilTags<sect-apriltag>` should be placed in the field of view of both cameras.
+If a |projector| is available, the plane calibration can also be performed using depth data.
+In this case, the |projector| should be setup as described in the :ref:`general-projector`
+tutorial and the Out 1 mode of the |rcvisard| should be set to *ExposureAlternateActive*.
+
+.. figure:: ../images/silhouette/example_scene.png
+  :width: 750px
+  :align: center
+
+  Sample recorded scene with 3 AprilTags.
+
+With the |rc_visard|
+````````````````````
+
+Follow the :ref:`data-recording` tutorial to capture the required images.
+The recording command that should be used is:
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+            .. code-block:: bash
+
+                ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
+
+    .. group-tab:: Windows
+
+            .. code-block:: bash
+
+                rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+
+Without the |rc_visard|
+```````````````````````
+.. note::
+    It is possible to test the template detection only on images recorded with the |rc_visard|.
+    If another camera is used, |company| will only be able to check the scene and
+    give some general remarks about background and illumination.
+
+If the |rc_visard| can not be used to capture the data, it is also possible to use any other camera.
+In order to capture the most valuable data, the camera should be placed in the same position
+where the |rc_visard| will be mounted during production.
+The picture has to be sharp and taken without using the flash, as this alters the normal lighting conditions.
+If it is not possible to take a sharp picture without a flash, it is strongly recommended
+to add an additional external light source.

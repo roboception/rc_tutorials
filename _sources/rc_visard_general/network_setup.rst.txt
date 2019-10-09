@@ -159,7 +159,7 @@ Note: Since these settings are applied only
 
    back to the former network settings.
 
-Option 2: Persistent configuration via GenICam
+Option 2: Persistent configuration via GenICam with command line
 
 The command line GenICam tool "gc_config" gives full control over the
 
@@ -239,6 +239,24 @@ desired settings are applied and that the
 rc_visard
 
  is reachable from your host.
+
+Option 3: Persistent configuration via GenICam with graphical
+interface
+
+For changing the IP address using the graphical interface, we
+recommend using the IpConfigTool that is part of the
+
+Baumer GAPI SDK
+
+. The
+
+SDK
+
+ can be downloaded free of charge for Windows and Linux from
+
+http://www.baumer.com
+
+.
 
 Optimizations for high network loads
 

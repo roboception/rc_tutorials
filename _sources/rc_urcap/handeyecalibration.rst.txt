@@ -1,4 +1,4 @@
-Hand Eye Calibration
+Hand-Eye Calibration
 
 This tutorial shows how to calibrate the
 
@@ -30,7 +30,7 @@ Tuning of Image Parameters
 
  have been completed.
 
-Mounting the calibration grid
+Externally mounted sensor - mounting the calibration grid
 
 The calibration grid for Universal Robots is delivered with 4 holes in
 the lower-lefthand corner and can be mounted directly to the flange of
@@ -40,6 +40,14 @@ with joint five during calibration movements. The grid should be
 mounted firmly with the positioning hole pointing towards the middle
 of the calibration grid in direction of the shorter side.
 
+
+Sensor mounted on the robot - mounting the sensor
+
+When using the sensor mounted on the robot, it has to be firmly
+mounted on the flange. Before starting the calibration the weight of
+the TCP has to be updated in 'TCP configuration' and the calibration
+grid has to be placed in a way that it is not moving during the
+calibration.
 
 Calibration program
 
@@ -57,7 +65,7 @@ rc_visard
 , and the calculated camera pose in the robot base frame will be shown
 in the 'Calibration result' node.
 
-Note: Thr calibration result is not automatically stored on the
+Note: The calibration result is not automatically stored on the
 
   rc_visard
 
@@ -65,20 +73,25 @@ Note: Thr calibration result is not automatically stored on the
   the calibration under 'Calibration result' and store it, provided
   the error is acceptable.
 
-By default, for the duration of the calibration program, the TCP will
-be set to the middle of the flange, and the payload will be set to the
-payload of properly mounted Roboception calibration grid. If the
-calibration grid is not mounted directly on the flange, or if it is
-not the only mounted element, TCP and payload have to be set
-accordingly in the installation node, and the checkbox 'Use
-Roboception TCP and payload' in the main screen of calibration program
-has to be un-checked.
+By default, for the duration of the calibration program with external
+camera, the TCP will be set to the middle of the flange, and the
+payload will be set to the payload of properly mounted Roboception
+calibration grid. If the calibration grid is not mounted directly on
+the flange, or if it is not the only mounted element, TCP and payload
+have to be set accordingly in the installation node, and the checkbox
+'Use Roboception TCP and payload' in the main screen of calibration
+program has to be un-checked. For the calibration with robot mounted
+sensor, user has to specify the payload in robot installation node
+prior to the calibration procedure.
 
 In order to start a new calibration procedure:
 
 Create an empty program.
 
 Add 'RC calibration' program node.
+
+Choose the sensor you want to calibrate and other calibration
+parameters (see Calibration parameters.)
 
 Move the robot, so that the grid is shown on the live view
 corresponding to the grid image on the right (see Set pose.) and click
