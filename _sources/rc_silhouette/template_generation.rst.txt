@@ -21,15 +21,15 @@ have to include any information about inner parts, texture or
 material. A 2D model of the object could also be used, as long as all
 edges that should be used for matching are visible.
 
-Note: The reference position of the generated template is based on
-  the reference frame of the model.
+Note: The origin of the generated template is based on the reference
+  frame of the model.
 
 
 With the rc_visard
 
-If the CAD model of the object is not available or it can not not be
-sent, it is also possible to generate a template based on data
-captured with an
+If the CAD model of the object is not available or it cannot be sent,
+it is also possible to generate a template based on data captured with
+an
 
 rc_visard
 
@@ -48,20 +48,21 @@ Connect the rc_visard to your PC and open the Camera tab in the Web
 GUI.
 
 Place the rc_visard perpendicular to the flat surface on which the
-object lies. The distance of the rc_visard to the surface depends on
-the rc_visard model:  approximately 300 mm for rc_visard 65
+object lies. The recommended distance of the rc_visard to the surface
+depends on the rc_visard model:  approximately 300 mm for rc_visard 65
 approximately 500 mm for rc_visard 160  The object should be visible
 in both the left and right camera images. The distance should be
-increased if the object is not fully visible at the recommended value.
+increased if the object is not fully visible at the recommended
+distance.
 
 In the Camera tab, select an Exposure region around the object and
 check the illumination of the scene. To get the best result, the gain
-of the rc_visard should be 0 db (the current value is printed below
-the images) and the object should not cast any significant shadow.
-Sample scene with proper lighting conditions. The gain value is 0 dB
-and there are no shadows on the object and its vicinity.    Sample
-scene with too little light. The gain value is too high.    Sample
-scene with too strong direct light. The object casts shadows.
+of the rc_visard should be 0 db (see Exposure and Gain Settings) and
+the object should not cast any significant shadow.    Sample scene
+with proper lighting conditions. The gain value is 0 dB and there are
+no shadows on the object and its vicinity.    Sample scene with too
+little light. The gain value is too high.    Sample scene with too
+strong direct light. The object casts shadows.
 
 Follow the Recording data with rc_visard tutorial to capture the
 required images. The command that should be used is:
@@ -96,7 +97,7 @@ Recording the scene
 The final step is to record images of the object in the actual
 environment in which the object needs to be detected. Roboception will
 use these images to test the generated template and, if necessary,
-suggest changes to improve the detection performances.
+suggest changes to improve the detection performance.
 
 For recording the scene, 3
 

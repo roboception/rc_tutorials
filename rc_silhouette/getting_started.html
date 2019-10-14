@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs, and more 0.3.0
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0
+ documentation" href="../index.html"/>
+        <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
+        <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="Template generation" href="template_generation.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">SilhouetteMatch tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="template_generation.html">Template generation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with SilhouetteMatch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-scene">Setting up the scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-image-parameters">Configuring image parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-silm">Setting up SilhouetteMatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-a-template">Getting a template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-a-template">Uploading a template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-a-region-of-interest">Configuring a region of interest</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-base-plane-calibration">Performing base-plane calibration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apriltag-based">AprilTag based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stereo-based">Stereo based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#offset-parameter">Offset parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#detecting-objects">Detecting objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quality">Quality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maximum-object-number">Maximum Object Number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maximum-matching-distance-pixel">Maximum Matching Distance (pixel)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matching-percentile">Matching Percentile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edge-sensitivity">Edge Sensitivity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">SilhouetteMatch tutorials</a> &raquo;</li>
+        
+      <li>Getting started with SilhouetteMatch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started-with-silm">
+<span id="silhouettematch-getting-started"></span><h1>Getting started with SilhouetteMatch<a class="headerlink" href="#getting-started-with-silm" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to set up the <em>rc_visard</em> to start using the SilhouetteMatch component and
+guides the reader to detecting the first objects.</p>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>In order to go through this tutorial, the following prerequisites should be met:</p>
+<p class="rubric">The <em>rc_visard</em> is properly configured:</p>
+<ol class="arabic simple">
+<li>The <em>rc_visard</em>’s image version is at least 1.8 and the <em>rc_visard</em>’s license includes the
+SilhouetteMatch component.
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.8)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+</ol>
+<p class="rubric">One or more workpieces have been chosen and the templates for these objects have been
+generated:</p>
+<ol class="arabic simple">
+<li>Suitable workpieces for SilhouetteMatch are described in the <em>rc_visard</em>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#suitable-objects">user manual</a>.</li>
+<li>Roboception offers a template generation service on their website, where the user can
+request object templates.
+The process is described in the <a class="reference internal" href="template_generation.html#silhouettematch-template-generation"><span class="std std-ref">Template generation</span></a> tutorial.</li>
+</ol>
+</div>
+<div class="section" id="setting-up-the-scene">
+<h2>Setting up the scene<a class="headerlink" href="#setting-up-the-scene" title="Permalink to this headline">¶</a></h2>
+<p>We recommend to mount the <em>rc_visard</em> on a tripod or a static support as explained
+in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v1.8)"><span>Mechanical interface</span></a> description.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The mounting should be stable such that the sensor remains static while SilhouetteMatch acquires data.</p>
+</div>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">SilhouetteMatch’s recommended working range.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">Minimum distance</th>
+<th class="head">Maximum distance</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>rc_visard</em> 160</td>
+<td>0.5 m</td>
+<td>1.5 m</td>
+</tr>
+<tr class="row-odd"><td><em>rc_visard</em> 65</td>
+<td>0.2 m</td>
+<td>1.0 m</td>
+</tr>
+</tbody>
+</table>
+<p>For SilhouetteMatch to work, all objects must be placed directly on a common base plane.
+This plane must be as planar as possible and should have as little texture as possible.
+It should be colored such that there is some contrast between objects and the plane.</p>
+<p>The <em>rc_visard</em> must be mounted somewhat parallel to the base plane—a tilt of up to 10 degrees
+is fine.
+Before SilhouetteMatch can detect objects, the base plane must be calibrated.
+In case of a static <em>rc_visard</em> and a static base plane, the calibration must be performed only
+once.
+If either the <em>rc_visard</em> or the base plane is moving
+(e.g. for picking objects from a load carrier with several separated layers of objects),
+the calibration must be performed whenever there might have been a change in position or
+orientation of the base plane relative to the <em>rc_visard</em>
+(e.g. when continuing to the next layer of objects in the bin).
+The scene must be set up such that the base plane can be detected reliably whenever a base-plane
+calibration is performed, as explained in <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>.</p>
+<p>For an <em>rc_visard</em> mounted on a robot, special handling is applied, as described in
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v1.8)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/base-plane.jpg"><img alt="../_images/base-plane.jpg" src="../_images/base-plane.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Examples for good and bad base-plane configurations.
+Left: All objects are on the same plane.
+Middle: Objects are placed on different planes.
+Right: <em>rc_visard</em> is not approximately parallel to the base plane.</span></p>
+</div>
+<p>SilhouetteMatch is designed to work for unmixed scenes, meaning that only objects belonging to one
+specific template may be visible at a time.
+If multiple different objects are visible and their position is known approximately,
+<a class="reference internal" href="#silhouettematch-roi"><span class="std std-ref">regions of interest</span></a> can be configured that enclose the
+objects belonging to each template.
+Moreover, it is assumed that all objects are right side up, so no objects are flipped.</p>
+<p>Good illumination of the scene must be ensured; a gain of 0 db (see <a class="reference internal" href="../rc_visard_general/parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>)
+on the Web GUI’s <em>Camera</em> panel indicates that the scene is adequately illuminated.
+It is recommended to use diffuse illumination in order to avoid hard shadows.</p>
+</div>
+<div class="section" id="configuring-image-parameters">
+<span id="silhouettematch-image-params"></span><h2>Configuring image parameters<a class="headerlink" href="#configuring-image-parameters" title="Permalink to this headline">¶</a></h2>
+<p>For base-plane calibration as well as for object detection, it’s most important that the
+images are well exposed.
+The tutorial about <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-camera-parmeters"><span class="std std-ref">Camera Parameters</span></a> covers the steps required to
+get best quality images.</p>
+<p>For stereo-based base-plane calibration (see <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>), it’s additionally
+required to ensure high quality depth images, which is covered by the tutorial about
+<a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-depth-parmeters"><span class="std std-ref">Depth Image Tuning</span></a>.
+It is recommended to employ a <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">RandomDot projector</span></a> to allow dense
+reconstruction of a texture-less base plane.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/with-without-projector.jpg"><img alt="../_images/with-without-projector.jpg" src="../_images/with-without-projector.jpg" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Comparison of point cloud without (left) and with (right) projector.
+With projector, a much denser point cloud (green points) is produced, especially
+for the texture-less base plane.</span></p>
+</div>
+<p>SilhouetteMatch provides best results when the depth image quality is set to High.
+The projector should be operated in <cite>ExposureAlternateActive</cite> mode or the stereo
+should work in <cite>Single + Out1 Acquisition Mode</cite>, meaning that the projected
+pattern is not visible in the regular intensity images.
+Otherwise, the projector will interfere with SilhouetteMatch’s object detection process.</p>
+</div>
+<div class="section" id="setting-up-silm">
+<h2>Setting up SilhouetteMatch<a class="headerlink" href="#setting-up-silm" title="Permalink to this headline">¶</a></h2>
+<p>After setting up the scene, SilhouetteMatch can now be configured.</p>
+<div class="section" id="getting-a-template">
+<h3>Getting a template<a class="headerlink" href="#getting-a-template" title="Permalink to this headline">¶</a></h3>
+<p>Templates for new objects can be generated with Roboception’s
+<a class="reference external" href="https://roboception.com/en/template-request/">template generation service</a>.
+The process is described in more detail in <a class="reference internal" href="template_generation.html#silhouettematch-template-generation"><span class="std std-ref">Template generation</span></a>.</p>
+</div>
+<div class="section" id="uploading-a-template">
+<h3>Uploading a template<a class="headerlink" href="#uploading-a-template" title="Permalink to this headline">¶</a></h3>
+<p>The generated template must be uploaded to the <em>rc_visard</em>.
+The most convenient way to do this is via the Web GUI’s SilhouetteMatch panel.
+See the following video for a walk-through of the uploading process.</p>
+<p class="toggle-header"><em>Video: Uploading a template</em></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/template_upload.gif"><img alt="../_images/template_upload.gif" src="../_images/template_upload.gif" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="configuring-a-region-of-interest">
+<span id="silhouettematch-roi"></span><h3>Configuring a region of interest<a class="headerlink" href="#configuring-a-region-of-interest" title="Permalink to this headline">¶</a></h3>
+<p>For both base-plane calibration and object detection, a 2D region of interest (ROI) can be applied.
+The SilhouetteMatch component offers a ROI database, in which ROIs can be stored and referred to during
+base-plane calibration or object detection by their name.</p>
+<p>For configuring a new region of interest, the Web GUI offers an intuitive selection tool, which
+is shown in the following video.</p>
+<p class="toggle-header"><em>Video: Configuring a ROI</em></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/roi_creation.gif"><img alt="../_images/roi_creation.gif" src="../_images/roi_creation.gif" style="width: 600px;" /></a>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="performing-base-plane-calibration">
+<span id="silhouettematch-calibration"></span><h2>Performing base-plane calibration<a class="headerlink" href="#performing-base-plane-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Base-plane calibration is an obligatory step before objects can be detected.
+During base-plane calibration, the plane on which the objects are placed (“base plane”) is
+estimated and—if successful—stored persistently on the <em>rc_visard</em>.</p>
+<p>SilhouetteMatch provides two methods for estimating the base plane: AprilTag based and Stereo based.
+Both are introduced in the following.</p>
+<div class="section" id="apriltag-based">
+<span id="silhouettematch-base-plane-calib-apriltag"></span><h3>AprilTag based<a class="headerlink" href="#apriltag-based" title="Permalink to this headline">¶</a></h3>
+<p>With AprilTag-based base-plane calibration, a plane is fitted through a set of AprilTags
+in the scene.
+At least three tags must be visible, placed such that they appear in the left
+and right camera image.
+The three tags should span a triangle around the objects, which is as large as possible.</p>
+<p>Only tags of the family “36h11” are detected.
+The minimum size depends on the distance to the tags
+(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v1.8)"><span>Tag reading</span></a> for more information).
+A sample page with AprilTags for printing can be downloaded
+<a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.
+When cutting them out, please make sure to leave a white border around the AprilTags
+(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v1.8)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).
+More AprilTags from family “36h11” can be downloaded from the
+<a class="reference external" href="https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11">apriltag-imgs repository</a>.</p>
+<p>The tags should be placed directly on the base plane.
+In case that is not possible, please refer to <a class="reference internal" href="#silhouettematch-offset-parameter"><span class="std std-ref">Offset parameter</span></a>.</p>
+<p>All “36h11” tags in the scene are used for calibration.
+A <a class="reference internal" href="#silhouettematch-roi"><span class="std std-ref">ROI</span></a> can be used to select specific tags.</p>
+<div class="figure align-center" id="id4">
+<span id="silhouettematch-fig-base-plane-calib-apriltag-scenes"></span><a class="reference internal image-reference" href="../_images/base-plane-calib-apriltag.jpg"><img alt="../_images/base-plane-calib-apriltag.jpg" src="../_images/base-plane-calib-apriltag.jpg" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">Examples for good and bad AprilTag placements.
+Left: AprilTags span a large triangle, enclosing the objects.
+Middle: Triangle is degenerate.
+Right: Triangle is too small.</span></p>
+</div>
+<p>The following video shows how to perform AprilTag-based base-plane calibration via the Web GUI.</p>
+<p class="toggle-header"><em>Video: AprilTag-based base-plane calibration</em></p>
+<div class="toggle-content docutils container">
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/base-plane-calib-apriltag.gif"><img alt="../_images/base-plane-calib-apriltag.gif" src="../_images/base-plane-calib-apriltag.gif" style="width: 600px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="stereo-based">
+<span id="silhouettematch-base-plane-calib-stereo"></span><h3>Stereo based<a class="headerlink" href="#stereo-based" title="Permalink to this headline">¶</a></h3>
+<p>With Stereo-based base-plane calibration, the point cloud provided by the stereo matching
+component is used.
+SilhouetteMatch searches for planes in the point cloud and selects the most distant plane
+from the <em>rc_visard</em>.</p>
+<p>For stereo-based base-plane calibration, a dense point cloud is important.
+<a class="reference internal" href="#silhouettematch-image-params"><span class="std std-ref">Configuring image parameters</span></a> explains how to ensure that.</p>
+<p>If the most distant plane is not the actual base plane,
+a ROI should be used to select the right plane
+(see <a class="reference internal" href="#silhouettematch-fig-base-plane-stereo-roi"><span class="std std-numref">Fig. 38</span></a>).</p>
+<div class="figure align-center" id="id5">
+<span id="silhouettematch-fig-base-plane-stereo-roi"></span><a class="reference internal image-reference" href="../_images/base-plane-calib-roi.jpg"><img alt="../_images/base-plane-calib-roi.jpg" src="../_images/base-plane-calib-roi.jpg" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Left: Scene with two planes in view of the <em>rc_visard</em>.
+Middle: By default, the most distant plane is selected.
+Right: By setting a ROI (petrol rectangle, marked with an arrow),
+the actual base-plane can be selected.</span></p>
+</div>
+<p>The following video shows how to perform stereo-based base-plane calibration via the Web GUI.</p>
+<p class="toggle-header"><em>Video: Stereo-based base-plane calibration</em></p>
+<div class="toggle-content docutils container">
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/base-plane-calib-stereo.gif"><img alt="../_images/base-plane-calib-stereo.gif" src="../_images/base-plane-calib-stereo.gif" style="width: 600px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="offset-parameter">
+<span id="silhouettematch-offset-parameter"></span><h3>Offset parameter<a class="headerlink" href="#offset-parameter" title="Permalink to this headline">¶</a></h3>
+<p>The base-plane calibration features an <code class="docutils literal notranslate"><span class="pre">offset</span></code> parameter that allows to shift the estimated
+plane by some distance along the normal of the base plane.
+This enables base-plane calibration even for scenes where it is not possible to calibrate
+the base plane directly, but instead to calibrate a plane parallel to the actual base plane.</p>
+<p>For example, the AprilTags might be printed on an aluminum pad with a thickness of 2 mm.
+Therefore, when using these AprilTags for base-plane calibration, the estimated plane
+is 2 mm above the actual base-plane.
+By setting the <code class="docutils literal notranslate"><span class="pre">offset</span></code> parameter to -0.002, the estimated plane is shifted onto the
+actual plane.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/apriltag-pad.jpg"><img alt="../_images/apriltag-pad.jpg" src="../_images/apriltag-pad.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Aluminum AprilTag pad with 2 mm thickness.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="detecting-objects">
+<h2>Detecting objects<a class="headerlink" href="#detecting-objects" title="Permalink to this headline">¶</a></h2>
+<p>After base-plane calibration is finished, objects can be detected.</p>
+<p>Object detection can be triggered in the <em>Try Out</em> section of the Web GUI’s SilhouetteMatch panel.
+Triggering via REST-API is possible as well, as described in
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v1.8)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
+<p>In the <em>Try Out</em> section, the template that is to be detected must be selected by its name.
+Then, the detection is triggered with the <em>Detect</em> button.
+The result will be shown in the table at the bottom of the page, as well as in the visualization
+images on top.</p>
+<div class="figure align-center" id="id7">
+<span id="silhouettematch-fig-obj-detection"></span><a class="reference internal image-reference" href="../_images/object-detection.jpg"><img alt="../_images/object-detection.jpg" src="../_images/object-detection.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Successful detection of a set of objects.
+Green: Detected objects.
+Light blue: Detected edges.
+Red dots: Returned (3D) poses of the object.
+Blue area on the left: Area where the left and right images do not overlap.</span></p>
+</div>
+<p>An object must be visible in the left <em>and</em> right image to be detected.
+As shown in <a class="reference internal" href="#silhouettematch-fig-obj-detection"><span class="std std-numref">Fig. 40</span></a>,
+the area where the left and right image do not overlap
+is marked in blue.</p>
+<p>By selecting a ROI, the search for objects can be limited to a part of the image.</p>
+<div class="figure align-center" id="id8">
+<span id="silhouettematch-fig-obj-detection-roi"></span><a class="reference internal image-reference" href="../_images/object-detection-roi.jpg"><img alt="../_images/object-detection-roi.jpg" src="../_images/object-detection-roi.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">A ROI (petrol rectangle) is applied to limit the search for objects.</span></p>
+</div>
+<p>The following video shows how to trigger the object detection via the Web GUI.</p>
+<p class="toggle-header"><em>Video: Triggering object detection</em></p>
+<div class="toggle-content docutils container">
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/detect-objects.gif"><img alt="../_images/detect-objects.gif" src="../_images/detect-objects.gif" style="width: 600px;" /></a>
+</div>
+</div>
+<p>The object detection process is influenced by a couple of parameters.
+The parameters can be adapted via the Web GUI as well as the REST-API.
+In the following, the parameters are described.</p>
+<div class="section" id="quality">
+<span id="silhouettematch-quality"></span><h3>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Quality</em> parameter controls the resolution of the images used for object detection.
+The lower, the faster is the computation, but details of the objects might get lost.</p>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/object-detection-quality.jpg"><img alt="../_images/object-detection-quality.jpg" src="../_images/object-detection-quality.jpg" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Comparison of low (left) and high (right) quality.</span></p>
+</div>
+</div>
+<div class="section" id="maximum-object-number">
+<span id="silhouettematch-maximum-object-number"></span><h3>Maximum Object Number<a class="headerlink" href="#maximum-object-number" title="Permalink to this headline">¶</a></h3>
+<p>With the <em>Maximum Object Number</em> parameter the number of returned objects can be limited.</p>
+</div>
+<div class="section" id="maximum-matching-distance-pixel">
+<span id="silhouettematch-maximum-matching-distance"></span><h3>Maximum Matching Distance (pixel)<a class="headerlink" href="#maximum-matching-distance-pixel" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Maximum Matching Distance (pixel)</em> controls how exact the object template must match
+the detected edges in the image.
+The higher, the less strict the matching is, but the slower the computation will be.
+Too high values may also lead to false positive detections.</p>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/matching-max-distance.png"><img alt="../_images/matching-max-distance.png" src="../_images/matching-max-distance.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Visualization of the <em>Maximum Matching Distance</em> parameter.
+Left: A value of 2 or greater would lead to a match between the template (black) and the detected
+edges (light blue).
+Right: A value of 4 or greater would lead to a match.</span></p>
+</div>
+</div>
+<div class="section" id="matching-percentile">
+<span id="silhouettematch-matching-percentile"></span><h3>Matching Percentile<a class="headerlink" href="#matching-percentile" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Matching Percentile</em> parameter controls what portion of the template must match to
+edges in the image.
+For example, a value of 0.9 means that 90% of the template edges must be closer than
+the <em>Maximum Matching Distance</em> to the edges in the image.</p>
+<p>The lower, the less strict the matching is, but the slower the computation will be.
+Too low values may also lead to false positive detections.</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/matching-percentile.jpg"><img alt="../_images/matching-percentile.jpg" src="../_images/matching-percentile.jpg" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Comparison of different <em>Matching Percentile</em> values.
+Left: With a value of 0.95, the flipped object is matched as well.
+Right: With a value of 0.98, the flipped object is not matched anymore.</span></p>
+</div>
+</div>
+<div class="section" id="edge-sensitivity">
+<span id="silhouettematch-edge-sensitivity"></span><h3>Edge Sensitivity<a class="headerlink" href="#edge-sensitivity" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Edge Sensitivity</em> parameter controls how many edges are detected in the image.
+The lower the value, the fewer edges are detected.
+It should be tuned such that all relevant edges are detected, without detecting noise edges.</p>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/edge-sensitivity.jpg"><img alt="../_images/edge-sensitivity.jpg" src="../_images/edge-sensitivity.jpg" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Comparison of different <em>Edge Sensitivity</em> values.
+Left: With a value of 0.2, only few edges are detected.
+Middle: With a value of 0.7, all relevant edges are detected.
+Right: With a value of 0.95, many irrelevant noise edges are detected as well.</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="troubleshooting.html#silhouettematch-faq-base-plane-not-detected"><span class="std std-ref">The base plane is not detected properly</span></a></li>
+<li><a class="reference internal" href="troubleshooting.html#silhouettematch-faq-object-not-detected"><span class="std std-ref">An object is not detected properly</span></a></li>
+<li><a class="reference internal" href="troubleshooting.html#silhouettematch-faq-timeout"><span class="std std-ref">A timeout occurs</span></a></li>
+<li><a class="reference internal" href="troubleshooting.html#silhouettematch-faq-noise-edges"><span class="std std-ref">A lot of noise edges are detected</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="FAQs and troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="template_generation.html" class="btn btn-neutral" title="Template generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 .. include:: ../global_rst.glb
 
-.. _template-generation:
+.. _silhouettematch-template-generation:
 
 Template generation
 ===================
@@ -25,7 +25,7 @@ The model does not have to include any information about inner parts, texture or
 A 2D model of the object could also be used, as long as all edges that should be used for matching are visible.
 
 .. note::
-  The reference position of the generated template is based on the reference frame of the model.
+  The origin of the generated template is based on the reference frame of the model.
 
 .. figure:: ../images/silhouette/cad_model.png
   :width: 400px
@@ -36,7 +36,7 @@ A 2D model of the object could also be used, as long as all edges that should be
 With the |rc-visard|
 ````````````````````
 
-If the CAD model of the object is not available or it can not not be sent,
+If the CAD model of the object is not available or it cannot be sent,
 it is also possible to generate a template based on data captured with an |rc_visard|.
 
 .. figure:: ../images/silhouette/template_scene.jpg
@@ -55,33 +55,33 @@ The procedure for recording the required data consists of the following steps:
 #. :ref:`Connect the rc_visard to your PC <general-network>` and open the *Camera* tab in the |webgui|.
 
 #. Place the |rc_visard| perpendicular to the flat surface on which the object lies.
-   The distance of the |rc_visard| to the surface depends on the |rc_visard| model:
+   The recommended distance of the |rc_visard| to the surface depends on the |rc_visard| model:
 
     - approximately 300 mm for rc_visard 65
     - approximately 500 mm for rc_visard 160
 
     .. note::
       The object should be visible in both the left and right camera images.
-      The distance should be increased if the object is not fully visible at the recommended value.
+      The distance should be increased if the object is not fully visible at the recommended distance.
 
 #. In the *Camera* tab, select an *Exposure region* around the object and check the illumination of the scene.
-   To get the best result, the gain of the |rc_visard| should be 0 db (the current value is printed below the images)
+   To get the best result, the gain of the |rc_visard| should be 0 db (see :ref:`general-exposure-gain`)
    and the object should not cast any significant shadow.
 
-    .. figure:: ../images/silhouette/screenshot_template_good.png
+    .. figure:: ../images/silhouette/screenshot_template_good.jpg
       :width: 750px
       :align: center
 
       Sample scene with proper lighting conditions.
       The gain value is 0 dB and there are no shadows on the object and its vicinity.
 
-    .. figure:: ../images/silhouette/screenshot_template_gain_too_high.png
+    .. figure:: ../images/silhouette/screenshot_template_gain_too_high.jpg
       :width: 750px
       :align: center
 
       Sample scene with too little light. The gain value is too high.
 
-    .. figure:: ../images/silhouette/screenshot_template_shadow.png
+    .. figure:: ../images/silhouette/screenshot_template_shadow.jpg
       :width: 750px
       :align: center
 
@@ -116,7 +116,7 @@ The returned pose of the detected object depends on this value.
   :width: 750px
   :align: center
 
-  Visualization of how different object heights (left) affect generated template (right).
+  Visualization of how different object heights (left) affect the generated template (right).
 
 Is the object orientation needed?
 ---------------------------------
@@ -149,7 +149,7 @@ Recording the scene
 The final step is to record images of the object in the actual environment
 in which the object needs to be detected.
 |company| will use these images to test the generated template and, if necessary,
-suggest changes to improve the detection performances.
+suggest changes to improve the detection performance.
 
 For recording the scene, 3 :ref:`AprilTags<sect-apriltag>` should be placed in the field of view of both cameras.
 If a |projector| is available, the plane calibration can also be performed using depth data.

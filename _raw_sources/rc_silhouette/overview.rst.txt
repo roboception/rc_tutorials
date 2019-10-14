@@ -9,3 +9,5 @@ This is the landing page for the :doc:`rcvisard:silhouettematch` tutorials.
    :maxdepth: 2
 
    template_generation
+   getting_started
+   troubleshooting

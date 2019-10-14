@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Template generation &mdash; Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+  <title>Template generation &mdash; Tutorials, FAQs, and more 0.3.0
  documentation</title>
   
 
@@ -56,10 +56,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.2.0-70-g75b5dd5
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
-        <link rel="next" title="Universal Robots tutorials" href="../rc_urcap/overview.html"/>
+        <link rel="next" title="Getting started with SilhouetteMatch" href="getting_started.html"/>
         <link rel="prev" title="SilhouetteMatch tutorials" href="overview.html"/> 
 
   
@@ -90,7 +90,7 @@
             
             
               <div class="version">
-                0.2
+                0.3
               </div>
             
           
@@ -127,12 +127,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#measuring-the-object-height">Measuring the object height</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#is-the-object-orientation-needed">Is the object orientation needed?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recording-the-scene">Recording the scene</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">With the <em>rc_visard</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">With the <em>rc_visard</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#without-the-rc-visard">Without the <em>rc_visard</em></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started with SilhouetteMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
@@ -200,7 +202,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="template-generation">
-<span id="id1"></span><h1>Template generation<a class="headerlink" href="#template-generation" title="Permalink to this headline">¶</a></h1>
+<span id="silhouettematch-template-generation"></span><h1>Template generation<a class="headerlink" href="#template-generation" title="Permalink to this headline">¶</a></h1>
 <p>The SilhouetteMatch module requires special object templates for each type
 of object to be detected.
 Roboception offers a template generation service on their
@@ -217,18 +219,18 @@ The model does not have to include any information about inner parts, texture or
 A 2D model of the object could also be used, as long as all edges that should be used for matching are visible.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The reference position of the generated template is based on the reference frame of the model.</p>
+<p class="last">The origin of the generated template is based on the reference frame of the model.</p>
 </div>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/cad_model.png"><img alt="../_images/cad_model.png" src="../_images/cad_model.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Sample CAD model with its reference frame.</span></p>
 </div>
 </div>
 <div class="section" id="with-the-rc-visard">
 <h3>With the <em>rc_visard</em><a class="headerlink" href="#with-the-rc-visard" title="Permalink to this headline">¶</a></h3>
-<p>If the CAD model of the object is not available or it can not not be sent,
+<p>If the CAD model of the object is not available or it cannot be sent,
 it is also possible to generate a template based on data captured with an <em>rc_visard</em>.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/template_scene.jpg"><img alt="../_images/template_scene.jpg" src="../_images/template_scene.jpg" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Sample setup scene for template generation.</span></p>
 </div>
@@ -242,7 +244,7 @@ A sample background with AprilTags can be downloaded <a class="reference externa
 <li><p class="first"><a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connect the rc_visard to your PC</span></a> and open the <em>Camera</em> tab in the Web GUI.</p>
 </li>
 <li><p class="first">Place the <em>rc_visard</em> perpendicular to the flat surface on which the object lies.
-The distance of the <em>rc_visard</em> to the surface depends on the <em>rc_visard</em> model:</p>
+The recommended distance of the <em>rc_visard</em> to the surface depends on the <em>rc_visard</em> model:</p>
 <blockquote>
 <div><ul class="simple">
 <li>approximately 300 mm for rc_visard 65</li>
@@ -251,25 +253,25 @@ The distance of the <em>rc_visard</em> to the surface depends on the <em>rc_visa
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The object should be visible in both the left and right camera images.
-The distance should be increased if the object is not fully visible at the recommended value.</p>
+The distance should be increased if the object is not fully visible at the recommended distance.</p>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">In the <em>Camera</em> tab, select an <em>Exposure region</em> around the object and check the illumination of the scene.
-To get the best result, the gain of the <em>rc_visard</em> should be 0 db (the current value is printed below the images)
+To get the best result, the gain of the <em>rc_visard</em> should be 0 db (see <a class="reference internal" href="../rc_visard_general/parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>)
 and the object should not cast any significant shadow.</p>
 <blockquote>
-<div><div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/screenshot_template_good.png"><img alt="../_images/screenshot_template_good.png" src="../_images/screenshot_template_good.png" style="width: 750px;" /></a>
+<div><div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/screenshot_template_good.jpg"><img alt="../_images/screenshot_template_good.jpg" src="../_images/screenshot_template_good.jpg" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Sample scene with proper lighting conditions.
 The gain value is 0 dB and there are no shadows on the object and its vicinity.</span></p>
 </div>
-<div class="figure align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/screenshot_template_gain_too_high.png"><img alt="../_images/screenshot_template_gain_too_high.png" src="../_images/screenshot_template_gain_too_high.png" style="width: 750px;" /></a>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/screenshot_template_gain_too_high.jpg"><img alt="../_images/screenshot_template_gain_too_high.jpg" src="../_images/screenshot_template_gain_too_high.jpg" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Sample scene with too little light. The gain value is too high.</span></p>
 </div>
-<div class="figure align-center" id="id7">
-<a class="reference internal image-reference" href="../_images/screenshot_template_shadow.png"><img alt="../_images/screenshot_template_shadow.png" src="../_images/screenshot_template_shadow.png" style="width: 750px;" /></a>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/screenshot_template_shadow.jpg"><img alt="../_images/screenshot_template_shadow.jpg" src="../_images/screenshot_template_shadow.jpg" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Sample scene with too strong direct light. The object casts shadows.</span></p>
 </div>
 </div></blockquote>
@@ -307,9 +309,9 @@ Windows</div>
 on which most of the edges that can be used for matching are lying.
 This is not always the highest point! It is crucial to measure this value correctly.
 The returned pose of the detected object depends on this value.</p>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/object_height.png"><img alt="../_images/object_height.png" src="../_images/object_height.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Visualization of how different object heights (left) affect generated template (right).</span></p>
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Visualization of how different object heights (left) affect the generated template (right).</span></p>
 </div>
 </div>
 <div class="section" id="is-the-object-orientation-needed">
@@ -317,13 +319,13 @@ The returned pose of the detected object depends on this value.</p>
 <p>For some objects it is possible to create a simplified template that will be detected faster.
 This is possible only if the object rotation on the plane is not required for grasping and placing.
 Sample images of such objects can be found below.</p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/tamplate_orientation_example.png"><img alt="../_images/tamplate_orientation_example.png" src="../_images/tamplate_orientation_example.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">3D model of a round part and two templates generated from it.
 With the first template, the object will be detected with full orientation.
 If the second template is used, the rotation of the object on the plane will be ignored.</span></p>
 </div>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/tamplate_orientation_example_2.png"><img alt="../_images/tamplate_orientation_example_2.png" src="../_images/tamplate_orientation_example_2.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">3D model of a part with one axis of symmetry and two templates generated from it.
 With the first template, the object will be detected with full orientation.
@@ -335,17 +337,17 @@ If the second template is used, the detected object might be flipped.</span></p>
 <p>The final step is to record images of the object in the actual environment
 in which the object needs to be detected.
 Roboception will use these images to test the generated template and, if necessary,
-suggest changes to improve the detection performances.</p>
+suggest changes to improve the detection performance.</p>
 <p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v1.8)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
 If a RandomDot Projector is available, the plane calibration can also be performed using depth data.
 In this case, the RandomDot Projector should be setup as described in the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the RandomDot Projector</span></a>
 tutorial and the Out 1 mode of the <em>rc_visard</em> should be set to <em>ExposureAlternateActive</em>.</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/example_scene.png"><img alt="../_images/example_scene.png" src="../_images/example_scene.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Sample recorded scene with 3 AprilTags.</span></p>
 </div>
-<div class="section" id="id2">
-<h3>With the <em>rc_visard</em><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>With the <em>rc_visard</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Follow the <a class="reference internal" href="../rc_visard_general/data_recording.html#data-recording"><span class="std std-ref">Recording data with rc_visard</span></a> tutorial to capture the required images.
 The recording command that should be used is:</p>
 <div class="sphinx-tabs docutils container">
@@ -399,7 +401,7 @@ to add an additional external light source.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../rc_urcap/overview.html" class="btn btn-neutral float-right" title="Universal Robots tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started with SilhouetteMatch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="SilhouetteMatch tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -431,7 +433,7 @@ to add an additional external light source.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0-70-g75b5dd5',
+            VERSION:'0.3.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

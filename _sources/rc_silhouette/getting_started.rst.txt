@@ -1,0 +1,437 @@
+Getting started with SilhouetteMatch
+
+This tutorial shows how to set up the
+
+rc_visard
+
+ to start using the SilhouetteMatch component and guides the reader to
+detecting the first objects.
+
+Before we start
+
+In order to go through this tutorial, the following prerequisites
+should be met:
+
+-[ The
+
+rc_visard
+
+ is properly configured: ]-
+
+The rc_visard's image version is at least 1.8 and the rc_visard's
+license includes the SilhouetteMatch component. This can be verified
+on the Web GUI's System panel.
+
+-[ One or more workpieces have been chosen and the templates for these
+objects have been generated: ]-
+
+Suitable workpieces for SilhouetteMatch are described in the rc_visard
+user manual.
+
+Roboception offers a template generation service on their website,
+where the user can request object templates. The process is described
+in the Template generation tutorial.
+
+Setting up the scene
+
+We recommend to mount the
+
+rc_visard
+
+ on a tripod or a static support as explained in the
+
+rc_visard
+
+'s
+
+Mechanical interface
+
+ description.
+
+Note: The mounting should be stable such that the sensor remains
+  static while SilhouetteMatch acquires data.
+
+SilhouetteMatch's recommended working range.          Minimum distance
+Maximum distance  rc_visard 160  0.5 m  1.5 m  rc_visard 65  0.2 m
+1.0 m
+
+For SilhouetteMatch to work, all objects must be placed directly on a
+common base plane. This plane must be as planar as possible and should
+have as little texture as possible. It should be colored such that
+there is some contrast between objects and the plane.
+
+The
+
+rc_visard
+
+ must be mounted somewhat parallel to the base plane---a tilt of up to
+10 degrees is fine. Before SilhouetteMatch can detect objects, the
+base plane must be calibrated. In case of a static
+
+rc_visard
+
+ and a static base plane, the calibration must be performed only once.
+If either the
+
+rc_visard
+
+ or the base plane is moving (e.g. for picking objects from a load
+carrier with several separated layers of objects), the calibration
+must be performed whenever there might have been a change in position
+or orientation of the base plane relative to the
+
+rc_visard
+
+ (e.g. when continuing to the next layer of objects in the bin). The
+scene must be set up such that the base plane can be detected reliably
+whenever a base-plane calibration is performed, as explained in
+
+Performing base-plane calibration
+
+.
+
+For an
+
+rc_visard
+
+ mounted on a robot, special handling is applied, as described in
+
+SilhouetteMatch Hand-eye calibration
+
+.
+
+
+SilhouetteMatch is designed to work for unmixed scenes, meaning that
+only objects belonging to one specific template may be visible at a
+time. If multiple different objects are visible and their position is
+known approximately,
+
+regions of interest
+
+ can be configured that enclose the objects belonging to each
+template. Moreover, it is assumed that all objects are right side up,
+so no objects are flipped.
+
+Good illumination of the scene must be ensured; a gain of 0 db (see
+
+Exposure and Gain Settings
+
+) on the Web GUI's
+
+Camera
+
+ panel indicates that the scene is adequately illuminated. It is
+recommended to use diffuse illumination in order to avoid hard
+shadows.
+
+Configuring image parameters
+
+For base-plane calibration as well as for object detection, it's most
+important that the images are well exposed. The tutorial about
+
+Camera Parameters
+
+ covers the steps required to get best quality images.
+
+For stereo-based base-plane calibration (see
+
+Performing base-plane calibration
+
+), it's additionally required to ensure high quality depth images,
+which is covered by the tutorial about
+
+Depth Image Tuning
+
+. It is recommended to employ a
+
+RandomDot projector
+
+ to allow dense reconstruction of a texture-less base plane.
+
+
+SilhouetteMatch provides best results when the depth image quality is
+set to High. The projector should be operated in
+*ExposureAlternateActive* mode or the stereo should work in *Single +
+Out1 Acquisition Mode*, meaning that the projected pattern is not
+visible in the regular intensity images. Otherwise, the projector will
+interfere with SilhouetteMatch's object detection process.
+
+Setting up SilhouetteMatch
+
+After setting up the scene, SilhouetteMatch can now be configured.
+
+Getting a template
+
+Templates for new objects can be generated with Roboception's
+
+template generation service
+
+. The process is described in more detail in
+
+Template generation
+
+.
+
+Uploading a template
+
+The generated template must be uploaded to the
+
+rc_visard
+
+. The most convenient way to do this is via the Web GUI's
+SilhouetteMatch panel. See the following video for a walk-through of
+the uploading process.
+
+Video: Uploading a template
+
+
+Configuring a region of interest
+
+For both base-plane calibration and object detection, a 2D region of
+interest (ROI) can be applied. The SilhouetteMatch component offers a
+ROI database, in which ROIs can be stored and referred to during base-
+plane calibration or object detection by their name.
+
+For configuring a new region of interest, the Web GUI offers an
+intuitive selection tool, which is shown in the following video.
+
+Video: Configuring a ROI
+
+
+Performing base-plane calibration
+
+Base-plane calibration is an obligatory step before objects can be
+detected. During base-plane calibration, the plane on which the
+objects are placed ("base plane") is estimated and---if successful---
+stored persistently on the
+
+rc_visard
+
+.
+
+SilhouetteMatch provides two methods for estimating the base plane:
+AprilTag based and Stereo based. Both are introduced in the following.
+
+AprilTag based
+
+With AprilTag-based base-plane calibration, a plane is fitted through
+a set of AprilTags in the scene. At least three tags must be visible,
+placed such that they appear in the left and right camera image. The
+three tags should span a triangle around the objects, which is as
+large as possible.
+
+Only tags of the family "36h11" are detected. The minimum size depends
+on the distance to the tags (see
+
+Tag reading
+
+ for more information). A sample page with AprilTags for printing can
+be downloaded
+
+here
+
+. When cutting them out, please make sure to leave a white border
+around the AprilTags (see section
+
+AprilTag
+
+ of the
+
+rc_visard
+
+ manual). More AprilTags from family "36h11" can be downloaded from
+the
+
+apriltag-imgs repository
+
+.
+
+The tags should be placed directly on the base plane. In case that is
+not possible, please refer to
+
+Offset parameter
+
+.
+
+All "36h11" tags in the scene are used for calibration. A
+
+ROI
+
+ can be used to select specific tags.
+
+
+The following video shows how to perform AprilTag-based base-plane
+calibration via the Web GUI.
+
+Video: AprilTag-based base-plane calibration
+
+
+Stereo based
+
+With Stereo-based base-plane calibration, the point cloud provided by
+the stereo matching component is used. SilhouetteMatch searches for
+planes in the point cloud and selects the most distant plane from the
+
+rc_visard
+
+.
+
+For stereo-based base-plane calibration, a dense point cloud is
+important.
+
+Configuring image parameters
+
+ explains how to ensure that.
+
+If the most distant plane is not the actual base plane, a ROI should
+be used to select the right plane (see
+
+Fig. 38
+
+).
+
+
+The following video shows how to perform stereo-based base-plane
+calibration via the Web GUI.
+
+Video: Stereo-based base-plane calibration
+
+
+Offset parameter
+
+The base-plane calibration features an "offset" parameter that allows
+to shift the estimated plane by some distance along the normal of the
+base plane. This enables base-plane calibration even for scenes where
+it is not possible to calibrate the base plane directly, but instead
+to calibrate a plane parallel to the actual base plane.
+
+For example, the AprilTags might be printed on an aluminum pad with a
+thickness of 2 mm. Therefore, when using these AprilTags for base-
+plane calibration, the estimated plane is 2 mm above the actual base-
+plane. By setting the "offset" parameter to -0.002, the estimated
+plane is shifted onto the actual plane.
+
+
+Detecting objects
+
+After base-plane calibration is finished, objects can be detected.
+
+Object detection can be triggered in the
+
+Try Out
+
+ section of the Web GUI's SilhouetteMatch panel. Triggering via REST-
+API is possible as well, as described in
+
+SilhouetteMatch Services
+
+.
+
+In the
+
+Try Out
+
+ section, the template that is to be detected must be selected by its
+name. Then, the detection is triggered with the
+
+Detect
+
+ button. The result will be shown in the table at the bottom of the
+page, as well as in the visualization images on top.
+
+
+An object must be visible in the left
+
+and
+
+ right image to be detected. As shown in
+
+Fig. 40
+
+, the area where the left and right image do not overlap is marked in
+blue.
+
+By selecting a ROI, the search for objects can be limited to a part of
+the image.
+
+
+The following video shows how to trigger the object detection via the
+Web GUI.
+
+Video: Triggering object detection
+
+
+The object detection process is influenced by a couple of parameters.
+The parameters can be adapted via the Web GUI as well as the REST-API.
+In the following, the parameters are described.
+
+Quality
+
+The
+
+Quality
+
+ parameter controls the resolution of the images used for object
+detection. The lower, the faster is the computation, but details of
+the objects might get lost.
+
+
+Maximum Object Number
+
+With the
+
+Maximum Object Number
+
+ parameter the number of returned objects can be limited.
+
+Maximum Matching Distance (pixel)
+
+The
+
+Maximum Matching Distance (pixel)
+
+ controls how exact the object template must match the detected edges
+in the image. The higher, the less strict the matching is, but the
+slower the computation will be. Too high values may also lead to false
+positive detections.
+
+
+Matching Percentile
+
+The
+
+Matching Percentile
+
+ parameter controls what portion of the template must match to edges
+in the image. For example, a value of 0.9 means that 90% of the
+template edges must be closer than the
+
+Maximum Matching Distance
+
+ to the edges in the image.
+
+The lower, the less strict the matching is, but the slower the
+computation will be. Too low values may also lead to false positive
+detections.
+
+
+Edge Sensitivity
+
+The
+
+Edge Sensitivity
+
+ parameter controls how many edges are detected in the image. The
+lower the value, the fewer edges are detected. It should be tuned such
+that all relevant edges are detected, without detecting noise edges.
+
+
+Troubleshooting
+
+The base plane is not detected properly
+
+An object is not detected properly
+
+A timeout occurs
+
+A lot of noise edges are detected

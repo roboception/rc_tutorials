@@ -1,8 +1,9 @@
 Getting started
 
-Note: Roboception's URCap is working with software 3.7.0 or newer.
-  In case you are running an older software version, please update
-  your controller (files can be downloaded from the UR website:
+Note: Roboception's URCap is working with software 3.9.0 or newer
+  for CB series, and 5.3.0 or newer for E-series. In case you are
+  running an older software version, please update your controller
+  (files can be downloaded from the UR website:
 
   https://www.universal-robots.com/download/
 
@@ -67,7 +68,7 @@ Reboot the controller
 After rebooting the robot, the rc_visard_urcap application should be
 marked by a green tick in the URCaps Setup window (see
 
-Fig. 35
+Fig. 47
 
 ).
 

@@ -1,0 +1,82 @@
+.. include:: ../global_rst.glb
+
+.. _silhouettematch-faq:
+
+FAQs and troubleshooting
+========================
+
+.. _silhouettematch-faq-base-plane-not-detected:
+.. toggle-header::
+   :header: **The base plane is not detected properly**
+
+   .. toggle-header::
+      :header: **AprilTag-based**
+
+      * Is the angle between the |rc_visard|'s line of sight and the plane's normal at most 10 degrees?
+      * Are at least three AprilTags of the "36h11" family visible in the left *and* right image?
+      * Can the tags be detected with the regular AprilTag component
+        (see :ref:`rcvisard:sect-tag-detection`)? If not, try with larger AprilTags.
+      * Do the tags span a large triangle?
+        See :ref:`AprilTag-based base-plane calibration<silhouettematch-base-plane-calib-apriltag>`.
+
+   .. toggle-header::
+      :header: **Stereo-based**
+
+      * Is the angle between the |rc_visard|'s line of sight and the plane's normal at most 10 degrees?
+      * Does the plane appear in the depth image?
+        If not, follow :ref:`silhouettematch-image-params` for ensuring a dense depth image.
+      * Is the base plane the most distant plane that appears in the depth image?
+        If not, a ROI should be used to select the right plane,
+        see :ref:`Stereo-based base-plane calibration<silhouettematch-base-plane-calib-stereo>`.
+
+.. _silhouettematch-faq-object-not-detected:
+.. toggle-header::
+   :header: **An object is not detected properly**
+
+   * Is the base-plane calibration (still) correct?
+     The right visualization on the |webgui| shows the size of the template that is being
+     tried to match.
+     Does it match the actual size of the objects on the left visualization?
+
+     .. figure:: ../images/silhouette/bad-base-plane-calib.jpg
+        :width: 600px
+        :align: center
+
+        Top: The base-plane calibration is obviously wrong, since the size of the template (right)
+        does not match the size of the objects on the left.
+        Bottom: The size of the template matches the size of the objects.
+   * Make sure that the projector is off or in `ExposureAlternateActive` mode during
+     object detection.
+   * Are all relevant edges detected in the image?
+     See parameter :ref:`Edge Sensitivity<silhouettematch-edge-sensitivity>`.
+   * Try to increase the parameter
+     :ref:`Maximum Matching Distance<silhouettematch-maximum-matching-distance>`.
+   * Try to decrease the parameter :ref:`Matching Percentile<silhouettematch-matching-percentile>`.
+
+.. _silhouettematch-faq-timeout:
+.. toggle-header::
+   :header: **A timeout occurs**
+
+   The error message indicates if the timeout occurred during matching or refinement:
+
+   * The timeout occurred during matching:
+      * Are noise edges detected?
+        If so, decrease the parameter :ref:`Edge Sensitivity<silhouettematch-edge-sensitivity>`.
+      * Try to decrease the parameter
+        :ref:`Maximum Matching Distance<silhouettematch-maximum-matching-distance>`.
+      * Try to increase the parameter
+        :ref:`Matching Percentile<silhouettematch-matching-percentile>`.
+      * Consider selecting a :ref:`region of interest<silhouettematch-roi>`.
+      * Try with reduced :ref:`quality<silhouettematch-quality>`.
+   * The timeout occurred during refinement:
+      * Decrease the parameter :ref:`Maximum Object Number<silhouettematch-maximum-object-number>`.
+      * Consider selecting a :ref:`region of interest<silhouettematch-roi>`.
+
+.. _silhouettematch-faq-noise-edges:
+.. toggle-header::
+   :header: **A lot of noise edges are detected**:
+
+   * Try to decrease the parameter :ref:`Edge Sensitivity<silhouettematch-edge-sensitivity>`.
+   * Is the base-plane texture-less?
+   * Make sure that the projector is off or in `ExposureAlternateActive` mode during
+     object detection.

@@ -1,0 +1,415 @@
+.. include:: ../global_rst.glb
+
+.. _silhouettematch-getting-started:
+
+Getting started with |silm|
+===========================
+
+This tutorial shows how to set up the |rc_visard| to start using the |silm| component and
+guides the reader to detecting the first objects.
+
+Before we start
+---------------
+
+In order to go through this tutorial, the following prerequisites should be met:
+
+.. rubric:: The |rc_visard| is properly configured:
+
+#. The |rc_visard|'s image version is at least 1.8 and the |rc_visard|'s license includes the
+   |silm| component.
+   This can be verified on the :ref:`sect-web-gui`'s *System* panel.
+
+.. rubric:: One or more workpieces have been chosen and the templates for these objects have been
+            generated:
+
+#. Suitable workpieces for |silm| are described in the |rc_visard|
+   `user manual <https://doc.rc-visard.com/latest/en/silhouettematch.html#suitable-objects>`_.
+#. |company| offers a template generation service on their website, where the user can
+   request object templates.
+   The process is described in the :ref:`silhouettematch-template-generation` tutorial.
+
+Setting up the scene
+--------------------
+
+We recommend to mount the |rcvisard| on a tripod or a static support as explained
+in the |rcvisard|'s :ref:`sect-mechanical` description.
+
+.. note::
+  The mounting should be stable such that the sensor remains static while |silm| acquires data.
+
+.. tabularcolumns:: |l|c|c|
+.. csv-table:: |silm|'s recommended working range.
+  :header:  , Minimum distance, Maximum distance
+
+  "|rcvisard| 160","0.5 m","1.5 m"
+  "|rcvisard| 65","0.2 m","1.0 m"
+
+For |silm| to work, all objects must be placed directly on a common base plane.
+This plane must be as planar as possible and should have as little texture as possible.
+It should be colored such that there is some contrast between objects and the plane.
+
+The |rc_visard| must be mounted somewhat parallel to the base plane---a tilt of up to 10 degrees
+is fine.
+Before |silm| can detect objects, the base plane must be calibrated.
+In case of a static |rc_visard| and a static base plane, the calibration must be performed only
+once.
+If either the |rc_visard| or the base plane is moving
+(e.g. for picking objects from a load carrier with several separated layers of objects),
+the calibration must be performed whenever there might have been a change in position or
+orientation of the base plane relative to the |rc_visard|
+(e.g. when continuing to the next layer of objects in the bin).
+The scene must be set up such that the base plane can be detected reliably whenever a base-plane
+calibration is performed, as explained in :ref:`silhouettematch-calibration`.
+
+For an |rc_visard| mounted on a robot, special handling is applied, as described in
+:ref:`SilhouetteMatch Hand-eye calibration<rcvisard:sect-silhouettematch-hand-eye-calib>`.
+
+.. figure:: ../images/silhouette/base-plane.jpg
+       :width: 600px
+       :align: center
+
+       Examples for good and bad base-plane configurations.
+       Left: All objects are on the same plane.
+       Middle: Objects are placed on different planes.
+       Right: |rc_visard| is not approximately parallel to the base plane.
+
+|silm| is designed to work for unmixed scenes, meaning that only objects belonging to one
+specific template may be visible at a time.
+If multiple different objects are visible and their position is known approximately,
+:ref:`regions of interest<silhouettematch-roi>` can be configured that enclose the
+objects belonging to each template.
+Moreover, it is assumed that all objects are right side up, so no objects are flipped.
+
+Good illumination of the scene must be ensured; a gain of 0 db (see :ref:`general-exposure-gain`)
+on the |webgui|'s *Camera* panel indicates that the scene is adequately illuminated.
+It is recommended to use diffuse illumination in order to avoid hard shadows.
+
+.. _silhouettematch-image-params:
+
+Configuring image parameters
+----------------------------
+
+For base-plane calibration as well as for object detection, it's most important that the
+images are well exposed.
+The tutorial about :ref:`general-tuning-camera-parmeters` covers the steps required to
+get best quality images.
+
+For stereo-based base-plane calibration (see :ref:`silhouettematch-calibration`), it's additionally
+required to ensure high quality depth images, which is covered by the tutorial about
+:ref:`general-tuning-depth-parmeters`.
+It is recommended to employ a :ref:`RandomDot projector<general-projector>` to allow dense
+reconstruction of a texture-less base plane.
+
+.. figure:: ../images/silhouette/with-without-projector.jpg
+   :width: 600px
+   :align: center
+
+   Comparison of point cloud without (left) and with (right) projector.
+   With projector, a much denser point cloud (green points) is produced, especially
+   for the texture-less base plane.
+
+|silm| provides best results when the depth image quality is set to High.
+The projector should be operated in `ExposureAlternateActive` mode or the stereo
+should work in `Single + Out1 Acquisition Mode`, meaning that the projected
+pattern is not visible in the regular intensity images.
+Otherwise, the projector will interfere with |silm|'s object detection process.
+
+Setting up |silm|
+-----------------
+
+After setting up the scene, |silm| can now be configured.
+
+Getting a template
+..................
+
+Templates for new objects can be generated with |company|'s
+`template generation service <https://roboception.com/en/template-request/>`_.
+The process is described in more detail in :ref:`silhouettematch-template-generation`.
+
+Uploading a template
+....................
+
+The generated template must be uploaded to the |rc_visard|.
+The most convenient way to do this is via the |webgui|'s |silm| panel.
+See the following video for a walk-through of the uploading process.
+
+.. toggle-header::
+   :header: *Video: Uploading a template*
+
+    .. figure:: ../images/silhouette/template_upload.gif
+       :width: 600px
+       :align: center
+
+.. _silhouettematch-roi:
+
+Configuring a region of interest
+................................
+
+For both base-plane calibration and object detection, a 2D region of interest (ROI) can be applied.
+The |silm| component offers a ROI database, in which ROIs can be stored and referred to during
+base-plane calibration or object detection by their name.
+
+For configuring a new region of interest, the |webgui| offers an intuitive selection tool, which
+is shown in the following video.
+
+.. toggle-header::
+   :header: *Video: Configuring a ROI*
+
+    .. figure:: ../images/silhouette/roi_creation.gif
+       :width: 600px
+       :align: center
+
+.. _silhouettematch-calibration:
+
+Performing base-plane calibration
+---------------------------------
+
+Base-plane calibration is an obligatory step before objects can be detected.
+During base-plane calibration, the plane on which the objects are placed ("base plane") is
+estimated and---if successful---stored persistently on the |rc_visard|.
+
+|silm| provides two methods for estimating the base plane: AprilTag based and Stereo based.
+Both are introduced in the following.
+
+.. _silhouettematch-base-plane-calib-apriltag:
+
+AprilTag based
+..............
+
+With AprilTag-based base-plane calibration, a plane is fitted through a set of AprilTags
+in the scene.
+At least three tags must be visible, placed such that they appear in the left
+and right camera image.
+The three tags should span a triangle around the objects, which is as large as possible.
+
+Only tags of the family "36h11" are detected.
+The minimum size depends on the distance to the tags
+(see :ref:`rcvisard:sect-tag-reading` for more information).
+A sample page with AprilTags for printing can be downloaded
+`here <http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf>`_.
+When cutting them out, please make sure to leave a white border around the AprilTags
+(see section :ref:`rcvisard:sect-apriltag` of the |rc_visard| manual).
+More AprilTags from family "36h11" can be downloaded from the
+`apriltag-imgs repository <https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11>`_.
+
+The tags should be placed directly on the base plane.
+In case that is not possible, please refer to :ref:`silhouettematch-offset-parameter`.
+
+All "36h11" tags in the scene are used for calibration.
+A :ref:`ROI<silhouettematch-roi>` can be used to select specific tags.
+
+.. _silhouettematch-fig-base-plane-calib-apriltag-scenes:
+.. figure:: ../images/silhouette/base-plane-calib-apriltag.jpg
+   :width: 1000px
+   :align: center
+
+   Examples for good and bad AprilTag placements.
+   Left: AprilTags span a large triangle, enclosing the objects.
+   Middle: Triangle is degenerate.
+   Right: Triangle is too small.
+
+The following video shows how to perform AprilTag-based base-plane calibration via the |webgui|.
+
+.. toggle-header::
+   :header: *Video: AprilTag-based base-plane calibration*
+
+   .. figure:: ../images/silhouette/base-plane-calib-apriltag.gif
+      :width: 600px
+      :align: center
+
+.. _silhouettematch-base-plane-calib-stereo:
+
+Stereo based
+............
+
+With Stereo-based base-plane calibration, the point cloud provided by the stereo matching
+component is used.
+|silm| searches for planes in the point cloud and selects the most distant plane
+from the |rc_visard|.
+
+For stereo-based base-plane calibration, a dense point cloud is important.
+:ref:`silhouettematch-image-params` explains how to ensure that.
+
+If the most distant plane is not the actual base plane,
+a ROI should be used to select the right plane
+(see :numref:`silhouettematch-fig-base-plane-stereo-roi`).
+
+.. _silhouettematch-fig-base-plane-stereo-roi:
+.. figure:: ../images/silhouette/base-plane-calib-roi.jpg
+   :width: 1000px
+   :align: center
+
+   Left: Scene with two planes in view of the |rc_visard|.
+   Middle: By default, the most distant plane is selected.
+   Right: By setting a ROI (petrol rectangle, marked with an arrow),
+   the actual base-plane can be selected.
+
+The following video shows how to perform stereo-based base-plane calibration via the |webgui|.
+
+.. toggle-header::
+   :header: *Video: Stereo-based base-plane calibration*
+
+   .. figure:: ../images/silhouette/base-plane-calib-stereo.gif
+      :width: 600px
+      :align: center
+
+.. _silhouettematch-offset-parameter:
+
+Offset parameter
+................
+
+The base-plane calibration features an ``offset`` parameter that allows to shift the estimated
+plane by some distance along the normal of the base plane.
+This enables base-plane calibration even for scenes where it is not possible to calibrate
+the base plane directly, but instead to calibrate a plane parallel to the actual base plane.
+
+For example, the AprilTags might be printed on an aluminum pad with a thickness of 2 mm.
+Therefore, when using these AprilTags for base-plane calibration, the estimated plane
+is 2 mm above the actual base-plane.
+By setting the ``offset`` parameter to -0.002, the estimated plane is shifted onto the
+actual plane.
+
+.. figure:: ../images/silhouette/apriltag-pad.jpg
+   :width: 400px
+   :align: center
+
+   Aluminum AprilTag pad with 2 mm thickness.
+
+Detecting objects
+-----------------
+
+After base-plane calibration is finished, objects can be detected.
+
+Object detection can be triggered in the *Try Out* section of the |webgui|'s |silm| panel.
+Triggering via |restapi| is possible as well, as described in
+:ref:`SilhouetteMatch Services <rcvisard:sect-silhouettematch-services>`.
+
+In the *Try Out* section, the template that is to be detected must be selected by its name.
+Then, the detection is triggered with the *Detect* button.
+The result will be shown in the table at the bottom of the page, as well as in the visualization
+images on top.
+
+.. _silhouettematch-fig-obj-detection:
+.. figure:: ../images/silhouette/object-detection.jpg
+   :width: 400px
+   :align: center
+
+   Successful detection of a set of objects.
+   Green: Detected objects.
+   Light blue: Detected edges.
+   Red dots: Returned (3D) poses of the object.
+   Blue area on the left: Area where the left and right images do not overlap.
+
+An object must be visible in the left *and* right image to be detected.
+As shown in :numref:`silhouettematch-fig-obj-detection`,
+the area where the left and right image do not overlap
+is marked in blue.
+
+By selecting a ROI, the search for objects can be limited to a part of the image.
+
+.. _silhouettematch-fig-obj-detection-roi:
+.. figure:: ../images/silhouette/object-detection-roi.jpg
+   :width: 400px
+   :align: center
+
+   A ROI (petrol rectangle) is applied to limit the search for objects.
+
+The following video shows how to trigger the object detection via the |webgui|.
+
+.. toggle-header::
+   :header: *Video: Triggering object detection*
+
+   .. figure:: ../images/silhouette/detect-objects.gif
+      :width: 600px
+      :align: center
+
+The object detection process is influenced by a couple of parameters.
+The parameters can be adapted via the |webgui| as well as the |restapi|.
+In the following, the parameters are described.
+
+.. _silhouettematch-quality:
+
+Quality
+.......
+
+The *Quality* parameter controls the resolution of the images used for object detection.
+The lower, the faster is the computation, but details of the objects might get lost.
+
+.. figure:: ../images/silhouette/object-detection-quality.jpg
+   :width: 1000px
+   :align: center
+
+   Comparison of low (left) and high (right) quality.
+
+.. _silhouettematch-maximum-object-number:
+
+Maximum Object Number
+.....................
+
+With the *Maximum Object Number* parameter the number of returned objects can be limited.
+
+.. _silhouettematch-maximum-matching-distance:
+
+Maximum Matching Distance (pixel)
+.................................
+
+The *Maximum Matching Distance (pixel)* controls how exact the object template must match
+the detected edges in the image.
+The higher, the less strict the matching is, but the slower the computation will be.
+Too high values may also lead to false positive detections.
+
+.. figure:: ../images/silhouette/matching-max-distance.png
+   :width: 500px
+   :align: center
+
+   Visualization of the *Maximum Matching Distance* parameter.
+   Left: A value of 2 or greater would lead to a match between the template (black) and the detected
+   edges (light blue).
+   Right: A value of 4 or greater would lead to a match.
+
+.. _silhouettematch-matching-percentile:
+
+Matching Percentile
+...................
+
+The *Matching Percentile* parameter controls what portion of the template must match to
+edges in the image.
+For example, a value of 0.9 means that 90% of the template edges must be closer than
+the *Maximum Matching Distance* to the edges in the image.
+
+The lower, the less strict the matching is, but the slower the computation will be.
+Too low values may also lead to false positive detections.
+
+.. figure:: ../images/silhouette/matching-percentile.jpg
+   :width: 1000px
+   :align: center
+
+   Comparison of different *Matching Percentile* values.
+   Left: With a value of 0.95, the flipped object is matched as well.
+   Right: With a value of 0.98, the flipped object is not matched anymore.
+
+.. _silhouettematch-edge-sensitivity:
+
+Edge Sensitivity
+................
+
+The *Edge Sensitivity* parameter controls how many edges are detected in the image.
+The lower the value, the fewer edges are detected.
+It should be tuned such that all relevant edges are detected, without detecting noise edges.
+
+.. figure:: ../images/silhouette/edge-sensitivity.jpg
+   :width: 800px
+   :align: center
+
+   Comparison of different *Edge Sensitivity* values.
+   Left: With a value of 0.2, only few edges are detected.
+   Middle: With a value of 0.7, all relevant edges are detected.
+   Right: With a value of 0.95, many irrelevant noise edges are detected as well.
+
+Troubleshooting
+---------------
+
+* :ref:`The base plane is not detected properly<silhouettematch-faq-base-plane-not-detected>`
+* :ref:`An object is not detected properly<silhouettematch-faq-object-not-detected>`
+* :ref:`A timeout occurs<silhouettematch-faq-timeout>`
+* :ref:`A lot of noise edges are detected<silhouettematch-faq-noise-edges>`
