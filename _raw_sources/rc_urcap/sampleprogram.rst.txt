@@ -24,7 +24,7 @@ been completed, and the valid hand eye calibration has been stored on the |rcvis
 Load the program
 ------------------
 
-The roboception picking sample program can be downloaded from TODO. The program can be then used and loaded as every standard program.
+The roboception picking sample programs can be downloaded from `here <http://roboception.com/wp-content/uploads/2020/01/roboception_URCap_examples.zip>`_. The programs can be then used and loaded as every standard program.
 
 Setting up the program
 -----------------------
@@ -55,5 +55,3 @@ When the rc_visard is mounted externally, depending on the scenario, there are d
 For the robot mounted sensor in the observe_pose all objects of interest has to be in the field of view of the sensor.
 
 Additionally the pre pick distance can be changed by changing the value of the 'prepick_offset' variable in 'BeforeStart' tab.
-
-TODO image
