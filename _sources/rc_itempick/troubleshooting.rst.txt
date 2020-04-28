@@ -6,7 +6,16 @@ One common case for missing the rim in depth images takes place when
 one of the edges of the load carrier is parallel to the baseline of
 the stereo system. It can be easily determined if this the case by
 slightly rotating the load carrier and observing if the orientation
-has an effect on the appearance of the object in the depth image.
+has an effect on the appearance of the object in the depth image. When
+this happens, the
+
+RandomDot projector
+
+ can be added to the
+
+rc_visard
+
+ to increase the depth image density.
 
 
 The load carrier is not detected or not detected robustly
@@ -40,7 +49,7 @@ This is currently not possible in the Web GUI's
 
 ItemPick
 
- panel. Instead, it can be set via the
+ tab. Instead, it can be set via the
 
 REST-API interface
 
@@ -48,7 +57,7 @@ REST-API interface
 
 Two sample cases are shown in
 
-Fig. 24
+Fig. 23
 
  for the
 
@@ -63,7 +72,7 @@ camera
 
 In the left case of
 
-Fig. 24
+Fig. 23
 
 , the load carrier ("tilted-load-carrier-ext") is rotated by an angle
 \theta around the y axis of the
@@ -124,7 +133,7 @@ following quaternion: \left[0, \sin(\theta/2), 0,
 
 In the right case of
 
-Fig. 24
+Fig. 23
 
 , the load carrier ("tilted-load-carrier-cam") is parallel to the
 image plane. Its orientation in the
@@ -199,7 +208,7 @@ or the reconstruction of the load carrier floor is noisy.
 
 To improve the detection result as shown in
 
-Fig. 25
+Fig. 24
 
 , two options are available:
 
@@ -234,7 +243,7 @@ interest inside the load carrier can be used instead.
 
 There are no grasps detected on the objects
 
-   Do objects appear in the depth image? (an additional pattern
+   Do objects appear in the depth image? (an additional RandomDot
    projector might be needed)
 
    Do the workpieces appear in the depth image without holes? (cfr.

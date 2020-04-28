@@ -13,6 +13,8 @@ FAQs and troubleshooting
    load carrier is parallel to the baseline of the stereo system. It can be easily determined if
    this the case by slightly rotating the load carrier and observing if the
    orientation has an effect on the appearance of the object in the depth image.
+   When this happens, the :ref:`RandomDot projector<general-projector>` can be
+   added to the |rcvisard| to increase the depth image density.
 
    .. figure:: ../images/itempick/load_carrier_rim_missing.png
      :width: 500px
@@ -44,7 +46,7 @@ FAQs and troubleshooting
    surface. If that's not the case, one needs to provide the load carrier orientation as a prior
    with the load carrier model.
 
-   This is currently not possible in the |webgui|'s *ItemPick* panel.
+   This is currently not possible in the |webgui|'s *ItemPick* tab.
    Instead, it can be set via the :doc:`rcvisard:rest_api`.
 
    Two sample cases are shown in :numref:`fig-itempick-faq-tilted-lc` for the *external* pose frame
@@ -223,7 +225,7 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **There are no grasps detected on the objects**
 
-    * Do objects appear in the depth image? (an additional pattern projector might be needed)
+    * Do objects appear in the depth image? (an additional :ref:`RandomDot projector<general-projector>` might be needed)
     * Do the workpieces appear in the depth image without holes? (cfr. :ref:`itempick-getting-started-configure-image`)
     * Are the workpieces inside the region of interest (if specified)?
     * Is the load carrier detected (if specified)?

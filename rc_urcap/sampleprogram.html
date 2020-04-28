@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sample program &mdash; Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+  <title>Sample program &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Expert Functions" href="expertfunctions.html"/>
@@ -132,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -198,10 +199,10 @@
   <div class="section" id="sample-program">
 <span id="sampleprogram-ur"></span><h1>Sample program<a class="headerlink" href="#sample-program" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows example program that uses ItemPick Module. Programs with similar structure can also be downloaded for SilhouetteMatch and BoxPick Modules.</p>
-<p>This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position.</p>
+<p>This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position with <cite>Wait is_steady()</cite> command.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/ip_program.png"><img alt="../_images/ip_program.png" src="../_images/ip_program.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Program structure</span></p>
+<p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Program structure</span></p>
 </div>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
@@ -281,7 +282,7 @@ it is necessary to specify how the gripper is working. Parts of the programs tha
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-1-g2c4fdc3',
+            VERSION:'0.3.0-69-ga1f6573',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

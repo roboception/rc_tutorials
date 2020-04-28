@@ -6,12 +6,12 @@ Configuring ItemPick for Bin-Picking
 ======================================
 
 This tutorial shows how to configure the |itempick| component to work in a bin-picking
-application. More specifically, the bin (or so-called :ref:`sect-itempick-load-carrier`)
+application. More specifically, the bin (or so-called :ref:`Load Carrier<sect-itempick-detect-lc>`)
 is configured in |itempick| and detected in the scene, in order to compute grasps only for items
 inside the bin itself.
 
 The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
-items inside the load carrier. For this, we will call the offered
+items inside the load carrier. For this, we will call the
 :ref:`ItemPick services<sect-itempick-services>` using the |rcvisard|'s :ref:`sect-rest-api`.
 This can be done in :ref:`sect-swagger-ui`, in command lines or scripts using
 `curl <https://curl.haxx.se/>`_, and programmatically using a client library
@@ -27,7 +27,7 @@ been completed.
 
 In order to go through this tutorial, a bin or so-called load carrier should be available.
 Some samples of load carriers that can be used with |itempick| are shown below.
-The upper limit for the load carrier dimensions is 1.3 m x 0.9 m x 1.0 m.
+The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.
 
 .. _fig-itempick-bin-picking-load-carriers:
 .. figure:: ../images/itempick/load_carriers.png
@@ -54,7 +54,7 @@ without any occlusion by its walls -- as shown in the sample setup below.
   approximately 1.15 m away from the bin.
 
 The placement should also ensure that the rim of of the load carrier is visible in the depth image.
-Occlusions of the rim are acceptable, as long as all edges are at least partially visible.
+Small occlusions of the rim are acceptable, as long as all edges are at least partially visible.
 If this is not the case, one can follow the recommendations for
 :ref:`tuning camera and image parameters <general-tuning-image-parameters>`.
 
@@ -64,7 +64,7 @@ Configuring the load carrier
 ----------------------------
 
 The easiest and recommended way configure a load carrier is using the *Load Carriers* section of
-the |webgui|'s *ItemPick* panel.
+the |webgui|'s *ItemPick* tab.
 However, in this tutorial we also introduce the programatic interface of |itempick|
 which offers three services for managing load carriers via the |rcvisard|'s :ref:`sect-rest-api`:
 
@@ -87,7 +87,7 @@ The manufacturer's website reports the following dimensions:
 * Outer dimensions: 40 x 30 x 22 cm
 * Inner dimensions: 37 x 27 x 21.5 cm
 
-These values can be directly entered in the *Load Carriers* configuration panel of the |webgui|,
+These values can be directly entered in the *Load Carriers* configuration tab of the |webgui|,
 with the only difference that the values need to be converted to meters.
 
 .. toggle-header::
@@ -427,8 +427,8 @@ Detecting the load carrier
 
 After the load carrier has been configured, it is important to check that |itempick| can
 detect the load carrier in the scene.
-The |webgui|'s *ItemPick* panel offers a *Try Out* section
-for this purpose. One simply needs to specifiy the respective *load carrier id* and hit the *Detect*
+The |webgui|'s *ItemPick* tab offers a *Try Out* section
+for this purpose. One simply needs to specify the respective *load carrier id* and hit the *Detect*
 button.
 As for the |restapi|, |itempick| offers a
 :ref:`detect_load_carriers<expl-itempick-srv-detect-lc>` service to
@@ -534,15 +534,16 @@ trigger such detections.
 
 
 Detection results -- no matter whether triggered via |webgui| or |restapi| -- are visualized
-in the |webgui|'s *ItemPick* panel as *Load Carriers* image.
-Sample detection results for *my-load-carrier1* and *my-load-carrier2* are shown below.
-The detected load carrier is highlighted in blue, while its content is highlighted in red.
+in the |webgui|'s *ItemPick* tab as *Load Carriers* image.
+Sample detection results for *my-load-carrier1* are shown below.
+The detected load carrier is colored in blue, while its content is highlighted in green
+if inside the load carrier and in red if above the rim (overfill).
 
 .. figure:: ../images/itempick/load_carriers_detected.png
   :width: 600px
   :align: center
 
-  Detection result for *my-load-carrier1* (left) and *my-load-carrier2* (right).
+  Detection result for *my-load-carrier1* without overfill (left) and with overfill (right).
 
 .. note::
   While the ``detect_load_carriers`` service supports a list of ``load_carrier_ids``
@@ -550,15 +551,9 @@ The detected load carrier is highlighted in blue, while its content is highlight
   in the list.
 
 .. note::
-  Users should avoid items sticking out of the bin. |itempick| has a threshold of approximately 10 cm
-  above the load carrier rim to filter the
-  load carrier content. Objects which stick out more than that are not considered for grasping,
-  as shown below.
-
-  .. _fig-itempick-objects-in-lc:
-  .. figure:: ../images/itempick/objects_in_load_carrier.png
-    :width: 600px
-    :align: center
+  All points that are not colored in the load carrier visualization image are not
+  used for grasp computation. This can happen if the depth image includes missing
+  data or if the items stick out of the bin by more than 10 cm.
 
 .. TODO description of load carrier orientation
 
@@ -572,7 +567,7 @@ compute grasps only for objects that are inside the bin.
 
 To this purpose, the additional argument ``load_carrier_id`` should be added to the request to
 the REST-API for the ``compute_grasps`` service. As explained before, this is also possible in
-the *Try Out* section of the |webgui|'s *ItemPick* panel.
+the *Try Out* section of the |webgui|'s *ItemPick* tab.
 
 .. toggle-header::
   :header: **Request to the REST-API for getting grasps inside my-load-carrier1**
@@ -671,9 +666,133 @@ the *Try Out* section of the |webgui|'s *ItemPick* panel.
           }
         }' | ConvertTo-Json -Depth 6
 
-.. caution::
-  Since |itempick| does not have any information about the end effector geometry,
-  the computed grasps are not guaranteed to be collision free.
+
+Computing collision free grasps
+--------------------------------------
+
+The :ref:`collision_check_getting_started` tutorial shows how to integrate |itempick|
+with the |collision| component.
+When the collision checking is enabled, all detected grasp points are checked
+for collisions between the gripper geometry and the load carrier.
+
+.. note::
+  The x axis of a grasp computed by |itempick| corresponds to the longest
+  axis of the :ref:`grasp ellipse<fig-itempick-grasp-surface>`.
+  When configuring a gripper in the |collision| component,
+  the x axis of the gripper should be set along the longest gripper elongation,
+  in order to match the orientation of the computed grasps.
+
+.. toggle-header::
+  :header: **Request to the REST-API for getting collision free grasps inside my-load-carrier1 with gripper my-gripper**
+
+   .. tabs::
+
+    .. group-tab:: REST-API
+
+      To trigger the ``compute_grasp`` service via the REST-API, one needs to send
+      a PUT request to the URL
+      ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/compute_grasp``,
+      where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
+
+      The PUT body should include the following data, in JSON:
+
+      .. code-block:: json
+
+        {
+          "args": {
+            "pose_frame": "camera",
+            "load_carrier_id": "my-load-carrier1",
+            "suction_surface_length": 0.02,
+            "suction_surface_width": 0.02,
+            "collision_detection": {
+              "gripper_id": "my-gripper"
+            }
+          }
+        }
+
+    .. group-tab:: Swagger UI
+
+      #. The Swagger UI for putting a service request is located at
+         ``http://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_service``,
+         where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
+      #. The following values are required to fill the request to the REST-API:
+
+          * **node** ``rc_itempick``
+          * **service** ``compute_grasps``
+          * **service args**
+              .. code-block:: json
+
+                {
+                  "args": {
+                    "pose_frame": "camera",
+                    "load_carrier_id": "my-load-carrier1",
+                    "suction_surface_length": 0.02,
+                    "suction_surface_width": 0.02,
+                    "collision_detection": {
+                      "gripper_id": "my-gripper"
+                    }
+                  }
+                }
+
+    .. group-tab:: curl (Linux)
+
+      The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
+      |rcvisard| (e.g. ``RC_VISARD_IP=10.0.2.90``).
+
+      .. code-block:: bash
+
+        curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+        "{ \
+            \"args\": { \
+                \"pose_frame\": \"camera\", \
+                \"load_carrier_id\": \"my-load-carrier1\", \
+                \"suction_surface_length\": 0.02, \
+                \"suction_surface_width\": 0.02, \
+                \"collision_detection\": {  \
+                  \"gripper_id\": \"my-gripper\" \
+                } \
+            } \
+        }"
+
+    .. group-tab:: curl (Windows)
+
+      The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
+      |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
+
+      .. code-block:: bash
+
+        curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+        "{ ^
+            \"args\": { ^
+                \"pose_frame\": \"camera\", ^
+                \"load_carrier_id\": \"my-load-carrier1\", ^
+                \"suction_surface_length\": 0.02, ^
+                \"suction_surface_width\": 0.02, ^
+                \"collision_detection\": { ^
+                  \"gripper_id\": \"my-gripper\" ^
+                } ^
+            } ^
+        }"
+
+    .. group-tab:: PowerShell
+
+      The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
+      |rcvisard| (e.g. ``$RC_VISARD_IP="10.0.2.90"``).
+
+      .. code-block:: bash
+
+        Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+        {
+          "args": {
+            "pose_frame": "camera",
+            "load_carrier_id": "my-load-carrier1",
+            "suction_surface_length": 0.02,
+            "suction_surface_width": 0.02,
+            "collision_detection": {
+              "gripper_id": "my-gripper"
+            }
+          }
+        }' | ConvertTo-Json -Depth 6
 
 .. _itempick-bin-picking-no-robot-compartment:
 
@@ -686,7 +805,7 @@ optional argument ``load_carrier_compartment`` that can be used to this purpose.
 
 .. note::
   The ``load_carrier_compartment`` argument can not be specified in the *Try Out* section of
-  |webgui|'s *ItemPick* panel.
+  |webgui|'s *ItemPick* tab.
 
 The compartment is a box whose ``pose`` is defined with respect to the load carrier reference frame.
 In this section we show how to select the compartment in :numref:`fig-itempick-lc-compartment`.
@@ -703,7 +822,7 @@ The compartment box dimensions are computed from the load carrier inner dimensio
 
 .. math::
 
-  \left(\frac{\text{inner_dimensions.x}}{2}, \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)^T.
+  \left(\frac{\text{inner_dimensions.x}}{2}, \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)
 
 The load carrier reference frame is located at the center of the load carrier outer box.
 To move from the load carrier reference frame to the compartment center,
@@ -711,7 +830,7 @@ the following translation needs to be applied:
 
 .. math::
 
-  \left(\frac{\text{inner_dimensions.x}}{4}, 0, \frac{\text{outer_dimensions.z}-\text{inner_dimensions.z}}{2}\right)^T.
+  \left(\frac{\text{inner_dimensions.x}}{4}, 0, \frac{\text{outer_dimensions.z}-\text{inner_dimensions.z}}{2}\right)
 
 Since the compartment volume is intersected with the load carrier inner volume, the box :math:`z`
 dimension can also be set to the load carrier outer dimension, without applying any

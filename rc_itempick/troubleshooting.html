@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FAQs and troubleshooting &mdash; Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+  <title>FAQs and troubleshooting &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="SilhouetteMatch tutorials" href="../rc_silhouette/overview.html"/>
@@ -116,6 +116,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -186,7 +187,9 @@
 <p>One common case for missing the rim in depth images takes place when one of the edges of the
 load carrier is parallel to the baseline of the stereo system. It can be easily determined if
 this the case by slightly rotating the load carrier and observing if the
-orientation has an effect on the appearance of the object in the depth image.</p>
+orientation has an effect on the appearance of the object in the depth image.
+When this happens, the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">RandomDot projector</span></a> can be
+added to the <em>rc_visard</em> to increase the depth image density.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/load_carrier_rim_missing.png"><img alt="../_images/load_carrier_rim_missing.png" src="../_images/load_carrier_rim_missing.png" style="width: 500px;" /></a>
 </div>
@@ -219,15 +222,15 @@ to the maximum value).</p>
 <p>By default, ItemPick assumes that the load carrier is located on a horizontal
 surface. If that’s not the case, one needs to provide the load carrier orientation as a prior
 with the load carrier model.</p>
-<p>This is currently not possible in the Web GUI’s <em>ItemPick</em> panel.
-Instead, it can be set via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v1.8)"><span>REST-API interface</span></a>.</p>
-<p>Two sample cases are shown in <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a> for the <em>external</em> pose frame
+<p>This is currently not possible in the Web GUI’s <em>ItemPick</em> tab.
+Instead, it can be set via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.04)"><span>REST-API interface</span></a>.</p>
+<p>Two sample cases are shown in <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 23</span></a> for the <em>external</em> pose frame
 (left) and the <em>camera</em> pose frame (right).</p>
 <div class="figure align-center" id="id1">
 <span id="fig-itempick-faq-tilted-lc"></span><a class="reference internal image-reference" href="../_images/load_carrier_tilted.png"><img alt="../_images/load_carrier_tilted.png" src="../_images/load_carrier_tilted.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Load carrier not placed on a horizontal surface</span></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Load carrier not placed on a horizontal surface</span></p>
 </div>
-<p>In the left case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a>, the load carrier (<code class="docutils literal notranslate"><span class="pre">tilted-load-carrier-ext</span></code>)
+<p>In the left case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 23</span></a>, the load carrier (<code class="docutils literal notranslate"><span class="pre">tilted-load-carrier-ext</span></code>)
 is rotated by an angle <span class="math notranslate nohighlight">\(\theta\)</span> around the <span class="math notranslate nohighlight">\(y\)</span>
 axis of the <em>external</em> coordinate system. The load carrier orientation is given by the
 following quaternion: <span class="math notranslate nohighlight">\(\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]\)</span>.</p>
@@ -272,7 +275,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 </div>
 </div></blockquote>
-<p>In the right case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 24</span></a>, the load carrier (<code class="docutils literal notranslate"><span class="pre">tilted-load-carrier-cam</span></code>) is parallel to the image plane.
+<p>In the right case of <a class="reference internal" href="#fig-itempick-faq-tilted-lc"><span class="std std-numref">Fig. 23</span></a>, the load carrier (<code class="docutils literal notranslate"><span class="pre">tilted-load-carrier-cam</span></code>) is parallel to the image plane.
 Its orientation in the <em>camera</em> coordinate system is
 <span class="math notranslate nohighlight">\(\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]\)</span>.</p>
 <blockquote>
@@ -331,7 +334,7 @@ a region of interest inside the load carrier.</p>
 <div class="toggle-content docutils container">
 <p>This means that either the load carrier <span class="math notranslate nohighlight">\(z\)</span> inner dimension is too large or the
 reconstruction of the load carrier floor is noisy.</p>
-<p>To improve the detection result as shown in <a class="reference internal" href="#fig-itempick-faq-load-carrier-floor"><span class="std std-numref">Fig. 25</span></a>,
+<p>To improve the detection result as shown in <a class="reference internal" href="#fig-itempick-faq-load-carrier-floor"><span class="std std-numref">Fig. 24</span></a>,
 two options are available:</p>
 <blockquote>
 <div><ul class="simple">
@@ -341,7 +344,7 @@ two options are available:</p>
 </div></blockquote>
 <div class="figure align-center" id="id2">
 <span id="fig-itempick-faq-load-carrier-floor"></span><a class="reference internal image-reference" href="../_images/load_carrier_floor.png"><img alt="../_images/load_carrier_floor.png" src="../_images/load_carrier_floor.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Removing detection of the bin floor</span></p>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Removing detection of the bin floor</span></p>
 </div>
 </div>
 <p class="toggle-header" id="itempick-faq-no-grasps-on-lc-floor"><strong>Objects on the load carrier floor are not detected as load carrier content</strong></p>
@@ -365,7 +368,7 @@ interest inside the load carrier can be used instead.</div>
 <div class="toggle-content docutils container">
 <blockquote>
 <div><ul class="simple">
-<li>Do objects appear in the depth image? (an additional pattern projector might be needed)</li>
+<li>Do objects appear in the depth image? (an additional <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">RandomDot projector</span></a> might be needed)</li>
 <li>Do the workpieces appear in the depth image without holes? (cfr. <a class="reference internal" href="getting_started.html#itempick-getting-started-configure-image"><span class="std std-ref">Configuring image parameters</span></a>)</li>
 <li>Are the workpieces inside the region of interest (if specified)?</li>
 <li>Is the load carrier detected (if specified)?</li>
@@ -421,7 +424,7 @@ increased.</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-1-g2c4fdc3',
+            VERSION:'0.3.0-69-ga1f6573',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

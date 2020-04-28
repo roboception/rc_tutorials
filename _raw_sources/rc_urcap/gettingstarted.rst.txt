@@ -7,7 +7,7 @@ Getting started
 
 .. note::
 
-  |company|'s URCap is working with software 3.9.0 or newer for CB series, and 5.3.0 or newer for E-series. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: https://www.universal-robots.com/download/)
+  |company|'s URCap is working with software 3.12.0 or newer for CB series, and 5.6.0 or newer for E-series. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: https://www.universal-robots.com/download/)
 
 .. note::
   |company|'s URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact |company| support.
@@ -73,7 +73,7 @@ Detailed instructions about network setup can be found in :ref:`general-network`
 #. In the installation node, set the IP address of the |rcvisard|
 
 .. note::
-    A link-local IP address might change after reboot, therefore, we recommended assigning a static IP address or DHCP a server for network configuration.
+    A link-local IP address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP server for network configuration.
 
 .. figure:: ../images/urcap/installation_node.png
   :width: 300px

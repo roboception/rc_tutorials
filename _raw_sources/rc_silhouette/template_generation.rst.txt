@@ -165,22 +165,8 @@ tutorial and the Out 1 mode of the |rcvisard| should be set to *ExposureAlternat
 With the |rc_visard|
 ````````````````````
 
-Follow the :ref:`data-recording` tutorial to capture the required images.
-The recording command that should be used is:
-
-.. tabs::
-
-    .. group-tab:: Linux
-
-            .. code-block:: bash
-
-                ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
-
-    .. group-tab:: Windows
-
-            .. code-block:: bash
-
-                rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+Use the *Download snapshot* button in camera tab (|rcvisard| image version 20.04.0 or newer) or
+follow the :ref:`data-recording` tutorial to capture the required images.
 
 Without the |rc_visard|
 ```````````````````````

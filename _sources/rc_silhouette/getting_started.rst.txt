@@ -270,11 +270,12 @@ Stereo based
 
 With Stereo-based base-plane calibration, the point cloud provided by
 the stereo matching component is used. SilhouetteMatch searches for
-planes in the point cloud and selects the most distant plane from the
+planes in the point cloud and selects either the closest or farthest
+plane from the
 
 rc_visard
 
-.
+, depending on the "plane_preference" parameter.
 
 For stereo-based base-plane calibration, a dense point cloud is
 important.
@@ -283,10 +284,9 @@ Configuring image parameters
 
  explains how to ensure that.
 
-If the most distant plane is not the actual base plane, a ROI should
-be used to select the right plane (see
+For more control on which plane is selected, a ROI should be used (see
 
-Fig. 38
+Fig. 37
 
 ).
 
@@ -346,7 +346,7 @@ and
 
  right image to be detected. As shown in
 
-Fig. 40
+Fig. 39
 
 , the area where the left and right image do not overlap is marked in
 blue.

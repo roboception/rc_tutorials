@@ -48,6 +48,10 @@ It is mandatory to set the minimum and maximum length and width of the
 suction cup. If necessary enter a load carrier id and/or a region of
 interest id, but it's not mandatory.
 
+If the CollisionCheck license is available on the sensor it is also
+possible to set the gripper and pre grasp offset for the collision
+check.
+
 Note: The region of interest and load carrier have to be defined in
   the Web GUI of the sensor. Only the regions of interest defined in
   'external' frame are shown in the URCap.
@@ -82,17 +86,19 @@ With the
 'Pose orientation'
 
  drop down menu it is possible to change the strategy of calculating
-the angle of the returned position. There are three different options
+the angle of the returned position. There are four different options
 to choose from:
 
-Orientation from pick module the complete orientation computed by
-ItemPick module is used
+Last pose orientation Detected orientation is ignored, instead the
+orientation of the last waypoint is used.
 
-Only z-axis from pick module only the orientation around z axis of the
-TCP is used (useful for non-symmetrical grippers)
+Only RZ from detected pose For RZ detected orientation is used, RX and
+RY are based on the last waypoint orientation.
 
-Last pose orientation orientation from ItemPick is ignored, instead
-the orientation of the last waypoint is used
+Only RX, RY from detected pose For RX RY detected orientation is used,
+RZ is based on the last waypoint orientation.
+
+Detected pose orientation The complete detected orientation is used.
 
 GetBpLcPose
 

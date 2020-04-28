@@ -7,6 +7,9 @@ Recording data with |rc_visard|
 
 This tutorial shows how to record sample data sets with the |rc_visard|.
 
+.. note::
+  Left and right camera images as well as rc_visard current parameters can be downloaded through the |webgui| in the camera tab by clicking on the camera button below the images. This tutorial demonstrates recording of other images and pose date for some period of time.
+
 Before we start
 ---------------
 

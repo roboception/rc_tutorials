@@ -96,7 +96,7 @@ This function does not return anything.
 
 ItemPick functions
 
-rc_trigger_compute_grasps
+rc_trigger_ip_col
 
 This function triggers the grasp computation thread.
 
@@ -113,6 +113,13 @@ load carrier should be used)
 
 roi_id - id of the region of interest that should be used (use '-1' if
 no region of interest should be used)
+
+gripper_is - id of the gripper that should be used (use '-1' if no
+gripper should be used)
+
+offset - offset for the pre grasp pose in tcp coordinate frame
+[offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not
+checked or it should not be used)
 
 pose_frame - pose frame that should be used for returned values
 
@@ -154,7 +161,7 @@ was detected it returns p[0,0,0,0,0,0]
 
 BoxPick functions
 
-rc_trigger_bp_item
+rc_trigger_compute_bp
 
 This function triggers the item detection thread.
 
@@ -172,6 +179,13 @@ load carrier should be used)
 roi_id - id of the region of interest that should be used (use '-1' if
 no region of interest should be used)
 
+gripper_is - id of the gripper that should be used (use '-1' if no
+gripper should be used)
+
+offset - offset for the pre grasp pose in tcp coordinate frame
+[offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not
+checked or it should not be used)
+
 pose_frame - pose frame that should be used for returned values
 
 Output
@@ -181,7 +195,7 @@ This function does not return anything.
 rc_get_item_size
 
 This function returns the size in millimeters of the next item. The
-'rc_trigger_bp_item' function has to be triggered prior.
+'rc_trigger_compute_bp' function has to be triggered prior.
 
 Input
 
@@ -193,15 +207,15 @@ Output
 This function returns the size of the next available item. If no item
 is available it returns [0,0]
 
-rc_get_item_pose
+rc_get_item_grasp
 
-This function returns the pose of a next detected item in the robot
+This function returns the grasp on a next detected item in the robot
 base coordinate system.
 
 To get the size of this item the rc_get_item_size function has to be
 called before this function.
 
- The 'rc_trigger_bp_item' function has to be triggered prior.
+ The 'rc_trigger_compute_bp' function has to be triggered prior.
 
 Input
 

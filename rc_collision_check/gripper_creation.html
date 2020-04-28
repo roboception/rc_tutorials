@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setting up the gripper &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+ documentation" href="../index.html"/>
+        <link rel="up" title="CollisionCheck tutorials" href="overview.html"/>
+        <link rel="next" title="Getting started with CollisionCheck" href="getting_started.html"/>
+        <link rel="prev" title="CollisionCheck tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">CollisionCheck tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up the gripper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flange-radius">Flange radius</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gripper-elements">Gripper elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tcp-position">TCP position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-and-saving-the-gripper">Checking and saving the gripper</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started with CollisionCheck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">CollisionCheck tutorials</a> &raquo;</li>
+        
+      <li>Setting up the gripper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-the-gripper">
+<span id="collision-check-gripper-creation"></span><h1>Setting up the gripper<a class="headerlink" href="#setting-up-the-gripper" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to set up a gripper for the CollisionCheck component.</p>
+<p>The gripper in the CollisionCheck component represents the collision geometry of the real gripper mounted to the robot.
+That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
+the robot’s gripper, including cables, connectors etc.</p>
+<p>In this tutorial we will show how to model the sample gripper shown in <a class="reference internal" href="#fig-collisioncheck-gripper-image"><span class="std std-numref">Fig. 55</span></a>.</p>
+<div class="figure align-center" id="id1">
+<span id="fig-collisioncheck-gripper-image"></span><a class="reference internal image-reference" href="../_images/gripper.png"><img alt="../_images/gripper.png" src="../_images/gripper.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
+</div>
+<p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.04)"><span>Web GUI</span></a>’s <em>CollisionCheck</em> tab. The <em>Grippers</em> section lists all defined
+grippers and allows to edit and remove them. To create a new gripper, click on “+ Add a new gripper”.</p>
+<p>A dialog window opens that allows creating the gripper. A 3D visualization on the left helps to check the created gripper geometry.
+Initially, it only shows the robot flange with a default radius and the flange coordinate frame.</p>
+<div class="figure align-center" id="id2">
+<span id="fig-collisioncheck-gripper-add-element"></span><a class="reference internal image-reference" href="../_images/gripper_modal_add_element.png"><img alt="../_images/gripper_modal_add_element.png" src="../_images/gripper_modal_add_element.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Creator dialog for gripper creation</span></p>
+</div>
+<p>The gripper should be modeled in a way such that each element is completely contained in a cylinder or box.</p>
+<div class="figure align-center" id="id3">
+<span id="fig-collisioncheck-gripper-geometry-overlay-image"></span><a class="reference internal image-reference" href="../_images/gripper_geometry.png"><img alt="../_images/gripper_geometry.png" src="../_images/gripper_geometry.png" style="width: 30%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.</span></p>
+</div>
+<div class="section" id="flange-radius">
+<span id="collision-check-flange-radius"></span><h2>Flange radius<a class="headerlink" href="#flange-radius" title="Permalink to this headline">¶</a></h2>
+<p>The flange radius is the outer radius of the robot’s flange (see <a class="reference internal" href="#fig-collisioncheck-gripper-geometry-overlay-image"><span class="std std-numref">Fig. 57</span></a>).
+It is used during a safety check if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> parameter is enabled (see <a class="reference internal" href="getting_started.html#collision-check-check-flange"><span class="std std-ref">Check Flange</span></a>).
+It is required to set the flange radius even if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> functionality will not be used.</p>
+</div>
+<div class="section" id="gripper-elements">
+<h2>Gripper elements<a class="headerlink" href="#gripper-elements" title="Permalink to this headline">¶</a></h2>
+<p>The gripper is built in the direction from the flange to the Tool Center Point (TCP) and consists of a list of elements which can
+be cylinders and boxes. To add a new
+element, click on the + symbol in the <em>Elements</em> section (see <a class="reference internal" href="#fig-collisioncheck-gripper-add-element"><span class="std std-numref">Fig. 56</span></a>).</p>
+<p>The first element of our sample gripper is a vacuum generator. We model it as a cylinder with the same height as the vacuum generator and
+a radius corresponding to the maximal elongation of the vacuum generator from the z axis of the flange coordinate frame. Since the vacuum generator
+is mounted directly on the flange, the position of the cylinder will be (0, 0, 0). It is important that the modeled collision geometry completely
+includes the real gripper element to prevent undetected collisions.</p>
+<p>The second element of the gripper is a cylindrical connector part which we will also model as a cylinder. We use the height of the connector
+as height of the cylinder for the collision geometry. The radius of the cylinder again is the maximal elongation from the flange z axis. The position
+of this cylinder is also (0,0,0), which means it is exactly below the previous element.</p>
+<p>The last element of the gripper is the suction part. It will be modeled as a box because it is elongated in one direction. We choose the
+box dimensions such that the suction part is completely contained in the box. It is important to check that the orientation of the modeled box
+corresponds to the orientation of the real gripper element. In this case, the longer side of the box is in the x-direction of the flange coordinate
+frame. The position of the box element is also (0,0,0) because it is mounted directly in the center below the previous cylinder.</p>
+</div>
+<div class="section" id="tcp-position">
+<h2>TCP position<a class="headerlink" href="#tcp-position" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we have to set the TCP position. By default, this position is in the center of the bottom plane of the last gripper element.
+The position of the TCP is used to decide whether a grasp is collision-free or not: Whenever any part of the gripper would be in collision with
+the load carrier while the TCP is at the grasp point, the grasp will be detected as collision. Since suction grippers have to slightly push
+against an object to grasp it, the TCP must be set to a position inside the suction part, e.g. 2 mm. Thus, we set a TCP offset of (0,0,-0.002),
+which means, that the TCP will be shifted along the z-axis by 2 mm in negative direction.</p>
+</div>
+<div class="section" id="checking-and-saving-the-gripper">
+<h2>Checking and saving the gripper<a class="headerlink" href="#checking-and-saving-the-gripper" title="Permalink to this headline">¶</a></h2>
+<p>Below the TCP offset, the gripper creator displays the position of the TCP in the flange coordinate frame.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The computed position of the TCP in the flange coordinate frame <strong>must be the same</strong> as the
+TCP position defined in the robot controller to ensure that the gripper geometry is modeled correctly with respect to the gripper height.</p>
+</div>
+<div class="figure align-center" id="id4">
+<span id="fig-collisioncheck-gripper-modal-image"></span><a class="reference internal image-reference" href="../_images/gripper_modal.png"><img alt="../_images/gripper_modal.png" src="../_images/gripper_modal.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Final model of the gripper geometry</span></p>
+</div>
+<p>The last step of the gripper creation is to save the gripper. It will now be shown in the <em>Grippers</em> section of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.04)"><span>Web GUI</span></a>’s <em>CollisionCheck</em> tab and can be used in the ItemPick and BoxPick modules.</p>
+<div class="section" id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="troubleshooting.html#collision-faq-complicated-gripper"><span class="std std-ref">My gripper has elements that cannot be modeled in the Web GUI</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting started with CollisionCheck" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="CollisionCheck tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0-69-ga1f6573',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -49,10 +49,10 @@ If no reachable template is matched and **Stop program when pose is not availabl
 With the *'Pick approach angle'* drop down menu it is possible to change the strategy of calculating the angle of the returned position.
 There are three different options to choose from:
 
-* **Orientation from pick module** the complete orientation computed by SilhouetteMatch module is used
-* **Only z-axis from pick module** only the orientation around z axis of the TCP is used (useful for non-symmetrical grippers)
-* **Last pose orientation** orientation from SilhouetteMatch is ignored, instead the orientation of the last waypoint is used
-
+* **Last pose orientation** Detected orientation is ignored, instead the orientation of the last waypoint is used.
+* **Only RZ from detected pose** For RZ detected orientation is used, RX and RY are based on the last waypoint orientation.
+* **Only RX, RY from detected pose** For RX RY detected orientation is used, RZ is based on the last waypoint orientation.
+* **Detected pose orientation** The complete detected orientation is used.
 
 CalibratePlane
 -------------------

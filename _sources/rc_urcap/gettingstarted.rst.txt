@@ -1,7 +1,7 @@
 Getting started
 
-Note: Roboception's URCap is working with software 3.9.0 or newer
-  for CB series, and 5.3.0 or newer for E-series. In case you are
+Note: Roboception's URCap is working with software 3.12.0 or newer
+  for CB series, and 5.6.0 or newer for E-series. In case you are
   running an older software version, please update your controller
   (files can be downloaded from the UR website:
 
@@ -68,7 +68,7 @@ Reboot the controller
 After rebooting the robot, the rc_visard_urcap application should be
 marked by a green tick in the URCaps Setup window (see
 
-Fig. 47
+Fig. 46
 
 ).
 
@@ -106,6 +106,6 @@ Enable networking in PolyScope
 In the installation node, set the IP address of the rc_visard
 
 Note: A link-local IP address might change after reboot, therefore,
-  we recommended assigning a static IP address or DHCP a server for
-  network configuration.
+  we recommended assigning a static IP address or using a DHCP server
+  for network configuration.
 

@@ -224,14 +224,13 @@ Stereo based
 
 With Stereo-based base-plane calibration, the point cloud provided by the stereo matching
 component is used.
-|silm| searches for planes in the point cloud and selects the most distant plane
-from the |rc_visard|.
+|silm| searches for planes in the point cloud and selects either the closest or farthest plane
+from the |rc_visard|, depending on the ``plane_preference`` parameter.
 
 For stereo-based base-plane calibration, a dense point cloud is important.
 :ref:`silhouettematch-image-params` explains how to ensure that.
 
-If the most distant plane is not the actual base plane,
-a ROI should be used to select the right plane
+For more control on which plane is selected, a ROI should be used
 (see :numref:`silhouettematch-fig-base-plane-stereo-roi`).
 
 .. _silhouettematch-fig-base-plane-stereo-roi:

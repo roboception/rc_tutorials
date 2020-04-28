@@ -1,0 +1,13 @@
+.. include:: ../global_rst.glb
+
+|collision| tutorials
+======================
+
+This is the landing page for the :doc:`rcvisard:collisioncheck`' tutorials.
+
+.. toctree::
+   :maxdepth: 2
+
+   gripper_creation
+   getting_started
+   troubleshooting

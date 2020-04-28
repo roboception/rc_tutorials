@@ -123,20 +123,19 @@ ExposureAlternateActive
 
 With the rc_visard
 
-Follow the
+Use the
+
+Download snapshot
+
+ button in camera tab (
+
+rc_visard
+
+ image version 20.04.0 or newer) or follow the
 
 Recording data with rc_visard
 
- tutorial to capture the required images. The recording command that
-should be used is:
-
-Linux
-
-   ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
-
-Windows
-
-   rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+ tutorial to capture the required images.
 
 Without the rc_visard
 

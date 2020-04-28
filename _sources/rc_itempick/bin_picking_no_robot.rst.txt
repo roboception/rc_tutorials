@@ -10,7 +10,7 @@ compute grasps only for items inside the bin itself.
 
 The tutorial covers all the steps from configuration of a load carrier
 up to getting grasps for items inside the load carrier. For this, we
-will call the offered
+will call the
 
 ItemPick services
 
@@ -44,7 +44,7 @@ Getting started with ItemPick
 In order to go through this tutorial, a bin or so-called load carrier
 should be available. Some samples of load carriers that can be used
 with ItemPick are shown below. The upper limit for the load carrier
-dimensions is 1.3 m x 0.9 m x 1.0 m.
+dimensions is 2.0 m x 2.0 m x 2.0 m.
 
 
 Setting up the scene
@@ -56,9 +56,9 @@ below.
 
 
 The placement should also ensure that the rim of of the load carrier
-is visible in the depth image. Occlusions of the rim are acceptable,
-as long as all edges are at least partially visible. If this is not
-the case, one can follow the recommendations for
+is visible in the depth image. Small occlusions of the rim are
+acceptable, as long as all edges are at least partially visible. If
+this is not the case, one can follow the recommendations for
 
 tuning camera and image parameters
 
@@ -74,7 +74,7 @@ Load Carriers
 
 ItemPick
 
- panel. However, in this tutorial we also introduce the programatic
+ tab. However, in this tutorial we also introduce the programatic
 interface of ItemPick which offers three services for managing load
 carriers via the
 
@@ -115,7 +115,7 @@ These values can be directly entered in the
 
 Load Carriers
 
- configuration panel of the Web GUI, with the only difference that the
+ configuration tab of the Web GUI, with the only difference that the
 values need to be converted to meters.
 
 REST-API request for configuring my-load-carrier1
@@ -451,11 +451,11 @@ that ItemPick can detect the load carrier in the scene. The Web GUI's
 
 ItemPick
 
- panel offers a
+ tab offers a
 
 Try Out
 
- section for this purpose. One simply needs to specifiy the respective
+ section for this purpose. One simply needs to specify the respective
 
 load carrier id
 
@@ -571,7 +571,7 @@ API -- are visualized in the Web GUI's
 
 ItemPick
 
- panel as
+ tab as
 
 Load Carriers
 
@@ -579,12 +579,9 @@ Load Carriers
 
 my-load-carrier1
 
- and
-
-my-load-carrier2
-
- are shown below. The detected load carrier is highlighted in blue,
-while its content is highlighted in red.
+ are shown below. The detected load carrier is colored in blue, while
+its content is highlighted in green if inside the load carrier and in
+red if above the rim (overfill).
 
 
 Note: While the "detect_load_carriers" service supports a list of
@@ -595,10 +592,10 @@ Note: While the "detect_load_carriers" service supports a list of
 
    in the list.
 
-Note: Users should avoid items sticking out of the bin. ItemPick has
-  a threshold of approximately 10 cm above the load carrier rim to
-  filter the load carrier content. Objects which stick out more than
-  that are not considered for grasping, as shown below.
+Note: All points that are not colored in the load carrier
+  visualization image are not used for grasp computation. This can
+  happen if the depth image includes missing data or if the items
+  stick out of the bin by more than 10 cm.
 
 Computing grasps inside a load carrier
 
@@ -616,7 +613,7 @@ Try Out
 
 ItemPick
 
- panel.
+ tab.
 
 Request to the REST-API for getting grasps inside my-load-carrier1
 
@@ -716,9 +713,138 @@ Request to the REST-API for getting grasps inside my-load-carrier1
         }
       }' | ConvertTo-Json -Depth 6
 
-Caution: Since ItemPick does not have any information about the end
-  effector geometry, the computed grasps are not guaranteed to be
-  collision free.
+Computing collision free grasps
+
+The
+
+Getting started with CollisionCheck
+
+ tutorial shows how to integrate ItemPick with the CollisionCheck
+component. When the collision checking is enabled, all detected grasp
+points are checked for collisions between the gripper geometry and the
+load carrier.
+
+Note: The x axis of a grasp computed by ItemPick corresponds to the
+  longest axis of the
+
+  grasp ellipse
+
+  . When configuring a gripper in the CollisionCheck component, the x
+  axis of the gripper should be set along the longest gripper
+  elongation, in order to match the orientation of the computed
+  grasps.
+
+Request to the REST-API for getting collision free grasps inside my-
+load-carrier1 with gripper my-gripper
+
+   REST-API
+
+   To trigger the "compute_grasp" service via the REST-API, one needs
+   to send a PUT request to the URL "http://<rc-visard-
+   ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
+   visard-ip>" should be replaced by the actual IP of the
+
+   rc_visard
+
+   .
+
+   The PUT body should include the following data, in JSON:
+
+      {
+        "args": {
+          "pose_frame": "camera",
+          "load_carrier_id": "my-load-carrier1",
+          "suction_surface_length": 0.02,
+          "suction_surface_width": 0.02,
+          "collision_detection": {
+            "gripper_id": "my-gripper"
+          }
+        }
+      }
+
+   Swagger UI
+
+   The Swagger UI for putting a service request is located at http://
+   <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
+   ces_service, where <rc-visard-ip> should be replaced by the actual
+   IP of the rc_visard.
+
+   The following values are required to fill the request to the REST-
+   API:  node rc_itempick  service compute_grasps  service args  {
+   "args": {     "pose_frame": "camera",     "load_carrier_id": "my-
+   load-carrier1",     "suction_surface_length": 0.02,
+   "suction_surface_width": 0.02,     "collision_detection": {
+   "gripper_id": "my-gripper"     }   } }
+
+   curl (Linux)
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "RC_VISARD_IP=10.0.2.90").
+
+      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      "{ \
+          \"args\": { \
+              \"pose_frame\": \"camera\", \
+              \"load_carrier_id\": \"my-load-carrier1\", \
+              \"suction_surface_length\": 0.02, \
+              \"suction_surface_width\": 0.02, \
+              \"collision_detection\": {  \
+                \"gripper_id\": \"my-gripper\" \
+              } \
+          } \
+      }"
+
+   curl (Windows)
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "set RC_VISARD_IP=10.0.2.90") and the
+
+   curl
+
+    command is in the path.
+
+      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      "{ ^
+          \"args\": { ^
+              \"pose_frame\": \"camera\", ^
+              \"load_carrier_id\": \"my-load-carrier1\", ^
+              \"suction_surface_length\": 0.02, ^
+              \"suction_surface_width\": 0.02, ^
+              \"collision_detection\": { ^
+                \"gripper_id\": \"my-gripper\" ^
+              } ^
+          } ^
+      }"
+
+   PowerShell
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "$RC_VISARD_IP="10.0.2.90"").
+
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+      {
+        "args": {
+          "pose_frame": "camera",
+          "load_carrier_id": "my-load-carrier1",
+          "suction_surface_length": 0.02,
+          "suction_surface_width": 0.02,
+          "collision_detection": {
+            "gripper_id": "my-gripper"
+          }
+        }
+      }' | ConvertTo-Json -Depth 6
 
 Computing grasps inside a compartment in the load carrier
 
@@ -736,13 +862,13 @@ Note: The "load_carrier_compartment" argument can not be specified
 
   ItemPick
 
-   panel.
+   tab.
 
 The compartment is a box whose "pose" is defined with respect to the
 load carrier reference frame. In this section we show how to select
 the compartment in
 
-Fig. 23
+Fig. 22
 
 .
 
@@ -751,14 +877,14 @@ The compartment box dimensions are computed from the load carrier
 inner dimensions:
 
    \left(\frac{\text{inner_dimensions.x}}{2},
-   \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)^T.
+   \text{inner_dimensions.y}, \text{inner_dimensions.z}\right)
 
 The load carrier reference frame is located at the center of the load
 carrier outer box. To move from the load carrier reference frame to
 the compartment center, the following translation needs to be applied:
 
    \left(\frac{\text{inner_dimensions.x}}{4}, 0, \frac{\text{outer_di
-   mensions.z}-\text{inner_dimensions.z}}{2}\right)^T.
+   mensions.z}-\text{inner_dimensions.z}}{2}\right)
 
 Since the compartment volume is intersected with the load carrier
 inner volume, the box z dimension can also be set to the load carrier

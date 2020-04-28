@@ -119,8 +119,20 @@ the whole image (i.e. as much white pixels as possible, :numref:`fig-general-pro
 
 .. _general-projector-out1-mode:
 
-Selecting the Out 1 mode
-------------------------
+Selecting projector working mode
+---------------------------------
+
+Single shot mode
+.................
+
+If the projector is used in combination with rc_reason modules (ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot mode. This means that it will only be activated on demand when the module request a new images.
+
+To enable this mode the Single + Out1 Acquisition Mode has to be chosen in Depth Image tab.
+
+Continuous mode
+.................
+
+If the projector has to be used in continuous mode (stereo matching is performed continuously without a trigger) the proper Out 1 mode in |webgui|'s *IOControl*  has to be set.
 
 By default, the Out 1 mode of the |rcvisard| is set to *ExposureActive*. This means that the
 |projector| is on only for the exposure time of every image.
@@ -129,8 +141,6 @@ Typically, the user needs to select the *ExposureAlternateActive* Out 1 mode, in
 |projector| is on only for the exposure time of every second image. Images with projected
 pattern are used for computing depth images. Images without projected pattern can be used
 as texture or for other image processing modules.
-
-This mode can be selected on the |webgui|'s *IOControl* panel.
 
 .. warning::
 
@@ -142,9 +152,8 @@ This mode can be selected on the |webgui|'s *IOControl* panel.
 Configuring the exposure
 ------------------------
 
-As last step, one needs to go back to the |webgui|'s *Camera* panel and set the exposure time as
-explained in the :ref:`general-exposure-gain` section of the :ref:`general-tuning-image-parameters`
-tutorial.
+As last step, one needs to go back to the |webgui|'s *Camera* panel and set the exposure time, either manually, as explained in the :ref:`general-exposure-gain` section of the :ref:`general-tuning-image-parameters` tutorial, or automatically using the auto exposure.
+In this case, the Auto Exposure Mode should be set to AdaptiveOut1 to avoid over exposure due to the projector.
 
 .. In case Out 1 mode is set to *ExposureAlternateActive*, it is important to verify the exposure
 .. of both camera images with the random dot pattern and camera images without the pattern

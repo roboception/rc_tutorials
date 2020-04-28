@@ -20,7 +20,7 @@ rc_visard
 
 The rc_visard's image version is at least 1.4 and the rc_visard's
 license includes the ItemPick component. This can be verified on the
-Web GUI's System panel.
+Web GUI's System tab.
 
 -[ One or more workpieces are in the field of view of the camera. They
 should meet the following requisites: ]-
@@ -32,7 +32,7 @@ lift and move the workpiece).
 
 The workpiece surface appears in the depth image. This can be verified
 by placing the workpiece in front of the rc_visard and checking the
-Web GUI's Depth image panel. If the workpiece presents holes or low
+Web GUI's Depth image tab. If the workpiece presents holes or low
 confidence regions (i.e. average gray pixels in the Confidence image),
 one can follow the Tuning of Image Parameters tutorial.
 
@@ -98,17 +98,26 @@ Once the scene has been set up, we recommend to check the Web GUI's
 
 Depth image
 
- panel to verify that the images are well-exposed and the depth image
-is dense with no holes on the workpieces. The tutorial
+ tab to verify that the images are well-exposed and the depth image is
+dense with no holes on the workpieces. The tutorial
 
 Tuning of Image Parameters
 
  covers all required steps to get the best quality for stereo and
-depth images.
+depth images. The depth image density can also be increased by adding
+the
+
+RandomDot projector
+
+ to the
+
+rc_visard
+
+.
 
 ItemPick provides its best results when the depth image quality is set
-to High. The Static mode might be beneficial in static scenes, but it
-increases the data acquisition time.
+to High or Full. The Static mode might be beneficial in static scenes,
+but it increases the data acquisition time.
 
 
 Computing the first grasps
@@ -145,7 +154,7 @@ Note: The "compute_grasp" can also be triggered in the "Try Out"
 
   ItemPick
 
-   panel. The required arguments are pre-set with default values,
+   tab. The required arguments are pre-set with default values,
   therefore the service can directly be called by hitting the "Detect"
   button.
 
@@ -158,7 +167,7 @@ The images in the top section of the Web GUI's
 
 ItemPick
 
- panel show the results of the last successful request to ItemPick.
+ tab show the results of the last successful request to ItemPick.
 
 REST-API
 

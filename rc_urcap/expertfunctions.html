@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Expert Functions &mdash; Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+  <title>Expert Functions &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -128,15 +128,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#itempick-functions">ItemPick functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-compute-grasps">rc_trigger_compute_grasps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-ip-col">rc_trigger_ip_col</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rc-get-ip-grasp">rc_get_ip_grasp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rc-get-ip-lc-pose">rc_get_ip_lc_pose</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#boxpick-functions">BoxPick functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-bp-item">rc_trigger_bp_item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-compute-bp">rc_trigger_compute_bp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rc-get-item-size">rc_get_item_size</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-item-pose">rc_get_item_pose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rc-get-item-grasp">rc_get_item_grasp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rc-get-bp-lc-pose">rc_get_bp_lc_pose</a></li>
 </ul>
 </li>
@@ -151,6 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -297,8 +298,8 @@
 </div>
 <div class="section" id="itempick-functions">
 <h2>ItemPick functions<a class="headerlink" href="#itempick-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rc-trigger-compute-grasps">
-<h3>rc_trigger_compute_grasps<a class="headerlink" href="#rc-trigger-compute-grasps" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="rc-trigger-ip-col">
+<h3>rc_trigger_ip_col<a class="headerlink" href="#rc-trigger-ip-col" title="Permalink to this headline">¶</a></h3>
 <p>This function triggers the grasp computation thread.</p>
 <div class="section" id="id9">
 <h4>Input<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
@@ -307,6 +308,8 @@
 <li>suc_size - size of the suction cup in millimeters in format [suc_length_m, suc_width_m]</li>
 <li>lc_id - id of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
 <li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>gripper_is - id of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
+<li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
 </div>
@@ -346,8 +349,8 @@
 </div>
 <div class="section" id="boxpick-functions">
 <h2>BoxPick functions<a class="headerlink" href="#boxpick-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rc-trigger-bp-item">
-<h3>rc_trigger_bp_item<a class="headerlink" href="#rc-trigger-bp-item" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="rc-trigger-compute-bp">
+<h3>rc_trigger_compute_bp<a class="headerlink" href="#rc-trigger-compute-bp" title="Permalink to this headline">¶</a></h3>
 <p>This function triggers the item detection thread.</p>
 <div class="section" id="id15">
 <h4>Input<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
@@ -356,6 +359,8 @@
 <li>rectangle - size of the rectangles in mm that should be detected [min_x, min_y, max_x, max_y]</li>
 <li>lc_id - id of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
 <li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>gripper_is - id of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
+<li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
 </div>
@@ -366,7 +371,7 @@
 </div>
 <div class="section" id="rc-get-item-size">
 <h3>rc_get_item_size<a class="headerlink" href="#rc-get-item-size" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the size in millimeters of the next item. The ‘rc_trigger_bp_item’ function has to be triggered prior.</p>
+<p>This function returns the size in millimeters of the next item. The ‘rc_trigger_compute_bp’ function has to be triggered prior.</p>
 <div class="section" id="id17">
 <h4>Input<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -378,9 +383,9 @@
 <p>This function returns the size of the next available item. If no item is available it returns [0,0]</p>
 </div>
 </div>
-<div class="section" id="rc-get-item-pose">
-<h3>rc_get_item_pose<a class="headerlink" href="#rc-get-item-pose" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the pose of a next detected item in the robot base coordinate system. <strong>To get the size of this item the rc_get_item_size function has to be called before this function.</strong> The ‘rc_trigger_bp_item’ function has to be triggered prior.</p>
+<div class="section" id="rc-get-item-grasp">
+<h3>rc_get_item_grasp<a class="headerlink" href="#rc-get-item-grasp" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the grasp on a next detected item in the robot base coordinate system. <strong>To get the size of this item the rc_get_item_size function has to be called before this function.</strong> The ‘rc_trigger_compute_bp’ function has to be triggered prior.</p>
 <div class="section" id="id19">
 <h4>Input<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -503,7 +508,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-1-g2c4fdc3',
+            VERSION:'0.3.0-69-ga1f6573',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

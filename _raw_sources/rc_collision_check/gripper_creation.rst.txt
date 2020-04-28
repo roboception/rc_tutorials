@@ -1,0 +1,105 @@
+.. include:: ../global_rst.glb
+
+.. _collision_check_gripper_creation:
+
+Setting up the gripper
+===========================
+
+This tutorial shows how to set up a gripper for the |collision| component.
+
+The gripper in the |collision| component represents the collision geometry of the real gripper mounted to the robot.
+That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
+the robot's gripper, including cables, connectors etc.
+
+In this tutorial we will show how to model the sample gripper shown in :numref:`fig-collisioncheck-gripper-image`.
+
+.. _fig-collisioncheck-gripper-image:
+.. figure:: ../images/collisioncheck/gripper.png
+  :width: 300px
+  :align: center
+
+  Sample vacuum gripper to model for collision checking
+
+The easiest way to create a gripper is via the :ref:`sect-web-gui`'s *CollisionCheck* tab. The *Grippers* section lists all defined
+grippers and allows to edit and remove them. To create a new gripper, click on "+ Add a new gripper".
+
+A dialog window opens that allows creating the gripper. A 3D visualization on the left helps to check the created gripper geometry.
+Initially, it only shows the robot flange with a default radius and the flange coordinate frame.
+
+
+.. _fig-collisioncheck-gripper-add-element:
+.. figure:: ../images/collisioncheck/gripper_modal_add_element.png
+  :width: 100%
+  :align: center
+
+  Creator dialog for gripper creation
+
+The gripper should be modeled in a way such that each element is completely contained in a cylinder or box.
+
+.. _fig-collisioncheck-gripper-geometry-overlay-image:
+.. figure:: ../images/collisioncheck/gripper_geometry.png
+  :width: 30%
+  :align: center
+
+  Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.
+
+.. _collision_check_flange_radius:
+
+Flange radius
+...............
+
+The flange radius is the outer radius of the robot's flange (see :numref:`fig-collisioncheck-gripper-geometry-overlay-image`).
+It is used during a safety check if the ``check_flange`` parameter is enabled (see :ref:`collision_check_check_flange`).
+It is required to set the flange radius even if the ``check_flange`` functionality will not be used.
+
+Gripper elements
+........................
+
+The gripper is built in the direction from the flange to the Tool Center Point (TCP) and consists of a list of elements which can
+be cylinders and boxes. To add a new
+element, click on the + symbol in the *Elements* section (see :numref:`fig-collisioncheck-gripper-add-element`).
+
+The first element of our sample gripper is a vacuum generator. We model it as a cylinder with the same height as the vacuum generator and
+a radius corresponding to the maximal elongation of the vacuum generator from the z axis of the flange coordinate frame. Since the vacuum generator
+is mounted directly on the flange, the position of the cylinder will be (0, 0, 0). It is important that the modeled collision geometry completely
+includes the real gripper element to prevent undetected collisions.
+
+The second element of the gripper is a cylindrical connector part which we will also model as a cylinder. We use the height of the connector
+as height of the cylinder for the collision geometry. The radius of the cylinder again is the maximal elongation from the flange z axis. The position
+of this cylinder is also (0,0,0), which means it is exactly below the previous element.
+
+The last element of the gripper is the suction part. It will be modeled as a box because it is elongated in one direction. We choose the
+box dimensions such that the suction part is completely contained in the box. It is important to check that the orientation of the modeled box
+corresponds to the orientation of the real gripper element. In this case, the longer side of the box is in the x-direction of the flange coordinate
+frame. The position of the box element is also (0,0,0) because it is mounted directly in the center below the previous cylinder.
+
+TCP position
+.............
+
+Finally, we have to set the TCP position. By default, this position is in the center of the bottom plane of the last gripper element.
+The position of the TCP is used to decide whether a grasp is collision-free or not: Whenever any part of the gripper would be in collision with
+the load carrier while the TCP is at the grasp point, the grasp will be detected as collision. Since suction grippers have to slightly push
+against an object to grasp it, the TCP must be set to a position inside the suction part, e.g. 2 mm. Thus, we set a TCP offset of (0,0,-0.002),
+which means, that the TCP will be shifted along the z-axis by 2 mm in negative direction.
+
+Checking and saving the gripper
+.................................
+
+Below the TCP offset, the gripper creator displays the position of the TCP in the flange coordinate frame.
+
+.. warning:: The computed position of the TCP in the flange coordinate frame **must be the same** as the
+  TCP position defined in the robot controller to ensure that the gripper geometry is modeled correctly with respect to the gripper height.
+
+.. _fig-collisioncheck-gripper-modal-image:
+.. figure:: ../images/collisioncheck/gripper_modal.png
+  :width: 100%
+  :align: center
+
+  Final model of the gripper geometry
+
+The last step of the gripper creation is to save the gripper. It will now be shown in the *Grippers* section of the :ref:`sect-web-gui`'s *CollisionCheck* tab and can be used in the ItemPick and BoxPick modules.
+
+Troubleshooting
+---------------
+
+* :ref:`My gripper has elements that cannot be modeled in the Web GUI<collision-faq-complicated-gripper>`

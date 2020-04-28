@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-1-g2c4fdc3
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
@@ -117,7 +117,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#mounting-the-projector">Mounting the projector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#focusing-the-projector">Focusing the projector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-the-aperture-of-the-projector">Configuring the aperture of the projector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#selecting-the-out-1-mode">Selecting the Out 1 mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-projector-working-mode">Selecting projector working mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-shot-mode">Single shot mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#continuous-mode">Continuous mode</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-the-exposure">Configuring the exposure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#more-optimization-tricks">More optimization tricks</a></li>
 </ul>
@@ -127,6 +131,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -214,7 +219,7 @@ has been completed.</p>
 <li>The <em>rc_visard</em>’s image version is at least 1.4 and
 the <em>rc_visard</em>’s license includes the
 <a class="reference external" href="https://roboception.com/product/rc_reason-iocontrol/">IOControl component</a>.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v1.8)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.04)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
 <li>The RandomDot Projector, its Y-cable, and a 24 V, 60 W power supply are available.</li>
 </ol>
 <div class="admonition warning">
@@ -225,7 +230,7 @@ This can be verified on the <a class="reference external" href="https://doc.rc-v
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The RandomDot Projector is controlled via the GPIO Out 1 of the <em>rc_visard</em>
-(cfr. <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v1.8)"><span>IO and Projector Control</span></a>).
+(cfr. <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v20.04)"><span>IO and Projector Control</span></a>).
 In this tutorial, Out 1 mode refers to the RandomDot Projector mode.</p>
 </div>
 </div>
@@ -270,26 +275,33 @@ the whole image (i.e. as much white pixels as possible, <a class="reference inte
 present significant differences.</span></p>
 </div>
 </div>
-<div class="section" id="selecting-the-out-1-mode">
-<span id="general-projector-out1-mode"></span><h2>Selecting the Out 1 mode<a class="headerlink" href="#selecting-the-out-1-mode" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="selecting-projector-working-mode">
+<span id="general-projector-out1-mode"></span><h2>Selecting projector working mode<a class="headerlink" href="#selecting-projector-working-mode" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-shot-mode">
+<h3>Single shot mode<a class="headerlink" href="#single-shot-mode" title="Permalink to this headline">¶</a></h3>
+<p>If the projector is used in combination with rc_reason modules (ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot mode. This means that it will only be activated on demand when the module request a new images.</p>
+<p>To enable this mode the Single + Out1 Acquisition Mode has to be chosen in Depth Image tab.</p>
+</div>
+<div class="section" id="continuous-mode">
+<h3>Continuous mode<a class="headerlink" href="#continuous-mode" title="Permalink to this headline">¶</a></h3>
+<p>If the projector has to be used in continuous mode (stereo matching is performed continuously without a trigger) the proper Out 1 mode in Web GUI’s <em>IOControl</em>  has to be set.</p>
 <p>By default, the Out 1 mode of the <em>rc_visard</em> is set to <em>ExposureActive</em>. This means that the
 RandomDot Projector is on only for the exposure time of every image.</p>
 <p>Typically, the user needs to select the <em>ExposureAlternateActive</em> Out 1 mode, in which the
 RandomDot Projector is on only for the exposure time of every second image. Images with projected
 pattern are used for computing depth images. Images without projected pattern can be used
 as texture or for other image processing modules.</p>
-<p>This mode can be selected on the Web GUI’s <em>IOControl</em> panel.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The RandomDot Projector must not be turned on permanently during normal operation (Out 1 mode set to
 <em>High</em>), since it may eventually start flickering to protect the projector from overheating.</p>
 </div>
 </div>
+</div>
 <div class="section" id="configuring-the-exposure">
 <span id="general-projector-exposure"></span><h2>Configuring the exposure<a class="headerlink" href="#configuring-the-exposure" title="Permalink to this headline">¶</a></h2>
-<p>As last step, one needs to go back to the Web GUI’s <em>Camera</em> panel and set the exposure time as
-explained in the <a class="reference internal" href="parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a> section of the <a class="reference internal" href="parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a>
-tutorial.</p>
+<p>As last step, one needs to go back to the Web GUI’s <em>Camera</em> panel and set the exposure time, either manually, as explained in the <a class="reference internal" href="parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a> section of the <a class="reference internal" href="parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a> tutorial, or automatically using the auto exposure.
+In this case, the Auto Exposure Mode should be set to AdaptiveOut1 to avoid over exposure due to the projector.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In <em>ExposureAlternateActive</em> mode, the auto exposure algorithm adjusts the exposure time by
@@ -364,7 +376,7 @@ aperture of the projector can also help in removing highlights.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-1-g2c4fdc3',
+            VERSION:'0.3.0-69-ga1f6573',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

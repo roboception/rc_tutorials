@@ -19,7 +19,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 #. The |rc_visard|'s image version is at least 1.4 and
    the |rc_visard|'s license includes the |itempick| component.
-   This can be verified on the :ref:`sect-web-gui`'s *System* panel.
+   This can be verified on the :ref:`sect-web-gui`'s *System* tab.
 
 .. rubric:: One or more workpieces are in the field of view of the camera. They should meet the following requisites:
 
@@ -29,7 +29,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 #. The workpiece surface appears in the depth image.
    This can be verified by placing the workpiece in front of the |rcvisard| and checking the
-   :ref:`sect-web-gui`'s *Depth image* panel.
+   :ref:`sect-web-gui`'s *Depth image* tab.
    If the workpiece presents holes or low confidence regions
    (i.e. average gray pixels in the Confidence image),
    one can follow the :ref:`general-tuning-image-parameters` tutorial.
@@ -79,11 +79,13 @@ Configuring image parameters
 ----------------------------
 
 Once the scene has been set up, we recommend to check the |webgui|'s *Depth image*
-panel to verify that the images are well-exposed and the depth image is dense
+tab to verify that the images are well-exposed and the depth image is dense
 with no holes on the workpieces.
 The tutorial :ref:`general-tuning-image-parameters` covers all required steps to get the best quality for stereo and depth images.
+The depth image density can also be increased by adding the
+:ref:`RandomDot projector<general-projector>` to the |rcvisard|.
 
-|itempick| provides its best results when the depth image quality is set to High.
+|itempick| provides its best results when the depth image quality is set to High or Full.
 The Static mode might be beneficial in static scenes, but it increases the data acquisition time.
 
 .. _fig-itempick-getting-started-tuning-image:
@@ -110,7 +112,7 @@ using a client library (e.g. from the robot controller).
 In this tutorial we focus on the first two options.
 
 .. note::
-  The ``compute_grasp`` can also be triggered in the ``Try Out`` section of the |webgui|'s *ItemPick* panel.
+  The ``compute_grasp`` can also be triggered in the ``Try Out`` section of the |webgui|'s *ItemPick* tab.
   The required arguments are pre-set with default values,
   therefore the service can directly be called by hitting the ``Detect`` button.
 
@@ -118,20 +120,20 @@ In the below examples, the service will be triggered with the minimum set of req
 For this reason, the results might be sub-optimal
 (e.g. multiple grasps on a single workpiece, or grasps on unwanted objects).
 
-The images in the top section of the |webgui|'s *ItemPick* panel show the results
+The images in the top section of the |webgui|'s *ItemPick* tab show the results
 of the last successful request to |itempick|.
 
 .. tabs::
 
   .. group-tab:: REST-API
-    
+
     To trigger the ``compute_grasp`` service via the REST-API, one needs to send
     a PUT request to the URL
     ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/compute_grasp``,
     where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
-    
+
     The PUT body should include the following data, in JSON:
-    
+
     .. code-block:: json
 
       {
@@ -141,7 +143,7 @@ of the last successful request to |itempick|.
           "suction_surface_width": 0.02
         }
       }
-  
+
   .. group-tab:: Swagger UI
 
     #. The Swagger UI for putting a service request is located at
@@ -179,7 +181,7 @@ of the last successful request to |itempick|.
       }"
 
   .. group-tab:: curl (Windows)
-  
+
     The following command assumes that the variable ``RC_VISARD_IP`` is set to the actual IP of the
     |rcvisard| (e.g. ``set RC_VISARD_IP=10.0.2.90``) and the *curl* command is in the path.
 
@@ -214,14 +216,14 @@ of the last successful request to |itempick|.
 .. figure:: ../images/itempick/getting_started_grasps.png
   :width: 80%
   :align: center
-  
+
   Sample results on the scene shown above: surfaces image on the left and computed grasps on the
   right (including the available suction surface). By default, maximally 5 grasps are returned
   by the ``compute_grasps`` service. The sorting of the grasps takes into account the gravity
   vector, so that objects on top of a pile are grasped first.
 
 .. note::
-  
+
   The |rcvisard| used in this tutorial is a color sensor
   (:numref:`fig-itempick-getting-started-tuning-image`). However, |itempick| works only on
   the monochrome images provided by the sensor, as shown in the result pictures in :numref:`fig-itempick-getting-started-grasps`.

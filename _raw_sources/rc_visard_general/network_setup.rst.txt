@@ -105,7 +105,7 @@ as shown in the following.
 Configure |rc_visard|'s network settings
 ----------------------------------------
 
-In general, two options exist to configure the |rc_visard|'s network settings.
+In general, three options exist to configure the |rc_visard|'s network settings.
 
 .. _sect-network-temporary-ip:
 
@@ -141,7 +141,12 @@ and it should be reachable now.
 
 .. _sect-network-persistent-ip:
 
-Option 2: Persistent configuration via GenICam with command line
+Option 2: Persistent configuration via |webgui|
+''''''''''''''''''''''''''''''''''''''''''''''''
+
+If the sensor is reachable in the local network it is possible to persistently change the IP address in the system tab of the |webgui|.
+
+Option 3: Persistent configuration via GenICam with command line
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 The command line GenICam tool ``gc_config`` gives full control
@@ -204,14 +209,6 @@ Here several options exist:
 
 After reconnecting, you might check via the discovery tool that the desired settings are applied
 and that the |rcvisard| is reachable from your host.
-
-Option 3: Persistent configuration via GenICam with graphical interface
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-For changing the IP address using the graphical interface, we recommend using the IpConfigTool that is part of the
-`Baumer GAPI SDK <http://www.baumer.com/de-en/products/identification-image-processing/software/baumer-gapi-sdk/>`_.
-The :term:`SDK` can be downloaded free of charge for Windows and Linux from http://www.baumer.com.
-
 
 .. _sect-network-traffic-optimizations:
 

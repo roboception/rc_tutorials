@@ -7,7 +7,7 @@ SilhouetteMatch and BoxPick Modules.
 This program will only work properly for externally mounted sensor. In
 case of sensor mounted on the robot the computation should be
 triggered when the robot is stationary, so the movement has to be
-stopped in the observe position.
+stopped in the observe position with *Wait is_steady()* command.
 
 
 Before we start

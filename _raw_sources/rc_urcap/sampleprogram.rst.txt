@@ -7,7 +7,7 @@ Sample program
 
 This tutorial shows example program that uses ItemPick Module. Programs with similar structure can also be downloaded for SilhouetteMatch and BoxPick Modules.
 
-This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position.
+This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position with `Wait is_steady()` command.
 
 .. figure:: ../images/urcap/ip_program.png
   :width: 400px
