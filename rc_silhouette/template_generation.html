@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Template generation &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+  <title>Template generation &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation</title>
   
 
@@ -33,14 +33,6 @@
   
 
   
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-  
     <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
     <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
@@ -56,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with SilhouetteMatch" href="getting_started.html"/>
@@ -116,6 +108,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">SilhouetteMatch tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Template generation</a><ul>
@@ -239,7 +232,7 @@ it is also possible to generate a template based on data captured with an <em>rc
 <ol class="arabic">
 <li><p class="first">Place the object on a flat, monochrome surface in contrasting color.</p>
 </li>
-<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.04)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.
+<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.11)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.
 A sample background with AprilTags can be downloaded <a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.</p>
 </li>
 <li><p class="first"><a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connect the rc_visard to your PC</span></a> and open the <em>Camera</em> tab in the Web GUI.</p>
@@ -277,31 +270,8 @@ The gain value is 0 dB and there are no shadows on the object and its vicinity.<
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Follow the <a class="reference internal" href="../rc_visard_general/data_recording.html#data-recording"><span class="std std-ref">Recording data with rc_visard</span></a> tutorial to capture the required images. The command that should be used is:</p>
-</li>
 </ol>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-TGludXg= docutils container">
-<div class="docutils container">
-Linux</div>
-</div>
-<div class="item sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="docutils container">
-Windows</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-TGludXg= active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./rc_visard_record.sh --number<span class="o">=</span><span class="m">10</span> --left<span class="o">=</span><span class="nb">true</span> --right<span class="o">=</span><span class="nb">true</span> --disparity<span class="o">=</span><span class="nb">true</span> --confidence<span class="o">=</span><span class="nb">true</span> --error<span class="o">=</span><span class="nb">true</span> --cam-params<span class="o">=</span>params.txt &lt;rc_visard_id&gt;
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-V2luZG93cw== docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rc_visard_record.bat -n <span class="m">10</span> -left <span class="nb">true</span> -right <span class="nb">true</span> -disparity <span class="nb">true</span> -confidence <span class="nb">true</span> -error <span class="nb">true</span> -cam-params params.txt &lt;rc_visard_id&gt;
-</pre></div>
-</div>
-</div>
-</div>
+<p>All the data necessary for the template generation can be downloaded through the Web GUI in the camera tab by clicking on the camera button below the images.</p>
 </div>
 </div>
 <div class="section" id="measuring-the-object-height">
@@ -339,7 +309,7 @@ If the second template is used, the detected object might be flipped.</span></p>
 in which the object needs to be detected.
 Roboception will use these images to test the generated template and, if necessary,
 suggest changes to improve the detection performance.</p>
-<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.04)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
+<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.11)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
 If a RandomDot Projector is available, the plane calibration can also be performed using depth data.
 In this case, the RandomDot Projector should be setup as described in the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the RandomDot Projector</span></a>
 tutorial and the Out 1 mode of the <em>rc_visard</em> should be set to <em>ExposureAlternateActive</em>.</p>
@@ -412,7 +382,7 @@ to add an additional external light source.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-69-ga1f6573',
+            VERSION:'0.3.0-71-g69a106a',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -424,8 +394,6 @@ to add an additional external light source.</p>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/language_data.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>

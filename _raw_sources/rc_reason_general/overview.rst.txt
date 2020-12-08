@@ -1,0 +1,11 @@
+.. include:: ../global_rst.glb
+
+rc_reason general tutorials
+================================
+
+This is the landing page for the |rc-reason| tutorials.
+
+.. toctree::
+   :maxdepth: 2
+
+   load_carrier_setup

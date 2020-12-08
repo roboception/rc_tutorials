@@ -1,11 +1,11 @@
 ItemPick
 
-This tutorial shows how to use the ItemPick Module with Roboception's
+This tutorial shows how to use the ItemPick module with Roboception's
 URCap.
 
 Before we start
 
-This tutorials assumes that the tutorial
+This tutorial assumes that the tutorial
 
 Getting started with ItemPick
 
@@ -20,7 +20,7 @@ Hand-Eye Calibration
 
 .
 
-Overivew
+Overview
 
 The ItemPick functionality is available in the generic rc_visard node.
 Please see
@@ -59,25 +59,25 @@ Note: The region of interest and load carrier have to be defined in
 GetNextGrasp
 
 
-This functions requires that ComputeGrasps has been triggered before.
-It assigned the next available grasp pose and stores the pose in
-PolyScope's variable format (e.g. p[-0.300517, -0.367119, -0.007997,
--0.001221, 3.116277, 0.038892]).
+This function requires that the ComputeGrasps has been triggered
+before. It assigns the next available grasp pose and stores the pose
+in PolyScope's variable format (e.g. p[-0.300517, -0.367119,
+-0.007997, -0.001221, 3.116277, 0.038892]).
 
-If no reachable grasp is detected and
+If no reachable grasp is detected and the
 
 Stop program when pose is not available
 
- checkbox is checked, popup will appear and the program will be
-terminated. If the checkbox is not checked zero pose (p[0,0,0,0,0,0])
-is returned.
+ checkbox is checked, a popup will appear and the program will be
+terminated. If the checkbox is not checked, a zero pose
+(p[0,0,0,0,0,0]) will be returned.
 
 Note: When the
 
   Stop program when pose is not available
 
-   checkbox is unchecked, user has catch the case when nothing is
-  detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
+   checkbox is unchecked, the user has to catch the case when nothing
+  is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
   situation is not handled, it might lead to collision or undefined
   robot behavior.
 
@@ -85,33 +85,34 @@ With the
 
 'Pose orientation'
 
- drop down menu it is possible to change the strategy of calculating
-the angle of the returned position. There are four different options
-to choose from:
+ drop-down menu it is possible to change the strategy of calculating
+the angle of the returned pose. There are four different options to
+choose from:
 
-Last pose orientation Detected orientation is ignored, instead the
-orientation of the last waypoint is used.
+Last waypoint orientation The detected orientation is ignored, instead
+the orientation of the last waypoint is used.
 
-Only RZ from detected pose For RZ detected orientation is used, RX and
-RY are based on the last waypoint orientation.
+Only RZ from detected pose For RZ the detected orientation is used, RX
+and RY are based on the last waypoint orientation.
 
-Only RX, RY from detected pose For RX RY detected orientation is used,
-RZ is based on the last waypoint orientation.
+Only RX, RY from detected pose For RX and RY the detected orientation
+is used, RZ is based on the last waypoint orientation.
 
 Detected pose orientation The complete detected orientation is used.
 
 GetBpLcPose
 
 
-This function requires that DetectItems has been triggered with a load
-carrier id. It returns the pose of the detected load carrier. If no
-load carrier was detected, a zero pose (p[0,0,0,0,0,0]) is returned.
+This function requires that ComputeGrasps has been triggered with a
+load carrier id. It returns the pose of the detected load carrier. If
+no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be
+returned.
 
 Note: When the
 
   Stop program when pose is not available
 
-   checkbox is unchecked, user has catch the case when nothing is
-  detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
+   checkbox is unchecked, the user has to catch the case when nothing
+  is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
   situation is not handled, it might lead to collision or undefined
   robot behavior.

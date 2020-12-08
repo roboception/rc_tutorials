@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ItemPick &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+  <title>ItemPick &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation</title>
   
 
@@ -48,11 +48,11 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="BoxPick" href="boxpick.html"/>
-        <link rel="prev" title="Generic rc_visard node" href="rc_visard.html"/> 
+        <link rel="prev" title="CADMatch" href="cadmatch.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -108,15 +108,17 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadmatch.html">CADMatch</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ItemPick</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#overivew">Overivew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computegrasps">ComputeGrasps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getnextgrasp">GetNextGrasp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getbplcpose">GetBpLcPose</a></li>
@@ -195,14 +197,14 @@
             
   <div class="section" id="itempick">
 <span id="ur-ip"></span><h1>ItemPick<a class="headerlink" href="#itempick" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to use the ItemPick Module with Roboception’s URCap.</p>
+<p>This tutorial shows how to use the ItemPick module with Roboception’s URCap.</p>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
-<p>This tutorials assumes that the tutorial <a class="reference internal" href="../rc_itempick/getting_started.html#itempick-getting-started"><span class="std std-ref">Getting started with ItemPick</span></a> has
+<p>This tutorial assumes that the tutorial <a class="reference internal" href="../rc_itempick/getting_started.html#itempick-getting-started"><span class="std std-ref">Getting started with ItemPick</span></a> has
 been completed, and the valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
 </div>
-<div class="section" id="overivew">
-<h2>Overivew<a class="headerlink" href="#overivew" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The ItemPick functionality is available in the generic rc_visard node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
 <p>The following functions are available for ItemPick:</p>
 <ul class="simple">
@@ -228,18 +230,18 @@ been completed, and the valid hand eye calibration has been stored on the <em>rc
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ip_get_next_grasp.png"><img alt="../_images/ip_get_next_grasp.png" src="../_images/ip_get_next_grasp.png" style="width: 800px;" /></a>
 </div>
-<p>This functions requires that ComputeGrasps has been triggered before. It assigned the next available grasp pose and stores the pose in PolyScope’s variable format (e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).</p>
-<p>If no reachable grasp is detected and <strong>Stop program when pose is not available</strong> checkbox is checked, popup will appear and the program will be terminated. If the checkbox is not checked zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<p>This function requires that the ComputeGrasps has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope’s variable format (e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).</p>
+<p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
-<p>With the <em>‘Pose orientation’</em> drop down menu it is possible to change the strategy of calculating the angle of the returned position.
+<p>With the <em>‘Pose orientation’</em> drop-down menu it is possible to change the strategy of calculating the angle of the returned pose.
 There are four different options to choose from:</p>
 <ul class="simple">
-<li><strong>Last pose orientation</strong> Detected orientation is ignored, instead the orientation of the last waypoint is used.</li>
-<li><strong>Only RZ from detected pose</strong> For RZ detected orientation is used, RX and RY are based on the last waypoint orientation.</li>
-<li><strong>Only RX, RY from detected pose</strong> For RX RY detected orientation is used, RZ is based on the last waypoint orientation.</li>
+<li><strong>Last waypoint orientation</strong> The detected orientation is ignored, instead the orientation of the last waypoint is used.</li>
+<li><strong>Only RZ from detected pose</strong> For RZ the detected orientation is used, RX and RY are based on the last waypoint orientation.</li>
+<li><strong>Only RX, RY from detected pose</strong> For RX and RY the detected orientation is used, RZ is based on the last waypoint orientation.</li>
 <li><strong>Detected pose orientation</strong> The complete detected orientation is used.</li>
 </ul>
 </div>
@@ -248,10 +250,10 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ip_get_lc_pose.png"><img alt="../_images/ip_get_lc_pose.png" src="../_images/ip_get_lc_pose.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that DetectItems has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier was detected, a zero pose (p[0,0,0,0,0,0]) is returned.</p>
+<p>This function requires that ComputeGrasps has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, user has catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 </div>
 </div>
@@ -269,7 +271,7 @@ There are four different options to choose from:</p>
         <a href="boxpick.html" class="btn btn-neutral float-right" title="BoxPick" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rc_visard.html" class="btn btn-neutral" title="Generic rc_visard node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cadmatch.html" class="btn btn-neutral" title="CADMatch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -298,7 +300,7 @@ There are four different options to choose from:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-69-ga1f6573',
+            VERSION:'0.3.0-71-g69a106a',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

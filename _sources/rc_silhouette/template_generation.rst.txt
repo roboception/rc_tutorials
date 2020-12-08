@@ -64,16 +64,9 @@ no shadows on the object and its vicinity.    Sample scene with too
 little light. The gain value is too high.    Sample scene with too
 strong direct light. The object casts shadows.
 
-Follow the Recording data with rc_visard tutorial to capture the
-required images. The command that should be used is:
-
-Linux
-
-   ./rc_visard_record.sh --number=10 --left=true --right=true --disparity=true --confidence=true --error=true --cam-params=params.txt <rc_visard_id>
-
-Windows
-
-   rc_visard_record.bat -n 10 -left true -right true -disparity true -confidence true -error true -cam-params params.txt <rc_visard_id>
+All the data necessary for the template generation can be downloaded
+through the Web GUI in the camera tab by clicking on the camera button
+below the images.
 
 Measuring the object height
 

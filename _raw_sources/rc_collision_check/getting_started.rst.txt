@@ -30,7 +30,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 .. note::
     The detection in the tutorial is done with the ItemPick module. To fully recreate it, it is necessary to have the
     ItemPick module available on the sensor and be able to run the detection as described in :ref:`itempick-bin-picking-no-robot`.
-    However, reading it will give useful insights also for people who use it with BoxPick or as a standalone module.
+    However, reading it will give useful insights also for people who use it with other detection modules or as a standalone module.
 
 Checking collisions
 ---------------------
@@ -38,7 +38,7 @@ Checking collisions
 .. Note::
   To show the results of the |collision| module, we will use the *Try Out* section of the |itempick| module's :ref:`sect-web-gui`.
   More details on how to use |collision|
-  with ItemPick and BoxPick are available in the tutorials and the manual for the respective modules. For using |collision| as a standalone product
+  with other modules are available in their tutorials and the manual. For using |collision| as a standalone product
   check the :doc:`rcvisard:collisioncheck` manual.
 
 After the gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the *Try Out* section of the

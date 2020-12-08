@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation</title>
   
 
@@ -56,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Recording data with rc_visard" href="data_recording.html"/>
@@ -139,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
@@ -222,7 +223,7 @@ related to color sensors as most modules are based on monochrome images.</p>
 <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
 </ul>
 <p>This tutorial focusses on the Web GUI to set the parameters. It is also possible to use
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v20.04)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.04)"><span>REST-API interface</span></a> for setting the parameters.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v20.11)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.11)"><span>REST-API interface</span></a> for setting the parameters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">After changing parameters, it is necessary to save them in order to make them persistent after reboot.
@@ -301,7 +302,7 @@ the automatic mode optimizes the exposure and gain settings only for the content
 exposure region and neglects all other images parts. This can be a very powerful tool as
 very dark or very bright areas outside the exposure region cannot negatively influence
 the relevant image part inside the exposure region.</p>
-<p>The exposure region can be specified from the Web GUI and via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.04)"><span>REST-API interface</span></a>.
+<p>The exposure region can be specified from the Web GUI and via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.11)"><span>REST-API interface</span></a>.
 If an exposure region is specified, it is visualized as a rectangle in the left
 camera image in the Web GUI.</p>
 <p>There are four parameters that define the exposure region: <code class="docutils literal notranslate"><span class="pre">exp_offset_x</span></code>, <code class="docutils literal notranslate"><span class="pre">exp_offset_y</span></code>,
@@ -600,7 +601,7 @@ projector can be used to add texture to the scene.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-69-ga1f6573',
+            VERSION:'0.3.0-71-g69a106a',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

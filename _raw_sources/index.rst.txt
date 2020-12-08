@@ -12,6 +12,7 @@ Tutorials for the rc_visard_ and additionally available software modules.
    :maxdepth: 2
 
    rc_visard_general/overview
+   rc_reason_general/overview
    rc_itempick/overview
    rc_silhouette/overview
    rc_urcap/overview

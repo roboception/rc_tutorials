@@ -1,0 +1,102 @@
+.. include:: ../global_rst.glb
+
+CADMatch
+===================
+
+This tutorial shows how to use the CADMatch module with Roboception's URCap.
+
+Before we start
+---------------
+This tutorial assumes that you are familiar with the :ref:`generic-rc-visard` and that a valid hand-eye calibration has been stored on the |rcvisard| as described in :ref:`ur-hand-eye`.
+
+Overview
+------------
+The CADMatch functionality is available in the generic rc_visard node. Please see :ref:`generic-rc-visard` in order to learn how to work with generic |rcvisard| nodes.
+
+The following functions are available for CADMatch:
+
+* **Detect:** Triggers detection
+
+* **GetObjectPose:** Gets the next pose after detection has been triggered
+
+* **GetNextGrasp:** Gets the next grasp after detection has been triggered
+
+* **GetLCPose:** Gets the pose of the detected load carrier
+
+* **SetPreferredOrientation:** Sets the Preferred Orientation based on the stored robot pose
+
+Detect
+-----------
+
+.. figure:: ../images/urcap/cad_detect.png
+  :width: 800px
+  :align: center
+
+
+It is mandatory to choose the object that has to be detected. If necessary enter a region of interest, gripper and load carrier, but it's not mandatory.
+
+GetObjectPose
+----------------
+
+.. figure:: ../images/urcap/cad_get_object_pose.png
+  :width: 800px
+  :align: center
+
+This function requires that the Detect function has been triggered before. It returns the pose of the next available object that was detected and stores the pose in PolyScope's variable format.
+
+If no reachable template is matched and the **Stop program when pose is not available** checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.
+
+.. note::
+  When the **Stop program when pose is not available** checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.
+
+With the *'Pick approach angle'* drop-down menu it is possible to change the strategy of calculating the angle of the returned pose.
+There are four different options to choose from:
+
+* **Last waypoint orientation** The detected orientation is ignored, instead the orientation of the last waypoint is used.
+* **Only RZ from detected pose** For RZ the detected orientation is used, RX and RY are based on the last waypoint orientation.
+* **Only RX, RY from detected pose** For RX and RY the detected orientation is used, RZ is based on the last waypoint orientation.
+* **Detected pose orientation** The complete detected orientation is used.
+
+GetNextGrasp
+----------------
+
+.. figure:: ../images/urcap/cad_get_next_grasp.png
+  :width: 800px
+  :align: center
+
+This functions requires that Detect has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope's variable format (p[x, y, z, rx, ry, rz]). It is also possible to store the grasp id associated with this grasp. 
+
+If no reachable grasp is detected and the **Stop program when pose is not available** checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.
+
+.. note::
+  When the **Stop program when pose is not available** checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.
+
+With the *'Pose orientation'* drop-down menu it is possible to change the strategy of calculating the angle of the returned pose.
+There are four different options to choose from:
+
+* **Last waypoint orientation** The detected orientation is ignored, instead the orientation of the last waypoint is used.
+* **Only RZ from detected pose** For RZ the detected orientation is used, RX and RY are based on the last waypoint orientation.
+* **Only RX, RY from detected pose** For RX and RY the detected orientation is used, RZ is based on the last waypoint orientation.
+* **Detected pose orientation** The complete detected orientation is used.
+
+GetLcPose
+--------------
+
+.. figure:: ../images/urcap/cad_get_lc_pose.png
+  :width: 800px
+  :align: center
+
+This function requires that Detect has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.
+
+.. note::
+  When the **Stop program when pose is not available** checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.
+
+SetPreferredOrientation
+-------------------------
+
+.. figure:: ../images/urcap/cad_set_preffered_orientation.png
+  :width: 800px
+  :align: center
+
+This function sets the Preferred Orientation based on the stored robot pose. If it is not required to change this value during program execution, this node should be put in the Before Start section.
+

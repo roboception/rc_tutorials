@@ -1,0 +1,404 @@
+Configuring the load carrier
+
+Some samples of load carriers that can be used with the
+
+rc_reason
+
+ modules are shown below. The upper limit for the load carrier
+dimensions is 2.0 m x 2.0 m x 2.0 m.
+
+
+The easiest and recommended way to configure a load carrier is using
+the
+
+Load Carriers
+
+ section of the Web GUI's
+
+ItemPick
+
+,
+
+BoxPick
+
+,
+
+CADMatch
+
+ or
+
+SilhouetteMatch
+
+ page. However, in this tutorial we also introduce the programmatic
+interface using the ItemPick module as example, which offers three
+services for managing load carriers via the
+
+rc_visard
+
+'s
+
+REST-API interface
+
+:
+
+set_load_carrier ,
+
+get_load_carriers,
+
+and delete_load_carriers.
+
+The same services are also available in the BoxPick, SilhouetteMatch
+and CADMatch modules. A load carrier configured in one of the modules
+is also available in all other modules.
+
+In this section we show how to configure two different types of load
+carriers including some code examples.
+
+Load carriers with a continuous rim (type 1)
+
+The first model is the load carrier at the top left corner of
+
+Fig. 16
+
+. It will be configured in the ItemPick component with the unique id
+
+my-load-carrier1
+
+. The manufacturer's website reports the following dimensions:
+
+Outer dimensions: 40 x 30 x 22 cm
+
+Inner dimensions: 37 x 27 x 21.5 cm
+
+These values can be directly entered in the
+
+Load Carriers
+
+ dialog of the Web GUI, with the only difference that the values need
+to be converted to meters.
+
+REST-API request for configuring my-load-carrier1
+
+REST-API
+
+To trigger the "set_load_carrier" service via the REST-API for
+
+my-load-carrier1
+
+, one needs to send a PUT request to the URL "http://<rc-visard-
+ip>/api/v1/nodes/rc_itempick/services/set_load_carrier", where "<rc-
+visard-ip>" should be replaced by the actual IP of the
+
+rc_visard
+
+.
+
+The PUT body should include the following data, in JSON:
+
+   {
+     "args": {
+       "load_carrier": {
+         "id": "my-load-carrier1",
+         "outer_dimensions": {
+           "x": 0.4,
+           "y": 0.3,
+           "z": 0.22
+         },
+         "inner_dimensions": {
+           "x": 0.37,
+           "y": 0.27,
+           "z": 0.215
+         }
+       }
+     }
+   }
+
+Swagger UI
+
+The Swagger UI for putting a service request is located at http://<rc
+_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
+rvice, where <rc-visard-ip> should be replaced by the actual IP of the
+rc_visard.
+
+The following values are required to fill the request to the REST-API:
+node rc_itempick  service set_load_carrier  service args  {   "args":
+{     "load_carrier": {       "id": "my-load-carrier1",
+"outer_dimensions": {         "x": 0.4,         "y": 0.3,         "z":
+0.22       },       "inner_dimensions": {         "x": 0.37,
+"y": 0.27,         "z": 0.215       }     }   } }
+
+curl (Linux)
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "RC_VISARD_IP=10.0.2.90").
+
+   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   "{ \
+       \"args\": { \
+           \"load_carrier\": { \
+               \"id\": \"my-load-carrier1\", \
+               \"outer_dimensions\": { \
+                   \"x\": 0.4, \
+                   \"y\": 0.3, \
+                   \"z\": 0.22 \
+               }, \
+               \"inner_dimensions\": { \
+                   \"x\": 0.37, \
+                   \"y\": 0.27, \
+                   \"z\": 0.215 \
+               } \
+           } \
+       } \
+   }"
+
+curl (Windows)
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "set RC_VISARD_IP=10.0.2.90") and the
+
+curl
+
+ command is in the path.
+
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   "{ ^
+       \"args\": { ^
+           \"load_carrier\": { ^
+               \"id\": \"my-load-carrier1\", ^
+               \"outer_dimensions\": { ^
+                   \"x\": 0.4, ^
+                   \"y\": 0.3, ^
+                   \"z\": 0.22 ^
+               }, ^
+               \"inner_dimensions\": { ^
+                   \"x\": 0.37, ^
+                   \"y\": 0.27, ^
+                   \"z\": 0.215 ^
+               } ^
+           } ^
+       } ^
+   }"
+
+PowerShell
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "$RC_VISARD_IP="10.0.2.90"").
+
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
+   {
+     "args": {
+       "load_carrier": {
+         "id": "my-load-carrier1",
+         "outer_dimensions": {
+           "x": 0.4,
+           "y": 0.3,
+           "z": 0.22
+         },
+         "inner_dimensions": {
+           "x": 0.37,
+           "y": 0.27,
+           "z": 0.215
+         }
+       }
+     }
+   }' | ConvertTo-Json -Depth 6
+
+Load carriers with a stepped rim (type 2)
+
+The second model is the load carrier at the top right corner of
+
+Fig. 16
+
+. This load carrier will be configured in the ItemPick component with
+the unique id
+
+my-load-carrier2
+
+. The manufacturer's website reports the following dimensions:
+
+Outer dimensions: 30 x 20 x 14.7 cm
+
+Inner dimensions: 24.3 x 16.2 x 12.95 cm
+
+In this model, the top load carrier rim is thinner than the actual
+difference between outer and inner dimensions. For this reason, we
+additionally need to specify the thickness values, which is
+approximately 0.013 m in both directions.
+
+If not specified, the rim thickness is automatically computed from the
+difference between outer and inner dimensions, as it was the case for
+
+my-load-carrier1
+
+.
+
+REST-API request for configuring my-load-carrier2
+
+REST-API
+
+To trigger the "set_load_carrier" service via the REST-API for
+
+my-load-carrier2
+
+, one needs to send a PUT request to the URL "http://<rc-visard-
+ip>/api/v1/nodes/rc_itempick/services/set_load_carrier", where "<rc-
+visard-ip>" should be replaced by the actual IP of the
+
+rc_visard
+
+.
+
+The PUT body should include the following data, in JSON:
+
+   {
+     "args": {
+       "load_carrier": {
+         "id": "my-load-carrier2",
+         "outer_dimensions": {
+           "x": 0.3,
+           "y": 0.2,
+           "z": 0.147
+         },
+         "inner_dimensions": {
+           "x": 0.243,
+           "y": 0.162,
+           "z": 0.1295
+         },
+         "rim_thickness": {
+           "x": 0.013,
+           "y": 0.013
+         }
+       }
+     }
+   }
+
+Swagger UI
+
+The Swagger UI for putting a service request is located at http://<rc
+_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
+rvice, where <rc-visard-ip> should be replaced by the actual IP of the
+rc_visard.
+
+The following values are required to fill the request to the REST-API:
+node rc_itempick  service set_load_carrier  service args  {   "args":
+{     "load_carrier": {       "id": "my-load-carrier2",
+"outer_dimensions": {         "x": 0.3,         "y": 0.2,         "z":
+0.147       },       "inner_dimensions": {         "x": 0.243,
+"y": 0.162,         "z": 0.1295       },       "rim_thickness": {
+"x": 0.013,         "y": 0.013       }     }   } }
+
+curl (Linux)
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "RC_VISARD_IP=10.0.2.90").
+
+   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   "{ \
+       \"args\": { \
+           \"load_carrier\": { \
+               \"id\": \"my-load-carrier2\", \
+               \"outer_dimensions\": { \
+                   \"x\": 0.3, \
+                   \"y\": 0.2, \
+                   \"z\": 0.147 \
+               }, \
+               \"inner_dimensions\": { \
+                   \"x\": 0.243, \
+                   \"y\": 0.162, \
+                   \"z\": 0.1295 \
+               }, \
+               \"rim_thickness\": { \
+                   \"x\": 0.013, \
+                   \"y\": 0.013 \
+               } \
+           } \
+       } \
+   }"
+
+curl (Windows)
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "set RC_VISARD_IP=10.0.2.90") and the
+
+curl
+
+ command is in the path.
+
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   "{ ^
+       \"args\": { ^
+           \"load_carrier\": { ^
+               \"id\": \"my-load-carrier2\", ^
+               \"outer_dimensions\": { ^
+                   \"x\": 0.3, ^
+                   \"y\": 0.2, ^
+                   \"z\": 0.147 ^
+               }, ^
+               \"inner_dimensions\": { ^
+                   \"x\": 0.243, ^
+                   \"y\": 0.162, ^
+                   \"z\": 0.1295 ^
+               }, ^
+               \"rim_thickness\": { ^
+                   \"x\": 0.013, ^
+                   \"y\": 0.013 ^
+               } ^
+           } ^
+       } ^
+   }"
+
+PowerShell
+
+The following command assumes that the variable "RC_VISARD_IP" is set
+to the actual IP of the
+
+rc_visard
+
+ (e.g. "$RC_VISARD_IP="10.0.2.90"").
+
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
+   {
+     "args": {
+       "load_carrier": {
+         "id": "my-load-carrier2",
+         "outer_dimensions": {
+           "x": 0.3,
+           "y": 0.2,
+           "z": 0.147
+         },
+         "inner_dimensions": {
+           "x": 0.243,
+           "y": 0.162,
+           "z": 0.1295
+         },
+         "rim_thickness": {
+           "x": 0.013,
+           "y": 0.013
+         }
+       }
+     }
+   }' | ConvertTo-Json -Depth 6
+
+Note: Making a "set_load_carrier" request with an existing
+  "load_carrier_id" will overwrite the load carrier model previously
+  stored.

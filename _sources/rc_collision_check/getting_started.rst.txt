@@ -41,7 +41,7 @@ Note: The detection in the tutorial is done with the ItemPick
   Configuring ItemPick for Bin-Picking
 
   . However, reading it will give useful insights also for people who
-  use it with BoxPick or as a standalone module.
+  use it with other detection modules or as a standalone module.
 
 Checking collisions
 
@@ -54,10 +54,9 @@ Note: To show the results of the CollisionCheck module, we will use
 
   Web GUI
 
-  . More details on how to use CollisionCheck with ItemPick and
-  BoxPick are available in the tutorials and the manual for the
-  respective modules. For using CollisionCheck as a standalone product
-  check the
+  . More details on how to use CollisionCheck with other modules are
+  available in their tutorials and the manual. For using
+  CollisionCheck as a standalone product check the
 
   CollisionCheck
 

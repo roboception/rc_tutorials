@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuring the load carrier &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+ documentation" href="../index.html"/>
+        <link rel="up" title="rc_reason general tutorials" href="overview.html"/>
+        <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
+        <link rel="prev" title="rc_reason general tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_reason general tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring the load carrier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-continuous-rim-type-1">Load carriers with a continuous rim (type 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-stepped-rim-type-2">Load carriers with a stepped rim (type 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs, and more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="overview.html">rc_reason general tutorials</a> &raquo;</li>
+        
+      <li>Configuring the load carrier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-the-load-carrier">
+<span id="general-lc-config"></span><h1>Configuring the load carrier<a class="headerlink" href="#configuring-the-load-carrier" title="Permalink to this headline">¶</a></h1>
+<p>Some samples of load carriers that can be used with the <em>rc_reason</em> modules are shown below.
+The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.</p>
+<div class="figure align-center" id="id1">
+<span id="fig-load-carriers"></span><a class="reference internal image-reference" href="../_images/load_carriers.png"><img alt="../_images/load_carriers.png" src="../_images/load_carriers.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Different models of load carriers</span></p>
+</div>
+<p>The easiest and recommended way to configure a load carrier is using the <em>Load Carriers</em> section of
+the Web GUI’s <em>ItemPick</em>, <em>BoxPick</em>, <em>CADMatch</em> or <em>SilhouetteMatch</em> page.
+However, in this tutorial we also introduce the programmatic interface using the ItemPick
+module as example, which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v20.11)"><span>REST-API interface</span></a>:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+</ul>
+<p>The same services are also available in the BoxPick, SilhouetteMatch and CADMatch modules. A load carrier configured in one of the modules is also available in all other modules.</p>
+<p>In this section we show how to configure two
+different types of load carriers including some code examples.</p>
+<div class="section" id="load-carriers-with-a-continuous-rim-type-1">
+<h2>Load carriers with a continuous rim (type 1)<a class="headerlink" href="#load-carriers-with-a-continuous-rim-type-1" title="Permalink to this headline">¶</a></h2>
+<p>The first model is the load carrier at the top left corner of
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. It will be configured in the
+ItemPick component with the unique id <em>my-load-carrier1</em>.
+The manufacturer’s website reports the following dimensions:</p>
+<ul class="simple">
+<li>Outer dimensions: 40 x 30 x 22 cm</li>
+<li>Inner dimensions: 37 x 27 x 21.5 cm</li>
+</ul>
+<p>These values can be directly entered in the <em>Load Carriers</em> dialog of the Web GUI,
+with the only difference that the values need to be converted to meters.</p>
+<p class="toggle-header"><strong>REST-API request for configuring my-load-carrier1</strong></p>
+<div class="toggle-content docutils container">
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
+<div class="docutils container">
+REST-API</div>
+</div>
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<div class="docutils container">
+Swagger UI</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<div class="docutils container">
+curl (Linux)</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="docutils container">
+curl (Windows)</div>
+</div>
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<div class="docutils container">
+PowerShell</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
+one needs to send a PUT request to the URL
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<p>The PUT body should include the following data, in JSON:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.22</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.37</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.215</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<ol class="arabic">
+<li><p class="first">The Swagger UI for putting a service request is located at
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">The following values are required to fill the request to the REST-API:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_itempick</span></code></p>
+</li>
+<li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>service args</strong></dt>
+<dd><div class="first last highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.22</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.37</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.215</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<span class="s2">&quot;{ \</span>
+<span class="s2">    \&quot;args\&quot;: { \</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { \</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier1\&quot;, \</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.4, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.3, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.22 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.37, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.27, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.215 \</span>
+<span class="s2">            } \</span>
+<span class="s2">        } \</span>
+<span class="s2">    } \</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<span class="s2">&quot;{ ^</span>
+<span class="s2">    \&quot;args\&quot;: { ^</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier1\&quot;, ^</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.4, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.3, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.22 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.37, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.27, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.215 ^</span>
+<span class="s2">            } ^</span>
+<span class="s2">        } ^</span>
+<span class="s2">    } ^</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;args&quot;: {</span>
+<span class="s1">    &quot;load_carrier&quot;: {</span>
+<span class="s1">      &quot;id&quot;: &quot;my-load-carrier1&quot;,</span>
+<span class="s1">      &quot;outer_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.4,</span>
+<span class="s1">        &quot;y&quot;: 0.3,</span>
+<span class="s1">        &quot;z&quot;: 0.22</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;inner_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.37,</span>
+<span class="s1">        &quot;y&quot;: 0.27,</span>
+<span class="s1">        &quot;z&quot;: 0.215</span>
+<span class="s1">      }</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">}&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-carriers-with-a-stepped-rim-type-2">
+<h2>Load carriers with a stepped rim (type 2)<a class="headerlink" href="#load-carriers-with-a-stepped-rim-type-2" title="Permalink to this headline">¶</a></h2>
+<p>The second model is the load carrier at the top right corner of
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. This load carrier will be configured in the
+ItemPick component with the unique id <em>my-load-carrier2</em>.
+The manufacturer’s website reports the following dimensions:</p>
+<ul class="simple">
+<li>Outer dimensions: 30 x 20 x 14.7 cm</li>
+<li>Inner dimensions: 24.3 x 16.2 x 12.95 cm</li>
+</ul>
+<p>In this model, the top load carrier rim is thinner than the actual difference between outer and
+inner dimensions. For this reason, we additionally need to specify the thickness values, which is
+approximately 0.013 m in both directions.</p>
+<p>If not specified, the rim thickness is automatically computed from the difference between outer
+and inner dimensions, as it was the case for <em>my-load-carrier1</em>.</p>
+<p class="toggle-header"><strong>REST-API request for configuring my-load-carrier2</strong></p>
+<div class="toggle-content docutils container">
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
+<div class="docutils container">
+REST-API</div>
+</div>
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<div class="docutils container">
+Swagger UI</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<div class="docutils container">
+curl (Linux)</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="docutils container">
+curl (Windows)</div>
+</div>
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<div class="docutils container">
+PowerShell</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
+one needs to send a PUT request to the URL
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<p>The PUT body should include the following data, in JSON:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<ol class="arabic">
+<li><p class="first">The Swagger UI for putting a service request is located at
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">The following values are required to fill the request to the REST-API:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_itempick</span></code></p>
+</li>
+<li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>service args</strong></dt>
+<dd><div class="first last highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<span class="s2">&quot;{ \</span>
+<span class="s2">    \&quot;args\&quot;: { \</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { \</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, \</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.3, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.2, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.147 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.243, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.162, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.1295 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;rim_thickness\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.013, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.013 \</span>
+<span class="s2">            } \</span>
+<span class="s2">        } \</span>
+<span class="s2">    } \</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<span class="s2">&quot;{ ^</span>
+<span class="s2">    \&quot;args\&quot;: { ^</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, ^</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.3, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.2, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.147 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.243, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.162, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.1295 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;rim_thickness\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.013, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.013 ^</span>
+<span class="s2">            } ^</span>
+<span class="s2">        } ^</span>
+<span class="s2">    } ^</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;args&quot;: {</span>
+<span class="s1">    &quot;load_carrier&quot;: {</span>
+<span class="s1">      &quot;id&quot;: &quot;my-load-carrier2&quot;,</span>
+<span class="s1">      &quot;outer_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.3,</span>
+<span class="s1">        &quot;y&quot;: 0.2,</span>
+<span class="s1">        &quot;z&quot;: 0.147</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;inner_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.243,</span>
+<span class="s1">        &quot;y&quot;: 0.162,</span>
+<span class="s1">        &quot;z&quot;: 0.1295</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;rim_thickness&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.013,</span>
+<span class="s1">        &quot;y&quot;: 0.013</span>
+<span class="s1">      }</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">}&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Making a <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> request with an existing <code class="docutils literal notranslate"><span class="pre">load_carrier_id</span></code> will overwrite
+the load carrier model previously stored.</p>
+</div>
+<span class="target" id="itempick-bin-picking-no-robot-detecting-lc"></span></div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rc_itempick/overview.html" class="btn btn-neutral float-right" title="ItemPick tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="rc_reason general tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0-71-g69a106a',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

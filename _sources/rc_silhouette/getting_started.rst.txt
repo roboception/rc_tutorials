@@ -156,6 +156,14 @@ Out1 Acquisition Mode*, meaning that the projected pattern is not
 visible in the regular intensity images. Otherwise, the projector will
 interfere with SilhouetteMatch's object detection process.
 
+Configuring the load carrier
+
+The configuration of the load carrier is described in detail in
+
+Configuring the load carrier
+
+.
+
 Setting up SilhouetteMatch
 
 After setting up the scene, SilhouetteMatch can now be configured.

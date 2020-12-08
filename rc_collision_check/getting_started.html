@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with CollisionCheck &mdash; Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+  <title>Getting started with CollisionCheck &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-69-ga1f6573
+    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
  documentation" href="../index.html"/>
         <link rel="up" title="CollisionCheck tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -108,6 +108,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
@@ -196,7 +197,7 @@
             
   <div class="section" id="getting-started-with-collision">
 <span id="collision-check-getting-started"></span><h1>Getting started with CollisionCheck<a class="headerlink" href="#getting-started-with-collision" title="Permalink to this headline">¶</a></h1>
-<p>The CollisionCheck module is integrated with the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html" title="(in rc_visard v20.04)"><span>ItemPick and BoxPick</span></a> modules, but can also be used as standalone product.
+<p>The CollisionCheck module is integrated with the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html" title="(in rc_visard v20.11)"><span>ItemPick and BoxPick</span></a> modules, but can also be used as standalone product.
 In this tutorial we focus on setting the parameters and checking collisions with the ItemPick module.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -210,24 +211,24 @@ the item located in the robot gripper.</p>
 <ol class="arabic simple">
 <li>The <em>rc_visard</em>’s image version is at least 20.04 and the <em>rc_visard</em>’s license includes the
 CollisionCheck and ItemPick components.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.04)"><span>Web GUI</span></a>’s <em>System</em> tab.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>’s <em>System</em> tab.</li>
 </ol>
 <p class="rubric">The previous tutorial <a class="reference internal" href="gripper_creation.html#collision-check-gripper-creation"><span class="std std-ref">Setting up the gripper</span></a> has been completed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The detection in the tutorial is done with the ItemPick module. To fully recreate it, it is necessary to have the
 ItemPick module available on the sensor and be able to run the detection as described in <a class="reference internal" href="../rc_itempick/bin_picking_no_robot.html#itempick-bin-picking-no-robot"><span class="std std-ref">Configuring ItemPick for Bin-Picking</span></a>.
-However, reading it will give useful insights also for people who use it with BoxPick or as a standalone module.</p>
+However, reading it will give useful insights also for people who use it with other detection modules or as a standalone module.</p>
 </div>
 </div>
 <div class="section" id="checking-collisions">
 <h2>Checking collisions<a class="headerlink" href="#checking-collisions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To show the results of the CollisionCheck module, we will use the <em>Try Out</em> section of the ItemPick module’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.04)"><span>Web GUI</span></a>.
+<p class="last">To show the results of the CollisionCheck module, we will use the <em>Try Out</em> section of the ItemPick module’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>.
 More details on how to use CollisionCheck
-with ItemPick and BoxPick are available in the tutorials and the manual for the respective modules. For using CollisionCheck as a standalone product
-check the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v20.04)"><span>CollisionCheck</span></a> manual.</p>
+with other modules are available in their tutorials and the manual. For using CollisionCheck as a standalone product
+check the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v20.11)"><span>CollisionCheck</span></a> manual.</p>
 </div>
 <p>After the gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the <em>Try Out</em> section of the
 Web GUI’s ItemPick tab, we choose “Grasp Point Detection” as detection type. Then we define the suction surface width and height corresponding
@@ -262,7 +263,7 @@ pre-grasp position to the grasp position.</span></p>
 <h2>Configuring parameters<a class="headerlink" href="#configuring-parameters" title="Permalink to this headline">¶</a></h2>
 <p>The parameters for collision checking are set in the Web GUI’s CollisionCheck tab or via the REST-API interface,
 no matter if the module is used as a standalone product or as a part of the ItemPick or BoxPick modules.
-Details are given in the manual in <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html#sect-collisioncheck-parameters" title="(in rc_visard v20.04)"><span>Parameter overview</span></a>.</p>
+Details are given in the manual in <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html#sect-collisioncheck-parameters" title="(in rc_visard v20.11)"><span>Parameter overview</span></a>.</p>
 <div class="section" id="collision-distance">
 <span id="collision-check-collision-distance"></span><h3>Collision Distance<a class="headerlink" href="#collision-distance" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -349,7 +350,7 @@ We do not recommend to switch it off for large grippers that might collide with 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-69-ga1f6573',
+            VERSION:'0.3.0-71-g69a106a',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -114,6 +114,11 @@ should work in `Single + Out1 Acquisition Mode`, meaning that the projected
 pattern is not visible in the regular intensity images.
 Otherwise, the projector will interfere with |silm|'s object detection process.
 
+Configuring the load carrier
+----------------------------
+
+The configuration of the load carrier is described in detail in :ref:`general-lc-config`.
+
 Setting up |silm|
 -----------------
 

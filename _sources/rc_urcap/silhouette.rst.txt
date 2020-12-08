@@ -1,11 +1,11 @@
 SilhouetteMatch
 
-This tutorial shows how to use the SilhouetteMatch Module with
+This tutorial shows how to use the SilhouetteMatch module with
 Roboception's URCap.
 
 Before we start
 
-This tutorials assumes that you are familiar with the
+This tutorial assumes that you are familiar with the
 
 Generic rc_visard node
 
@@ -19,7 +19,7 @@ Hand-Eye Calibration
 
 .
 
-Overivew
+Overview
 
 The SilhouetteMatch functionality is available in the generic
 rc_visard node. Please see
@@ -34,40 +34,47 @@ rc_visard
 
 The following functions are available for SilhouetteMatch:
 
-DetectItems: Triggers detection of boxes
+Detect: Triggers detection
 
 GetObjectPose: Gets the next pose after detection has been triggered
 
+GetNextGrasp: Gets the next grasp after detection has been triggered
+
+GetLCPose: Gets the pose of the detected load carrier
+
 CalibratePlane: Starts the plane calibration
 
-DetectItems
+SetPreferredOrientation: Sets the Preferred Orientation based on the
+stored robot pose
+
+Detect
 
 
 It is mandatory to choose the template that has to be detected. If
-necessary enter a region of interest and offset, but it's not
-mandatory.
+necessary enter a region of interest, load carrier, gripper and
+offset, but it's not mandatory.
 
 GetObjectPose
 
 
-This functions requires that DetectItems has been triggered before. It
-returns the pose of the next available object that was detected and
-stores the pose in PolyScope's variable format.
+This function requires that the Detect function has been triggered
+before. It returns the pose of the next available object that was
+detected and stores the pose in PolyScope's variable format.
 
-If no reachable template is matched and
+If no reachable template is matched and the
 
 Stop program when pose is not available
 
- checkbox is checked, popup will appear and the program will be
-terminated. If the checkbox is not checked zero pose (p[0,0,0,0,0,0])
-is returned.
+ checkbox is checked, a popup will appear and the program will be
+terminated. If the checkbox is not checked, a zero pose
+(p[0,0,0,0,0,0]) will be returned.
 
 Note: When the
 
   Stop program when pose is not available
 
-   checkbox is unchecked, user has catch the case when nothing is
-  detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
+   checkbox is unchecked, the user has to catch the case when nothing
+  is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
   situation is not handled, it might lead to collision or undefined
   robot behavior.
 
@@ -75,11 +82,55 @@ With the
 
 'Pick approach angle'
 
+ drop-down menu it is possible to change the strategy of calculating
+the angle of the returned pose. There are four different options to
+choose from:
+
+Last waypoint orientation The detected orientation is ignored, instead
+the orientation of the last waypoint is used.
+
+Only RZ from detected pose For RZ the detected orientation is used, RX
+and RY are based on the last waypoint orientation.
+
+Only RX, RY from detected pose For RX and RY the detected orientation
+is used, RZ is based on the last waypoint orientation.
+
+Detected pose orientation The complete detected orientation is used.
+
+GetNextGrasp
+
+
+This functions requires that Detect has been triggered before. It
+assigns the next available grasp pose and stores the pose in
+PolyScope's variable format (p[x, y, z, rx, ry, rz]). It is also
+possible to store the grasp id associated with this grasp.
+
+If no reachable grasp is detected and the
+
+Stop program when pose is not available
+
+ checkbox is checked, a popup will appear and the program will be
+terminated. If the checkbox is not checked, a zero pose
+(p[0,0,0,0,0,0]) will be returned.
+
+Note: When the
+
+  Stop program when pose is not available
+
+   checkbox is unchecked, the user has to catch the case when nothing
+  is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
+  situation is not handled, it might lead to collision or undefined
+  robot behavior.
+
+With the
+
+'Pose orientation'
+
  drop down menu it is possible to change the strategy of calculating
-the angle of the returned position. There are three different options
+the angle of the returned position. There are four different options
 to choose from:
 
-Last pose orientation Detected orientation is ignored, instead the
+Last waypoint orientation Detected orientation is ignored, instead the
 orientation of the last waypoint is used.
 
 Only RZ from detected pose For RZ detected orientation is used, RX and
@@ -90,7 +141,31 @@ RZ is based on the last waypoint orientation.
 
 Detected pose orientation The complete detected orientation is used.
 
+GetLcPose
+
+
+This function requires that Detect has been triggered with a load
+carrier id. It returns the pose of the detected load carrier. If no
+load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be
+returned.
+
+Note: When the
+
+  Stop program when pose is not available
+
+   checkbox is unchecked, the user has to catch the case when nothing
+  is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this
+  situation is not handled, it might lead to collision or undefined
+  robot behavior.
+
 CalibratePlane
 
 
-This function starts plane calibration procedure.
+This function starts the plane calibration procedure.
+
+SetPreferredOrientation
+
+
+This function sets the Preferred Orientation based on the stored robot
+pose. If it is not required to change this value during program
+execution, this node should be put in the Before Start section.
