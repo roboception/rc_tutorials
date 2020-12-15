@@ -1,6 +1,6 @@
 .. include:: ../global_rst.glb
 
-.. _link-local: https://en.wikipedia.org/wiki/Link-local_address
+.. _Link-Local: https://en.wikipedia.org/wiki/Link-local_address
 .. _DHCP: https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol
 .. _static IP address: https://en.wikipedia.org/wiki/IP_address#Static_IP
 .. _jumbo frames: https://en.wikipedia.org/wiki/Jumbo_frame
@@ -23,7 +23,7 @@ for the high data throughput.
     The |rcvisard| can be connected either directly to the host PC (left) or via
     a larger network (right). In terms of IP settings it supports configuration
     via `DHCP`_,
-    via `link-local`_,
+    via `Link-Local`_,
     or with a `static IP address`_.
 
 .. note:: Generally, we recommend to connect the |rcvisard| directly to the host
@@ -45,7 +45,7 @@ be referred to as ``rc_visard_id`` in the remainder of this tutorial.
 .. rubric:: Clarify network setup
 
 #.  Check the host's network settings, i.e. IP address and sub-net mask.
-    If you want to connect the |rcvisard| to the host via `link-local`_
+    If you want to connect the |rcvisard| to the host via `Link-Local`_
     please make sure the host is configured accordingly.
 #.  Is the |rc_visard| directly connected to the host or via a larger network?
 #.  If connected to a larger network, contact your system administrator and check:
@@ -61,7 +61,7 @@ be referred to as ``rc_visard_id`` in the remainder of this tutorial.
 .. rubric:: Download and install client software on host PC
 
 #. Download and install Roboception's discovery tool `rcdiscover-gui <https://github.com/roboception/rcdiscover/releases>`_.
-#. Download and install Roboception's `command line GenICam tools <https://github.com/roboception/rc_genicam_api/releases>`_.
+#. Optional: Download and install Roboception's `command line GenICam tools <https://github.com/roboception/rc_genicam_api/releases>`_.
 
 
 Connect and discover |rc_visard|
@@ -93,27 +93,26 @@ similar to the figure below.
 
 If the |rc_visard| is reachable, a simple double-click on the respective
 row opens the sensor's |webgui| which let's you explore and visualize the
-data from the device. In this case, no further configuration of the sensor's
-network settings are required so that you might skip the next section
-and head over to :ref:`sect-network-traffic-optimizations`.
+data from the device. In this case, you can fully access the |rcvisard|
+already such that no further configuration of the
+network settings is required and you can skip the next section.
+You might still change the network settings according to your needs as
+described in :ref:`sect-network-persistent-configuration` or directly head
+over to :ref:`sect-network-traffic-optimizations`.
 
-Otherwise, most probably the |rc_visard|'s network settings
-need to be configured according to your network setup
-as shown in the following.
+Otherwise, as a first step to properly configure the |rc_visard|'s
+settings according to your network setup, you need to make it reachable
+from the host by assigning a temporary IP address as shown in the following.
 
-
-Configure |rc_visard|'s network settings
-----------------------------------------
-
-In general, three options exist to configure the |rc_visard|'s network settings.
 
 .. _sect-network-temporary-ip:
 
-Option 1: Assign a temporary IP address
-'''''''''''''''''''''''''''''''''''''''
+Assign a temporary IP address
+-----------------------------
 
 The discovery tool can be used to **temporarily** configure the |rc_visard|'s
-IP address and sub-network:
+IP address and sub-network. This is particularly useful for making a
+misconfigured device temporarily reachable in the local network again.
 
 #.  In the ``rcdiscover-gui`` click and select the row representing the
     non-reachable sensor.
@@ -139,76 +138,125 @@ and it should be reachable now.
     network settings.
 
 
-.. _sect-network-persistent-ip:
+.. _sect-network-persistent-configuration:
 
-Option 2: Persistent configuration via |webgui|
-''''''''''''''''''''''''''''''''''''''''''''''''
+Configure |rc_visard|'s network settings
+----------------------------------------
 
-If the sensor is reachable in the local network it is possible to persistently change the IP address in the system tab of the |webgui|.
+In general, two options exist to **permanently** configure the |rc_visard|'s network settings:
 
-Option 3: Persistent configuration via GenICam with command line
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    * the |rcvisard|'s |webgui|, and
+    * any configuration tool compatible with :term:`GigE Vision`\ |reg| 2.0.
 
-The command line GenICam tool ``gc_config`` gives full control
-over the |rc_visard|'s network settings and lets you **persistently**
-configure any IP address, sub-net and gateway according to
-your network setup.
+We will give examples for both options below.
 
-.. note:: As a preliminary for configuration via GenICam the sensor **must
+.. note:: As a preliminary for both options the sensor **must
     be reachable**. If it is not, please follow the instructions
     :ref:`above <sect-network-temporary-ip>` to obtain temporary reachability
     by means of the discovery tool.
 
-.. rubric:: Example 1 - Static IP address
+Option 1: The |rc_visard|'s |webgui|
+''''''''''''''''''''''''''''''''''''
 
-The following command configures an exemplary, static IP address of
-192.168.188.10 and a sub-net mask of 255.255.0.0, where ``rc_visard_id`` is to
-be replaced by the sensor's serial number or user-defined name.
+The easiest way to access and permanently change the |rc_visard|'s network settings
+using a graphical user interface is its |webgui|. The network settings can be found
+on the *System* tab. Here, you can easily check the currently applied
+IP configuration method and change the network settings according to your local
+network.
 
-.. code:: bash
+.. note:: While the |webgui| provides an intuitive graphical user interface to
+          configure the network settings, in the back-end, it uses the
+          |rcvisard|'s :ref:`REST-API <rcvisard:sect-rest-api>`.
+          This offers programmatic access to the full network configuration
+          and can be used also by developers.
 
-    gc_config <rc_visard_id> -d 0 -p 1 -i 192.168.188.10 -s 255.255.0.0
+Option 2: Configuration via GenICam/GigE Vision\ |reg|
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+The |rcvisard| complies to the :term:`GigE Vision`\ |reg| 2.0 standard, i.e.
+any configuration tool compatible with GigE Vision\ |reg| can be used
+to configure the device and particularly its network settings.
+In the following we give two examples.
 
-.. rubric:: Example 2 - DHCP (fall back to link-local)
+.. toggle-header::
+    :header: **Roboception's command-line tool gc_config**
 
-If a DHCP server is available, ``gc_config`` lets you enable the
-|rcvisard|'s auto-configuration option via:
-
-.. code:: bash
-
-    gc_config <rc_visard_id> -d 1 -p 0
-
-If no DHCP server is found by the device, it falls back to link-local.
-
-
-.. rubric:: Example 3 - Link-local only
-
-If you explicitly want to connect via link-local, ``gc_config`` lets
-you disable both the static IP option and the DHCP option via:
-
-.. code:: bash
-
-    gc_config <rc_visard_id> -d 0 -p 0
+    The command line GenICam tool ``gc_config`` gives full control
+    over the |rc_visard|'s network settings and lets you
+    configure any IP address, sub-net and gateway according to
+    your network setup.
+    It is part of Roboception's open-source convenience layer ``rc_genicam_api``,
+    which can be downloaded free of charge for Windows and Linux from https://github.com/roboception/rc_genicam_api/releases.
 
 
-.. rubric:: Reconnect |rc_visard| and confirm proper network settings
+    .. rubric:: Example 1 - Static IP address
 
-In order to actually apply the changed network settings, the |rcvisard| needs to reconnect.
-Here several options exist:
+    The following command configures an exemplary, static IP address of
+    192.168.188.10 and a sub-net mask of 255.255.0.0, where ``rc_visard_id`` is to
+    be replaced by the sensor's serial number or user-defined name.
 
-    * Initiate a reconnect via the discovery tool:
+    .. code:: bash
 
-        #. In the ``rcdiscover-gui`` click and select the respective sensor.
-        #. Click ``Reconnect rc_visard``. The reconnecting dialog window pops up.
-        #. Make sure the correct sensor is selected, click the ``Reconnect``-button
-           and follow the dialog.
+        gc_config <rc_visard_id> -d 0 -p 1 -i 192.168.188.10 -s 255.255.0.0
 
-    * Physically disconnect and connect the |rcvisard| from and to the network.
-    * Any re-boot, e.g. by power cycling, will also cause the sensor to reconnect.
 
-After reconnecting, you might check via the discovery tool that the desired settings are applied
-and that the |rcvisard| is reachable from your host.
+    .. rubric:: Example 2 - DHCP (fall back to Link-Local)
+
+    If a DHCP server is available, ``gc_config`` lets you enable the
+    |rcvisard|'s auto-configuration option via:
+
+    .. code:: bash
+
+        gc_config <rc_visard_id> -d 1 -p 0
+
+    If no DHCP server is found by the device, it falls back to Link-Local.
+
+
+    .. rubric:: Example 3 - Link-Local only
+
+    If you explicitly want to connect via Link-Local, ``gc_config`` lets
+    you disable both the static IP option and the DHCP option via:
+
+    .. code:: bash
+
+        gc_config <rc_visard_id> -d 0 -p 0
+
+
+    .. rubric:: Reconnect |rc_visard| and confirm proper network settings
+
+    In order to actually apply the changed network settings, the |rcvisard| needs to reconnect.
+    Here several options exist:
+
+        * Initiate a reconnect via the discovery tool:
+
+            #. In the ``rcdiscover-gui`` click and select the respective sensor.
+            #. Click ``Reconnect rc_visard``. The reconnecting dialog window pops up.
+            #. Make sure the correct sensor is selected, click the ``Reconnect``-button
+               and follow the dialog.
+
+        * Physically disconnect and connect the |rcvisard| from and to the network.
+        * Any re-boot, e.g. by power cycling, will also cause the sensor to reconnect.
+
+    After reconnecting, you might check via the discovery tool that the desired settings are applied
+    and that the |rcvisard| is reachable from your host.
+
+.. toggle-header::
+    :header: **The Baumer IpConfigTool**
+
+    For changing the network configuration via GenICam using a graphical interface,
+    we recommend using the IpConfigTool that is part of the
+    `Baumer GAPI SDK <http://www.baumer.com/de-en/products/identification-image-processing/software/baumer-gapi-sdk/>`_.
+    The :term:`SDK` can be downloaded free of charge for Windows and Linux from http://www.baumer.com.
+
+    After start-up, this tool scans for all available GigE Vision\ |reg|
+    sensors on the network. All |rcvisard| devices can be uniquely identified by their serial number and MAC address,
+    which are both printed on the device.
+
+    #. Select the |rcvisard| for which the network settings should be changed.
+    #. In the *Config options* change the network settings according to your local network and press the *Set* button
+       to commit the settings to the device.
+    #. In order to actually apply the changed network settings, the |rcvisard| needs to reconnect which can be done
+       by means of the ``rcdiscover-gui`` or by simply physically disconnecting and connecting the |rcvisard| from and to the network.
 
 .. _sect-network-traffic-optimizations:
 
@@ -320,64 +368,65 @@ Troubleshooting
 .. toggle-header::
     :header: **The rc_visard is not discovered**
 
-        Pleaes make sure, the device is actually connected to the network.
+        Please make sure, the device is actually connected to the network.
 
-        For discovery across sub-nets under Linux one must also disable
-        reverse path filtering. This is automatically done (asked at installation)
-        if the debian package for rc_genicam_api is used.
+        For discovery across sub-nets under Linux reverse path filtering
+        must be disabled. Using the debian package for Roboception's discovery
+        tool ``rcdiscover-gui``, this is or should have been done automatically
+        during installation.
 
 .. _faq-network-reset-to-default:
 .. toggle-header::
     :header: **How to reset the rc_visard network settings to factory defaults?**
 
-    The reset mechanism is only available for two minutes after a device
-    startup. Hence, please reboot sensor if required, e.g. via power cycling.
+        The reset mechanism is only available for two minutes after a device
+        startup. Hence, please reboot sensor if required, e.g. via power cycling.
 
-    #. Open the ``rcdiscover-gui``, wait until the sensor is rebooted, which
-        is indicated by a green LED, and start a discovery by pressing
-        the ``Rerun discovery`` button.
-    #. Click and select the row representing the respective device.
-    #. Press the ``Reset rc_visard``-button. The resetting dialog window pops up.
-    #. Click the ``Reset network``-button and follow the dialog.
+        #. Open the ``rcdiscover-gui``, wait until the sensor is rebooted, which
+           is indicated by a green LED, and start a discovery by pressing
+           the ``Rerun discovery`` button.
+        #. Click and select the row representing the respective device.
+        #. Press the ``Reset rc_visard``-button. The resetting dialog window pops up.
+        #. Click the ``Reset network``-button and follow the dialog.
 
-    #. Back in the main window, click ``Reconnect rc_visard``. The reconnecting dialog window pops up.
-    #. Make sure the correct sensor is selected, click the ``Reconnect``-button and confirm.
-    #. Close the reconnecting dialog window.
-    #. Start a new discovery by clicking the ``Rerun Discovery``-button.
+        #. Back in the main window, click ``Reconnect rc_visard``. The reconnecting dialog window pops up.
+        #. Make sure the correct sensor is selected, click the ``Reconnect``-button and confirm.
+        #. Close the reconnecting dialog window.
+        #. Start a new discovery by clicking the ``Rerun Discovery``-button.
 
-    .. note:: A successful reset is indicated by a white status LED followed by a
-            device reboot. If no reaction is noticeable, the two minute time
-            slot may have passed, requiring another reboot.
+        .. note:: A successful reset is indicated by a white status LED followed by a
+                device reboot. If no reaction is noticeable, the two minute time
+                slot may have passed, requiring another reboot.
 
-    Now, the |rc_visard| follows its :ref:`default automatic network
-    configuration routine <rcvisard:sect-auto-network-configuration>`
-    and should either have an automatically assigned IP address from
-    the DHCP server or a link-local address 169.254.x.x.
+        Now, the |rc_visard| follows its :ref:`default automatic network
+        configuration routine <rcvisard:sect-auto-network-configuration>`
+        and should either have an automatically assigned IP address from
+        the DHCP server or a Link-Local address 169.254.x.x.
+
 
 .. _faq-network-link-local-not-reachable:
 .. toggle-header::
-   :header: **The rc_visard has a link-local address but is not reachable**
+   :header: **The rc_visard has a Link-Local address but is not reachable**
 
-    If you want to connect the |rcvisard| via `link-local`_ and the discovery tool
-    shows the sensor to have a proper link-local address 169.254.x.x assigned
-    but still is not reachable, please check the network settings of your host.
-    Most probably it is currently not configured for link-local connections.
+        If you want to connect the |rcvisard| via `Link-Local`_ and the discovery tool
+        shows the sensor to have a proper Link-Local address 169.254.x.x assigned
+        but still is not reachable, please check the network settings of your host.
+        Most probably it is currently not configured for Link-Local connections.
 
 .. _faq-network-dhcp-not-reachable:
 .. toggle-header::
-   :header: **A DHCP server is available but the rc_visard falls back to link-local**
+   :header: **A DHCP server is available but the rc_visard falls back to Link-Local**
 
-    In some networks, the `DHCP`_ server is configured so that it only accepts
-    known devices. In this case, the sensor’s MAC address (to be found on the
-    device’s label) needs to be configured in the DHCP server. Please contact
-    your network administrator.
+        In some networks, the `DHCP`_ server is configured so that it only accepts
+        known devices. In this case, the sensor’s MAC address (to be found on the
+        device’s label) needs to be configured in the DHCP server. Please contact
+        your network administrator.
 
 .. _fag-network-incomplete-buffer:
 .. toggle-header::
     :header: **I get many "incomplete buffer"-warnings**
 
-
-    This indicates that data packets got lost in your network setup
-    and could not be re-sent by the |rcvisard| fast enough.
-    Please follow the instructions :ref:`to optimize network settings
-    for high loads <sect-network-traffic-optimizations>`.
+        This indicates that data packets got lost in your network setup
+        and could not be re-sent by the |rcvisard| fast enough.
+        Please follow the instructions :ref:`to optimize network settings
+        for high loads <sect-network-traffic-optimizations>`.

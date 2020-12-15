@@ -10,7 +10,7 @@ RandomDot Projector
 
  to increase the density of depth images, as shown in
 
-Fig. 11
+Fig. 12
 
 . This is particularly recommended for objects and workspaces with
 little or no visual texture.
@@ -100,7 +100,7 @@ High
 The focus is adjusted by rotating one of the rings of the lens until
 the random dot pattern is sharp (
 
-Fig. 13
+Fig. 14
 
 ).
 
@@ -132,7 +132,7 @@ Depth Image
 achieving good confidence over the whole image (i.e. as much white
 pixels as possible,
 
-Fig. 14
+Fig. 15
 
 ).
 
@@ -238,7 +238,7 @@ Depth Image
 If the camera image includes highlights that are not reconstructed in
 the depth image (
 
-Fig. 15
+Fig. 16
 
 ), one can verify whether these highlights are introduced by the
 RandomDot Projector (e.g. by simply turning the projector off). In

@@ -58,7 +58,7 @@ Load carriers with a continuous rim (type 1)
 
 The first model is the load carrier at the top left corner of
 
-Fig. 16
+Fig. 17
 
 . It will be configured in the ItemPick component with the unique id
 
@@ -219,7 +219,7 @@ Load carriers with a stepped rim (type 2)
 
 The second model is the load carrier at the top right corner of
 
-Fig. 16
+Fig. 17
 
 . This load carrier will be configured in the ItemPick component with
 the unique id

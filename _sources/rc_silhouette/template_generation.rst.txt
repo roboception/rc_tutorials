@@ -126,7 +126,7 @@ rc_visard
 
  image version 20.04.0 or newer) or follow the
 
-Recording data with rc_visard
+Recording data with the rc_visard
 
  tutorial to capture the required images.
 

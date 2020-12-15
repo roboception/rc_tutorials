@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up the gripper &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+  <title>Setting up the gripper &mdash; Tutorials, FAQs, and more 0.4.0
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
  documentation" href="../index.html"/>
         <link rel="up" title="CollisionCheck tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with CollisionCheck" href="getting_started.html"/>
@@ -82,7 +82,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -196,10 +196,10 @@
 <p>The gripper in the CollisionCheck component represents the collision geometry of the real gripper mounted to the robot.
 That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
 the robot’s gripper, including cables, connectors etc.</p>
-<p>In this tutorial we will show how to model the sample gripper shown in <a class="reference internal" href="#fig-collisioncheck-gripper-image"><span class="std std-numref">Fig. 55</span></a>.</p>
+<p>In this tutorial we will show how to model the sample gripper shown in <a class="reference internal" href="#fig-collisioncheck-gripper-image"><span class="std std-numref">Fig. 56</span></a>.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-collisioncheck-gripper-image"></span><a class="reference internal image-reference" href="../_images/gripper.png"><img alt="../_images/gripper.png" src="../_images/gripper.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
 </div>
 <p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>’s <em>CollisionCheck</em> tab. The <em>Grippers</em> section lists all defined
 grippers and allows to edit and remove them. To create a new gripper, click on “+ Add a new gripper”.</p>
@@ -207,16 +207,16 @@ grippers and allows to edit and remove them. To create a new gripper, click on �
 Initially, it only shows the robot flange with a default radius and the flange coordinate frame.</p>
 <div class="figure align-center" id="id2">
 <span id="fig-collisioncheck-gripper-add-element"></span><a class="reference internal image-reference" href="../_images/gripper_modal_add_element.png"><img alt="../_images/gripper_modal_add_element.png" src="../_images/gripper_modal_add_element.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Creator dialog for gripper creation</span></p>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Creator dialog for gripper creation</span></p>
 </div>
 <p>The gripper should be modeled in a way such that each element is completely contained in a cylinder or box.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-collisioncheck-gripper-geometry-overlay-image"></span><a class="reference internal image-reference" href="../_images/gripper_geometry.png"><img alt="../_images/gripper_geometry.png" src="../_images/gripper_geometry.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.</span></p>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.</span></p>
 </div>
 <div class="section" id="flange-radius">
 <span id="collision-check-flange-radius"></span><h2>Flange radius<a class="headerlink" href="#flange-radius" title="Permalink to this headline">¶</a></h2>
-<p>The flange radius is the outer radius of the robot’s flange (see <a class="reference internal" href="#fig-collisioncheck-gripper-geometry-overlay-image"><span class="std std-numref">Fig. 57</span></a>).
+<p>The flange radius is the outer radius of the robot’s flange (see <a class="reference internal" href="#fig-collisioncheck-gripper-geometry-overlay-image"><span class="std std-numref">Fig. 58</span></a>).
 It is used during a safety check if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> parameter is enabled (see <a class="reference internal" href="getting_started.html#collision-check-check-flange"><span class="std std-ref">Check Flange</span></a>).
 It is required to set the flange radius even if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> functionality will not be used.</p>
 </div>
@@ -224,7 +224,7 @@ It is required to set the flange radius even if the <code class="docutils litera
 <h2>Gripper elements<a class="headerlink" href="#gripper-elements" title="Permalink to this headline">¶</a></h2>
 <p>The gripper is built in the direction from the flange to the Tool Center Point (TCP) and consists of a list of elements which can
 be cylinders and boxes. To add a new
-element, click on the + symbol in the <em>Elements</em> section (see <a class="reference internal" href="#fig-collisioncheck-gripper-add-element"><span class="std std-numref">Fig. 56</span></a>).</p>
+element, click on the + symbol in the <em>Elements</em> section (see <a class="reference internal" href="#fig-collisioncheck-gripper-add-element"><span class="std std-numref">Fig. 57</span></a>).</p>
 <p>The first element of our sample gripper is a vacuum generator. We model it as a cylinder with the same height as the vacuum generator and
 a radius corresponding to the maximal elongation of the vacuum generator from the z axis of the flange coordinate frame. Since the vacuum generator
 is mounted directly on the flange, the position of the cylinder will be (0, 0, 0). It is important that the modeled collision geometry completely
@@ -255,7 +255,7 @@ TCP position defined in the robot controller to ensure that the gripper geometry
 </div>
 <div class="figure align-center" id="id4">
 <span id="fig-collisioncheck-gripper-modal-image"></span><a class="reference internal image-reference" href="../_images/gripper_modal.png"><img alt="../_images/gripper_modal.png" src="../_images/gripper_modal.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Final model of the gripper geometry</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Final model of the gripper geometry</span></p>
 </div>
 <p>The last step of the gripper creation is to save the gripper. It will now be shown in the <em>Grippers</em> section of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>’s <em>CollisionCheck</em> tab and can be used in the ItemPick and BoxPick modules.</p>
 <div class="section" id="troubleshooting">
@@ -289,7 +289,7 @@ TCP position defined in the robot controller to ensure that the gripper geometry
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Roboception GmbH.
+        &copy; Copyright 2020, Roboception GmbH.
 
     </p>
   </div> 
@@ -309,7 +309,7 @@ TCP position defined in the robot controller to ensure that the gripper geometry
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-71-g69a106a',
+            VERSION:'0.4.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

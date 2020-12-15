@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+  <title>Obtain dense depth images with the RandomDot Projector &mdash; Tutorials, FAQs, and more 0.4.0
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="rc_reason general tutorials" href="../rc_reason_general/overview.html"/>
@@ -82,7 +82,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -110,7 +110,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Obtain dense depth images with the RandomDot Projector</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
@@ -200,11 +200,11 @@
 <span id="general-projector"></span><h1>Obtain dense depth images with the RandomDot Projector<a class="headerlink" href="#obtain-dense-depth-images-with-the-projector" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to set up the <em>rc_visard</em> with the
 <a class="reference external" href="https://roboception.com/product/random-dot-projector/">RandomDot Projector</a> to increase the
-density of depth images, as shown in <a class="reference internal" href="#fig-general-projector-compare"><span class="std std-numref">Fig. 11</span></a>.
+density of depth images, as shown in <a class="reference internal" href="#fig-general-projector-compare"><span class="std std-numref">Fig. 12</span></a>.
 This is particularly recommended for objects and workspaces with little or no visual texture.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-general-projector-compare"></span><a class="reference internal image-reference" href="../_images/projector_compare.png"><img alt="../_images/projector_compare.png" src="../_images/projector_compare.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">A scene including objects without visual texture (i.e. the intensity of the image
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">A scene including objects without visual texture (i.e. the intensity of the image
 is uniform over the whole object) and the reconstructed depth image without RandomDot Projector (center)
 and with RandomDot Projector (right).</span></p>
 </div>
@@ -245,7 +245,7 @@ The Y-cable must be connected to (1) the <em>rc_visard</em> power and GPIO conne
 (2) the RandomDot Projector power connector, and (3) the power supply.</p>
 <div class="figure align-center" id="id2">
 <span id="fig-general-projector-mounting"></span><a class="reference internal image-reference" href="../_images/projector_mounting.png"><img alt="../_images/projector_mounting.png" src="../_images/projector_mounting.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Different possibilities for the mounting of the RandomDot Projector: side-by-side with the <em>rc_visard</em>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Different possibilities for the mounting of the RandomDot Projector: side-by-side with the <em>rc_visard</em>
 (left) and directly onto the <em>rc_visard</em> (right).</span></p>
 </div>
 </div>
@@ -255,10 +255,10 @@ The Y-cable must be connected to (1) the <em>rc_visard</em> power and GPIO conne
 This can be done on the Web GUI’s <em>IOControl</em> panel available in the <em>Modules</em> tab
 by setting the Out 1 mode to <em>High</em>.</p>
 <p>The focus is adjusted by rotating one of the rings of the lens until the random dot pattern is
-sharp (<a class="reference internal" href="#fig-general-projector-focus"><span class="std std-numref">Fig. 13</span></a>).</p>
+sharp (<a class="reference internal" href="#fig-general-projector-focus"><span class="std std-numref">Fig. 14</span></a>).</p>
 <div class="figure align-center" id="id3">
 <span id="fig-general-projector-focus"></span><a class="reference internal image-reference" href="../_images/projector_focus.png"><img alt="../_images/projector_focus.png" src="../_images/projector_focus.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Blurred (left) and sharp (right) random dot pattern.</span></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Blurred (left) and sharp (right) random dot pattern.</span></p>
 </div>
 </div>
 <div class="section" id="configuring-the-aperture-of-the-projector">
@@ -269,10 +269,10 @@ sharp (<a class="reference internal" href="#fig-general-projector-focus"><span c
 by rotating one of the rings of the lens.</p>
 <p>For its configuration, one should look at the <em>Confidence</em> image in the Web GUI’s <em>Depth Image</em>
 panel and reduce the aperture as much as possible, while still achieving good confidence over
-the whole image (i.e. as much white pixels as possible, <a class="reference internal" href="#fig-general-projector-aperture"><span class="std std-numref">Fig. 14</span></a>).</p>
+the whole image (i.e. as much white pixels as possible, <a class="reference internal" href="#fig-general-projector-aperture"><span class="std std-numref">Fig. 15</span></a>).</p>
 <div class="figure align-center" id="id4">
 <span id="fig-general-projector-aperture"></span><a class="reference internal image-reference" href="../_images/projector_aperture.png"><img alt="../_images/projector_aperture.png" src="../_images/projector_aperture.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Maximum (top) and optimal (bottom) aperture of the projector. The confidence images do not
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Maximum (top) and optimal (bottom) aperture of the projector. The confidence images do not
 present significant differences.</span></p>
 </div>
 </div>
@@ -323,14 +323,14 @@ the RandomDot Projector to introduce some blur in the projected pattern.
 This can be done while looking at the <em>Confidence</em> image in the Web GUI’s <em>Depth Image</em>
 panel and trying to obtain as much white pixels as possible.</p>
 <p>If the camera image includes highlights that are not reconstructed in the depth image
-(<a class="reference internal" href="#fig-general-projector-highlights"><span class="std std-numref">Fig. 15</span></a>), one can
+(<a class="reference internal" href="#fig-general-projector-highlights"><span class="std std-numref">Fig. 16</span></a>), one can
 verify whether these highlights are introduced by the RandomDot Projector (e.g. by simply turning the
 projector off). In such case, we recommend to change the mounting of the RandomDot Projector,
 in order to have a different angle between the <em>rc_visard</em> and the projector itself. Reducing the
 aperture of the projector can also help in removing highlights.</p>
 <div class="figure align-center" id="id5">
 <span id="fig-general-projector-highlights"></span><a class="reference internal image-reference" href="../_images/projector_highlights.png"><img alt="../_images/projector_highlights.png" src="../_images/projector_highlights.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Highlight in the camera image due to the RandomDot Projector.</span></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Highlight in the camera image due to the RandomDot Projector.</span></p>
 </div>
 </div>
 </div>
@@ -357,7 +357,7 @@ aperture of the projector can also help in removing highlights.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Roboception GmbH.
+        &copy; Copyright 2020, Roboception GmbH.
 
     </p>
   </div> 
@@ -377,7 +377,7 @@ aperture of the projector can also help in removing highlights.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-71-g69a106a',
+            VERSION:'0.4.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -1,4 +1,4 @@
-Recording data with rc_visard
+Recording data with the rc_visard
 
 This tutorial shows how to record sample data sets with the
 
@@ -6,11 +6,31 @@ rc_visard
 
 .
 
-Note: Left and right camera images as well as rc_visard current
-  parameters can be downloaded through the Web GUI in the camera tab
-  by clicking on the camera button below the images. This tutorial
-  demonstrates recording of other images and pose date for some period
-  of time.
+Downloading single snapshots
+
+
+For downloading the left and right camera images of the current scene,
+go to the camera page in the rc_visard's Web GUI and click on the
+"Download snapshot" camera button below the images (see
+
+Fig. 9
+
+). This will create an archive containing the left and right camera
+images, as well as the rc_visard's current parameters, which can be
+downloaded.
+
+For downloading depth data, go to the depth image page in the
+rc_visard's Web GUI and click on the "Download Snapshot" camera button
+below the images. This will create an archive containing the left and
+right camera images, the disparity, error and confidence images, as
+well as the current point cloud as a ply file, and the rc_visard's
+current parameters.
+
+Recording image sequences
+
+Note: The following instructions are only applicably if you want to
+  download image sequences (image streams) from the rc_visard. For
+  recording single snapshots, follow the approach above.
 
 Before we start
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.4.0
  documentation</title>
   
 
@@ -56,11 +56,11 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Obtain dense depth images with the RandomDot Projector" href="projector.html"/>
-        <link rel="prev" title="Recording data with rc_visard" href="data_recording.html"/> 
+        <link rel="prev" title="Recording data with the rc_visard" href="data_recording.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -90,7 +90,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -118,7 +118,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with <em>rc_visard</em> and OpenCV</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compiling-the-example-program">Compiling the example program</a></li>
@@ -468,7 +468,7 @@ Windows</div>
    lib -&gt; opencv;
    lib -&gt; rcgenapi;
 }" class="graphviz" /></div>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Dependency diagram</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Dependency diagram</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>The example consists of a shared library <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code> and an
 executable <code class="docutils literal notranslate"><span class="pre">rc_visard_show_streams</span></code>.
@@ -498,7 +498,7 @@ Below, the library will be described in more detail.</p>
 
    image -&gt; imageset [arrowhead=odiamond];
 }" class="graphviz" /></div>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Simplified class diagram</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Simplified class diagram</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The core class of <code class="docutils literal notranslate"><span class="pre">rc_visard_opencv_example</span></code> is <code class="docutils literal notranslate"><span class="pre">GcReceiver</span></code>.
 It wraps <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code>, takes care of bootstrapping and shutting down the
@@ -634,7 +634,7 @@ in order to generate a continuous cv::Mat.</p>
         <a href="projector.html" class="btn btn-neutral float-right" title="Obtain dense depth images with the RandomDot Projector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_recording.html" class="btn btn-neutral" title="Recording data with rc_visard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="data_recording.html" class="btn btn-neutral" title="Recording data with the rc_visard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -643,7 +643,7 @@ in order to generate a continuous cv::Mat.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Roboception GmbH.
+        &copy; Copyright 2020, Roboception GmbH.
 
     </p>
   </div> 
@@ -663,7 +663,7 @@ in order to generate a continuous cv::Mat.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-71-g69a106a',
+            VERSION:'0.4.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

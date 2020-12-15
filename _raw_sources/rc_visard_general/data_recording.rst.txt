@@ -2,16 +2,34 @@
 
 .. _data-recording:
 
-Recording data with |rc_visard|
-===============================
+Recording data with the |rc_visard|
+===================================
 
 This tutorial shows how to record sample data sets with the |rc_visard|.
 
-.. note::
-  Left and right camera images as well as rc_visard current parameters can be downloaded through the |webgui| in the camera tab by clicking on the camera button below the images. This tutorial demonstrates recording of other images and pose date for some period of time.
+Downloading single snapshots
+----------------------------
+
+   .. _fig-webgui-camera-snapshot:
+   .. figure:: ../images/general/webgui_camera_snapshot.png
+      :width: 60 %
+      :align: center
+
+      |webgui| *Camera* tab with snapshot button
+
+
+For downloading the left and right camera images of the current scene, go to the camera page in the rc_visard's |webgui| and click on the "Download snapshot" camera button below the images (see :numref:`fig-webgui-camera-snapshot`). This will create an archive containing the left and right camera images, as well as the rc_visard's current parameters, which can be downloaded.
+
+For downloading depth data, go to the depth image page in the rc_visard's |webgui| and click on the "Download Snapshot" camera button below the images. This will create an archive containing the left and right camera images, the disparity, error and confidence images, as well as the current point cloud as a ply file, and the rc_visard's current parameters.
+
+Recording image sequences
+-------------------------
+
+.. note:: The following instructions are only applicably if you want to download image sequences 
+   (image streams) from the rc_visard. For recording single snapshots, follow the approach above.
 
 Before we start
----------------
+^^^^^^^^^^^^^^^
 
 Before going through this tutorial, the following prerequisites should be met.
 
@@ -109,7 +127,7 @@ Enable "Jumbo frames" by setting the MTU to 9000.
             #. Select "9014 Bytes"
 
 Recording data
---------------
+^^^^^^^^^^^^^^
 
 We provide scripts for Linux and Windows to record data in our
 ``rc_visard_offboard_record`` `GitHub repository <https://github.com/roboception/rc_visard_offboard_record>`_.
@@ -261,7 +279,7 @@ according to the ``number`` argument.
                 rc_visard_record.bat -slam trajectory.json <rc_visard_id>
 
 Troubleshooting
----------------
+^^^^^^^^^^^^^^^
 
 .. _faq-data-recording-gc-not-found:
 .. toggle-header::

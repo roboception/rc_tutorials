@@ -57,7 +57,7 @@ REST-API interface
 
 Two sample cases are shown in
 
-Fig. 23
+Fig. 24
 
  for the
 
@@ -72,7 +72,7 @@ camera
 
 In the left case of
 
-Fig. 23
+Fig. 24
 
 , the load carrier ("tilted-load-carrier-ext") is rotated by an angle
 \theta around the y axis of the
@@ -133,7 +133,7 @@ following quaternion: \left[0, \sin(\theta/2), 0,
 
 In the right case of
 
-Fig. 23
+Fig. 24
 
 , the load carrier ("tilted-load-carrier-cam") is parallel to the
 image plane. Its orientation in the
@@ -208,7 +208,7 @@ or the reconstruction of the load carrier floor is noisy.
 
 To improve the detection result as shown in
 
-Fig. 24
+Fig. 25
 
 , two options are available:
 

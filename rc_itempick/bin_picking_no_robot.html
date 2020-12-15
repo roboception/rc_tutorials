@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.4.0
  documentation</title>
   
 
@@ -56,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -90,7 +90,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -224,7 +224,7 @@ Optimally, the sensor should have a clear view onto all objects in the bin
 without any occlusion by its walls – as shown in the sample setup below.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-itempick-bin-picking-setup"></span><a class="reference internal image-reference" href="../_images/bin_picking_setup.jpg"><img alt="../_images/bin_picking_setup.jpg" src="../_images/bin_picking_setup.jpg" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on static support above the load carrier,
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on static support above the load carrier,
 approximately 1.15 m away from the bin.</span></p>
 </div>
 <p>The placement should also ensure that the rim of of the load carrier is visible in the depth image.
@@ -377,7 +377,7 @@ The detected load carrier is colored in blue, while its content is highlighted i
 if inside the load carrier and in red if above the rim (overfill).</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/load_carriers_detected.png"><img alt="../_images/load_carriers_detected.png" src="../_images/load_carriers_detected.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Detection result for <em>my-load-carrier1</em> without overfill (left) and with overfill (right).</span></p>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Detection result for <em>my-load-carrier1</em> without overfill (left) and with overfill (right).</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -689,10 +689,10 @@ optional argument <code class="docutils literal notranslate"><span class="pre">l
 Web GUI’s <em>ItemPick</em> tab.</p>
 </div>
 <p>The compartment is a box whose <code class="docutils literal notranslate"><span class="pre">pose</span></code> is defined with respect to the load carrier reference frame.
-In this section we show how to select the compartment in <a class="reference internal" href="#fig-itempick-lc-compartment"><span class="std std-numref">Fig. 22</span></a>.</p>
+In this section we show how to select the compartment in <a class="reference internal" href="#fig-itempick-lc-compartment"><span class="std std-numref">Fig. 23</span></a>.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-itempick-lc-compartment"></span><a class="reference internal image-reference" href="../_images/load_carrier_compartment.png"><img alt="../_images/load_carrier_compartment.png" src="../_images/load_carrier_compartment.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Sample compartment inside a load carrier. The coordinate system shown in the image is the
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Sample compartment inside a load carrier. The coordinate system shown in the image is the
 load carrier reference frame.</span></p>
 </div>
 <p>The compartment box dimensions are computed from the load carrier inner dimensions:</p>
@@ -963,7 +963,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Roboception GmbH.
+        &copy; Copyright 2020, Roboception GmbH.
 
     </p>
   </div> 
@@ -983,7 +983,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-71-g69a106a',
+            VERSION:'0.4.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

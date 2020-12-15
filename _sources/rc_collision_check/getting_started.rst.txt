@@ -73,7 +73,7 @@ and height corresponding to the real dimensions of the gripper's
 suction cup. After that, we choose the load carrier and gripper as
 shown on
 
-Fig. 59
+Fig. 60
 
 .
 
@@ -84,7 +84,7 @@ collision-free grasps are returned.
 In the visualization images the colliding grasps are drawn as red
 points and black ellipses as shown in
 
-Fig. 60
+Fig. 61
 
 , but will not be listed in the 'Result of Grasp Point Detection'
 section. To get all detected grasps it is necessary to run the
@@ -120,7 +120,7 @@ Collision Distance
    meters between any part of the gripper geometry and any of the load
    carrier’s walls for a grasp to be considered collision free.
 
-   Fig. 62
+   Fig. 63
 
     visualizes this distance. This parameter should be increased if
    the module returns valid grasps too close to the load carrier's

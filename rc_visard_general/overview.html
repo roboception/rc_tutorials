@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rc_visard tutorials &mdash; Tutorials, FAQs, and more 0.3.0-71-g69a106a
+  <title>rc_visard tutorials &mdash; Tutorials, FAQs, and more 0.4.0
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.3.0-71-g69a106a
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
  documentation" href="../index.html"/>
         <link rel="next" title="Connecting and configuring rc_visard to a network" href="network_setup.html"/>
         <link rel="prev" title="Roboception Tutorials" href="../index.html"/> 
@@ -81,7 +81,7 @@
             
             
               <div class="version">
-                0.3
+                0.4
               </div>
             
           
@@ -109,7 +109,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">rc_visard tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
 </ul>
@@ -188,6 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#before-we-start">Before we start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#connect-and-discover-rc-visard">Connect and discover <em>rc_visard</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_setup.html#assign-a-temporary-ip-address">Assign a temporary IP address</a></li>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#configure-rc-visard-s-network-settings">Configure <em>rc_visard</em>’s network settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#optimizations-for-high-network-loads">Optimizations for high network loads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#troubleshooting">Troubleshooting</a></li>
@@ -199,10 +200,9 @@
 <li class="toctree-l2"><a class="reference internal" href="parameters.html#depth-image-tuning">Depth Image Tuning</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="data_recording.html">Recording data with <em>rc_visard</em></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html#before-we-start">Before we start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html#recording-data">Recording data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html#downloading-single-snapshots">Downloading single snapshots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html#recording-image-sequences">Recording image sequences</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a><ul>
@@ -248,7 +248,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Roboception GmbH.
+        &copy; Copyright 2020, Roboception GmbH.
 
     </p>
   </div> 
@@ -268,7 +268,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.3.0-71-g69a106a',
+            VERSION:'0.4.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

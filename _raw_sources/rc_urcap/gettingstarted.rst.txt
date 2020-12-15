@@ -73,7 +73,7 @@ Detailed instructions about network setup can be found in :ref:`general-network`
 #. In the installation node, set the IP address of the |rcvisard|
 
 .. note::
-    A link-local IP address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP server for network configuration.
+    A Link-Local address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP server for network configuration.
 
 .. figure:: ../images/urcap/installation_node.png
   :width: 300px

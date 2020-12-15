@@ -68,7 +68,7 @@ Reboot the controller
 After rebooting the robot, the rc_visard_urcap application should be
 marked by a green tick in the URCaps Setup window (see
 
-Fig. 46
+Fig. 47
 
 ).
 
@@ -105,7 +105,7 @@ Enable networking in PolyScope
 
 In the installation node, set the IP address of the rc_visard
 
-Note: A link-local IP address might change after reboot, therefore,
-  we recommended assigning a static IP address or using a DHCP server
-  for network configuration.
+Note: A Link-Local address might change after reboot, therefore, we
+  recommended assigning a static IP address or using a DHCP server for
+  network configuration.
 
