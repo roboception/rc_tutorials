@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Template generation &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Template generation &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with SilhouetteMatch" href="getting_started.html"/>
@@ -217,7 +217,7 @@ A 2D model of the object could also be used, as long as all edges that should be
 </div>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/cad_model.png"><img alt="../_images/cad_model.png" src="../_images/cad_model.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Sample CAD model with its reference frame.</span></p>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Sample CAD model with its reference frame.</span></p>
 </div>
 </div>
 <div class="section" id="with-the-rc-visard">
@@ -226,13 +226,13 @@ A 2D model of the object could also be used, as long as all edges that should be
 it is also possible to generate a template based on data captured with an <em>rc_visard</em>.</p>
 <div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/template_scene.jpg"><img alt="../_images/template_scene.jpg" src="../_images/template_scene.jpg" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Sample setup scene for template generation.</span></p>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Sample setup scene for template generation.</span></p>
 </div>
 <p>The procedure for recording the required data consists of the following steps:</p>
 <ol class="arabic">
 <li><p class="first">Place the object on a flat, monochrome surface in contrasting color.</p>
 </li>
-<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.11)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.
+<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v21.10)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.
 A sample background with AprilTags can be downloaded <a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.</p>
 </li>
 <li><p class="first"><a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connect the rc_visard to your PC</span></a> and open the <em>Camera</em> tab in the Web GUI.</p>
@@ -257,16 +257,16 @@ and the object should not cast any significant shadow.</p>
 <blockquote>
 <div><div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/screenshot_template_good.jpg"><img alt="../_images/screenshot_template_good.jpg" src="../_images/screenshot_template_good.jpg" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Sample scene with proper lighting conditions.
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Sample scene with proper lighting conditions.
 The gain value is 0 dB and there are no shadows on the object and its vicinity.</span></p>
 </div>
 <div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/screenshot_template_gain_too_high.jpg"><img alt="../_images/screenshot_template_gain_too_high.jpg" src="../_images/screenshot_template_gain_too_high.jpg" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Sample scene with too little light. The gain value is too high.</span></p>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Sample scene with too little light. The gain value is too high.</span></p>
 </div>
 <div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/screenshot_template_shadow.jpg"><img alt="../_images/screenshot_template_shadow.jpg" src="../_images/screenshot_template_shadow.jpg" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Sample scene with too strong direct light. The object casts shadows.</span></p>
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Sample scene with too strong direct light. The object casts shadows.</span></p>
 </div>
 </div></blockquote>
 </li>
@@ -282,7 +282,7 @@ This is not always the highest point! It is crucial to measure this value correc
 The returned pose of the detected object depends on this value.</p>
 <div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/object_height.png"><img alt="../_images/object_height.png" src="../_images/object_height.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Visualization of how different object heights (left) affect the generated template (right).</span></p>
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Visualization of how different object heights (left) affect the generated template (right).</span></p>
 </div>
 </div>
 <div class="section" id="is-the-object-orientation-needed">
@@ -292,13 +292,13 @@ This is possible only if the object rotation on the plane is not required for gr
 Sample images of such objects can be found below.</p>
 <div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/tamplate_orientation_example.png"><img alt="../_images/tamplate_orientation_example.png" src="../_images/tamplate_orientation_example.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">3D model of a round part and two templates generated from it.
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">3D model of a round part and two templates generated from it.
 With the first template, the object will be detected with full orientation.
 If the second template is used, the rotation of the object on the plane will be ignored.</span></p>
 </div>
 <div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/tamplate_orientation_example_2.png"><img alt="../_images/tamplate_orientation_example_2.png" src="../_images/tamplate_orientation_example_2.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">3D model of a part with one axis of symmetry and two templates generated from it.
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">3D model of a part with one axis of symmetry and two templates generated from it.
 With the first template, the object will be detected with full orientation.
 If the second template is used, the detected object might be flipped.</span></p>
 </div>
@@ -309,13 +309,13 @@ If the second template is used, the detected object might be flipped.</span></p>
 in which the object needs to be detected.
 Roboception will use these images to test the generated template and, if necessary,
 suggest changes to improve the detection performance.</p>
-<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.11)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
+<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v21.10)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
 If a RandomDot Projector is available, the plane calibration can also be performed using depth data.
 In this case, the RandomDot Projector should be setup as described in the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the RandomDot Projector</span></a>
 tutorial and the Out 1 mode of the <em>rc_visard</em> should be set to <em>ExposureAlternateActive</em>.</p>
 <div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/example_scene.png"><img alt="../_images/example_scene.png" src="../_images/example_scene.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Sample recorded scene with 3 AprilTags.</span></p>
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Sample recorded scene with 3 AprilTags.</span></p>
 </div>
 <div class="section" id="id1">
 <h3>With the <em>rc_visard</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -382,7 +382,7 @@ to add an additional external light source.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

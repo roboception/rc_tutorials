@@ -27,24 +27,19 @@ Before we start
 Before going through this tutorial, the following prerequisites should
 be met.
 
-The rc_visard's image version is at least 1.4 and the rc_visard's
+The rc_visard's has the latest firmware image and the rc_visard's
 license includes the IOControl component. This can be verified on the
 Web GUI's System panel.
 
-The RandomDot Projector, its Y-cable, and a 24 V, 60 W power supply
-are available.
+The RandomDot Projector, the network cable connecting it to the
+rc_visard, and a 24 V, 60 W power supply are available.
 
-Warning: The
-
-  rc_visard
-
-   is operated with a 24 V, 30 W power supply which is not suitable
-  for the
+Warning: Please ensure that a 24 V, 60 W power supply is used for
+  powering
 
   rc_visard
 
-   and RandomDot Projector combination. A stronger power supply with
-  60 W must be used.
+   and RandomDot Projector together.
 
 Note: The RandomDot Projector is controlled via the GPIO Out 1 of
   the
@@ -60,25 +55,12 @@ Note: The RandomDot Projector is controlled via the GPIO Out 1 of
 
 Mounting the projector
 
-The RandomDot Projector should be mounted as close as possible to the
+Mounting the projector is described in detail in the projector’s
+manual. Please see
 
-rc_visard
+Installation
 
- in order to avoid occlusions. When possible, we recommended to attach
-the RandomDot Projector directly onto the
-
-rc_visard
-
- using the mechanical adapter included in the delivery.
-
-Once the RandomDot Projector has been mounted, it can be powered using
-the Y-cable. The Y-cable must be connected to (1) the
-
-rc_visard
-
- power and GPIO connector, (2) the RandomDot Projector power
-connector, and (3) the power supply.
-
+.
 
 Focusing the projector
 
@@ -97,10 +79,13 @@ High
 
 .
 
-The focus is adjusted by rotating one of the rings of the lens until
-the random dot pattern is sharp (
+Before focusing the projector, one needs to remove the lens protection
+tube temporarily. Please unscrew the lens protection tube patently,
+until the rings of the lens are visible. Now, the focus can be
+adjusted by rotating one of the rings of the lens until the random dot
+pattern is sharp (
 
-Fig. 14
+Fig. 13
 
 ).
 
@@ -132,7 +117,7 @@ Depth Image
 achieving good confidence over the whole image (i.e. as much white
 pixels as possible,
 
-Fig. 15
+Fig. 14
 
 ).
 
@@ -144,7 +129,7 @@ Single shot mode
 If the projector is used in combination with rc_reason modules
 (ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot
 mode. This means that it will only be activated on demand when the
-module request a new images.
+module request a new depth images.
 
 To enable this mode the Single + Out1 Acquisition Mode has to be
 chosen in Depth Image tab.
@@ -165,10 +150,9 @@ rc_visard
 
  is set to
 
-ExposureActive
+Low
 
-. This means that the RandomDot Projector is on only for the exposure
-time of every image.
+, i.e. projector is off.
 
 Typically, the user needs to select the
 
@@ -178,14 +162,6 @@ ExposureAlternateActive
 exposure time of every second image. Images with projected pattern are
 used for computing depth images. Images without projected pattern can
 be used as texture or for other image processing modules.
-
-Warning: The RandomDot Projector must not be turned on permanently
-  during normal operation (Out 1 mode set to
-
-  High
-
-  ), since it may eventually start flickering to protect the projector
-  from overheating.
 
 Configuring the exposure
 
@@ -204,18 +180,6 @@ Tuning of Image Parameters
  tutorial, or automatically using the auto exposure. In this case, the
 Auto Exposure Mode should be set to AdaptiveOut1 to avoid over
 exposure due to the projector.
-
-Note: In
-
-  ExposureAlternateActive
-
-   mode, the auto exposure algorithm adjusts the exposure time by
-  considering only camera images for which Out 1 is
-
-  High
-
-  . This means that the exposure time is optimized such that camera
-  images with the random dot pattern are well-exposed.
 
 Note: If the exposure is configured to automatic mode, when the
   projector is turned on, it may take a few seconds until the exposure
@@ -238,7 +202,7 @@ Depth Image
 If the camera image includes highlights that are not reconstructed in
 the depth image (
 
-Fig. 16
+Fig. 15
 
 ), one can verify whether these highlights are introduced by the
 RandomDot Projector (e.g. by simply turning the projector off). In

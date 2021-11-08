@@ -9,3 +9,4 @@ This is the landing page for the |rc-reason| tutorials.
    :maxdepth: 2
 
    load_carrier_setup
+   troubleshooting

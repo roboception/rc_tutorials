@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring the load carrier &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Configuring the load carrier &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -56,10 +56,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="rc_reason general tutorials" href="overview.html"/>
-        <link rel="next" title="ItemPick tutorials" href="../rc_itempick/overview.html"/>
+        <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
         <link rel="prev" title="rc_reason general tutorials" href="overview.html"/> 
 
   
@@ -118,10 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_reason general tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring the load carrier</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-continuous-rim-type-1">Load carriers with a continuous rim (type 1)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-stepped-rim-type-2">Load carriers with a stepped rim (type 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-solid-rim">Load carriers with a solid rim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-stepped-rim">Load carriers with a stepped rim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier">Setting the exact pose or an orientation prior of a load carrier</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
@@ -197,26 +199,27 @@
 The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-load-carriers"></span><a class="reference internal image-reference" href="../_images/load_carriers.png"><img alt="../_images/load_carriers.png" src="../_images/load_carriers.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Different models of load carriers</span></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Different models of load carriers</span></p>
 </div>
-<p>The easiest and recommended way to configure a load carrier is using the <em>Load Carriers</em> section of
-the Web GUI’s <em>ItemPick</em>, <em>BoxPick</em>, <em>CADMatch</em> or <em>SilhouetteMatch</em> page.
-However, in this tutorial we also introduce the programmatic interface using the ItemPick
-module as example, which offers three services for managing load carriers via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v20.11)"><span>REST-API interface</span></a>:</p>
+<p>The easiest and recommended way to configure a load carrier is using the
+<em>LoadCarrier</em> module within the Web GUI. As an alternative, we also introduce
+the programmatic interface using the <em>rc_load_carrier</em> module, which offers
+three services for managing load carriers via the <em>rc_visard</em>’s
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-set-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">set_load_carrier</span></a> ,</li>
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-get-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
-<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-delete-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-set-lc" title="(in rc_visard v21.10)"><span class="xref std std-ref">set_load_carrier</span></a>,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-get-lc" title="(in rc_visard v21.10)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-delete-lc" title="(in rc_visard v21.10)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
 </ul>
-<p>The same services are also available in the BoxPick, SilhouetteMatch and CADMatch modules. A load carrier configured in one of the modules is also available in all other modules.</p>
-<p>In this section we show how to configure two
-different types of load carriers including some code examples.</p>
-<div class="section" id="load-carriers-with-a-continuous-rim-type-1">
-<h2>Load carriers with a continuous rim (type 1)<a class="headerlink" href="#load-carriers-with-a-continuous-rim-type-1" title="Permalink to this headline">¶</a></h2>
+<p>A configured load carrier is available in all detection modules (<em>ItemPick</em>,
+<em>BoxPick</em>, <em>CADMatch</em> or <em>SilhouetteMatch</em>). In this section we show how to
+configure two different types of load carriers including some code examples.</p>
+<div class="section" id="load-carriers-with-a-solid-rim">
+<h2>Load carriers with a solid rim<a class="headerlink" href="#load-carriers-with-a-solid-rim" title="Permalink to this headline">¶</a></h2>
 <p>The first model is the load carrier at the top left corner of
-<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 17</span></a>. It will be configured in the
-ItemPick component with the unique id <em>my-load-carrier1</em>.
-The manufacturer’s website reports the following dimensions:</p>
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. It will be configured with the unique id
+<em>my-load-carrier1</em>. The manufacturer’s website reports the following
+dimensions:</p>
 <ul class="simple">
 <li>Outer dimensions: 40 x 30 x 22 cm</li>
 <li>Inner dimensions: 37 x 27 x 21.5 cm</li>
@@ -251,7 +254,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
 one needs to send a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -283,7 +286,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_itempick</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
 </li>
 <li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
 </li>
@@ -319,7 +322,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
@@ -343,7 +346,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
@@ -367,7 +370,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
@@ -391,19 +394,20 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 </div>
 </div>
-<div class="section" id="load-carriers-with-a-stepped-rim-type-2">
-<h2>Load carriers with a stepped rim (type 2)<a class="headerlink" href="#load-carriers-with-a-stepped-rim-type-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-carriers-with-a-stepped-rim">
+<h2>Load carriers with a stepped rim<a class="headerlink" href="#load-carriers-with-a-stepped-rim" title="Permalink to this headline">¶</a></h2>
 <p>The second model is the load carrier at the top right corner of
-<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 17</span></a>. This load carrier will be configured in the
-ItemPick component with the unique id <em>my-load-carrier2</em>.
-The manufacturer’s website reports the following dimensions:</p>
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. This load carrier will be configured with the
+unique id <em>my-load-carrier2</em>. The manufacturer’s website reports the following
+dimensions:</p>
 <ul class="simple">
 <li>Outer dimensions: 30 x 20 x 14.7 cm</li>
 <li>Inner dimensions: 24.3 x 16.2 x 12.95 cm</li>
 </ul>
 <p>In this model, the top load carrier rim is thinner than the actual difference between outer and
 inner dimensions. For this reason, we additionally need to specify the thickness values, which is
-approximately 0.013 m in both directions.</p>
+approximately 0.013 m in both directions. The rim step height (the height of
+the step between the outer and the inner part of the rim) is 0.02m.</p>
 <p>If not specified, the rim thickness is automatically computed from the difference between outer
 and inner dimensions, as it was the case for <em>my-load-carrier1</em>.</p>
 <p class="toggle-header"><strong>REST-API request for configuring my-load-carrier2</strong></p>
@@ -434,7 +438,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
 one needs to send a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/set_load_carrier</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -454,7 +458,8 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
       <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
         <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
-      <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -470,7 +475,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_itempick</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
 </li>
 <li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
 </li>
@@ -493,7 +498,8 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
       <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
         <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
-      <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -510,7 +516,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
@@ -528,7 +534,8 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s2">            \&quot;rim_thickness\&quot;: { \</span>
 <span class="s2">                \&quot;x\&quot;: 0.013, \</span>
 <span class="s2">                \&quot;y\&quot;: 0.013 \</span>
-<span class="s2">            } \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;rim_step_height\&quot;: 0.02 \</span>
 <span class="s2">        } \</span>
 <span class="s2">    } \</span>
 <span class="s2">}&quot;</span>
@@ -538,7 +545,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
@@ -556,7 +563,8 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s2">            \&quot;rim_thickness\&quot;: { ^</span>
 <span class="s2">                \&quot;x\&quot;: 0.013, ^</span>
 <span class="s2">                \&quot;y\&quot;: 0.013 ^</span>
-<span class="s2">            } ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;rim_step_height\&quot;: 0.02 ^</span>
 <span class="s2">        } ^</span>
 <span class="s2">    } ^</span>
 <span class="s2">}&quot;</span>
@@ -566,7 +574,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
@@ -584,7 +592,8 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s1">      &quot;rim_thickness&quot;: {</span>
 <span class="s1">        &quot;x&quot;: 0.013,</span>
 <span class="s1">        &quot;y&quot;: 0.013</span>
-<span class="s1">      }</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;rim_step_height&quot;: 0.02</span>
 <span class="s1">    }</span>
 <span class="s1">  }</span>
 <span class="s1">}&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
@@ -598,7 +607,305 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <p class="last">Making a <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> request with an existing <code class="docutils literal notranslate"><span class="pre">load_carrier_id</span></code> will overwrite
 the load carrier model previously stored.</p>
 </div>
-<span class="target" id="itempick-bin-picking-no-robot-detecting-lc"></span></div>
+</div>
+<div class="section" id="setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier">
+<span id="setting-lc-pose"></span><h2>Setting the exact pose or an orientation prior of a load carrier<a class="headerlink" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier" title="Permalink to this headline">¶</a></h2>
+<p>Users can specify an orientation prior, or the exact pose of the load carrier.
+Once users set the exact pose of the load carrier, any detection module will
+not estimate the position of the load carrier anymore. Instead, the load
+carrier is assumed to be at the specified position. Exact poses are helpful in
+applications when the load carrier pose does not change. Setting the exact pose
+lowers latency and helps when working with load carriers that are hard to
+detect, for example transparent load carriers or load carriers with a very thin
+rim. The orientation prior should be used when the load carrier is not placed
+horizontally to facilitate the detection of the load carrier. Incorporating the
+exact pose of the load carrier is discussed below. Suppose the load carrier is
+set exactly at the following position:</p>
+<ul class="simple">
+<li>Translation: 0 x 0 x 50.0 cm</li>
+<li>Rotation (as quaternion):  0, 0, 0, 1</li>
+</ul>
+<p>These values can be directly entered in the Web GUI’s <em>Load Carrier</em> page
+after activating “Set Pose” and choosing “Exact Pose” as pose type.
+Furthermore, the values can be communicated programatically through the
+REST-API, as outlined below:</p>
+<p class="toggle-header"><strong>REST-API request for configuring the pose of my-load-carrier1</strong></p>
+<div class="toggle-content docutils container">
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
+<div class="docutils container">
+REST-API</div>
+</div>
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<div class="docutils container">
+Swagger UI</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<div class="docutils container">
+curl (Linux)</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="docutils container">
+curl (Windows)</div>
+</div>
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<div class="docutils container">
+PowerShell</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
+one needs to send a PUT request to the URL
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<p>The PUT body should include the following data, in JSON:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
+      <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;pose&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;position&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.50</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;orientation&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;pose_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXACT_POSE&quot;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<ol class="arabic">
+<li><p class="first">The Swagger UI for putting a service request is located at
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">The following values are required to fill the request to the REST-API:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
+</li>
+<li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>service args</strong></dt>
+<dd><div class="first highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
+      <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;pose&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;position&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.50</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;orientation&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;w&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;pose_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXACT_POSE&quot;</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="last">}</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<span class="s2">&quot;{ \</span>
+<span class="s2">    \&quot;args\&quot;: { \</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { \</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, \</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.3, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.2, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.147 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.243, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.162, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.1295 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;rim_thickness\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0.013, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.013 \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;rim_step_height\&quot;: 0.02, \</span>
+<span class="s2">            \&quot;pose_frame\&quot;: \&quot;camera\&quot;, \</span>
+<span class="s2">            \&quot;pose\&quot;: { \</span>
+<span class="s2">              \&quot;position\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0, \</span>
+<span class="s2">                \&quot;y\&quot;: 0, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.50 \</span>
+<span class="s2">              }, \</span>
+<span class="s2">              \&quot;orientation\&quot;: { \</span>
+<span class="s2">                \&quot;x\&quot;: 0, \</span>
+<span class="s2">                \&quot;y\&quot;: 0, \</span>
+<span class="s2">                \&quot;z\&quot;: 0, \</span>
+<span class="s2">                \&quot;w\&quot;: 1 \</span>
+<span class="s2">              } \</span>
+<span class="s2">            }, \</span>
+<span class="s2">            \&quot;pose_type\&quot;: \&quot;EXACT_POSE\&quot; \</span>
+<span class="s2">        } \</span>
+<span class="s2">    } \</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<span class="s2">&quot;{ ^</span>
+<span class="s2">    \&quot;args\&quot;: { ^</span>
+<span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, ^</span>
+<span class="s2">            \&quot;outer_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.3, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.2, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.147 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;inner_dimensions\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.243, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.162, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.1295 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;rim_thickness\&quot;: { ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.013, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.013 ^</span>
+<span class="s2">            }, ^</span>
+<span class="s2">            \&quot;rim_step_height\&quot;: 0.02,^</span>
+<span class="s2">            \&quot;pose_frame\&quot;: \&quot;camera\&quot;,^</span>
+<span class="s2">            \&quot;pose\&quot;: {^</span>
+<span class="s2">              \&quot;position\&quot;: {^</span>
+<span class="s2">                \&quot;x\&quot;: 0,^</span>
+<span class="s2">                \&quot;y\&quot;: 0,^</span>
+<span class="s2">                \&quot;z\&quot;: 0.50^</span>
+<span class="s2">              },^</span>
+<span class="s2">              \&quot;orientation\&quot;: {^</span>
+<span class="s2">                \&quot;x\&quot;: 0,^</span>
+<span class="s2">                \&quot;y\&quot;: 0,^</span>
+<span class="s2">                \&quot;z\&quot;: 0,^</span>
+<span class="s2">                \&quot;w\&quot;: 1 ^</span>
+<span class="s2">              }^</span>
+<span class="s2">            },^</span>
+<span class="s2">            \&quot;pose_type\&quot;: \&quot;EXACT_POSE\&quot;^</span>
+<span class="s2">        } ^</span>
+<span class="s2">    } ^</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;args&quot;: {</span>
+<span class="s1">    &quot;load_carrier&quot;: {</span>
+<span class="s1">      &quot;id&quot;: &quot;my-load-carrier2&quot;,</span>
+<span class="s1">      &quot;outer_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.3,</span>
+<span class="s1">        &quot;y&quot;: 0.2,</span>
+<span class="s1">        &quot;z&quot;: 0.147</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;inner_dimensions&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.243,</span>
+<span class="s1">        &quot;y&quot;: 0.162,</span>
+<span class="s1">        &quot;z&quot;: 0.1295</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;rim_thickness&quot;: {</span>
+<span class="s1">        &quot;x&quot;: 0.013,</span>
+<span class="s1">        &quot;y&quot;: 0.013</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;rim_step_height&quot;: 0.02,</span>
+<span class="s1">      &quot;pose_frame&quot;: &quot;camera&quot;,</span>
+<span class="s1">      &quot;pose&quot;: {</span>
+<span class="s1">        &quot;position&quot;: {</span>
+<span class="s1">          &quot;x&quot;: 0,</span>
+<span class="s1">          &quot;y&quot;: 0,</span>
+<span class="s1">          &quot;z&quot;: 0.50</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;orientation&quot;: {</span>
+<span class="s1">          &quot;x&quot;: 0,</span>
+<span class="s1">          &quot;y&quot;: 0,</span>
+<span class="s1">          &quot;z&quot;: 0,</span>
+<span class="s1">          &quot;w&quot;: 1</span>
+<span class="s1">        }</span>
+<span class="s1">      },</span>
+<span class="s1">      &quot;pose_type&quot;: &quot;EXACT_POSE&quot;</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">}&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Instead of setting the exact pose, the prior orientation can be set by
+replacing the <em>EXACT_POSE</em> <em>pose_type</em> by <em>ORIENTATION_PRIOR</em>. Furthermore, as
+the orientation prior does not require the translation of the load carrier, the
+<em>position</em> field can be deleted.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Making a <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> request with an existing <code class="docutils literal notranslate"><span class="pre">load_carrier_id</span></code> will overwrite
+the load carrier model previously stored.</p>
+</div>
+<span class="target" id="loadcarrier-bin-picking-no-robot-detecting-lc"></span></div>
 </div>
 
 
@@ -611,7 +918,7 @@ the load carrier model previously stored.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../rc_itempick/overview.html" class="btn btn-neutral float-right" title="ItemPick tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="FAQs and troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="rc_reason general tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -643,7 +950,7 @@ the load carrier model previously stored.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

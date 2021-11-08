@@ -294,7 +294,7 @@ Configuring image parameters
 
 For more control on which plane is selected, a ROI should be used (see
 
-Fig. 38
+Fig. 37
 
 ).
 
@@ -354,7 +354,7 @@ and
 
  right image to be detected. As shown in
 
-Fig. 40
+Fig. 39
 
 , the area where the left and right image do not overlap is marked in
 blue.

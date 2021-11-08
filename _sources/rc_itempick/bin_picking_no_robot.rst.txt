@@ -494,7 +494,7 @@ The compartment is a box whose "pose" is defined with respect to the
 load carrier reference frame. In this section we show how to select
 the compartment in
 
-Fig. 23
+Fig. 24
 
 .
 

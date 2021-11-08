@@ -16,7 +16,7 @@ This is particularly recommended for objects and workspaces with little or no vi
   :align: center
 
   A scene including objects without visual texture (i.e. the intensity of the image
-  is uniform over the whole object) and the reconstructed depth image without |projector| (center)
+  is uniform over large parts of the scene) and the reconstructed depth image without |projector| (center)
   and with |projector| (right).
 
 .. note::
@@ -31,18 +31,18 @@ Before we start
 
 Before going through this tutorial, the following prerequisites should be met.
 
-#. The |rc_visard|'s image version is at least 1.4 and
+#. The |rc_visard|'s has the latest firmware image and
    the |rc_visard|'s license includes the
    `IOControl component <https://roboception.com/product/rc_reason-iocontrol/>`_.
    This can be verified on the :ref:`sect-web-gui`'s *System* panel.
 
-
-#. The |projector|, its Y-cable, and a 24 V, 60 W power supply are available.
+#. The |projector|, the network cable connecting it to the |rc_visard|, and a
+   24 V, 60 W power supply are available.
 
 .. warning::
 
-  The |rcvisard| is operated with a 24 V, 30 W power supply which is not suitable for the
-  |rcvisard| and |projector| combination. A stronger power supply with 60 W must be used.
+  Please ensure that a 24 V, 60 W power supply is used for powering
+  |rcvisard| and |projector| together.
 
 .. NOTE Do not mention that our |projector| has a special version of
 .. the electronics compared to the one sold by Effilux, since this tutorial refers only to the
@@ -59,21 +59,8 @@ Before going through this tutorial, the following prerequisites should be met.
 Mounting the projector
 ----------------------
 
-The |projector| should be mounted as close as possible to the |rcvisard| in order to avoid
-occlusions. When possible, we recommended to attach the |projector| directly onto the |rcvisard|
-using the mechanical adapter included in the delivery.
-
-Once the |projector| has been mounted, it can be powered using the Y-cable.
-The Y-cable must be connected to (1) the |rcvisard| power and GPIO connector,
-(2) the |projector| power connector, and (3) the power supply.
-
-.. _fig-general-projector-mounting:
-.. figure:: ../images/general/projector_mounting.png
-  :width: 70%
-  :align: center
-
-  Different possibilities for the mounting of the |projector|: side-by-side with the |rcvisard|
-  (left) and directly onto the |rcvisard| (right).
+Mounting the projector is described in detail in the projector’s manual. Please
+see :doc:`rcprojector:installation`.
 
 .. _general-projector-focus:
 
@@ -84,8 +71,10 @@ For the focus configuration, one should turn the |projector| permanently on.
 This can be done on the |webgui|'s *IOControl* panel available in the *Modules* tab
 by setting the Out 1 mode to *High*.
 
-The focus is adjusted by rotating one of the rings of the lens until the random dot pattern is
-sharp (:numref:`fig-general-projector-focus`).
+Before focusing the projector, one needs to remove the lens protection tube temporarily.
+Please unscrew the lens protection tube patently, until the rings of the lens are visible.
+Now, the focus can be adjusted by rotating one of the rings of the lens until
+the random dot pattern is sharp (:numref:`fig-general-projector-focus`).
 
 .. _fig-general-projector-focus:
 .. figure:: ../images/general/projector_focus.png
@@ -125,7 +114,7 @@ Selecting projector working mode
 Single shot mode
 .................
 
-If the projector is used in combination with rc_reason modules (ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot mode. This means that it will only be activated on demand when the module request a new images.
+If the projector is used in combination with rc_reason modules (ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot mode. This means that it will only be activated on demand when the module request a new depth images.
 
 To enable this mode the Single + Out1 Acquisition Mode has to be chosen in Depth Image tab.
 
@@ -134,18 +123,12 @@ Continuous mode
 
 If the projector has to be used in continuous mode (stereo matching is performed continuously without a trigger) the proper Out 1 mode in |webgui|'s *IOControl*  has to be set.
 
-By default, the Out 1 mode of the |rcvisard| is set to *ExposureActive*. This means that the
-|projector| is on only for the exposure time of every image.
+By default, the Out 1 mode of the |rcvisard| is set to *Low*, i.e. projector is off.
 
 Typically, the user needs to select the *ExposureAlternateActive* Out 1 mode, in which the
 |projector| is on only for the exposure time of every second image. Images with projected
 pattern are used for computing depth images. Images without projected pattern can be used
 as texture or for other image processing modules.
-
-.. warning::
-
-  The |projector| must not be turned on permanently during normal operation (Out 1 mode set to
-  *High*), since it may eventually start flickering to protect the projector from overheating.
 
 .. _general-projector-exposure:
 
@@ -169,12 +152,12 @@ In this case, the Auto Exposure Mode should be set to AdaptiveOut1 to avoid over
 ..   Camera image with pattern (left) and without pattern (right) in
 ..   *ExposureAlternateActive* Out 1 mode.
 
-.. note::
-
-  In *ExposureAlternateActive* mode, the auto exposure algorithm adjusts the exposure time by
-  considering only camera images for
-  which Out 1 is *High*. This means that the exposure time is optimized such that camera images
-  with the random dot pattern are well-exposed.
+.. .. note::
+.. 
+..   In *ExposureAlternateActive* mode, the auto exposure algorithm adjusts the exposure time by
+..   considering only camera images for
+..   which Out 1 is *High*. This means that the exposure time is optimized such that camera images
+..   with the random dot pattern are well-exposed.
 
 .. note::
 

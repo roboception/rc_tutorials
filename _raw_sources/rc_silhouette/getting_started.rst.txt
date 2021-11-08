@@ -91,12 +91,12 @@ Configuring image parameters
 
 For base-plane calibration as well as for object detection, it's most important that the
 images are well exposed.
-The tutorial about :ref:`general-tuning-camera-parmeters` covers the steps required to
+The tutorial about :ref:`general-tuning-camera-parameters` covers the steps required to
 get best quality images.
 
 For stereo-based base-plane calibration (see :ref:`silhouettematch-calibration`), it's additionally
 required to ensure high quality depth images, which is covered by the tutorial about
-:ref:`general-tuning-depth-parmeters`.
+:ref:`general-tuning-depth-parameters`.
 It is recommended to employ a :ref:`RandomDot projector<general-projector>` to allow dense
 reconstruction of a texture-less base plane.
 

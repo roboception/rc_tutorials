@@ -267,12 +267,12 @@ Note: The
 
    used in this tutorial is a color sensor (
 
-  Fig. 19
+  Fig. 20
 
   ). However, ItemPick works only on the monochrome images provided by
   the sensor, as shown in the result pictures in
 
-  Fig. 20
+  Fig. 21
 
   .
 

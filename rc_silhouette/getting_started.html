@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -219,7 +219,7 @@ guides the reader to detecting the first objects.</p>
 <ol class="arabic simple">
 <li>The <em>rc_visard</em>’s image version is at least 1.8 and the <em>rc_visard</em>’s license includes the
 SilhouetteMatch component.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>’s <em>System</em> panel.</li>
 </ol>
 <p class="rubric">One or more workpieces have been chosen and the templates for these objects have been
 generated:</p>
@@ -234,7 +234,7 @@ The process is described in the <a class="reference internal" href="template_gen
 <div class="section" id="setting-up-the-scene">
 <h2>Setting up the scene<a class="headerlink" href="#setting-up-the-scene" title="Permalink to this headline">¶</a></h2>
 <p>We recommend to mount the <em>rc_visard</em> on a tripod or a static support as explained
-in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v20.11)"><span>Mechanical interface</span></a> description.</p>
+in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v21.10)"><span>Mechanical interface</span></a> description.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The mounting should be stable such that the sensor remains static while SilhouetteMatch acquires data.</p>
@@ -279,10 +279,10 @@ orientation of the base plane relative to the <em>rc_visard</em>
 The scene must be set up such that the base plane can be detected reliably whenever a base-plane
 calibration is performed, as explained in <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>.</p>
 <p>For an <em>rc_visard</em> mounted on a robot, special handling is applied, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v20.11)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v21.10)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/base-plane.jpg"><img alt="../_images/base-plane.jpg" src="../_images/base-plane.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Examples for good and bad base-plane configurations.
+<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Examples for good and bad base-plane configurations.
 Left: All objects are on the same plane.
 Middle: Objects are placed on different planes.
 Right: <em>rc_visard</em> is not approximately parallel to the base plane.</span></p>
@@ -301,16 +301,16 @@ It is recommended to use diffuse illumination in order to avoid hard shadows.</p
 <span id="silhouettematch-image-params"></span><h2>Configuring image parameters<a class="headerlink" href="#configuring-image-parameters" title="Permalink to this headline">¶</a></h2>
 <p>For base-plane calibration as well as for object detection, it’s most important that the
 images are well exposed.
-The tutorial about <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-camera-parmeters"><span class="std std-ref">Camera Parameters</span></a> covers the steps required to
+The tutorial about <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-camera-parameters"><span class="std std-ref">Camera Parameters</span></a> covers the steps required to
 get best quality images.</p>
 <p>For stereo-based base-plane calibration (see <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>), it’s additionally
 required to ensure high quality depth images, which is covered by the tutorial about
-<a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-depth-parmeters"><span class="std std-ref">Depth Image Tuning</span></a>.
+<a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-depth-parameters"><span class="std std-ref">Depth Image Tuning</span></a>.
 It is recommended to employ a <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">RandomDot projector</span></a> to allow dense
 reconstruction of a texture-less base plane.</p>
 <div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/with-without-projector.jpg"><img alt="../_images/with-without-projector.jpg" src="../_images/with-without-projector.jpg" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Comparison of point cloud without (left) and with (right) projector.
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Comparison of point cloud without (left) and with (right) projector.
 With projector, a much denser point cloud (green points) is produced, especially
 for the texture-less base plane.</span></p>
 </div>
@@ -380,11 +380,11 @@ and right camera image.
 The three tags should span a triangle around the objects, which is as large as possible.</p>
 <p>Only tags of the family “36h11” are detected.
 The minimum size depends on the distance to the tags
-(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v20.11)"><span>Tag reading</span></a> for more information).
+(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v21.10)"><span>Tag reading</span></a> for more information).
 A sample page with AprilTags for printing can be downloaded
 <a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.
 When cutting them out, please make sure to leave a white border around the AprilTags
-(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v20.11)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).
+(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v21.10)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).
 More AprilTags from family “36h11” can be downloaded from the
 <a class="reference external" href="https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11">apriltag-imgs repository</a>.</p>
 <p>The tags should be placed directly on the base plane.
@@ -393,7 +393,7 @@ In case that is not possible, please refer to <a class="reference internal" href
 A <a class="reference internal" href="#silhouettematch-roi"><span class="std std-ref">ROI</span></a> can be used to select specific tags.</p>
 <div class="figure align-center" id="id4">
 <span id="silhouettematch-fig-base-plane-calib-apriltag-scenes"></span><a class="reference internal image-reference" href="../_images/base-plane-calib-apriltag.jpg"><img alt="../_images/base-plane-calib-apriltag.jpg" src="../_images/base-plane-calib-apriltag.jpg" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">Examples for good and bad AprilTag placements.
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">Examples for good and bad AprilTag placements.
 Left: AprilTags span a large triangle, enclosing the objects.
 Middle: Triangle is degenerate.
 Right: Triangle is too small.</span></p>
@@ -415,10 +415,10 @@ from the <em>rc_visard</em>, depending on the <code class="docutils literal notr
 <p>For stereo-based base-plane calibration, a dense point cloud is important.
 <a class="reference internal" href="#silhouettematch-image-params"><span class="std std-ref">Configuring image parameters</span></a> explains how to ensure that.</p>
 <p>For more control on which plane is selected, a ROI should be used
-(see <a class="reference internal" href="#silhouettematch-fig-base-plane-stereo-roi"><span class="std std-numref">Fig. 38</span></a>).</p>
+(see <a class="reference internal" href="#silhouettematch-fig-base-plane-stereo-roi"><span class="std std-numref">Fig. 37</span></a>).</p>
 <div class="figure align-center" id="id5">
 <span id="silhouettematch-fig-base-plane-stereo-roi"></span><a class="reference internal image-reference" href="../_images/base-plane-calib-roi.jpg"><img alt="../_images/base-plane-calib-roi.jpg" src="../_images/base-plane-calib-roi.jpg" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Left: Scene with two planes in view of the <em>rc_visard</em>.
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">Left: Scene with two planes in view of the <em>rc_visard</em>.
 Middle: By default, the most distant plane is selected.
 Right: By setting a ROI (petrol rectangle, marked with an arrow),
 the actual base-plane can be selected.</span></p>
@@ -444,7 +444,7 @@ By setting the <code class="docutils literal notranslate"><span class="pre">offs
 actual plane.</p>
 <div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/apriltag-pad.jpg"><img alt="../_images/apriltag-pad.jpg" src="../_images/apriltag-pad.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Aluminum AprilTag pad with 2 mm thickness.</span></p>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Aluminum AprilTag pad with 2 mm thickness.</span></p>
 </div>
 </div>
 </div>
@@ -453,27 +453,27 @@ actual plane.</p>
 <p>After base-plane calibration is finished, objects can be detected.</p>
 <p>Object detection can be triggered in the <em>Try Out</em> section of the Web GUI’s SilhouetteMatch panel.
 Triggering via REST-API is possible as well, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v20.11)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v21.10)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
 <p>In the <em>Try Out</em> section, the template that is to be detected must be selected by its name.
 Then, the detection is triggered with the <em>Detect</em> button.
 The result will be shown in the table at the bottom of the page, as well as in the visualization
 images on top.</p>
 <div class="figure align-center" id="id7">
 <span id="silhouettematch-fig-obj-detection"></span><a class="reference internal image-reference" href="../_images/object-detection.jpg"><img alt="../_images/object-detection.jpg" src="../_images/object-detection.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Successful detection of a set of objects.
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Successful detection of a set of objects.
 Green: Detected objects.
 Light blue: Detected edges.
 Red dots: Returned (3D) poses of the object.
 Blue area on the left: Area where the left and right images do not overlap.</span></p>
 </div>
 <p>An object must be visible in the left <em>and</em> right image to be detected.
-As shown in <a class="reference internal" href="#silhouettematch-fig-obj-detection"><span class="std std-numref">Fig. 40</span></a>,
+As shown in <a class="reference internal" href="#silhouettematch-fig-obj-detection"><span class="std std-numref">Fig. 39</span></a>,
 the area where the left and right image do not overlap
 is marked in blue.</p>
 <p>By selecting a ROI, the search for objects can be limited to a part of the image.</p>
 <div class="figure align-center" id="id8">
 <span id="silhouettematch-fig-obj-detection-roi"></span><a class="reference internal image-reference" href="../_images/object-detection-roi.jpg"><img alt="../_images/object-detection-roi.jpg" src="../_images/object-detection-roi.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">A ROI (petrol rectangle) is applied to limit the search for objects.</span></p>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">A ROI (petrol rectangle) is applied to limit the search for objects.</span></p>
 </div>
 <p>The following video shows how to trigger the object detection via the Web GUI.</p>
 <p class="toggle-header"><em>Video: Triggering object detection</em></p>
@@ -491,7 +491,7 @@ In the following, the parameters are described.</p>
 The lower, the faster is the computation, but details of the objects might get lost.</p>
 <div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/object-detection-quality.jpg"><img alt="../_images/object-detection-quality.jpg" src="../_images/object-detection-quality.jpg" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Comparison of low (left) and high (right) quality.</span></p>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Comparison of low (left) and high (right) quality.</span></p>
 </div>
 </div>
 <div class="section" id="maximum-object-number">
@@ -506,7 +506,7 @@ The higher, the less strict the matching is, but the slower the computation will
 Too high values may also lead to false positive detections.</p>
 <div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/matching-max-distance.png"><img alt="../_images/matching-max-distance.png" src="../_images/matching-max-distance.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Visualization of the <em>Maximum Matching Distance</em> parameter.
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Visualization of the <em>Maximum Matching Distance</em> parameter.
 Left: A value of 2 or greater would lead to a match between the template (black) and the detected
 edges (light blue).
 Right: A value of 4 or greater would lead to a match.</span></p>
@@ -522,7 +522,7 @@ the <em>Maximum Matching Distance</em> to the edges in the image.</p>
 Too low values may also lead to false positive detections.</p>
 <div class="figure align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/matching-percentile.jpg"><img alt="../_images/matching-percentile.jpg" src="../_images/matching-percentile.jpg" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Comparison of different <em>Matching Percentile</em> values.
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Comparison of different <em>Matching Percentile</em> values.
 Left: With a value of 0.95, the flipped object is matched as well.
 Right: With a value of 0.98, the flipped object is not matched anymore.</span></p>
 </div>
@@ -534,7 +534,7 @@ The lower the value, the fewer edges are detected.
 It should be tuned such that all relevant edges are detected, without detecting noise edges.</p>
 <div class="figure align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/edge-sensitivity.jpg"><img alt="../_images/edge-sensitivity.jpg" src="../_images/edge-sensitivity.jpg" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Comparison of different <em>Edge Sensitivity</em> values.
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Comparison of different <em>Edge Sensitivity</em> values.
 Left: With a value of 0.2, only few edges are detected.
 Middle: With a value of 0.7, all relevant edges are detected.
 Right: With a value of 0.95, many irrelevant noise edges are detected as well.</span></p>
@@ -594,7 +594,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

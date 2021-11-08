@@ -4,13 +4,37 @@ The CollisionCheck module is integrated with the
 
 ItemPick and BoxPick
 
- modules, but can also be used as standalone product. In this tutorial
-we focus on setting the parameters and checking collisions with the
+ modules, with
+
+SilhouetteMatch
+
+, and with
+
+CADMatch
+
+, but can also be used as standalone product. In this tutorial we
+focus on setting the parameters and checking collisions with the
 ItemPick module.
 
 Warning: Collisions are checked only between the load carrier and
   the gripper, not the robot itself, the flange, other objects or the
-  item located in the robot gripper.
+  item located in the robot gripper. Only in combination with
+
+  SilhouetteMatch
+
+   or
+
+  CADMatch
+
+   and only in case the selected template contains a collision
+  geometry and "check_collisions_with_matches" is enabled in the
+  respective detection module, also collisions between the gripper and
+  other
+
+  detected
+
+   objects are checked. Collisions with objects that cannot be
+  detected will not be checked.
 
 Before we start
 
@@ -73,7 +97,7 @@ and height corresponding to the real dimensions of the gripper's
 suction cup. After that, we choose the load carrier and gripper as
 shown on
 
-Fig. 60
+Fig. 59
 
 .
 
@@ -84,7 +108,7 @@ collision-free grasps are returned.
 In the visualization images the colliding grasps are drawn as red
 points and black ellipses as shown in
 
-Fig. 61
+Fig. 60
 
 , but will not be listed in the 'Result of Grasp Point Detection'
 section. To get all detected grasps it is necessary to run the
@@ -120,7 +144,7 @@ Collision Distance
    meters between any part of the gripper geometry and any of the load
    carrier’s walls for a grasp to be considered collision free.
 
-   Fig. 63
+   Fig. 62
 
     visualizes this distance. This parameter should be increased if
    the module returns valid grasps too close to the load carrier's

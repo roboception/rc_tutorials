@@ -30,7 +30,7 @@ This tutorial focusses on the |webgui| to set the parameters. It is also possibl
   After changing parameters, it is necessary to save them in order to make them persistent after reboot.
   This can be done by clicking the 'save' button of the corresponding module in the |webgui|.
 
-.. _general-tuning-camera-parmeters:
+.. _general-tuning-camera-parameters:
 
 Camera Parameters
 -----------------
@@ -41,7 +41,7 @@ saving the parameters.
 .. _general-camera-fps:
 
 Frames per Second (FPS)
-```````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^
 
 An important issue is the frequency with which the |rc_visard| delivers images. Internally, the
 |rc_visard| always captures images with 25 Hz as some on-board modules, like visual odometry,
@@ -65,12 +65,12 @@ a module can start working and delivering a result.
 .. _general-exposure-gain:
 
 Exposure and Gain Settings
-``````````````````````````
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The exposure time is the time during which the light of the scene is collected. It influences how
 bright the captured image appears. The exposure time is typically in the order of several
 milliseconds. If there is less light in the scene, then a longer exposure time is required. However,
-long exposure times cause bluring, if objects in the scene or the |rc_visard| itself moves.
+long exposure times cause blurring, if objects in the scene or the |rc_visard| itself moves.
 
 .. .. figure:: ../images/general/exposure.png
 ..    :scale: 100 %
@@ -93,14 +93,14 @@ only be set in steps of 6 dB. Each step doubles the brightness.
 .. _general-auto-exposure:
 
 Automatic Mode
-..............
+""""""""""""""
 
 The automatic mode is the default for the |rc_visard| and is recommended for most cases.
 It tries to maintain an average image brightness by using the exposure time up to a limit that
 can be changed depending on the movement of the scene or the sensor. If the scene or the sensor
 move fast, the maximum exposure time should be low to avoid image blur during movements. The
 automatic mode always keeps the exposure time below the maximum setting and uses the gain
-factor to increase the image brightness if neccessary. As mentioned above, this introduces noise.
+factor to increase the image brightness if necessary. As mentioned above, this introduces noise.
 
 Therefore, the maximum exposure time should be increased if image capture during scene or sensor
 movements is not required or if these movements are rather slow. In such  cases, the exposure
@@ -126,7 +126,7 @@ especially if the scene contains very dark and very bright regions.
 .. _general-exposure-region:
 
 Using an Exposure Region
-''''''''''''''''''''''''
+""""""""""""""""""""""""
 
 In many applications, only a part of the image is relevant. If the relevant image part is
 known and does not change, then an exposure region can be defined around it. In this case,
@@ -246,7 +246,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 .. _general-manual-exposure:
 
 Manual Exposure and Gain
-........................
+""""""""""""""""""""""""
 
 In cases where the lighting is constant and the scene always has a similar overall brightness,
 then exposure and gain can be set manually.
@@ -279,7 +279,7 @@ as possible.
   do not change. The gain factor should be chosen as low as possible. Overexposure in
   relevant scene parts or on relevant objects must be avoided. Underexposure can be acceptable.
 
-.. _general-tuning-depth-parmeters:
+.. _general-tuning-depth-parameters:
 
 Depth Image Tuning
 ------------------
@@ -288,7 +288,7 @@ The depth image panel of the |webgui| shows the left, disparity and confidence i
 permits changing and saving depth image related parameters.
 
 Working Range
-`````````````
+^^^^^^^^^^^^^
 
 First, the working range of the application should be considered. Setting the *Maximum
 Distance* parameter to a certain value invalidates all pixels in the depth image that are further
@@ -300,14 +300,8 @@ will ever be closer to the |rc_visard| than the given distance. Increasing the m
 distance has the benefit that it also reduces the runtime for computing the depth
 image and therefore increases the frame rate.
 
-The *Disparity Range* parameter is closely linked to the minimum distance as reducing the disparity
-range by factor two increases the effective minimum distance by a factor of two. However,
-the disparity range parameter is not as intuitive to use as the minimum distance and
-it is therefore recommended to use the minimum distance setting instead of the disparity
-range.
-
 Frequency
-`````````
+^^^^^^^^^
 
 In some applications, the frequency or latency with which depth images are computed is
 more relevant than the quality of depth values. In this case, the default *Quality* *High* can
@@ -322,7 +316,7 @@ as this also helps to reduce runtime and increase the frequency.
 .. _general-increasing-density:
 
 Increasing Density
-``````````````````
+^^^^^^^^^^^^^^^^^^
 
 Depth images often contain invalid values that appear black in the depth image that is shown
 in the |webgui|. This happens for scene parts that are outside the defined working range, as
@@ -340,16 +334,39 @@ is not visible in the right camera image. This is called an occlusion and it is 
 
 Other cases of invalid pixels are typically unwanted. In general, invalid pixels are due to
 the inability of the stereo matching method to compute depth. There are various reasons for it.
+Five different (and complementary) strategies to increase the density of depth
+images are discussed in the following:
+
+Adjusting image exposure
+""""""""""""""""""""""""
+
 Overexposed areas do not contain enough information for matching and therefore appear invalid.
 Furthermore, areas may appear invalid if the image noise is stronger than the texture. Both
 problems can be solved by setting the exposure and gain settings correctly as explained in
 Section :ref:`Exposure and Gain Settings<general-exposure-gain>`.
 
-If the scene and the |rc_visard| do not move during image capturing, then the *Static* quality
+A sparse depth image can also be caused by changing lighting conditions, when the
+SingleFrame or SingleFrameOut1 acquisition modes are used.
+For example, if a bright robot arm moves through an
+otherwise dark scene just before image acquisition, the camera images might 
+be underexposed and lead to a sparse dense depth image. Users can therefore allow
+the camera to wait a brief period before taking an image, so that the |rc_visard|
+has more time to adjust the exposure time. This feature permits the
+camera to ignore transitory effects disturbing the auto exposure control
+before settling on an optimal exposure time. One can enable this feature by
+increasing the *Exposure Adaptation Timeout* in the *Depth Image Settings*.
+
+Exploiting static scenes
+""""""""""""""""""""""""
+
+If the scene and the |rc_visard| do not move during image capturing, then the *Static*
 mode is recommended. In this mode, the |rc_visard| internally accumulates eight consecutive
-images at the frame rate of 25 Hz (regardless of the user framerate setting), and averages these images to
-reduce noise. This permits to make the stereo matching even for weakly textured objects, and makes the depth
+images at the frame rate of 25 Hz (regardless of the user's framerate setting), and averages these images to
+reduce noise. This permits stereo matching even for weakly textured objects, and makes the depth
 image often much more dense.
+
+Changing the sensor orientation to accommodate horizontal lines
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 One common case for missing objects in depth images is due to the horizontal orientation of
 straight objects. This alignment along image rows (that also means parallel to the baseline
@@ -358,12 +375,18 @@ this the case by slightly rotating the |rc_visard| or the object and observing i
 orientation has an effect on the appearance of the object in the depth image. If this is
 the case, then an orientation should be chosen to avoid it.
 
+Improving the scene's texture through a projector
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 One of the most common reasons for invalid areas in indoor environments is the lack of
 texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
 without any texture. Other structures are highly repetitive. Both cases do not permit
 a proper stereo matching process. These objects and scene parts may not be important for the application,
 but if they are, then the only way to capture them is by adding an artificial texture by projection. Random dot
 projectors are best suited in this case, but not discussed in this tutorial.
+
+Filtering errors
+""""""""""""""""
 
 Finally, there are many ways to filter possible errors as explained in the
 :ref:`Error Filtering<general-error-filtering>` Section. Filtering errors means to set the
@@ -373,10 +396,11 @@ number of areas that can be interpolated. The size of areas that are interpolate
 directly depends on the :ref:`segmentation<general-error-filtering>` setting for
 error filtering.
 
+
 .. _general-error-filtering:
 
-Error Filtering
-```````````````
+Filtering Errors
+^^^^^^^^^^^^^^^^
 
 Errors fall into two categories. Outliers, which are typically small patches of depth
 values that can appear anywhere in the working range and geometric errors that are
@@ -392,18 +416,18 @@ close to the real depth.
 
 Outliers can be filtered out using the *Segmentation* parameter. The parameter gives the maximum
 number of connected pixels that are filtered out. All patches with less than this amount
-of pixels are set to invalid. The size is also used for the fill-in paramter that is
+of pixels are set to invalid. The size is also used for the fill-in parameter that is
 explained in the :ref:`Increasing Density<general-increasing-density>` Section, so that
 holes that are caused by this filter are typically interpolated.
 
-Another way to reduce the likelyhood of outliers is to increase the *Minimum Confidence*
+Another way to reduce the likelihood of outliers is to increase the *Minimum Confidence*
 as the confidence is the probability that a pixel is not an outlier.
 
 Depth values that have a potentially high geometric error can be filtered using the
 *Maximum Depth Error* parameter.
 
-Reduce Noise
-````````````
+Reducing Noise
+^^^^^^^^^^^^^^
 
 For some applications, it is necessary that the surfaces in the depth image are smooth.
 This is supported by post-processing using a *Median* filter. Higher values increase

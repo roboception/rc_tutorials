@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -56,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Recording data with the rc_visard" href="data_recording.html"/>
@@ -128,8 +128,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#working-range">Working Range</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#frequency">Frequency</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#increasing-density">Increasing Density</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#error-filtering">Error Filtering</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reduce-noise">Reduce Noise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-error-filtering">Filtering Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reducing-noise">Reducing Noise</a></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +223,7 @@ related to color sensors as most modules are based on monochrome images.</p>
 <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
 </ul>
 <p>This tutorial focusses on the Web GUI to set the parameters. It is also possible to use
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v20.11)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.11)"><span>REST-API interface</span></a> for setting the parameters.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v21.10)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v21.10)"><span>REST-API interface</span></a> for setting the parameters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">After changing parameters, it is necessary to save them in order to make them persistent after reboot.
@@ -231,7 +231,7 @@ This can be done by clicking the ‘save’ button of the corresponding module i
 </div>
 </div>
 <div class="section" id="camera-parameters">
-<span id="general-tuning-camera-parmeters"></span><h2>Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permalink to this headline">¶</a></h2>
+<span id="general-tuning-camera-parameters"></span><h2>Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permalink to this headline">¶</a></h2>
 <p>The camera panel of the Web GUI shows the left and right images and permits changing and
 saving the parameters.</p>
 <div class="section" id="frames-per-second-fps">
@@ -259,11 +259,11 @@ the drawback of higher latency in mind.</p>
 <p>The exposure time is the time during which the light of the scene is collected. It influences how
 bright the captured image appears. The exposure time is typically in the order of several
 milliseconds. If there is less light in the scene, then a longer exposure time is required. However,
-long exposure times cause bluring, if objects in the scene or the <em>rc_visard</em> itself moves.</p>
+long exposure times cause blurring, if objects in the scene or the <em>rc_visard</em> itself moves.</p>
 <p>The second parameter that influences the image brightness is the gain factor. It amplifies the signal
 in the chip and makes the image appear brighter, but it also increases image noise. The gain can
 only be set in steps of 6 dB. Each step doubles the brightness.</p>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/overexposed2.png"><img alt="../_images/overexposed2.png" src="../_images/overexposed2.png" style="width: 1003.0px; height: 376.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The picture on the left is overexposed on the table in front as well as in the relevant scene
 part that contains objects. This should be avoided. The image on the right is overexposed
@@ -276,7 +276,7 @@ It tries to maintain an average image brightness by using the exposure time up t
 can be changed depending on the movement of the scene or the sensor. If the scene or the sensor
 move fast, the maximum exposure time should be low to avoid image blur during movements. The
 automatic mode always keeps the exposure time below the maximum setting and uses the gain
-factor to increase the image brightness if neccessary. As mentioned above, this introduces noise.</p>
+factor to increase the image brightness if necessary. As mentioned above, this introduces noise.</p>
 <p>Therefore, the maximum exposure time should be increased if image capture during scene or sensor
 movements is not required or if these movements are rather slow. In such  cases, the exposure
 time should be large enough to achieve a very small gain factor, ideally 0.0 dB.</p>
@@ -294,20 +294,21 @@ to increase lighting.</p>
 maximum exposure time should be increased to the maximum, especially in situations without
 sufficient light.</p>
 </div>
+</div>
 <div class="section" id="using-an-exposure-region">
-<span id="general-exposure-region"></span><h5>Using an Exposure Region<a class="headerlink" href="#using-an-exposure-region" title="Permalink to this headline">¶</a></h5>
+<span id="general-exposure-region"></span><h4>Using an Exposure Region<a class="headerlink" href="#using-an-exposure-region" title="Permalink to this headline">¶</a></h4>
 <p>In many applications, only a part of the image is relevant. If the relevant image part is
 known and does not change, then an exposure region can be defined around it. In this case,
 the automatic mode optimizes the exposure and gain settings only for the content of the
 exposure region and neglects all other images parts. This can be a very powerful tool as
 very dark or very bright areas outside the exposure region cannot negatively influence
 the relevant image part inside the exposure region.</p>
-<p>The exposure region can be specified from the Web GUI and via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v20.11)"><span>REST-API interface</span></a>.
+<p>The exposure region can be specified from the Web GUI and via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>.
 If an exposure region is specified, it is visualized as a rectangle in the left
 camera image in the Web GUI.</p>
 <p>There are four parameters that define the exposure region: <code class="docutils literal notranslate"><span class="pre">exp_offset_x</span></code>, <code class="docutils literal notranslate"><span class="pre">exp_offset_y</span></code>,
 <code class="docutils literal notranslate"><span class="pre">exp_height</span></code> and <code class="docutils literal notranslate"><span class="pre">exp_width</span></code>.</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/exposure_region_schema.png"><img alt="../_images/exposure_region_schema.png" src="../_images/exposure_region_schema.png" style="width: 701.0px; height: 450.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.</span></p>
 </div>
@@ -409,7 +410,7 @@ PowerShell</div>
 </div>
 </div>
 </div>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/exposureregion2.png"><img alt="../_images/exposureregion2.png" src="../_images/exposureregion2.png" style="width: 1003.0px; height: 376.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Both pictures were taken in auto exposure mode with the same exposure parameters.
 The second picture was taken after defining an exposure region (represented by the green frame).</span></p>
@@ -418,7 +419,6 @@ The second picture was taken after defining an exposure region (represented by t
 <p class="first admonition-title">Note</p>
 <p class="last">It is recommended to use an exposure region only if a part of the image is relevant for the
 application and if this part does not change.</p>
-</div>
 </div>
 </div>
 <div class="section" id="manual-exposure-and-gain">
@@ -433,7 +433,7 @@ relevant for the application.</p>
 information in overexposed regions is lost due to saturation of pixel values. In contrast,
 underexposed regions often contain enough information for image processing modules. Therefore,
 it is better to set parameters such that images are darker.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/overexposed2.png"><img alt="../_images/overexposed2.png" src="../_images/overexposed2.png" style="width: 1003.0px; height: 376.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The picture on the left is overexposed on the table in front as well as in the relevant scene
 part that contains objects. This should be avoided. The image on the right is overexposed
@@ -452,7 +452,7 @@ relevant scene parts or on relevant objects must be avoided. Underexposure can b
 </div>
 </div>
 <div class="section" id="depth-image-tuning">
-<span id="general-tuning-depth-parmeters"></span><h2>Depth Image Tuning<a class="headerlink" href="#depth-image-tuning" title="Permalink to this headline">¶</a></h2>
+<span id="general-tuning-depth-parameters"></span><h2>Depth Image Tuning<a class="headerlink" href="#depth-image-tuning" title="Permalink to this headline">¶</a></h2>
 <p>The depth image panel of the Web GUI shows the left, disparity and confidence image and
 permits changing and saving depth image related parameters.</p>
 <div class="section" id="working-range">
@@ -465,11 +465,6 @@ application.</p>
 will ever be closer to the <em>rc_visard</em> than the given distance. Increasing the minimum
 distance has the benefit that it also reduces the runtime for computing the depth
 image and therefore increases the frame rate.</p>
-<p>The <em>Disparity Range</em> parameter is closely linked to the minimum distance as reducing the disparity
-range by factor two increases the effective minimum distance by a factor of two. However,
-the disparity range parameter is not as intuitive to use as the minimum distance and
-it is therefore recommended to use the minimum distance setting instead of the disparity
-range.</p>
 </div>
 <div class="section" id="frequency">
 <h3>Frequency<a class="headerlink" href="#frequency" title="Permalink to this headline">¶</a></h3>
@@ -488,7 +483,7 @@ as this also helps to reduce runtime and increase the frequency.</p>
 in the Web GUI. This happens for scene parts that are outside the defined working range, as
 discussed above, as well as on the left side of objects, because here, a part of the background
 is not visible in the right camera image. This is called an occlusion and it is absolutely normal.</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/fruit_left_disp.png"><img alt="../_images/fruit_left_disp.png" src="../_images/fruit_left_disp.png" style="width: 1290.0px; height: 480.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Left camera image and colored, dense disparity image. Blue means far away and red means
 close. All black areas are invalid, i.e. depth cannot be determined. Invalid areas on the
@@ -497,27 +492,53 @@ invalid as well.</span></p>
 </div>
 <p>Other cases of invalid pixels are typically unwanted. In general, invalid pixels are due to
 the inability of the stereo matching method to compute depth. There are various reasons for it.
-Overexposed areas do not contain enough information for matching and therefore appear invalid.
+Five different (and complementary) strategies to increase the density of depth
+images are discussed in the following:</p>
+<div class="section" id="adjusting-image-exposure">
+<h4>Adjusting image exposure<a class="headerlink" href="#adjusting-image-exposure" title="Permalink to this headline">¶</a></h4>
+<p>Overexposed areas do not contain enough information for matching and therefore appear invalid.
 Furthermore, areas may appear invalid if the image noise is stronger than the texture. Both
 problems can be solved by setting the exposure and gain settings correctly as explained in
 Section <a class="reference internal" href="#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>.</p>
-<p>If the scene and the <em>rc_visard</em> do not move during image capturing, then the <em>Static</em> quality
+<p>A sparse depth image can also be caused by changing lighting conditions, when the
+SingleFrame or SingleFrameOut1 acquisition modes are used.
+For example, if a bright robot arm moves through an
+otherwise dark scene just before image acquisition, the camera images might
+be underexposed and lead to a sparse dense depth image. Users can therefore allow
+the camera to wait a brief period before taking an image, so that the <em>rc_visard</em>
+has more time to adjust the exposure time. This feature permits the
+camera to ignore transitory effects disturbing the auto exposure control
+before settling on an optimal exposure time. One can enable this feature by
+increasing the <em>Exposure Adaptation Timeout</em> in the <em>Depth Image Settings</em>.</p>
+</div>
+<div class="section" id="exploiting-static-scenes">
+<h4>Exploiting static scenes<a class="headerlink" href="#exploiting-static-scenes" title="Permalink to this headline">¶</a></h4>
+<p>If the scene and the <em>rc_visard</em> do not move during image capturing, then the <em>Static</em>
 mode is recommended. In this mode, the <em>rc_visard</em> internally accumulates eight consecutive
-images at the frame rate of 25 Hz (regardless of the user framerate setting), and averages these images to
-reduce noise. This permits to make the stereo matching even for weakly textured objects, and makes the depth
+images at the frame rate of 25 Hz (regardless of the user’s framerate setting), and averages these images to
+reduce noise. This permits stereo matching even for weakly textured objects, and makes the depth
 image often much more dense.</p>
+</div>
+<div class="section" id="changing-the-sensor-orientation-to-accommodate-horizontal-lines">
+<h4>Changing the sensor orientation to accommodate horizontal lines<a class="headerlink" href="#changing-the-sensor-orientation-to-accommodate-horizontal-lines" title="Permalink to this headline">¶</a></h4>
 <p>One common case for missing objects in depth images is due to the horizontal orientation of
 straight objects. This alignment along image rows (that also means parallel to the baseline
 of the stereo system) can make stereo matching impossible. It can be easily determined if
 this the case by slightly rotating the <em>rc_visard</em> or the object and observing if the
 orientation has an effect on the appearance of the object in the depth image. If this is
 the case, then an orientation should be chosen to avoid it.</p>
+</div>
+<div class="section" id="improving-the-scene-s-texture-through-a-projector">
+<h4>Improving the scene’s texture through a projector<a class="headerlink" href="#improving-the-scene-s-texture-through-a-projector" title="Permalink to this headline">¶</a></h4>
 <p>One of the most common reasons for invalid areas in indoor environments is the lack of
 texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
 without any texture. Other structures are highly repetitive. Both cases do not permit
 a proper stereo matching process. These objects and scene parts may not be important for the application,
 but if they are, then the only way to capture them is by adding an artificial texture by projection. Random dot
 projectors are best suited in this case, but not discussed in this tutorial.</p>
+</div>
+<div class="section" id="filtering-errors">
+<h4>Filtering errors<a class="headerlink" href="#filtering-errors" title="Permalink to this headline">¶</a></h4>
 <p>Finally, there are many ways to filter possible errors as explained in the
 <a class="reference internal" href="#general-error-filtering"><span class="std std-ref">Error Filtering</span></a> Section. Filtering errors means to set the
 critical depth values to invalid. The <em>Fill-in</em> parameter can be used to interpolate small
@@ -526,12 +547,13 @@ number of areas that can be interpolated. The size of areas that are interpolate
 directly depends on the <a class="reference internal" href="#general-error-filtering"><span class="std std-ref">segmentation</span></a> setting for
 error filtering.</p>
 </div>
-<div class="section" id="error-filtering">
-<span id="general-error-filtering"></span><h3>Error Filtering<a class="headerlink" href="#error-filtering" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="general-error-filtering">
+<span id="id1"></span><h3>Filtering Errors<a class="headerlink" href="#general-error-filtering" title="Permalink to this headline">¶</a></h3>
 <p>Errors fall into two categories. Outliers, which are typically small patches of depth
 values that can appear anywhere in the working range and geometric errors that are
 close to the real depth.</p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id7">
 <a class="reference internal image-reference" href="../_images/rctable_disp_outlier.png"><img alt="../_images/rctable_disp_outlier.png" src="../_images/rctable_disp_outlier.png" style="width: 1290.0px; height: 480.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Disparity image with small outlier regions in the left, visible as spots in different
 colors. The image on the right shows the result after applying the segmentation filter and
@@ -539,16 +561,16 @@ fill-in, for removing outliers and filling small invalid areas.</span></p>
 </div>
 <p>Outliers can be filtered out using the <em>Segmentation</em> parameter. The parameter gives the maximum
 number of connected pixels that are filtered out. All patches with less than this amount
-of pixels are set to invalid. The size is also used for the fill-in paramter that is
+of pixels are set to invalid. The size is also used for the fill-in parameter that is
 explained in the <a class="reference internal" href="#general-increasing-density"><span class="std std-ref">Increasing Density</span></a> Section, so that
 holes that are caused by this filter are typically interpolated.</p>
-<p>Another way to reduce the likelyhood of outliers is to increase the <em>Minimum Confidence</em>
+<p>Another way to reduce the likelihood of outliers is to increase the <em>Minimum Confidence</em>
 as the confidence is the probability that a pixel is not an outlier.</p>
 <p>Depth values that have a potentially high geometric error can be filtered using the
 <em>Maximum Depth Error</em> parameter.</p>
 </div>
-<div class="section" id="reduce-noise">
-<h3>Reduce Noise<a class="headerlink" href="#reduce-noise" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reducing-noise">
+<h3>Reducing Noise<a class="headerlink" href="#reducing-noise" title="Permalink to this headline">¶</a></h3>
 <p>For some applications, it is necessary that the surfaces in the depth image are smooth.
 This is supported by post-processing using a <em>Median</em> filter. Higher values increase
 smoothing but also increase computation time.</p>
@@ -601,7 +623,7 @@ projector can be used to add texture to the scene.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

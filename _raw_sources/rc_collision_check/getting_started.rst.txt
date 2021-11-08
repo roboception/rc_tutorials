@@ -5,13 +5,21 @@
 Getting started with |collision|
 =================================
 
-The |collision| module is integrated with the :doc:`rcvisard:itempick` modules, but can also be used as standalone product.
-In this tutorial we focus on setting the parameters and checking collisions with the ItemPick module.
+The |collision| module is integrated with the :doc:`rcvisard:itempick` modules, with
+:doc:`rcvisard:silhouettematch`, and with :doc:`rccube:cadmatch`, but can also
+be used as standalone product. In this tutorial we focus on setting the
+parameters and checking collisions with the ItemPick module.
 
 .. Warning::
 
-  Collisions are checked only between the load carrier and the gripper, not the robot itself, the flange, other objects or
-  the item located in the robot gripper.
+   Collisions are checked only between the load carrier and the gripper, not
+   the robot itself, the flange, other objects or the item located in the robot
+   gripper. Only in combination with *SilhouetteMatch* or *CADMatch* and only
+   in case the selected template contains a collision geometry and
+   ``check_collisions_with_matches`` is enabled in the respective detection
+   module, also collisions between the gripper and other *detected* objects are
+   checked. Collisions with objects that cannot be detected will not be
+   checked.
 
 
 Before we start

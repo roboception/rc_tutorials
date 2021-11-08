@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with CollisionCheck &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Getting started with CollisionCheck &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="CollisionCheck tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -197,12 +197,20 @@
             
   <div class="section" id="getting-started-with-collision">
 <span id="collision-check-getting-started"></span><h1>Getting started with CollisionCheck<a class="headerlink" href="#getting-started-with-collision" title="Permalink to this headline">¶</a></h1>
-<p>The CollisionCheck module is integrated with the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html" title="(in rc_visard v20.11)"><span>ItemPick and BoxPick</span></a> modules, but can also be used as standalone product.
-In this tutorial we focus on setting the parameters and checking collisions with the ItemPick module.</p>
+<p>The CollisionCheck module is integrated with the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html" title="(in rc_visard v21.10)"><span>ItemPick and BoxPick</span></a> modules, with
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html" title="(in rc_visard v21.10)"><span>SilhouetteMatch</span></a>, and with <a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html" title="(in rc_cube v21.10)"><span>CADMatch</span></a>, but can also
+be used as standalone product. In this tutorial we focus on setting the
+parameters and checking collisions with the ItemPick module.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Collisions are checked only between the load carrier and the gripper, not the robot itself, the flange, other objects or
-the item located in the robot gripper.</p>
+<p class="last">Collisions are checked only between the load carrier and the gripper, not
+the robot itself, the flange, other objects or the item located in the robot
+gripper. Only in combination with <em>SilhouetteMatch</em> or <em>CADMatch</em> and only
+in case the selected template contains a collision geometry and
+<code class="docutils literal notranslate"><span class="pre">check_collisions_with_matches</span></code> is enabled in the respective detection
+module, also collisions between the gripper and other <em>detected</em> objects are
+checked. Collisions with objects that cannot be detected will not be
+checked.</p>
 </div>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
@@ -211,7 +219,7 @@ the item located in the robot gripper.</p>
 <ol class="arabic simple">
 <li>The <em>rc_visard</em>’s image version is at least 20.04 and the <em>rc_visard</em>’s license includes the
 CollisionCheck and ItemPick components.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>’s <em>System</em> tab.</li>
+This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>’s <em>System</em> tab.</li>
 </ol>
 <p class="rubric">The previous tutorial <a class="reference internal" href="gripper_creation.html#collision-check-gripper-creation"><span class="std std-ref">Setting up the gripper</span></a> has been completed.</p>
 <div class="admonition note">
@@ -225,25 +233,25 @@ However, reading it will give useful insights also for people who use it with ot
 <h2>Checking collisions<a class="headerlink" href="#checking-collisions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To show the results of the CollisionCheck module, we will use the <em>Try Out</em> section of the ItemPick module’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-web-gui" title="(in rc_visard v20.11)"><span>Web GUI</span></a>.
+<p class="last">To show the results of the CollisionCheck module, we will use the <em>Try Out</em> section of the ItemPick module’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>.
 More details on how to use CollisionCheck
 with other modules are available in their tutorials and the manual. For using CollisionCheck as a standalone product
-check the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v20.11)"><span>CollisionCheck</span></a> manual.</p>
+check the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v21.10)"><span>CollisionCheck</span></a> manual.</p>
 </div>
 <p>After the gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the <em>Try Out</em> section of the
 Web GUI’s ItemPick tab, we choose “Grasp Point Detection” as detection type. Then we define the suction surface width and height corresponding
-to the real dimensions of the gripper’s suction cup. After that, we choose the load carrier and gripper as shown on <a class="reference internal" href="#fig-collision-tryout"><span class="std std-numref">Fig. 60</span></a>.</p>
+to the real dimensions of the gripper’s suction cup. After that, we choose the load carrier and gripper as shown on <a class="reference internal" href="#fig-collision-tryout"><span class="std std-numref">Fig. 59</span></a>.</p>
 <p>After clicking on the “Detect Grasp Points” button, only the collision-free grasps are returned.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-collision-tryout"></span><a class="reference internal image-reference" href="../_images/try_out_ip_collision.png"><img alt="../_images/try_out_ip_collision.png" src="../_images/try_out_ip_collision.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">ItemPick tryout section</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">ItemPick tryout section</span></p>
 </div>
 <p>In the visualization images the colliding grasps are drawn as red points and black ellipses as shown in
-<a class="reference internal" href="#fig-collision-tryout-results"><span class="std std-numref">Fig. 61</span></a>, but will not be listed in the ‘Result of Grasp Point Detection’ section.
+<a class="reference internal" href="#fig-collision-tryout-results"><span class="std std-numref">Fig. 60</span></a>, but will not be listed in the ‘Result of Grasp Point Detection’ section.
 To get all detected grasps it is necessary to run the detection without the collision check, i.e. without selecting a gripper.</p>
 <div class="figure align-center" id="id2">
 <span id="fig-collision-tryout-results"></span><a class="reference internal image-reference" href="../_images/grasp_points_collision_check.jpg"><img alt="../_images/grasp_points_collision_check.jpg" src="../_images/grasp_points_collision_check.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Grasps on the tilted objects close to the load carrier walls are marked as colliding</span></p>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Grasps on the tilted objects close to the load carrier walls are marked as colliding</span></p>
 </div>
 <div class="section" id="setting-a-pre-grasp-offset">
 <h3>Setting a pre-grasp offset<a class="headerlink" href="#setting-a-pre-grasp-offset" title="Permalink to this headline">¶</a></h3>
@@ -254,7 +262,7 @@ The pre-grasp offset is the offset from the grasp position to the pre-grasp posi
 If this value is set to (0,0,0), collisions will only be checked at the grasp points.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-collision-pre-grasp-offset"></span><a class="reference internal image-reference" href="../_images/pre_grasp_offset.png"><img alt="../_images/pre_grasp_offset.png" src="../_images/pre_grasp_offset.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">This grasp would be marked as colliding. The gripper collides with the load carrier during movement from the
+<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">This grasp would be marked as colliding. The gripper collides with the load carrier during movement from the
 pre-grasp position to the grasp position.</span></p>
 </div>
 </div>
@@ -263,17 +271,17 @@ pre-grasp position to the grasp position.</span></p>
 <h2>Configuring parameters<a class="headerlink" href="#configuring-parameters" title="Permalink to this headline">¶</a></h2>
 <p>The parameters for collision checking are set in the Web GUI’s CollisionCheck tab or via the REST-API interface,
 no matter if the module is used as a standalone product or as a part of the ItemPick or BoxPick modules.
-Details are given in the manual in <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html#sect-collisioncheck-parameters" title="(in rc_visard v20.11)"><span>Parameter overview</span></a>.</p>
+Details are given in the manual in <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html#sect-collisioncheck-parameters" title="(in rc_visard v21.10)"><span>Parameter overview</span></a>.</p>
 <div class="section" id="collision-distance">
 <span id="collision-check-collision-distance"></span><h3>Collision Distance<a class="headerlink" href="#collision-distance" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The <code class="docutils literal notranslate"><span class="pre">collision_distance</span></code> parameter is the minimal distance in meters between any part of the gripper geometry and any of the
-load carrier’s walls for a grasp to be considered collision free. <a class="reference internal" href="#fig-collision-collision-distance"><span class="std std-numref">Fig. 63</span></a>
+load carrier’s walls for a grasp to be considered collision free. <a class="reference internal" href="#fig-collision-collision-distance"><span class="std std-numref">Fig. 62</span></a>
 visualizes this distance. This parameter should be increased if the module returns valid grasps too close to the load carrier’s walls.
 If, on the other hand, valid grasps near the load carrier’s walls are rejected, this value should be decreased.</p>
 <div class="figure align-center" id="id4">
 <span id="fig-collision-collision-distance"></span><a class="reference internal image-reference" href="../_images/collision_distance.png"><img alt="../_images/collision_distance.png" src="../_images/collision_distance.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">The minimal distance between the gripper geometry and the load carrier’s walls is <span class="math notranslate nohighlight">\(d\)</span>.</span></p>
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">The minimal distance between the gripper geometry and the load carrier’s walls is <span class="math notranslate nohighlight">\(d\)</span>.</span></p>
 </div>
 </div></blockquote>
 </div>
@@ -285,7 +293,7 @@ robot body. If this check is active, grasps where any part of robot flange is in
 to work properly it is necessary to correctly set the flange radius during the gripper creation (see <a class="reference internal" href="gripper_creation.html#collision-check-flange-radius"><span class="std std-ref">Flange radius</span></a>).</p>
 <div class="figure align-center" id="id5">
 <span id="fig-collision-check-flange"></span><a class="reference internal image-reference" href="../_images/check_flange.png"><img alt="../_images/check_flange.png" src="../_images/check_flange.png" style="width: 700px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Case A would be marked as collision only if <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> is true. Case B is collision free.</span></p>
+<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Case A would be marked as collision only if <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> is true. Case B is collision free.</span></p>
 </div>
 </div></blockquote>
 </div>
@@ -350,7 +358,7 @@ We do not recommend to switch it off for large grippers that might collide with 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

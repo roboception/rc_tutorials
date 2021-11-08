@@ -11,7 +11,7 @@ cables, connectors etc.
 
 In this tutorial we will show how to model the sample gripper shown in
 
-Fig. 56
+Fig. 55
 
 .
 
@@ -45,7 +45,7 @@ Flange radius
 
 The flange radius is the outer radius of the robot's flange (see
 
-Fig. 58
+Fig. 57
 
 ). It is used during a safety check if the "check_flange" parameter is
 enabled (see
@@ -66,7 +66,7 @@ Elements
 
  section (see
 
-Fig. 57
+Fig. 56
 
 ).
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.4.0
+  <title>Configuring ItemPick for Bin-Picking &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation</title>
   
 
@@ -56,7 +56,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0
+    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -207,8 +207,8 @@ is configured in ItemPick and detected in the scene, in order to compute grasps 
 inside the bin itself.</p>
 <p>The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
 items inside the load carrier. For this, we will call the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v20.11)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v20.11)"><span>REST-API interface</span></a>.
-This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v20.11)"><span>Swagger UI</span></a>, in command lines or scripts using
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v21.10)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>.
+This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v21.10)"><span>Swagger UI</span></a>, in command lines or scripts using
 <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically using a client library
 (e.g. from a robot controller). Here we focus on the first two options.</p>
 <div class="section" id="before-we-start">
@@ -224,7 +224,7 @@ Optimally, the sensor should have a clear view onto all objects in the bin
 without any occlusion by its walls – as shown in the sample setup below.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-itempick-bin-picking-setup"></span><a class="reference internal image-reference" href="../_images/bin_picking_setup.jpg"><img alt="../_images/bin_picking_setup.jpg" src="../_images/bin_picking_setup.jpg" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on static support above the load carrier,
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on static support above the load carrier,
 approximately 1.15 m away from the bin.</span></p>
 </div>
 <p>The placement should also ensure that the rim of of the load carrier is visible in the depth image.
@@ -244,7 +244,7 @@ The Web GUI’s <em>ItemPick</em> tab offers a <em>Try Out</em> section
 for this purpose. One simply needs to specify the respective <em>load carrier id</em> and hit the <em>Detect</em>
 button.
 As for the REST-API, ItemPick offers a
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v20.11)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v21.10)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
 trigger such detections.</p>
 <p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
@@ -377,7 +377,7 @@ The detected load carrier is colored in blue, while its content is highlighted i
 if inside the load carrier and in red if above the rim (overfill).</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/load_carriers_detected.png"><img alt="../_images/load_carriers_detected.png" src="../_images/load_carriers_detected.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Detection result for <em>my-load-carrier1</em> without overfill (left) and with overfill (right).</span></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Detection result for <em>my-load-carrier1</em> without overfill (left) and with overfill (right).</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -533,7 +533,7 @@ for collisions between the gripper geometry and the load carrier.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The x axis of a grasp computed by ItemPick corresponds to the longest
-axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v20.11)"><span class="xref std std-ref">grasp ellipse</span></a>.
+axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v21.10)"><span class="xref std std-ref">grasp ellipse</span></a>.
 When configuring a gripper in the CollisionCheck component,
 the x axis of the gripper should be set along the longest gripper elongation,
 in order to match the orientation of the computed grasps.</p>
@@ -689,10 +689,10 @@ optional argument <code class="docutils literal notranslate"><span class="pre">l
 Web GUI’s <em>ItemPick</em> tab.</p>
 </div>
 <p>The compartment is a box whose <code class="docutils literal notranslate"><span class="pre">pose</span></code> is defined with respect to the load carrier reference frame.
-In this section we show how to select the compartment in <a class="reference internal" href="#fig-itempick-lc-compartment"><span class="std std-numref">Fig. 23</span></a>.</p>
+In this section we show how to select the compartment in <a class="reference internal" href="#fig-itempick-lc-compartment"><span class="std std-numref">Fig. 24</span></a>.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-itempick-lc-compartment"></span><a class="reference internal image-reference" href="../_images/load_carrier_compartment.png"><img alt="../_images/load_carrier_compartment.png" src="../_images/load_carrier_compartment.png" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Sample compartment inside a load carrier. The coordinate system shown in the image is the
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Sample compartment inside a load carrier. The coordinate system shown in the image is the
 load carrier reference frame.</span></p>
 </div>
 <p>The compartment box dimensions are computed from the load carrier inner dimensions:</p>
@@ -931,12 +931,12 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="section" id="troublehooting">
 <h2>Troublehooting<a class="headerlink" href="#troublehooting" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-lc-rim-not-visible"><span class="std std-ref">The load carrier rim is not visible in the depth image</span></a></li>
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-lc-not-detected"><span class="std std-ref">The load carrier is not detected or not detected robustly</span></a></li>
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-lc-deformed"><span class="std std-ref">The load carrier is deformed or deformable</span></a></li>
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-lc-not-on-horizontal-surface"><span class="std std-ref">The load carrier is not on a horizontal surface</span></a></li>
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-grasps-on-lc-floor"><span class="std std-ref">The load carrier floor is detected as load carrier content</span></a></li>
-<li><a class="reference internal" href="troubleshooting.html#itempick-faq-no-grasps-on-lc-floor"><span class="std std-ref">Objects on the load carrier floor are not detected as load carrier content</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-lc-rim-not-visible"><span class="std std-ref">The load carrier rim is not visible in the depth image</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-lc-not-detected"><span class="std std-ref">The load carrier is not detected or not detected robustly</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-lc-deformed"><span class="std std-ref">The load carrier is deformed or deformable</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-lc-not-on-horizontal-surface"><span class="std std-ref">The load carrier is not on a horizontal surface</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-grasps-on-lc-floor"><span class="std std-ref">The load carrier floor is detected as load carrier content</span></a></li>
+<li><a class="reference internal" href="../rc_reason_general/troubleshooting.html#loadcarrier-faq-no-grasps-on-lc-floor"><span class="std std-ref">Objects on the load carrier floor are not detected as load carrier content</span></a></li>
 </ul>
 </div>
 </div>
@@ -983,7 +983,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.0-27-gfab480c',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

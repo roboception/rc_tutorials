@@ -671,12 +671,12 @@ The code below shows how to place a ``compute_grasps`` request for items inside 
 Troublehooting
 --------------
 
-* :ref:`The load carrier rim is not visible in the depth image<itempick-faq-lc-rim-not-visible>`
-* :ref:`The load carrier is not detected or not detected robustly<itempick-faq-lc-not-detected>`
-* :ref:`The load carrier is deformed or deformable<itempick-faq-lc-deformed>`
-* :ref:`The load carrier is not on a horizontal surface<itempick-faq-lc-not-on-horizontal-surface>`
-* :ref:`The load carrier floor is detected as load carrier content<itempick-faq-grasps-on-lc-floor>`
-* :ref:`Objects on the load carrier floor are not detected as load carrier content<itempick-faq-no-grasps-on-lc-floor>`
+* :ref:`The load carrier rim is not visible in the depth image<loadcarrier-faq-lc-rim-not-visible>`
+* :ref:`The load carrier is not detected or not detected robustly<loadcarrier-faq-lc-not-detected>`
+* :ref:`The load carrier is deformed or deformable<loadcarrier-faq-lc-deformed>`
+* :ref:`The load carrier is not on a horizontal surface<loadcarrier-faq-lc-not-on-horizontal-surface>`
+* :ref:`The load carrier floor is detected as load carrier content<loadcarrier-faq-grasps-on-lc-floor>`
+* :ref:`Objects on the load carrier floor are not detected as load carrier content<loadcarrier-faq-no-grasps-on-lc-floor>`
 
 .. Next steps
 .. ----------
