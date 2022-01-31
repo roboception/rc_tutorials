@@ -9,7 +9,7 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **There are no grasps detected on the objects**
 
-    * Do objects appear in the depth image? (an additional :ref:`RandomDot projector<general-projector>` might be needed)
+    * Do objects appear in the depth image? (an additional :ref:`rc_randomdot projector<general-projector>` might be needed)
     * Do the workpieces appear in the depth image without holes? (cfr. :ref:`itempick-getting-started-configure-image`)
     * Are the workpieces inside the region of interest (if specified)?
     * Is the load carrier detected (if specified)?

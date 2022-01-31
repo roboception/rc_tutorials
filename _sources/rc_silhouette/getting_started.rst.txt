@@ -4,7 +4,7 @@ This tutorial shows how to set up the
 
 rc_visard
 
- to start using the SilhouetteMatch component and guides the reader to
+ to start using the SilhouetteMatch module and guides the reader to
 detecting the first objects.
 
 Before we start
@@ -19,8 +19,8 @@ rc_visard
  is properly configured: ]-
 
 The rc_visard's image version is at least 1.8 and the rc_visard's
-license includes the SilhouetteMatch component. This can be verified
-on the Web GUI's System panel.
+license includes the SilhouetteMatch module. This can be verified on
+the System ‣ Firmware & License page of the Web GUI.
 
 -[ One or more workpieces have been chosen and the templates for these
 objects have been generated: ]-
@@ -120,7 +120,7 @@ Exposure and Gain Settings
 
 Camera
 
- panel indicates that the scene is adequately illuminated. It is
+ page indicates that the scene is adequately illuminated. It is
 recommended to use diffuse illumination in order to avoid hard
 shadows.
 
@@ -144,17 +144,23 @@ Depth Image Tuning
 
 . It is recommended to employ a
 
-RandomDot projector
+rc_randomdot projector
 
  to allow dense reconstruction of a texture-less base plane.
 
 
 SilhouetteMatch provides best results when the depth image quality is
 set to High. The projector should be operated in
-*ExposureAlternateActive* mode or the stereo should work in *Single +
-Out1 Acquisition Mode*, meaning that the projected pattern is not
-visible in the regular intensity images. Otherwise, the projector will
-interfere with SilhouetteMatch's object detection process.
+
+ExposureAlternateActive
+
+ mode or the stereo should work in
+
+Single + Out1 Acquisition Mode
+
+, meaning that the projected pattern is not visible in the regular
+intensity images. Otherwise, the projector will interfere with
+SilhouetteMatch's object detection process.
 
 Configuring the load carrier
 
@@ -186,8 +192,8 @@ The generated template must be uploaded to the
 
 rc_visard
 
-. The most convenient way to do this is via the Web GUI's
-SilhouetteMatch panel. See the following video for a walk-through of
+. The most convenient way to do this is via the Web GUI's Modules ‣
+SilhouetteMatch page. See the following video for a walk-through of
 the uploading process.
 
 Video: Uploading a template
@@ -196,8 +202,8 @@ Video: Uploading a template
 Configuring a region of interest
 
 For both base-plane calibration and object detection, a 2D region of
-interest (ROI) can be applied. The SilhouetteMatch component offers a
-ROI database, in which ROIs can be stored and referred to during base-
+interest (ROI) can be applied. The SilhouetteMatch module offers a ROI
+database, in which ROIs can be stored and referred to during base-
 plane calibration or object detection by their name.
 
 For configuring a new region of interest, the Web GUI offers an
@@ -277,7 +283,7 @@ Video: AprilTag-based base-plane calibration
 Stereo based
 
 With Stereo-based base-plane calibration, the point cloud provided by
-the stereo matching component is used. SilhouetteMatch searches for
+the stereo matching module is used. SilhouetteMatch searches for
 planes in the point cloud and selects either the closest or farthest
 plane from the
 
@@ -294,7 +300,7 @@ Configuring image parameters
 
 For more control on which plane is selected, a ROI should be used (see
 
-Fig. 37
+Fig. 36
 
 ).
 
@@ -328,8 +334,8 @@ Object detection can be triggered in the
 
 Try Out
 
- section of the Web GUI's SilhouetteMatch panel. Triggering via REST-
-API is possible as well, as described in
+ section of the Web GUI's Modules ‣ SilhouetteMatch page. Triggering
+via REST-API is possible as well, as described in
 
 SilhouetteMatch Services
 
@@ -340,12 +346,9 @@ In the
 Try Out
 
  section, the template that is to be detected must be selected by its
-name. Then, the detection is triggered with the
-
-Detect
-
- button. The result will be shown in the table at the bottom of the
-page, as well as in the visualization images on top.
+name. Then, the detection is triggered with the Detect Objects button.
+The result will be shown in the table at the bottom of the page, as
+well as in the visualization images on top.
 
 
 An object must be visible in the left
@@ -354,7 +357,7 @@ and
 
  right image to be detected. As shown in
 
-Fig. 39
+Fig. 38
 
 , the area where the left and right image do not overlap is marked in
 blue.

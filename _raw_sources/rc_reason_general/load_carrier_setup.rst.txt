@@ -16,8 +16,8 @@ The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.
   Different models of load carriers
 
 The easiest and recommended way to configure a load carrier is using the
-*LoadCarrier* module within the |webgui|. As an alternative, we also introduce
-the programmatic interface using the |rc_load_carrier| module, which offers
+:menuselection:`Modules --> LoadCarrier` page of the |webgui|. As an alternative,
+we also introduce the programmatic interface of the LoadCarrier module, which offers
 three services for managing load carriers via the |rcvisard|'s
 :ref:`sect-rest-api`:
 
@@ -29,11 +29,13 @@ A configured load carrier is available in all detection modules (*ItemPick*,
 *BoxPick*, *CADMatch* or *SilhouetteMatch*). In this section we show how to
 configure two different types of load carriers including some code examples.
 
+.. _loadcarrier-solid-rim:
+
 Load carriers with a solid rim
 ''''''''''''''''''''''''''''''
 
 The first model is the load carrier at the top left corner of
-:numref:`fig-load-carriers`. It will be configured with the unique id
+:numref:`fig-load-carriers`. It will be configured with the unique ID
 *my-load-carrier1*. The manufacturer's website reports the following
 dimensions:
 
@@ -185,13 +187,14 @@ with the only difference that the values need to be converted to meters.
             }
           }' | ConvertTo-Json -Depth 6
 
+.. _loadcarrier-stepped-rim:
 
 Load carriers with a stepped rim
 ''''''''''''''''''''''''''''''''
 
 The second model is the load carrier at the top right corner of
 :numref:`fig-load-carriers`. This load carrier will be configured with the
-unique id *my-load-carrier2*. The manufacturer's website reports the following
+unique ID *my-load-carrier2*. The manufacturer's website reports the following
 dimensions:
 
 * Outer dimensions: 30 x 20 x 14.7 cm
@@ -200,7 +203,7 @@ dimensions:
 In this model, the top load carrier rim is thinner than the actual difference between outer and
 inner dimensions. For this reason, we additionally need to specify the thickness values, which is
 approximately 0.013 m in both directions. The rim step height (the height of
-the step between the outer and the inner part of the rim) is 0.02m.
+the step between the outer and the inner part of the rim) is 0.02 m.
 
 If not specified, the rim thickness is automatically computed from the difference between outer
 and inner dimensions, as it was the case for *my-load-carrier1*.
@@ -391,16 +394,16 @@ applications when the load carrier pose does not change. Setting the exact pose
 lowers latency and helps when working with load carriers that are hard to
 detect, for example transparent load carriers or load carriers with a very thin
 rim. The orientation prior should be used when the load carrier is not placed
-horizontally to facilitate the detection of the load carrier. Incorporating the
+horizontally, to facilitate the detection of the load carrier. Incorporating the
 exact pose of the load carrier is discussed below. Suppose the load carrier is
 set exactly at the following position:
 
 * Translation: 0 x 0 x 50.0 cm
 * Rotation (as quaternion):  0, 0, 0, 1
 
-These values can be directly entered in the |webgui|'s *Load Carrier* page
+These values can be directly entered in the |webgui|'s :menuselection:`Modules --> LoadCarrier` page
 after activating "Set Pose" and choosing "Exact Pose" as pose type.
-Furthermore, the values can be communicated programatically through the
+Furthermore, the values can be communicated programmatically through the
 |restapi|, as outlined below:
 
 
@@ -411,7 +414,7 @@ Furthermore, the values can be communicated programatically through the
 
     .. group-tab:: REST-API
 
-      To trigger the ``set_load_carrier`` service via the REST-API for *my-load-carrier2*,
+      To trigger the ``set_load_carrier`` service via the REST-API for *my-load-carrier1*,
       one needs to send a PUT request to the URL
       ``http://<rc-visard-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier``,
       where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
@@ -423,22 +426,17 @@ Furthermore, the values can be communicated programatically through the
         {
           "args": {
             "load_carrier": {
-              "id": "my-load-carrier2",
+              "id": "my-load-carrier1",
               "outer_dimensions": {
-                "x": 0.3,
-                "y": 0.2,
-                "z": 0.147
+                "x": 0.4,
+                "y": 0.3,
+                "z": 0.22
               },
               "inner_dimensions": {
-                "x": 0.243,
-                "y": 0.162,
-                "z": 0.1295
+                "x": 0.37,
+                "y": 0.27,
+                "z": 0.215
               },
-              "rim_thickness": {
-                "x": 0.013,
-                "y": 0.013
-              },
-              "rim_step_height": 0.02,
               "pose_frame": "camera",
               "pose": {
                 "position": {
@@ -454,7 +452,7 @@ Furthermore, the values can be communicated programatically through the
                 }
               },
               "pose_type": "EXACT_POSE"
-              }
+            }
           }
         }
 
@@ -473,22 +471,17 @@ Furthermore, the values can be communicated programatically through the
                 {
                   "args": {
                     "load_carrier": {
-                      "id": "my-load-carrier2",
+                      "id": "my-load-carrier1",
                       "outer_dimensions": {
-                        "x": 0.3,
-                        "y": 0.2,
-                        "z": 0.147
+                        "x": 0.4,
+                        "y": 0.3,
+                        "z": 0.22
                       },
                       "inner_dimensions": {
-                        "x": 0.243,
-                        "y": 0.162,
-                        "z": 0.1295
+                        "x": 0.37,
+                        "y": 0.27,
+                        "z": 0.215
                       },
-                      "rim_thickness": {
-                        "x": 0.013,
-                        "y": 0.013
-                      },
-                      "rim_step_height": 0.02,
                       "pose_frame": "camera",
                       "pose": {
                         "position": {
@@ -504,9 +497,9 @@ Furthermore, the values can be communicated programatically through the
                         }
                       },
                       "pose_type": "EXACT_POSE"
-                      }
+                    }
+                  }
                 }
-              }
 
     .. group-tab:: curl (Linux)
 
@@ -519,22 +512,17 @@ Furthermore, the values can be communicated programatically through the
         "{ \
             \"args\": { \
                 \"load_carrier\": { \
-                    \"id\": \"my-load-carrier2\", \
+                    \"id\": \"my-load-carrier1\", \
                     \"outer_dimensions\": { \
-                        \"x\": 0.3, \
-                        \"y\": 0.2, \
-                        \"z\": 0.147 \
+                        \"x\": 0.4, \
+                        \"y\": 0.3, \
+                        \"z\": 0.22 \
                     }, \
                     \"inner_dimensions\": { \
-                        \"x\": 0.243, \
-                        \"y\": 0.162, \
-                        \"z\": 0.1295 \
+                        \"x\": 0.37, \
+                        \"y\": 0.27, \
+                        \"z\": 0.215 \
                     }, \
-                    \"rim_thickness\": { \
-                        \"x\": 0.013, \
-                        \"y\": 0.013 \
-                    }, \
-                    \"rim_step_height\": 0.02, \
                     \"pose_frame\": \"camera\", \
                     \"pose\": { \
                       \"position\": { \
@@ -565,22 +553,17 @@ Furthermore, the values can be communicated programatically through the
         "{ ^
             \"args\": { ^
                 \"load_carrier\": { ^
-                    \"id\": \"my-load-carrier2\", ^
+                    \"id\": \"my-load-carrier1\", ^
                     \"outer_dimensions\": { ^
-                        \"x\": 0.3, ^
-                        \"y\": 0.2, ^
-                        \"z\": 0.147 ^
+                        \"x\": 0.4, ^
+                        \"y\": 0.3, ^
+                        \"z\": 0.22 ^
                     }, ^
                     \"inner_dimensions\": { ^
-                        \"x\": 0.243, ^
-                        \"y\": 0.162, ^
-                        \"z\": 0.1295 ^
+                        \"x\": 0.37, ^
+                        \"y\": 0.27, ^
+                        \"z\": 0.215 ^
                     }, ^
-                    \"rim_thickness\": { ^
-                        \"x\": 0.013, ^
-                        \"y\": 0.013 ^
-                    }, ^
-                    \"rim_step_height\": 0.02,^
                     \"pose_frame\": \"camera\",^
                     \"pose\": {^
                       \"position\": {^
@@ -611,22 +594,17 @@ Furthermore, the values can be communicated programatically through the
         {
           "args": {
             "load_carrier": {
-              "id": "my-load-carrier2",
+              "id": "my-load-carrier1",
               "outer_dimensions": {
-                "x": 0.3,
-                "y": 0.2,
-                "z": 0.147
+                "x": 0.4,
+                "y": 0.3,
+                "z": 0.22
               },
               "inner_dimensions": {
-                "x": 0.243,
-                "y": 0.162,
-                "z": 0.1295
+                "x": 0.37,
+                "y": 0.27,
+                "z": 0.215
               },
-              "rim_thickness": {
-                "x": 0.013,
-                "y": 0.013
-              },
-              "rim_step_height": 0.02,
               "pose_frame": "camera",
               "pose": {
                 "position": {

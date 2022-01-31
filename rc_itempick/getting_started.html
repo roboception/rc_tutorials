@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with ItemPick &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Getting started with ItemPick &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -53,13 +53,19 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
-        <link rel="next" title="Configuring ItemPick for Bin-Picking" href="bin_picking_no_robot.html"/>
+        <link rel="next" title="Configuring ItemPick for bin picking" href="bin_picking_no_robot.html"/>
         <link rel="prev" title="ItemPick tutorials" href="overview.html"/> 
 
   
@@ -80,7 +86,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -90,7 +96,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -123,16 +129,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-scene">Setting up the scene</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuring-image-parameters">Configuring image parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computing-the-first-grasps">Computing the first grasps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troublehooting">Troublehooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bin_picking_no_robot.html">Configuring ItemPick for Bin-Picking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bin_picking_no_robot.html">Configuring ItemPick for bin picking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -147,7 +153,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -175,9 +181,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">ItemPick tutorials</a> &raquo;</li>
+          <li><a href="overview.html">ItemPick tutorials</a> &gt;</li>
         
       <li>Getting started with ItemPick</li>
     
@@ -198,7 +204,7 @@
             
   <div class="section" id="getting-started-with-itempick">
 <span id="itempick-getting-started"></span><h1>Getting started with ItemPick<a class="headerlink" href="#getting-started-with-itempick" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to set up the <em>rc_visard</em> to start using the ItemPick component
+<p>This tutorial shows how to set up the <em>rc_visard</em> to start using the ItemPick module
 and guides the reader to the computation of the first grasps.</p>
 <div class="section" id="before-we-start">
 <span id="itempick-getting-started-before"></span><h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
@@ -206,8 +212,8 @@ and guides the reader to the computation of the first grasps.</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
 <li>The <em>rc_visard</em>’s image version is at least 1.4 and
-the <em>rc_visard</em>’s license includes the ItemPick component.
-This can be verified on the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>’s <em>System</em> tab.</li>
+the <em>rc_visard</em>’s license includes the ItemPick module.
+This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
 <p class="rubric">One or more workpieces are in the field of view of the camera. They should meet the following requisites:</p>
 <ol class="arabic simple">
@@ -216,10 +222,10 @@ This can be verified on the <a class="reference external" href="https://doc.rc-v
 generate a suction force large enough to lift and move the workpiece).</li>
 <li>The workpiece surface appears in the depth image.
 This can be verified by placing the workpiece in front of the <em>rc_visard</em> and checking the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>’s <em>Depth image</em> tab.
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v21.10)"><span>Web GUI</span></a>’s <strong>Depth image</strong> page.
 If the workpiece presents holes or low confidence regions
 (i.e. average gray pixels in the Confidence image),
-one can follow the <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a> tutorial.</li>
+one can follow the <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of image parameters</span></a> tutorial.</li>
 <li>The workpiece has at least the minimum dimensions required by the ItemPick module. This threshold is set to 300
 pixels in the depth image, which approximately correspond to an object of size 0.04 m x 0.04 m
 at a distance of 1.2 m from the sensor.</li>
@@ -252,11 +258,11 @@ The optimal distance to the objects depends on the <em>rc_visard</em> model, as 
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><em>rc_visard</em> 160</td>
+<tr class="row-even"><td><em>rc_visard</em> 160m/c</td>
 <td>0.5 m</td>
 <td>1.3 m</td>
 </tr>
-<tr class="row-odd"><td><em>rc_visard</em> 65</td>
+<tr class="row-odd"><td><em>rc_visard</em> 65m/c</td>
 <td>0.2 m</td>
 <td>1.0 m</td>
 </tr>
@@ -266,30 +272,30 @@ The optimal distance to the objects depends on the <em>rc_visard</em> model, as 
 the <em>rc_visard</em> should be placed as close to the objects as possible.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/getting_started_setup.jpg"><img alt="../_images/getting_started_setup.jpg" src="../_images/getting_started_setup.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on a tripod approximately 0.7 m away
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on a tripod approximately 0.7 m away
 from the objects.</span></p>
 </div>
 </div>
 <div class="section" id="configuring-image-parameters">
 <span id="itempick-getting-started-configure-image"></span><h2>Configuring image parameters<a class="headerlink" href="#configuring-image-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Once the scene has been set up, we recommend to check the Web GUI’s <em>Depth image</em>
-tab to verify that the images are well-exposed and the depth image is dense
+<p>Once the scene has been set up, we recommend to check the Web GUI’s <strong>Depth image</strong>
+page to verify that the images are well-exposed and the depth image is dense
 with no holes on the workpieces.
-The tutorial <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a> covers all required steps to get the best quality for stereo and depth images.
+The tutorial <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of image parameters</span></a> covers all required steps to get the best quality for stereo and depth images.
 The depth image density can also be increased by adding the
-<a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">RandomDot projector</span></a> to the <em>rc_visard</em>.</p>
+<a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">rc_randomdot projector</span></a> to the <em>rc_visard</em>.</p>
 <p>ItemPick provides its best results when the depth image quality is set to High or Full.
 The Static mode might be beneficial in static scenes, but it increases the data acquisition time.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-itempick-getting-started-tuning-image"></span><a class="reference internal image-reference" href="../_images/getting_started_tuning_image.png"><img alt="../_images/getting_started_tuning_image.png" src="../_images/getting_started_tuning_image.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Sample images from the setup shown above: left image (top left), confidence image (bottom left),
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Sample images from the setup shown above: left image (top left), confidence image (bottom left),
 and depth image (right).</span></p>
 </div>
 </div>
 <div class="section" id="computing-the-first-grasps">
 <span id="itempick-getting-started-first-grasps"></span><h2>Computing the first grasps<a class="headerlink" href="#computing-the-first-grasps" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-compute-grasps" title="(in rc_visard v21.10)"><span class="xref std std-ref">compute_grasps</span></a> service of the ItemPick module
-triggers the computation of suction grasps in the scene.</p>
+triggers the computation of suction grasps on the objects in the scene.</p>
 <p>This section shows how to place a <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code> request to ItemPick
 using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>. This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v21.10)"><span>Swagger UI</span></a>,
 in command lines or scripts using <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically
@@ -297,15 +303,16 @@ using a client library (e.g. from the robot controller).
 In this tutorial we focus on the first two options.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">compute_grasp</span></code> can also be triggered in the <code class="docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Out</span></code> section of the Web GUI’s <em>ItemPick</em> tab.
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">compute_grasp</span></code> service can also be triggered in the <em>Try Out</em> section
+of the Web GUI’s <span class="menuselection">Modules ‣ ItemPick</span> page.
 The required arguments are pre-set with default values,
-therefore the service can directly be called by hitting the <code class="docutils literal notranslate"><span class="pre">Detect</span></code> button.</p>
+therefore the service can be directly called by hitting the <span class="guilabel">Detect Grasp Points</span> button.</p>
 </div>
 <p>In the below examples, the service will be triggered with the minimum set of required arguments.
 For this reason, the results might be sub-optimal
 (e.g. multiple grasps on a single workpiece, or grasps on unwanted objects).</p>
-<p>The images in the top section of the Web GUI’s <em>ItemPick</em> tab show the results
-of the last successful request to ItemPick.</p>
+<p>The images in the top section of the Web GUI’s <span class="menuselection">Modules ‣ ItemPick</span> page
+show the results of the last successful request to ItemPick.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
@@ -422,7 +429,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="figure align-center" id="id4">
 <span id="fig-itempick-getting-started-grasps"></span><a class="reference internal image-reference" href="../_images/getting_started_grasps.png"><img alt="../_images/getting_started_grasps.png" src="../_images/getting_started_grasps.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Sample results on the scene shown above: surfaces image on the left and computed grasps on the
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Sample results on the scene shown above: surfaces image on the left and computed grasps on the
 right (including the available suction surface). By default, maximally 5 grasps are returned
 by the <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code> service. The sorting of the grasps takes into account the gravity
 vector, so that objects on top of a pile are grasped first.</span></p>
@@ -430,12 +437,12 @@ vector, so that objects on top of a pile are grasped first.</span></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <em>rc_visard</em> used in this tutorial is a color sensor
-(<a class="reference internal" href="#fig-itempick-getting-started-tuning-image"><span class="std std-numref">Fig. 20</span></a>). However, ItemPick works only on
-the monochrome images provided by the sensor, as shown in the result pictures in <a class="reference internal" href="#fig-itempick-getting-started-grasps"><span class="std std-numref">Fig. 21</span></a>.</p>
+(<a class="reference internal" href="#fig-itempick-getting-started-tuning-image"><span class="std std-numref">Fig. 19</span></a>). However, ItemPick works only on
+the monochrome images provided by the sensor, as shown in the result pictures in <a class="reference internal" href="#fig-itempick-getting-started-grasps"><span class="std std-numref">Fig. 20</span></a>.</p>
 </div>
 </div>
-<div class="section" id="troublehooting">
-<h2>Troublehooting<a class="headerlink" href="#troublehooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="troubleshooting.html#faq-itempick-no-grasps"><span class="std std-ref">There are no grasps detected on the objects</span></a></li>
 <li><a class="reference internal" href="troubleshooting.html#faq-itempick-too-many-grasps"><span class="std std-ref">There are too many grasps on one single object</span></a></li>
@@ -453,7 +460,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bin_picking_no_robot.html" class="btn btn-neutral float-right" title="Configuring ItemPick for Bin-Picking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="bin_picking_no_robot.html" class="btn btn-neutral float-right" title="Configuring ItemPick for bin picking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="ItemPick tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -465,7 +472,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -485,7 +492,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

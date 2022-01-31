@@ -43,7 +43,7 @@ True if the parameter was successful, false otherwise.
 
 rc_reset_parameters
 '''''''''''''''''''''
-This service resets all parameters of the component to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.
+This service resets all parameters of the module to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.
 
 Input
 ^^^^^^^^^^^^^^^^^^
@@ -89,9 +89,9 @@ Input
 ^^^^^^^^^^^^^^^^^^
 * ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
 * suc_size - size of the suction cup in millimeters in format [suc_length_m, suc_width_m]
-* lc_id - id of the load carrier that should be used (use '-1' if no load carrier should be used)
-* roi_id - id of the region of interest that should be used (use '-1' if no region of interest should be used)
-* gripper_is - id of the gripper that should be used (use '-1' if no gripper should be used)
+* lc_id - ID of the load carrier that should be used (use '-1' if no load carrier should be used)
+* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
+* gripper_is - ID of the gripper that should be used (use '-1' if no gripper should be used)
 * offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)
 * pose_frame - pose frame that should be used for returned values
 
@@ -134,9 +134,9 @@ Input
 ^^^^^^^^^^^^^^^^^^
 * ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
 * rectangle - size of the rectangles in mm that should be detected [min_x, min_y, max_x, max_y]
-* lc_id - id of the load carrier that should be used (use '-1' if no load carrier should be used)
-* roi_id - id of the region of interest that should be used (use '-1' if no region of interest should be used)
-* gripper_is - id of the gripper that should be used (use '-1' if no gripper should be used)
+* lc_id - ID of the load carrier that should be used (use '-1' if no load carrier should be used)
+* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
+* gripper_is - ID of the gripper that should be used (use '-1' if no gripper should be used)
 * offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)
 * pose_frame - pose frame that should be used for returned values
 
@@ -191,7 +191,7 @@ Input
 ^^^^^^^^^^^^^^^^^^
 * ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
 * object_id  -id of the object that should be detected
-* roi_id - id of the region of interest that should be used (use '-1' if no region of interest should be used)
+* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
 * offset - offset that should be used for calculating the calibration plane
 * pose_frame - pose frame that should be used for returned values
 
@@ -218,7 +218,7 @@ Input
 ^^^^^^^^^^^^^^^^^^
 * ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
 * plane_est - plane estimation method ('APRILTAG' or 'STEREO')
-* roi_id - id of the region of interest that should be used (use '-1' if no region of interest should be used)
+* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
 * offset - offset that should be used for calculating the calibration plane
 * pose_frame - pose frame that should be used for returned values
 

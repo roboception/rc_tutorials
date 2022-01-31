@@ -1,4 +1,4 @@
-Tuning of Image Parameters
+Tuning of image parameters
 
 Parameters like the frame rate, exposure time and gain factor
 determine when and how images are captured. They have a huge impact on
@@ -27,8 +27,8 @@ to a computer.
 The Web GUI of the rc_visard should be opened in a Web browser. This
 can be done with the discovery tool from Roboception.
 
-This tutorial focusses on the Web GUI to set the parameters. It is
-also possible to use
+This tutorial focuses on the Web GUI to set the parameters. It is also
+possible to use
 
 GigE Vision 2.0/GenICam image interface
 
@@ -38,15 +38,17 @@ REST-API interface
 
  for setting the parameters.
 
-Note: After changing parameters, it is necessary to save them in
-  order to make them persistent after reboot. This can be done by
-  clicking the 'save' button of the corresponding module in the Web
-  GUI.
+Note: All parameter changes are immediately applied and persistent
+  across reboots.
 
 Camera Parameters
 
-The camera panel of the Web GUI shows the left and right images and
-permits changing and saving the parameters.
+The
+
+Camera
+
+ page of the Web GUI shows the left and right images and permits
+changing and saving the parameters.
 
 Frames per Second (FPS)
 
@@ -166,8 +168,8 @@ There are four parameters that define the exposure region:
 
 For setting the exposure region via REST-API, a PUT request must be
 sent to the URL
-"http://<rc_visard_ip>/api/v1/nodes/rc_stereocamera/parameters", where
-"<rc-visard-ip>" should be replaced by the actual IP of the
+"http://<rc_visard_ip>/api/v1/nodes/rc_camera/parameters", where "<rc-
+visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
 
@@ -195,7 +197,7 @@ The Swagger UI for setting camera parameters is located at: http
 
 Select PUT /nodes/{node}/parameters
 
-Try out the call with the following values:  node: rc_stereocamera
+Try out the call with the following values:  node: rc_camera
 parameters:  [   { "name": "exp_offset_x", "value": 150 },   { "name":
 "exp_offset_y", "value":  80 },   { "name": "exp_width",    "value":
 800 },   { "name": "exp_height",   "value": 600 } ]
@@ -209,7 +211,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "[ \
       { \"name\": \"exp_offset_x\", \"value\": 150 }, \
       { \"name\": \"exp_offset_y\", \"value\":  80 }, \
@@ -230,7 +232,7 @@ curl
 
  command is in the path.
 
-   curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "[ ^
       { \"name\": \"exp_offset_x\", \"value\": 150 }, ^
       { \"name\": \"exp_offset_y\", \"value\":  80 }, ^
@@ -247,7 +249,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
    [
       { "name": "exp_offset_x", "value": 150 },
       { "name": "exp_offset_y", "value":  80 },
@@ -291,9 +293,12 @@ Note: It is recommended to set exposure and gain manually only if
 
 Depth Image Tuning
 
-The depth image panel of the Web GUI shows the left, disparity and
-confidence image and permits changing and saving depth image related
-parameters.
+The
+
+Depth Image
+
+ page of the Web GUI shows the left, disparity and confidence image
+and permits changing and saving depth image related parameters.
 
 Working Range
 
@@ -380,12 +385,19 @@ Exposure and Gain Settings
 .
 
 A sparse depth image can also be caused by changing lighting
-conditions, when the SingleFrame or SingleFrameOut1 acquisition modes
-are used. For example, if a bright robot arm moves through an
-otherwise dark scene just before image acquisition, the camera images
-might be underexposed and lead to a sparse dense depth image. Users
-can therefore allow the camera to wait a brief period before taking an
-image, so that the
+conditions, when the
+
+SingleFrame
+
+ or
+
+SingleFrameOut1
+
+ acquisition modes are used. For example, if a bright robot arm moves
+through an otherwise dark scene just before image acquisition, the
+camera images might be underexposed and lead to a sparse dense depth
+image. Users can therefore allow the camera to wait a brief period
+before taking an image, so that the
 
 rc_visard
 
@@ -444,8 +456,19 @@ Other structures are highly repetitive. Both cases do not permit a
 proper stereo matching process. These objects and scene parts may not
 be important for the application, but if they are, then the only way
 to capture them is by adding an artificial texture by projection.
-Random dot projectors are best suited in this case, but not discussed
-in this tutorial.
+Random dot projectors, such as the
+
+rc_randomdot
+
+ projector from Roboception, are best suited in this case. The
+
+Obtain dense depth images with the rc_randomdot projector
+
+ tutorial describes the setup of the
+
+rc_randomdot
+
+ projector.
 
 Filtering errors
 
@@ -505,12 +528,11 @@ Maximum Depth Error
 Reducing Noise
 
 For some applications, it is necessary that the surfaces in the depth
-image are smooth. This is supported by post-processing using a
+image are smooth. This can be achieved by enabling the
 
-Median
+Smoothing
 
- filter. Higher values increase smoothing but also increase
-computation time.
+ option.
 
 Finally, increasing texture also reduces noise in the depth image. As
 mentioned in the

@@ -11,11 +11,3 @@ FAQs and troubleshooting
    :header: **A grasp close to the bottom of the load carrier is marked as colliding**
 
    Try setting the ``check_bottom`` parameter to false as described in :ref:`collision_check_check_bottom`.
-
-.. _collision-faq-complicated-gripper:
-
-.. toggle-header::
-  :header: **My gripper has elements that cannot be modeled in the Web GUI**
-
-  The gripper creator in the |webgui| does not allow modeling rotations in the gripper elements.
-  If it is required to add this kind of elements, the |restapi| interface can be used as described in :doc:`rcvisard:collisioncheck`.

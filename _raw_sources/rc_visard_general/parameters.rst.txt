@@ -2,7 +2,7 @@
 
 .. _general-tuning-image-parameters:
 
-Tuning of Image Parameters
+Tuning of image parameters
 ==========================
 
 Parameters like the frame rate, exposure time and gain factor determine when and how images are captured.
@@ -22,20 +22,19 @@ related to color sensors as most modules are based on monochrome images.
 - The Web GUI of the |rc_visard| should be opened in a Web browser. This can be done with the
   `discovery tool <https://roboception.com/en/download/>`_ from Roboception.
 
-This tutorial focusses on the |webgui| to set the parameters. It is also possible to use
+This tutorial focuses on the |webgui| to set the parameters. It is also possible to use
 :doc:`rcvisard:gigevision` and the :doc:`rcvisard:rest_api` for setting the parameters.
 
 .. note::
 
-  After changing parameters, it is necessary to save them in order to make them persistent after reboot.
-  This can be done by clicking the 'save' button of the corresponding module in the |webgui|.
+  All parameter changes are immediately applied and persistent across reboots.
 
 .. _general-tuning-camera-parameters:
 
 Camera Parameters
 -----------------
 
-The camera panel of the |webgui| shows the left and right images and permits changing and
+The **Camera** page of the |webgui| shows the left and right images and permits changing and
 saving the parameters.
 
 .. _general-camera-fps:
@@ -149,7 +148,7 @@ There are four parameters that define the exposure region: ``exp_offset_x``, ``e
    The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.
 
 For setting the exposure region via REST-API, a PUT request must be sent to the URL
-``http://<rc_visard_ip>/api/v1/nodes/rc_stereocamera/parameters``, where ``<rc-visard-ip>``
+``http://<rc_visard_ip>/api/v1/nodes/rc_camera/parameters``, where ``<rc-visard-ip>``
 should be replaced by the actual IP of the |rc_visard|. For setting the exposure region to
 a size of 800x600 pixels that starts in image column 150 and image row 80, the following
 data must be sent:
@@ -174,7 +173,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
     #. Select ``PUT /nodes/{node}/parameters``
     #. Try out the call with the following values:
 
-        * **node:** ``rc_stereocamera``
+        * **node:** ``rc_camera``
         * **parameters:**
 
         .. code-block:: json
@@ -193,7 +192,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
       "[ \
          { \"name\": \"exp_offset_x\", \"value\": 150 }, \
          { \"name\": \"exp_offset_y\", \"value\":  80 }, \
@@ -208,7 +207,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
       "[ ^
          { \"name\": \"exp_offset_x\", \"value\": 150 }, ^
          { \"name\": \"exp_offset_y\", \"value\":  80 }, ^
@@ -223,7 +222,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_stereocamera/parameters" -ContentType 'application/json' -Method Put -Body '
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
       [
          { "name": "exp_offset_x", "value": 150 },
          { "name": "exp_offset_y", "value":  80 },
@@ -284,7 +283,7 @@ as possible.
 Depth Image Tuning
 ------------------
 
-The depth image panel of the |webgui| shows the left, disparity and confidence image and
+The **Depth Image** page of the |webgui| shows the left, disparity and confidence image and
 permits changing and saving depth image related parameters.
 
 Working Range
@@ -346,9 +345,9 @@ problems can be solved by setting the exposure and gain settings correctly as ex
 Section :ref:`Exposure and Gain Settings<general-exposure-gain>`.
 
 A sparse depth image can also be caused by changing lighting conditions, when the
-SingleFrame or SingleFrameOut1 acquisition modes are used.
+*SingleFrame* or *SingleFrameOut1* acquisition modes are used.
 For example, if a bright robot arm moves through an
-otherwise dark scene just before image acquisition, the camera images might 
+otherwise dark scene just before image acquisition, the camera images might
 be underexposed and lead to a sparse dense depth image. Users can therefore allow
 the camera to wait a brief period before taking an image, so that the |rc_visard|
 has more time to adjust the exposure time. This feature permits the
@@ -382,8 +381,9 @@ One of the most common reasons for invalid areas in indoor environments is the l
 texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
 without any texture. Other structures are highly repetitive. Both cases do not permit
 a proper stereo matching process. These objects and scene parts may not be important for the application,
-but if they are, then the only way to capture them is by adding an artificial texture by projection. Random dot
-projectors are best suited in this case, but not discussed in this tutorial.
+but if they are, then the only way to capture them is by adding an artificial texture by projection.
+Random dot projectors, such as the |projector| from Roboception, are best suited in this case.
+The :ref:`general-projector` tutorial describes the setup of the |projector|.
 
 Filtering errors
 """"""""""""""""
@@ -430,8 +430,7 @@ Reducing Noise
 ^^^^^^^^^^^^^^
 
 For some applications, it is necessary that the surfaces in the depth image are smooth.
-This is supported by post-processing using a *Median* filter. Higher values increase
-smoothing but also increase computation time.
+This can be achieved by enabling the *Smoothing* option.
 
 Finally, increasing texture also reduces noise in the depth image. As mentioned in the
 :ref:`Increasing Density<general-increasing-density>` Section, a separate random dot

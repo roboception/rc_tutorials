@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SilhouetteMatch &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -45,10 +45,16 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Sample program" href="sampleprogram.html"/>
@@ -72,7 +78,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -82,7 +88,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -111,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
@@ -134,7 +141,6 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -149,7 +155,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -177,9 +183,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+          <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
         
       <li>SilhouetteMatch</li>
     
@@ -250,7 +256,7 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_get_next_grasp.png"><img alt="../_images/sil_get_next_grasp.png" src="../_images/sil_get_next_grasp.png" style="width: 800px;" /></a>
 </div>
-<p>This functions requires that Detect has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope’s variable format (p[x, y, z, rx, ry, rz]). It is also possible to store the grasp id associated with this grasp.</p>
+<p>This functions requires that Detect has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope’s variable format (p[x, y, z, rx, ry, rz]). It is also possible to store the grasp ID associated with this grasp.</p>
 <p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -270,7 +276,7 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_get_lc_pose.png"><img alt="../_images/sil_get_lc_pose.png" src="../_images/sil_get_lc_pose.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that Detect has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This function requires that Detect has been triggered with a load carrier ID. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
@@ -314,7 +320,7 @@ There are four different options to choose from:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -334,7 +340,7 @@ There are four different options to choose from:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

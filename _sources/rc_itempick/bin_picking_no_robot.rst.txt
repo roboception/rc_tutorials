@@ -1,9 +1,9 @@
-Configuring ItemPick for Bin-Picking
+Configuring ItemPick for bin picking
 
-This tutorial shows how to configure the ItemPick component to work in
-a bin-picking application. More specifically, the bin (or so-called
-Load Carrier) is configured in ItemPick and detected in the scene, in
-order to compute grasps only for items inside the bin itself.
+This tutorial shows how to configure the ItemPick module to work in a
+bin-picking application. More specifically, the bin (or so-called Load
+Carrier) is configured in ItemPick and detected in the scene, in order
+to compute grasps only for items inside the bin itself.
 
 The tutorial covers all the steps from configuration of a load carrier
 up to getting grasps for items inside the load carrier. For this, we
@@ -74,22 +74,13 @@ Detecting the load carrier
 
 After the load carrier has been configured, it is important to check
 that ItemPick can detect the load carrier in the scene. The Web GUI's
-
-ItemPick
-
- tab offers a
+Modules ‣ ItemPick page offers a
 
 Try Out
 
  section for this purpose. One simply needs to specify the respective
-
-load carrier id
-
- and hit the
-
-Detect
-
- button. As for the REST-API, ItemPick offers a
+load carrier ID and hit the Detect Grasp Points button. As for the
+REST-API, ItemPick offers a
 
 detect_load_carriers
 
@@ -193,11 +184,7 @@ REST-API request for detecting my-load-carrier1
       }' | ConvertTo-Json -Depth 6
 
 Detection results -- no matter whether triggered via Web GUI or REST-
-API -- are visualized in the Web GUI's
-
-ItemPick
-
- tab as
+API -- are visualized in the Web GUI's Modules ‣ ItemPick page as
 
 Load Carriers
 
@@ -212,11 +199,7 @@ red if above the rim (overfill).
 
 Note: While the "detect_load_carriers" service supports a list of
   "load_carrier_ids" as input argument, the current implementation
-  only accepts one
-
-  load carrier id
-
-   in the list.
+  only accepts one load carrier ID in the list.
 
 Note: All points that are not colored in the load carrier
   visualization image are not used for grasp computation. This can
@@ -235,11 +218,7 @@ As explained before, this is also possible in the
 
 Try Out
 
- section of the Web GUI's
-
-ItemPick
-
- tab.
+ section of the Web GUI's Modules ‣ ItemPick page.
 
 Request to the REST-API for getting grasps inside my-load-carrier1
 
@@ -346,7 +325,7 @@ The
 Getting started with CollisionCheck
 
  tutorial shows how to integrate ItemPick with the CollisionCheck
-component. When the collision checking is enabled, all detected grasp
+module. When the collision checking is enabled, all detected grasp
 points are checked for collisions between the gripper geometry and the
 load carrier.
 
@@ -355,7 +334,7 @@ Note: The x axis of a grasp computed by ItemPick corresponds to the
 
   grasp ellipse
 
-  . When configuring a gripper in the CollisionCheck component, the x
+  . When configuring a gripper in the CollisionCheck module, the x
   axis of the gripper should be set along the longest gripper
   elongation, in order to match the orientation of the computed
   grasps.
@@ -484,17 +463,13 @@ Note: The "load_carrier_compartment" argument can not be specified
 
   Try Out
 
-   section of Web GUI's
-
-  ItemPick
-
-   tab.
+   section of Web GUI's Modules ‣ ItemPick page.
 
 The compartment is a box whose "pose" is defined with respect to the
 load carrier reference frame. In this section we show how to select
 the compartment in
 
-Fig. 24
+Fig. 23
 
 .
 
@@ -704,7 +679,7 @@ rc_visard
      }
    }' | ConvertTo-Json -Depth 6
 
-Troublehooting
+Troubleshooting
 
 The load carrier rim is not visible in the depth image
 

@@ -9,17 +9,9 @@ dimensions is 2.0 m x 2.0 m x 2.0 m.
 
 
 The easiest and recommended way to configure a load carrier is using
-the
-
-LoadCarrier
-
- module within the Web GUI. As an alternative, we also introduce the
-programmatic interface using the
-
-rc_load_carrier
-
- module, which offers three services for managing load carriers via
-the
+the Modules ‣ LoadCarrier page of the Web GUI. As an alternative, we
+also introduce the programmatic interface of the LoadCarrier module,
+which offers three services for managing load carriers via the
 
 rc_visard
 
@@ -58,9 +50,9 @@ Load carriers with a solid rim
 
 The first model is the load carrier at the top left corner of
 
-Fig. 16
+Fig. 15
 
-. It will be configured with the unique id
+. It will be configured with the unique ID
 
 my-load-carrier1
 
@@ -219,9 +211,9 @@ Load carriers with a stepped rim
 
 The second model is the load carrier at the top right corner of
 
-Fig. 16
+Fig. 15
 
-. This load carrier will be configured with the unique id
+. This load carrier will be configured with the unique ID
 
 my-load-carrier2
 
@@ -236,7 +228,7 @@ difference between outer and inner dimensions. For this reason, we
 additionally need to specify the thickness values, which is
 approximately 0.013 m in both directions. The rim step height (the
 height of the step between the outer and the inner part of the rim) is
-0.02m.
+0.02 m.
 
 If not specified, the rim thickness is automatically computed from the
 difference between outer and inner dimensions, as it was the case for
@@ -420,7 +412,7 @@ carrier pose does not change. Setting the exact pose lowers latency
 and helps when working with load carriers that are hard to detect, for
 example transparent load carriers or load carriers with a very thin
 rim. The orientation prior should be used when the load carrier is not
-placed horizontally to facilitate the detection of the load carrier.
+placed horizontally, to facilitate the detection of the load carrier.
 Incorporating the exact pose of the load carrier is discussed below.
 Suppose the load carrier is set exactly at the following position:
 
@@ -428,13 +420,10 @@ Translation: 0 x 0 x 50.0 cm
 
 Rotation (as quaternion):  0, 0, 0, 1
 
-These values can be directly entered in the Web GUI's
-
-Load Carrier
-
- page after activating "Set Pose" and choosing "Exact Pose" as pose
-type. Furthermore, the values can be communicated programatically
-through the REST-API, as outlined below:
+These values can be directly entered in the Web GUI's Modules ‣
+LoadCarrier page after activating "Set Pose" and choosing "Exact Pose"
+as pose type. Furthermore, the values can be communicated
+programmatically through the REST-API, as outlined below:
 
 REST-API request for configuring the pose of my-load-carrier1
 
@@ -442,7 +431,7 @@ REST-API
 
 To trigger the "set_load_carrier" service via the REST-API for
 
-my-load-carrier2
+my-load-carrier1
 
 , one needs to send a PUT request to the URL "http://<rc-visard-
 ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
@@ -457,22 +446,17 @@ The PUT body should include the following data, in JSON:
    {
      "args": {
        "load_carrier": {
-         "id": "my-load-carrier2",
+         "id": "my-load-carrier1",
          "outer_dimensions": {
-           "x": 0.3,
-           "y": 0.2,
-           "z": 0.147
+           "x": 0.4,
+           "y": 0.3,
+           "z": 0.22
          },
          "inner_dimensions": {
-           "x": 0.243,
-           "y": 0.162,
-           "z": 0.1295
+           "x": 0.37,
+           "y": 0.27,
+           "z": 0.215
          },
-         "rim_thickness": {
-           "x": 0.013,
-           "y": 0.013
-         },
-         "rim_step_height": 0.02,
          "pose_frame": "camera",
          "pose": {
            "position": {
@@ -488,7 +472,7 @@ The PUT body should include the following data, in JSON:
            }
          },
          "pose_type": "EXACT_POSE"
-         }
+       }
      }
    }
 
@@ -501,15 +485,14 @@ rc_visard.
 
 The following values are required to fill the request to the REST-API:
 node rc_load_carrier  service set_load_carrier  service args  {
-"args": {     "load_carrier": {       "id": "my-load-carrier2",
-"outer_dimensions": {         "x": 0.3,         "y": 0.2,         "z":
-0.147       },       "inner_dimensions": {         "x": 0.243,
-"y": 0.162,         "z": 0.1295       },       "rim_thickness": {
-"x": 0.013,         "y": 0.013       },       "rim_step_height": 0.02,
-"pose_frame": "camera",       "pose": {         "position": {
-"x": 0,           "y": 0,           "z": 0.50         },
-"orientation": {           "x": 0,           "y": 0,           "z": 0,
-"w": 1         }       },       "pose_type": "EXACT_POSE"       } }  }
+"args": {     "load_carrier": {       "id": "my-load-carrier1",
+"outer_dimensions": {         "x": 0.4,         "y": 0.3,         "z":
+0.22       },       "inner_dimensions": {         "x": 0.37,
+"y": 0.27,         "z": 0.215       },       "pose_frame": "camera",
+"pose": {         "position": {           "x": 0,           "y": 0,
+"z": 0.50         },         "orientation": {           "x": 0,
+"y": 0,           "z": 0,           "w": 1         }       },
+"pose_type": "EXACT_POSE"     }   } }
 
 curl (Linux)
 
@@ -524,22 +507,17 @@ rc_visard
    "{ \
        \"args\": { \
            \"load_carrier\": { \
-               \"id\": \"my-load-carrier2\", \
+               \"id\": \"my-load-carrier1\", \
                \"outer_dimensions\": { \
-                   \"x\": 0.3, \
-                   \"y\": 0.2, \
-                   \"z\": 0.147 \
+                   \"x\": 0.4, \
+                   \"y\": 0.3, \
+                   \"z\": 0.22 \
                }, \
                \"inner_dimensions\": { \
-                   \"x\": 0.243, \
-                   \"y\": 0.162, \
-                   \"z\": 0.1295 \
+                   \"x\": 0.37, \
+                   \"y\": 0.27, \
+                   \"z\": 0.215 \
                }, \
-               \"rim_thickness\": { \
-                   \"x\": 0.013, \
-                   \"y\": 0.013 \
-               }, \
-               \"rim_step_height\": 0.02, \
                \"pose_frame\": \"camera\", \
                \"pose\": { \
                  \"position\": { \
@@ -576,22 +554,17 @@ curl
    "{ ^
        \"args\": { ^
            \"load_carrier\": { ^
-               \"id\": \"my-load-carrier2\", ^
+               \"id\": \"my-load-carrier1\", ^
                \"outer_dimensions\": { ^
-                   \"x\": 0.3, ^
-                   \"y\": 0.2, ^
-                   \"z\": 0.147 ^
+                   \"x\": 0.4, ^
+                   \"y\": 0.3, ^
+                   \"z\": 0.22 ^
                }, ^
                \"inner_dimensions\": { ^
-                   \"x\": 0.243, ^
-                   \"y\": 0.162, ^
-                   \"z\": 0.1295 ^
+                   \"x\": 0.37, ^
+                   \"y\": 0.27, ^
+                   \"z\": 0.215 ^
                }, ^
-               \"rim_thickness\": { ^
-                   \"x\": 0.013, ^
-                   \"y\": 0.013 ^
-               }, ^
-               \"rim_step_height\": 0.02,^
                \"pose_frame\": \"camera\",^
                \"pose\": {^
                  \"position\": {^
@@ -624,22 +597,17 @@ rc_visard
    {
      "args": {
        "load_carrier": {
-         "id": "my-load-carrier2",
+         "id": "my-load-carrier1",
          "outer_dimensions": {
-           "x": 0.3,
-           "y": 0.2,
-           "z": 0.147
+           "x": 0.4,
+           "y": 0.3,
+           "z": 0.22
          },
          "inner_dimensions": {
-           "x": 0.243,
-           "y": 0.162,
-           "z": 0.1295
+           "x": 0.37,
+           "y": 0.27,
+           "z": 0.215
          },
-         "rim_thickness": {
-           "x": 0.013,
-           "y": 0.013
-         },
-         "rim_step_height": 0.02,
          "pose_frame": "camera",
          "pose": {
            "position": {

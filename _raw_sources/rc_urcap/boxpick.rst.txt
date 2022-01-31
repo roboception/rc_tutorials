@@ -30,7 +30,7 @@ ComputeGrasps
   :align: center
 
 
-It is mandatory to set the minimum and maximum length and width of the item model. If necessary enter a load carrier id and/or a region of interest id, but it's not mandatory.
+It is mandatory to set the minimum and maximum length and width of the item model. If necessary enter a load carrier ID and/or a region of interest ID, but it's not mandatory.
 
 If the CollisionCheck license is available on the sensor it is also possible to set the gripper and pre grasp offset for the collision check.
 
@@ -65,7 +65,7 @@ GetBpLcPose
   :width: 800px
   :align: center
 
-This function requires that ComputeGrasps has been triggered with a load carrier id. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose will be (p[0,0,0,0,0,0]) is returned.
+This function requires that ComputeGrasps has been triggered with a load carrier ID. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose will be (p[0,0,0,0,0,0]) is returned.
 
 .. note::
   When the **Stop program when pose is not available** checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.

@@ -160,7 +160,7 @@ Option 1: The |rc_visard|'s |webgui|
 
 The easiest way to access and permanently change the |rc_visard|'s network settings
 using a graphical user interface is its |webgui|. The network settings can be found
-on the *System* tab. Here, you can easily check the currently applied
+on the :menuselection:`System --> Network Settings` page. Here, you can easily check the currently applied
 IP configuration method and change the network settings according to your local
 network.
 

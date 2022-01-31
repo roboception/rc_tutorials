@@ -30,8 +30,8 @@ In order to go through this tutorial, the following prerequisites should be met:
 .. rubric:: The |rc_visard| is properly configured:
 
 #. The |rc_visard|'s image version is at least 20.04 and the |rc_visard|'s license includes the
-   |collision| and |itempick| components.
-   This can be verified on the :ref:`sect-web-gui`'s *System* tab.
+   |collision| and |itempick| modules.
+   This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 .. rubric:: The previous tutorial :ref:`collision_check_gripper_creation` has been completed.
 
@@ -44,27 +44,28 @@ Checking collisions
 ---------------------
 
 .. Note::
-  To show the results of the |collision| module, we will use the *Try Out* section of the |itempick| module's :ref:`sect-web-gui`.
+  To show the results of the |collision| module, we will use the *Try Out* section
+  of the |webgui|'s :menuselection:`Modules --> ItemPick` page.
   More details on how to use |collision|
   with other modules are available in their tutorials and the manual. For using |collision| as a standalone product
   check the :doc:`rcvisard:collisioncheck` manual.
 
-After the gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the *Try Out* section of the
-|webgui|'s |itempick| tab, we choose "Grasp Point Detection" as detection type. Then we define the suction surface width and height corresponding
-to the real dimensions of the gripper's suction cup. After that, we choose the load carrier and gripper as shown on :numref:`fig-collision-tryout`.
+After gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the *Try Out* section of the
+|webgui|'s :menuselection:`Modules --> ItemPick` page, define the suction surface length and width corresponding
+to the real dimensions of the gripper's suction cup. After that, select the load carrier and gripper as shown in :numref:`fig-collision-tryout`.
 
-After clicking on the "Detect Grasp Points" button, only the collision-free grasps are returned.
+After clicking on the :guilabel:`Detect Grasp Points` button, only the collision-free grasps are returned.
 
 .. _fig-collision-tryout:
 .. figure:: ../images/collisioncheck/try_out_ip_collision.png
    :width: 700px
    :align: center
 
-   ItemPick tryout section
+   ItemPick Try Out section
 
-In the visualization images the colliding grasps are drawn as red points and black ellipses as shown in
-:numref:`fig-collision-tryout-results`, but will not be listed in the 'Result of Grasp Point Detection' section.
-To get all detected grasps it is necessary to run the detection without the collision check, i.e. without selecting a gripper.
+In the visualization images, the colliding grasps are drawn as red points and black ellipses as shown in
+:numref:`fig-collision-tryout-results`, but will not be listed in the 'Result of Grasp Point Detection' table.
+To get all detected grasps, users should trigger a new detection without selecting a gripper.
 
 .. _fig-collision-tryout-results:
 .. figure:: ../images/collisioncheck/grasp_points_collision_check.jpg
@@ -76,8 +77,8 @@ To get all detected grasps it is necessary to run the detection without the coll
 Setting a pre-grasp offset
 ..........................
 
-The ``pre_grasp_offset`` argument on the |webgui|'s ItemPick and BoxPick tabs can be used for additionally
-checking if the gripper is in collision with
+The ``pre_grasp_offset`` argument on the |webgui|'s :menuselection:`Modules --> ItemPick` page
+can be used for additionally checking if the gripper is in collision with
 the load carrier at any point during a linear motion from the pre-grasp position to the grasp position.
 The pre-grasp offset is the offset from the grasp position to the pre-grasp position in the grasp's coordinate frame.
 If this value is set to (0,0,0), collisions will only be checked at the grasp points.
@@ -94,8 +95,9 @@ If this value is set to (0,0,0), collisions will only be checked at the grasp po
 Configuring parameters
 -----------------------
 
-The parameters for collision checking are set in the |webgui|'s |collision| tab or via the |rest-api| interface,
-no matter if the module is used as a standalone product or as a part of the ItemPick or BoxPick modules.
+The parameters for collision checking are set in the |webgui|'s :menuselection:`Configuration --> CollisionCheck` page
+or via the |rest-api| interface,
+no matter if the module is used as a standalone product or as a part of any rc_reason module.
 Details are given in the manual in :ref:`sect-collisioncheck-parameters`.
 
 .. _collision-check_collision_distance:

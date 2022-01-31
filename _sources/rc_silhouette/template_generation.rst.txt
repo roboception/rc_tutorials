@@ -44,7 +44,7 @@ Place the object on a flat, monochrome surface in contrasting color.
 Place 3 AprilTags on the surface to form a triangle around the object.
 A sample background with AprilTags can be downloaded here.
 
-Connect the rc_visard to your PC and open the Camera tab in the Web
+Connect the rc_visard to your PC and open the Camera page in the Web
 GUI.
 
 Place the rc_visard perpendicular to the flat surface on which the
@@ -55,9 +55,9 @@ in both the left and right camera images. The distance should be
 increased if the object is not fully visible at the recommended
 distance.
 
-In the Camera tab, select an Exposure region around the object and
+In the Camera page, select an Exposure region around the object and
 check the illumination of the scene. To get the best result, the gain
-of the rc_visard should be 0 db (see Exposure and Gain Settings) and
+of the rc_visard should be 0 dB (see Exposure and Gain Settings) and
 the object should not cast any significant shadow.    Sample scene
 with proper lighting conditions. The gain value is 0 dB and there are
 no shadows on the object and its vicinity.    Sample scene with too
@@ -65,8 +65,11 @@ little light. The gain value is too high.    Sample scene with too
 strong direct light. The object casts shadows.
 
 All the data necessary for the template generation can be downloaded
-through the Web GUI in the camera tab by clicking on the camera button
-below the images.
+through the Web GUI in the
+
+Camera
+
+ page by clicking on the camera button below the images.
 
 Measuring the object height
 
@@ -96,12 +99,18 @@ For recording the scene, 3
 
 AprilTags
 
- should be placed in the field of view of both cameras. If a RandomDot
-Projector is available, the plane calibration can also be performed
-using depth data. In this case, the RandomDot Projector should be
-setup as described in the
+ should be placed in the field of view of both cameras. If a
 
-Obtain dense depth images with the RandomDot Projector
+rc_randomdot
+
+ projector is available, the plane calibration can also be performed
+using depth data. In this case, the
+
+rc_randomdot
+
+ projector should be setup as described in the
+
+Obtain dense depth images with the rc_randomdot projector
 
  tutorial and the Out 1 mode of the
 
@@ -120,15 +129,11 @@ Use the
 
 Download snapshot
 
- button in camera tab (
+ button in the
 
-rc_visard
+Camera
 
- image version 20.04.0 or newer) or follow the
-
-Recording data with the rc_visard
-
- tutorial to capture the required images.
+ page of the Web GUI.
 
 Without the rc_visard
 

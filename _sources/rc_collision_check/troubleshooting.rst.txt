@@ -7,13 +7,3 @@ Try setting the "check_bottom" parameter to false as described in
 Check Bottom
 
 .
-
-My gripper has elements that cannot be modeled in the Web GUI
-
-The gripper creator in the Web GUI does not allow modeling rotations
-in the gripper elements. If it is required to add this kind of
-elements, the REST-API interface can be used as described in
-
-CollisionCheck
-
-.

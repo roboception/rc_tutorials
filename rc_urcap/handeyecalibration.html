@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hand-Eye Calibration &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Hand-Eye Calibration &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -45,10 +45,16 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Generic rc_visard node" href="rc_visard.html"/>
@@ -72,7 +78,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -82,7 +88,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -111,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hand-Eye Calibration</a><ul>
@@ -130,7 +137,6 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -145,7 +151,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -173,9 +179,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+          <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
         
       <li>Hand-Eye Calibration</li>
     
@@ -203,7 +209,7 @@
 </div>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
-<p>This tutorials assumes that the tutorials <a class="reference internal" href="gettingstarted.html#ur-getting-started"><span class="std std-ref">Getting started</span></a> and <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of Image Parameters</span></a> have been completed.</p>
+<p>This tutorials assumes that the tutorials <a class="reference internal" href="gettingstarted.html#ur-getting-started"><span class="std std-ref">Getting started</span></a> and <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of image parameters</span></a> have been completed.</p>
 </div>
 <div class="section" id="externally-mounted-sensor-mounting-the-calibration-grid">
 <h2>Externally mounted sensor - mounting the calibration grid<a class="headerlink" href="#externally-mounted-sensor-mounting-the-calibration-grid" title="Permalink to this headline">¶</a></h2>
@@ -211,11 +217,11 @@
 The grid should be mounted firmly with the positioning hole pointing towards the middle of the calibration grid in direction of the shorter side.</p>
 <div class="figure align-center" id="id1">
 <span id="urcap-ur-calibration-grid-mounting"></span><a class="reference internal image-reference" href="../_images/ur_calibration_grid_mounting.jpg"><img alt="../_images/ur_calibration_grid_mounting.jpg" src="../_images/ur_calibration_grid_mounting.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Flange positioning hole pointing towards the middle of the calibration grid of the shorter side..</span></p>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Flange positioning hole pointing towards the middle of the calibration grid of the shorter side..</span></p>
 </div>
 <div class="figure align-center" id="id2">
 <span id="urcap-calibration-grid-image"></span><a class="reference internal image-reference" href="../_images/calibration_grid.jpg"><img alt="../_images/calibration_grid.jpg" src="../_images/calibration_grid.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Calibration grid mounted on robot.</span></p>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Calibration grid mounted on robot.</span></p>
 </div>
 </div>
 <div class="section" id="sensor-mounted-on-the-robot-mounting-the-sensor">
@@ -243,15 +249,15 @@ For the calibration with robot mounted sensor, user has to specify the payload i
 </ol>
 <div class="figure align-center" id="id3">
 <span id="urcap-calibration-parameters-image"></span><a class="reference internal image-reference" href="../_images/calibration_parameters.png"><img alt="../_images/calibration_parameters.png" src="../_images/calibration_parameters.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Calibration parameters.</span></p>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Calibration parameters.</span></p>
 </div>
 <div class="figure align-center" id="id4">
 <span id="urcap-calibration-store-pose-image"></span><a class="reference internal image-reference" href="../_images/calibration_store_pose.png"><img alt="../_images/calibration_store_pose.png" src="../_images/calibration_store_pose.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">Set pose.</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Set pose.</span></p>
 </div>
 <div class="figure align-center" id="id5">
 <span id="urcap-calibration-successful-image"></span><a class="reference internal image-reference" href="../_images/calibration_successful.png"><img alt="../_images/calibration_successful.png" src="../_images/calibration_successful.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 52 </span><span class="caption-text">Calibration result.</span></p>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Calibration result.</span></p>
 </div>
 </div>
 </div>
@@ -278,7 +284,7 @@ For the calibration with robot mounted sensor, user has to specify the payload i
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -298,7 +304,7 @@ For the calibration with robot mounted sensor, user has to specify the payload i
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

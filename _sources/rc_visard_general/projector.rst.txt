@@ -1,4 +1,4 @@
-Obtain dense depth images with the RandomDot Projector
+Obtain dense depth images with the rc_randomdot projector
 
 This tutorial shows how to set up the
 
@@ -6,7 +6,7 @@ rc_visard
 
  with the
 
-RandomDot Projector
+rc_randomdot projector
 
  to increase the density of depth images, as shown in
 
@@ -18,7 +18,7 @@ little or no visual texture.
 
 Note: This tutorial assumes that the previous tutorial
 
-  Tuning of Image Parameters
+  Tuning of image parameters
 
    has been completed.
 
@@ -27,31 +27,41 @@ Before we start
 Before going through this tutorial, the following prerequisites should
 be met.
 
-The rc_visard's has the latest firmware image and the rc_visard's
-license includes the IOControl component. This can be verified on the
-Web GUI's System panel.
+The rc_visard has the latest firmware image and the rc_visard's
+license includes the IOControl module. This can be verified on the
+System ‣ Firmware & License page of the Web GUI.
 
-The RandomDot Projector, the network cable connecting it to the
+The rc_randomdot projector, the network cable connecting it to the
 rc_visard, and a 24 V, 60 W power supply are available.
 
 Warning: Please ensure that a 24 V, 60 W power supply is used for
-  powering
+  powering the
 
   rc_visard
 
-   and RandomDot Projector together.
+   and the
 
-Note: The RandomDot Projector is controlled via the GPIO Out 1 of
-  the
+  rc_randomdot
+
+   projector together.
+
+Note: The
+
+  rc_randomdot
+
+   projector is controlled via the GPIO Out 1 of the
 
   rc_visard
 
-   (cfr.
+   (see
 
   IO and Projector Control
 
-  ). In this tutorial, Out 1 mode refers to the RandomDot Projector
-  mode.
+  ). In this tutorial, Out 1 mode refers to the
+
+  rc_randomdot
+
+   projector mode.
 
 Mounting the projector
 
@@ -62,18 +72,21 @@ Installation
 
 .
 
+Note: For projectors sold until 12/2020, the mounting instructions
+  are available on the
+
+  Roboception website
+
+  .
+
 Focusing the projector
 
-For the focus configuration, one should turn the RandomDot Projector
-permanently on. This can be done on the Web GUI's
+For the focus configuration, one should turn the
 
-IOControl
+rc_randomdot
 
- panel available in the
-
-Modules
-
- tab by setting the Out 1 mode to
+ projector permanently on. This can be done on the Configuration ‣
+IOControl page of the Web GUI by setting the Out 1 mode to
 
 High
 
@@ -90,59 +103,83 @@ Fig. 13
 ).
 
 
-Configuring the aperture of the projector
+Configuring the projector brightness
 
-For the aperture configuration, one should set the Exposure mode to
+For tuning the projector brightness, one should set the Out 1 mode to
 
-Auto
+ExposureAlternateActive
 
- in the Web GUI's
+ on the Configuration ‣ IOControl page of the Web GUI. Next, on the
 
 Camera
 
- panel.
+ page, the exposure must be set to
 
-The aperture controls the brightness of the image with the random dot
-pattern and is adjusted by rotating one of the rings of the lens.
+Auto
 
-For its configuration, one should look at the
+ and the
 
-Confidence
+Auto Exposure Mode
 
- image in the Web GUI's
+ to
+
+AdaptiveOut1
+
+.
+
+The text line under the live images on the
+
+Camera
+
+ page now shows the
+
+Out1 Reduction
+
+ value in percent. This value describes the reduction of brightness of
+the image without projection as compared to the image with projection.
+The value should be between 25% to 50%. If the value is outside this
+range, the brightness of the projector should be adapted.
+
+For adapting the projector brightness, the aperture ring of the
+projector lens can be adjusted by rotating it.
+
+After a basic adjustment, the darkest object that is possible in the
+application should be placed in the field of view of the sensor. If
+the dark object is not properly visible in the depth image on the
 
 Depth Image
 
- panel and reduce the aperture as much as possible, while still
-achieving good confidence over the whole image (i.e. as much white
-pixels as possible,
-
-Fig. 14
-
-).
-
+ page of the Web GUI, then the projector brightness must be increased,
+despite high reduction values.
 
 Selecting projector working mode
 
 Single shot mode
 
 If the projector is used in combination with rc_reason modules
-(ItemPick, BoxPick or SilhouetteMatch) it can work in a single shot
+(ItemPick, BoxPick or SilhouetteMatch), it can work in a single shot
 mode. This means that it will only be activated on demand when the
-module request a new depth images.
+module requests a new depth image.
 
-To enable this mode the Single + Out1 Acquisition Mode has to be
-chosen in Depth Image tab.
+This mode is enabled by setting the
+
+Acquisition Mode
+
+ to
+
+Single + Out1
+
+ in the
+
+Depth Image
+
+ page of the Web GUI.
 
 Continuous mode
 
 If the projector has to be used in continuous mode (stereo matching is
-performed continuously without a trigger) the proper Out 1 mode in Web
-GUI's
-
-IOControl
-
-  has to be set.
+performed continuously without a trigger), the proper Out 1 mode in
+the Web GUI's Configuration ‣ IOControl page has to be set.
 
 By default, the Out 1 mode of the
 
@@ -158,10 +195,14 @@ Typically, the user needs to select the
 
 ExposureAlternateActive
 
- Out 1 mode, in which the RandomDot Projector is on only for the
-exposure time of every second image. Images with projected pattern are
-used for computing depth images. Images without projected pattern can
-be used as texture or for other image processing modules.
+ Out 1 mode, in which the
+
+rc_randomdot
+
+ projector is on only for the exposure time of every second image.
+Images with projected pattern are used for computing depth images.
+Images without projected pattern can be used as texture or for other
+image processing modules.
 
 Configuring the exposure
 
@@ -169,17 +210,23 @@ As last step, one needs to go back to the Web GUI's
 
 Camera
 
- panel and set the exposure time, either manually, as explained in the
+ page and set the exposure time, either manually, as explained in the
 
 Exposure and Gain Settings
 
  section of the
 
-Tuning of Image Parameters
+Tuning of image parameters
 
  tutorial, or automatically using the auto exposure. In this case, the
-Auto Exposure Mode should be set to AdaptiveOut1 to avoid over
-exposure due to the projector.
+
+Auto Exposure Mode
+
+ should be set to
+
+AdaptiveOut1
+
+ to avoid over exposure due to the projector.
 
 Note: If the exposure is configured to automatic mode, when the
   projector is turned on, it may take a few seconds until the exposure
@@ -188,8 +235,12 @@ Note: If the exposure is configured to automatic mode, when the
 More optimization tricks
 
 In some cases, the density of the depth image can be further optimized
-by changing the focus of the RandomDot Projector to introduce some
-blur in the projected pattern. This can be done while looking at the
+by changing the focus of the
+
+rc_randomdot
+
+ projector to introduce some blur in the projected pattern. This can
+be done while looking at the
 
 Confidence
 
@@ -197,17 +248,34 @@ Confidence
 
 Depth Image
 
- panel and trying to obtain as much white pixels as possible.
+ page and trying to obtain as many white pixels as possible.
 
 If the camera image includes highlights that are not reconstructed in
 the depth image (
 
-Fig. 15
+Fig. 14
 
 ), one can verify whether these highlights are introduced by the
-RandomDot Projector (e.g. by simply turning the projector off). In
-such case, we recommend to change the mounting of the RandomDot
-Projector, in order to have a different angle between the
+
+rc_randomdot
+
+ projector (e.g. by simply turning the projector off). In such cases,
+we recommend using the
+
+Double-Shot
+
+ mode that is available on the
+
+Depth Image
+
+ page.
+
+Alternatively, the mounting of the
+
+rc_randomdot
+
+ projector could be changed in order to have a different angle between
+the
 
 rc_visard
 

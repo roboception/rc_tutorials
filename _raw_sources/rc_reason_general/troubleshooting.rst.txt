@@ -13,7 +13,7 @@ FAQs and troubleshooting
    load carrier is parallel to the baseline of the stereo system. It can be easily determined if
    this the case by slightly rotating the load carrier and observing if the
    orientation has an effect on the appearance of the object in the depth image.
-   When this happens, the :ref:`RandomDot projector<general-projector>` can be
+   When this happens, the :ref:`rc_randomdot projector<general-projector>` can be
    added to the |rcvisard| to increase the depth image density.
 
    .. figure:: ../images/itempick/load_carrier_rim_missing.png
@@ -27,7 +27,7 @@ FAQs and troubleshooting
      * Is the load carrier fully visible in both the left and right camera image?
      * Does the load carrier rim appear in the depth image? (cfr. :ref:`itempick-bin-picking-no-robot-setup`)
      * Is the load carrier inside the region of interest (if specified)?
-     * Are the dimensions of the load carrier model correct? (cfr. :ref:`itempick-bin-picking-no-robot-configure`)
+     * Are the dimensions of the load carrier model correct? (cfr. :ref:`general-lc-config`)
 
        The manufacturer's dimensions might not be completely accurate. If the load carrier is not
        detected, we recommended to double check the configured dimensions.
@@ -42,23 +42,23 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **The load carrier is not placed on a horizontal surface**
 
-   By default, |rc_load_carrier| assumes that the load carrier is located on a horizontal
+   By default, the LoadCarrier module assumes that the load carrier is located on a horizontal
    surface. If that's not the case, one needs to provide the load carrier orientation as a prior
    with the load carrier model. The orientation prior can be set in the
-   |webgui| under the *LoadCarrier* module and via the |restapi| which is
+   |webgui|'s :menuselection:`Modules --> LoadCarrier` page and via the |restapi|, which is
    described in the following.
 
-   Two sample cases are shown in :numref:`fig-itempick-faq-tilted-lc` for the *external* pose frame
+   Two sample cases are shown in :numref:`fig-loadcarrier-faq-tilted-lc` for the *external* pose frame
    (left) and the *camera* pose frame (right).
 
-   .. _fig-itempick-faq-tilted-lc:
+   .. _fig-loadcarrier-faq-tilted-lc:
    .. figure:: ../images/itempick/load_carrier_tilted.png
       :width: 700px
       :align: center
 
       Load carrier not placed on a horizontal surface
 
-   In the left case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-ext``)
+   In the left case of :numref:`fig-loadcarrier-faq-tilted-lc`, the load carrier (``tilted-load-carrier-ext``)
    is rotated by an angle :math:`\theta` around the :math:`y`
    axis of the *external* coordinate system. The load carrier orientation is given by the
    following quaternion: :math:`\left[0, \sin(\theta/2), 0, \cos(\theta/2)\right]`.
@@ -67,7 +67,7 @@ FAQs and troubleshooting
        :header: **Request to the REST-API for configuring tilted-load-carrier-ext**
 
        Here we make the assumption that ``tilted-load-carrier-ext`` has the same dimensions of
-       ``my-load-carrier-1`` (cfr. :ref:`itempick-bin-picking-no-robot-configure`) and that the
+       ``my-load-carrier-1`` (cfr. :ref:`loadcarrier-solid-rim`) and that the
        angle :math:`\theta` is 30 deg.
 
        To trigger the ``set_load_carrier`` service via the REST-API for ``tilted-load-carrier-ext``,
@@ -100,14 +100,15 @@ FAQs and troubleshooting
                    "y": 0.25882,
                    "z": 0,
                    "w": 0.96593
-                 },
+                 }
+               },
                "pose_type": "ORIENTATION_PRIOR"
-               }
              }
            }
          }
 
-   In the right case of :numref:`fig-itempick-faq-tilted-lc`, the load carrier (``tilted-load-carrier-cam``) is parallel to the image plane.
+   In the right case of :numref:`fig-loadcarrier-faq-tilted-lc`, the load carrier
+   (``tilted-load-carrier-cam``) is parallel to the image plane.
    Its orientation in the *camera* coordinate system is
    :math:`\left[\sqrt(2)/2, -\sqrt(2)/2, 0, 0\right]`.
 
@@ -115,7 +116,7 @@ FAQs and troubleshooting
        :header: **Request to the REST-API for configuring tilted-load-carrier-cam**
 
        Here we make the assumption that ``tilted-load-carrier-cam`` has the same dimensions of
-       ``my-load-carrier-1`` (cfr. :ref:`itempick-bin-picking-no-robot-configure`).
+       ``my-load-carrier-1`` (cfr. :ref:`loadcarrier-solid-rim`).
 
        To trigger the ``set_load_carrier`` service via the REST-API for ``tilted-load-carrier-ext``,
        one needs to send a PUT request to the URL
@@ -164,9 +165,7 @@ FAQs and troubleshooting
     For significantly deformed load carriers, the detection algorithm might not provide reliable
     results. This can for example be the case of cardboard boxes after several uses.
     An alternative for such cases is to fix the load carrier placement and specify
-    the exact pose of the load carrier (please see the tutorial
-    :ref:`setting-lc-pose` for further discussion).
-
+    the exact pose of the load carrier (please see :ref:`setting-lc-pose` for further discussion).
 
 .. _loadcarrier-faq-grasps-on-lc-floor:
 .. toggle-header::
@@ -175,13 +174,13 @@ FAQs and troubleshooting
    This means that either the load carrier :math:`z` inner dimension is too large or the
    reconstruction of the load carrier floor is noisy.
 
-   To improve the detection result as shown in :numref:`fig-itempick-faq-load-carrier-floor`,
+   To improve the detection result as shown in :numref:`fig-loadcarrier-faq-load-carrier-floor`,
    two options are available:
 
      * Decrease the load carrier :math:`z` inner dimension
      * Increase the ``crop_distace`` parameter (recommended for noisy data)
 
-   .. _fig-itempick-faq-load-carrier-floor:
+   .. _fig-loadcarrier-faq-load-carrier-floor:
    .. figure:: ../images/itempick/load_carrier_floor.png
       :width: 700px
       :align: center
@@ -199,7 +198,7 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **There are multiple load carriers of the same type in the scene**
 
-   In the current implementation, |rc_load_carrier| detects one load carrier
+   In the current implementation, the LoadCarrier module detects one load carrier
    with each ``detect_load_carrier`` or ``detect_filling_level`` request.
    Similarly, the |rc-reason| modules using a load carrier can only detect a
    single load carrier.
@@ -215,6 +214,5 @@ FAQs and troubleshooting
     inside the load carrier by avoiding repeated load-carrier detection over
     multiple frames. The pose of the load carrier can be estimated once and
     then set as an exact pose. Subsequent grasp point computations or object
-    detections use this exact pose without requiring any load-carrier detection
-    anymore. Please see the tutorial :ref:`setting-lc-pose` for further
-    discussion.
+    detections use this exact pose, without requiring any load carrier detection
+    anymore. Please see :ref:`setting-lc-pose` for further discussion.

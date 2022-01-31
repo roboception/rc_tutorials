@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tuning of Image Parameters &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Tuning of image parameters &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -53,13 +53,19 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
-        <link rel="next" title="Recording data with the rc_visard" href="data_recording.html"/>
+        <link rel="next" title="Recording data for evaluation" href="data_recording.html"/>
         <link rel="prev" title="Connecting and configuring rc_visard to a network" href="network_setup.html"/> 
 
   
@@ -80,7 +86,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -90,7 +96,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -117,7 +123,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning of Image Parameters</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning of image parameters</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we Start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#camera-parameters">Camera Parameters</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#frames-per-second-fps">Frames per Second (FPS)</a></li>
@@ -134,16 +140,16 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data for evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with the <em>rc_visard</em> and OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -158,7 +164,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -186,11 +192,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+          <li><a href="overview.html">rc_visard tutorials</a> &gt;</li>
         
-      <li>Tuning of Image Parameters</li>
+      <li>Tuning of image parameters</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -208,7 +214,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tuning-of-image-parameters">
-<span id="general-tuning-image-parameters"></span><h1>Tuning of Image Parameters<a class="headerlink" href="#tuning-of-image-parameters" title="Permalink to this headline">¶</a></h1>
+<span id="general-tuning-image-parameters"></span><h1>Tuning of image parameters<a class="headerlink" href="#tuning-of-image-parameters" title="Permalink to this headline">¶</a></h1>
 <p>Parameters like the frame rate, exposure time and gain factor determine when and how images are captured.
 They have a huge impact on all image processing modules on the <em>rc_visard</em>. Additionally, the quality of
 the depth image can often be improved by tuning stereo matching parameters.</p>
@@ -222,17 +228,16 @@ related to color sensors as most modules are based on monochrome images.</p>
 <li>The Web GUI of the <em>rc_visard</em> should be opened in a Web browser. This can be done with the
 <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
 </ul>
-<p>This tutorial focusses on the Web GUI to set the parameters. It is also possible to use
+<p>This tutorial focuses on the Web GUI to set the parameters. It is also possible to use
 <a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v21.10)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v21.10)"><span>REST-API interface</span></a> for setting the parameters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">After changing parameters, it is necessary to save them in order to make them persistent after reboot.
-This can be done by clicking the ‘save’ button of the corresponding module in the Web GUI.</p>
+<p class="last">All parameter changes are immediately applied and persistent across reboots.</p>
 </div>
 </div>
 <div class="section" id="camera-parameters">
 <span id="general-tuning-camera-parameters"></span><h2>Camera Parameters<a class="headerlink" href="#camera-parameters" title="Permalink to this headline">¶</a></h2>
-<p>The camera panel of the Web GUI shows the left and right images and permits changing and
+<p>The <strong>Camera</strong> page of the Web GUI shows the left and right images and permits changing and
 saving the parameters.</p>
 <div class="section" id="frames-per-second-fps">
 <span id="general-camera-fps"></span><h3>Frames per Second (FPS)<a class="headerlink" href="#frames-per-second-fps" title="Permalink to this headline">¶</a></h3>
@@ -313,7 +318,7 @@ camera image in the Web GUI.</p>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.</span></p>
 </div>
 <p>For setting the exposure region via REST-API, a PUT request must be sent to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/v1/nodes/rc_stereocamera/parameters</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code>
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/v1/nodes/rc_camera/parameters</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code>
 should be replaced by the actual IP of the <em>rc_visard</em>. For setting the exposure region to
 a size of 800x600 pixels that starts in image column 150 and image row 80, the following
 data must be sent:</p>
@@ -355,7 +360,7 @@ PowerShell</div>
 <li><p class="first">Try out the call with the following values:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>node:</strong> <code class="docutils literal notranslate"><span class="pre">rc_stereocamera</span></code></li>
+<li><strong>node:</strong> <code class="docutils literal notranslate"><span class="pre">rc_camera</span></code></li>
 <li><strong>parameters:</strong></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
@@ -373,7 +378,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;[ \</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, \</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, \</span>
@@ -386,7 +391,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;[ ^</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, ^</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, ^</span>
@@ -399,7 +404,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_stereocamera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_camera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">[</span>
 <span class="s1">   { &quot;name&quot;: &quot;exp_offset_x&quot;, &quot;value&quot;: 150 },</span>
 <span class="s1">   { &quot;name&quot;: &quot;exp_offset_y&quot;, &quot;value&quot;:  80 },</span>
@@ -453,7 +458,7 @@ relevant scene parts or on relevant objects must be avoided. Underexposure can b
 </div>
 <div class="section" id="depth-image-tuning">
 <span id="general-tuning-depth-parameters"></span><h2>Depth Image Tuning<a class="headerlink" href="#depth-image-tuning" title="Permalink to this headline">¶</a></h2>
-<p>The depth image panel of the Web GUI shows the left, disparity and confidence image and
+<p>The <strong>Depth Image</strong> page of the Web GUI shows the left, disparity and confidence image and
 permits changing and saving depth image related parameters.</p>
 <div class="section" id="working-range">
 <h3>Working Range<a class="headerlink" href="#working-range" title="Permalink to this headline">¶</a></h3>
@@ -501,7 +506,7 @@ Furthermore, areas may appear invalid if the image noise is stronger than the te
 problems can be solved by setting the exposure and gain settings correctly as explained in
 Section <a class="reference internal" href="#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>.</p>
 <p>A sparse depth image can also be caused by changing lighting conditions, when the
-SingleFrame or SingleFrameOut1 acquisition modes are used.
+<em>SingleFrame</em> or <em>SingleFrameOut1</em> acquisition modes are used.
 For example, if a bright robot arm moves through an
 otherwise dark scene just before image acquisition, the camera images might
 be underexposed and lead to a sparse dense depth image. Users can therefore allow
@@ -534,8 +539,9 @@ the case, then an orientation should be chosen to avoid it.</p>
 texture as well as strongly repetitive texture. Typically, walls and tables are unicolor
 without any texture. Other structures are highly repetitive. Both cases do not permit
 a proper stereo matching process. These objects and scene parts may not be important for the application,
-but if they are, then the only way to capture them is by adding an artificial texture by projection. Random dot
-projectors are best suited in this case, but not discussed in this tutorial.</p>
+but if they are, then the only way to capture them is by adding an artificial texture by projection.
+Random dot projectors, such as the <em>rc_randomdot</em> projector from Roboception, are best suited in this case.
+The <a class="reference internal" href="projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the rc_randomdot projector</span></a> tutorial describes the setup of the <em>rc_randomdot</em> projector.</p>
 </div>
 <div class="section" id="filtering-errors">
 <h4>Filtering errors<a class="headerlink" href="#filtering-errors" title="Permalink to this headline">¶</a></h4>
@@ -572,8 +578,7 @@ as the confidence is the probability that a pixel is not an outlier.</p>
 <div class="section" id="reducing-noise">
 <h3>Reducing Noise<a class="headerlink" href="#reducing-noise" title="Permalink to this headline">¶</a></h3>
 <p>For some applications, it is necessary that the surfaces in the depth image are smooth.
-This is supported by post-processing using a <em>Median</em> filter. Higher values increase
-smoothing but also increase computation time.</p>
+This can be achieved by enabling the <em>Smoothing</em> option.</p>
 <p>Finally, increasing texture also reduces noise in the depth image. As mentioned in the
 <a class="reference internal" href="#general-increasing-density"><span class="std std-ref">Increasing Density</span></a> Section, a separate random dot
 projector can be used to add texture to the scene.</p>
@@ -591,7 +596,7 @@ projector can be used to add texture to the scene.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="data_recording.html" class="btn btn-neutral float-right" title="Recording data with the rc_visard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_recording.html" class="btn btn-neutral float-right" title="Recording data for evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="network_setup.html" class="btn btn-neutral" title="Connecting and configuring rc_visard to a network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -603,7 +608,7 @@ projector can be used to add texture to the scene.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -623,7 +628,7 @@ projector can be used to add texture to the scene.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

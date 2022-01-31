@@ -1,4 +1,4 @@
-Getting started with rc_visard and OpenCV
+Getting started with the rc_visard and OpenCV
 
 This tutorial shows how to get started with the
 

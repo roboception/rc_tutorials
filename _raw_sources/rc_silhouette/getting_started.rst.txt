@@ -5,7 +5,7 @@
 Getting started with |silm|
 ===========================
 
-This tutorial shows how to set up the |rc_visard| to start using the |silm| component and
+This tutorial shows how to set up the |rc_visard| to start using the |silm| module and
 guides the reader to detecting the first objects.
 
 Before we start
@@ -16,8 +16,8 @@ In order to go through this tutorial, the following prerequisites should be met:
 .. rubric:: The |rc_visard| is properly configured:
 
 #. The |rc_visard|'s image version is at least 1.8 and the |rc_visard|'s license includes the
-   |silm| component.
-   This can be verified on the :ref:`sect-web-gui`'s *System* panel.
+   |silm| module.
+   This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 .. rubric:: One or more workpieces have been chosen and the templates for these objects have been
             generated:
@@ -81,7 +81,7 @@ objects belonging to each template.
 Moreover, it is assumed that all objects are right side up, so no objects are flipped.
 
 Good illumination of the scene must be ensured; a gain of 0 db (see :ref:`general-exposure-gain`)
-on the |webgui|'s *Camera* panel indicates that the scene is adequately illuminated.
+on the |webgui|'s **Camera** page indicates that the scene is adequately illuminated.
 It is recommended to use diffuse illumination in order to avoid hard shadows.
 
 .. _silhouettematch-image-params:
@@ -97,7 +97,7 @@ get best quality images.
 For stereo-based base-plane calibration (see :ref:`silhouettematch-calibration`), it's additionally
 required to ensure high quality depth images, which is covered by the tutorial about
 :ref:`general-tuning-depth-parameters`.
-It is recommended to employ a :ref:`RandomDot projector<general-projector>` to allow dense
+It is recommended to employ a :ref:`rc_randomdot projector<general-projector>` to allow dense
 reconstruction of a texture-less base plane.
 
 .. figure:: ../images/silhouette/with-without-projector.jpg
@@ -109,8 +109,8 @@ reconstruction of a texture-less base plane.
    for the texture-less base plane.
 
 |silm| provides best results when the depth image quality is set to High.
-The projector should be operated in `ExposureAlternateActive` mode or the stereo
-should work in `Single + Out1 Acquisition Mode`, meaning that the projected
+The projector should be operated in *ExposureAlternateActive* mode or the stereo
+should work in *Single + Out1 Acquisition Mode*, meaning that the projected
 pattern is not visible in the regular intensity images.
 Otherwise, the projector will interfere with |silm|'s object detection process.
 
@@ -135,7 +135,7 @@ Uploading a template
 ....................
 
 The generated template must be uploaded to the |rc_visard|.
-The most convenient way to do this is via the |webgui|'s |silm| panel.
+The most convenient way to do this is via the |webgui|'s :menuselection:`Modules --> SilhouetteMatch` page.
 See the following video for a walk-through of the uploading process.
 
 .. toggle-header::
@@ -151,7 +151,7 @@ Configuring a region of interest
 ................................
 
 For both base-plane calibration and object detection, a 2D region of interest (ROI) can be applied.
-The |silm| component offers a ROI database, in which ROIs can be stored and referred to during
+The |silm| module offers a ROI database, in which ROIs can be stored and referred to during
 base-plane calibration or object detection by their name.
 
 For configuring a new region of interest, the |webgui| offers an intuitive selection tool, which
@@ -228,7 +228,7 @@ Stereo based
 ............
 
 With Stereo-based base-plane calibration, the point cloud provided by the stereo matching
-component is used.
+module is used.
 |silm| searches for planes in the point cloud and selects either the closest or farthest plane
 from the |rc_visard|, depending on the ``plane_preference`` parameter.
 
@@ -284,12 +284,13 @@ Detecting objects
 
 After base-plane calibration is finished, objects can be detected.
 
-Object detection can be triggered in the *Try Out* section of the |webgui|'s |silm| panel.
+Object detection can be triggered in the *Try Out* section of the |webgui|'s
+:menuselection:`Modules --> SilhouetteMatch` page.
 Triggering via |restapi| is possible as well, as described in
 :ref:`SilhouetteMatch Services <rcvisard:sect-silhouettematch-services>`.
 
 In the *Try Out* section, the template that is to be detected must be selected by its name.
-Then, the detection is triggered with the *Detect* button.
+Then, the detection is triggered with the :guilabel:`Detect Objects` button.
 The result will be shown in the table at the bottom of the page, as well as in the visualization
 images on top.
 

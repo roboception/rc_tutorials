@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with rc_visard and OpenCV &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Getting started with the rc_visard and OpenCV &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -53,14 +53,20 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
-        <link rel="next" title="Obtain dense depth images with the RandomDot Projector" href="projector.html"/>
-        <link rel="prev" title="Recording data with the rc_visard" href="data_recording.html"/> 
+        <link rel="next" title="Obtain dense depth images with the rc_randomdot projector" href="projector.html"/>
+        <link rel="prev" title="Recording data for evaluation" href="data_recording.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,7 +86,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -90,7 +96,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -117,9 +123,9 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data with the <em>rc_visard</em></a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with <em>rc_visard</em> and OpenCV</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of image parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data for evaluation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started with the <em>rc_visard</em> and OpenCV</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compiling-the-example-program">Compiling the example program</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-the-example-program">Running the example program</a></li>
@@ -132,14 +138,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -154,7 +160,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -182,11 +188,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+          <li><a href="overview.html">rc_visard tutorials</a> &gt;</li>
         
-      <li>Getting started with <em>rc_visard</em> and OpenCV</li>
+      <li>Getting started with the <em>rc_visard</em> and OpenCV</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -203,8 +209,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started-with-rc-visard-and-opencv">
-<h1>Getting started with <em>rc_visard</em> and OpenCV<a class="headerlink" href="#getting-started-with-rc-visard-and-opencv" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started-with-the-rc-visard-and-opencv">
+<h1>Getting started with the <em>rc_visard</em> and OpenCV<a class="headerlink" href="#getting-started-with-the-rc-visard-and-opencv" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to get started with the <em>rc_visard</em> and OpenCV.
 We will show how to receive image streams from the <em>rc_visard</em> with OpenCV
 via Roboception’s GenICam Convenience Layer <code class="docutils literal notranslate"><span class="pre">rc_genicam_api</span></code>.</p>
@@ -631,10 +637,10 @@ in order to generate a continuous cv::Mat.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="projector.html" class="btn btn-neutral float-right" title="Obtain dense depth images with the RandomDot Projector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="projector.html" class="btn btn-neutral float-right" title="Obtain dense depth images with the rc_randomdot projector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_recording.html" class="btn btn-neutral" title="Recording data with the rc_visard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="data_recording.html" class="btn btn-neutral" title="Recording data for evaluation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -643,7 +649,7 @@ in order to generate a continuous cv::Mat.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -663,7 +669,7 @@ in order to generate a continuous cv::Mat.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

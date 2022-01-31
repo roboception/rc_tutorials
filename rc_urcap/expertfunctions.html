@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Expert Functions &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Expert Functions &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -45,10 +45,16 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -72,7 +78,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -82,7 +88,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -111,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-Eye Calibration</a></li>
@@ -153,7 +160,6 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 </ul>
 
             
@@ -168,7 +174,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -196,9 +202,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">Universal Robots tutorials</a> &raquo;</li>
+          <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
         
       <li>Expert Functions</li>
     
@@ -256,7 +262,7 @@
 </div>
 <div class="section" id="rc-reset-parameters">
 <h3>rc_reset_parameters<a class="headerlink" href="#rc-reset-parameters" title="Permalink to this headline">¶</a></h3>
-<p>This service resets all parameters of the component to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.</p>
+<p>This service resets all parameters of the module to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.</p>
 <div class="section" id="id3">
 <h4>Input<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -308,9 +314,9 @@
 <ul class="simple">
 <li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
 <li>suc_size - size of the suction cup in millimeters in format [suc_length_m, suc_width_m]</li>
-<li>lc_id - id of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
-<li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>gripper_is - id of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
+<li>lc_id - ID of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
+<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>gripper_is - ID of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
 <li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
@@ -359,9 +365,9 @@
 <ul class="simple">
 <li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
 <li>rectangle - size of the rectangles in mm that should be detected [min_x, min_y, max_x, max_y]</li>
-<li>lc_id - id of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
-<li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>gripper_is - id of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
+<li>lc_id - ID of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
+<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>gripper_is - ID of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
 <li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
@@ -424,7 +430,7 @@
 <ul class="simple">
 <li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
 <li>object_id  -id of the object that should be detected</li>
-<li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
 <li>offset - offset that should be used for calculating the calibration plane</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
@@ -455,7 +461,7 @@
 <ul class="simple">
 <li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
 <li>plane_est - plane estimation method (‘APRILTAG’ or ‘STEREO’)</li>
-<li>roi_id - id of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
+<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
 <li>offset - offset that should be used for calculating the calibration plane</li>
 <li>pose_frame - pose frame that should be used for returned values</li>
 </ul>
@@ -490,7 +496,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -510,7 +516,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -45,8 +45,8 @@ ComputeGrasps
 
 
 It is mandatory to set the minimum and maximum length and width of the
-item model. If necessary enter a load carrier id and/or a region of
-interest id, but it's not mandatory.
+item model. If necessary enter a load carrier ID and/or a region of
+interest ID, but it's not mandatory.
 
 If the CollisionCheck license is available on the sensor it is also
 possible to set the gripper and pre grasp offset for the collision
@@ -103,7 +103,7 @@ GetBpLcPose
 
 
 This function requires that ComputeGrasps has been triggered with a
-load carrier id. It returns the pose of the detected load carrier. If
+load carrier ID. It returns the pose of the detected load carrier. If
 no load carrier is detected, a zero pose will be (p[0,0,0,0,0,0]) is
 returned.
 

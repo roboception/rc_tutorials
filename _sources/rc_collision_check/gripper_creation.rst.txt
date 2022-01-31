@@ -1,9 +1,12 @@
 Setting up the gripper
 
-This tutorial shows how to set up a gripper for the CollisionCheck
-component.
+This tutorial shows how to set up a gripper for the
 
-The gripper in the CollisionCheck component represents the collision
+CollisionCheck
+
+' module.
+
+The gripper in the CollisionCheck module represents the collision
 geometry of the real gripper mounted to the robot. That means, the
 outer geometry of the gripper has to be modeled in a way that it
 completely contains all parts of the robot's gripper, including
@@ -11,7 +14,7 @@ cables, connectors etc.
 
 In this tutorial we will show how to model the sample gripper shown in
 
-Fig. 55
+Fig. 45
 
 .
 
@@ -20,11 +23,7 @@ The easiest way to create a gripper is via the
 
 Web GUI
 
-'s
-
-CollisionCheck
-
- tab. The
+'s Configuration ‣ CollisionCheck page. The
 
 Grippers
 
@@ -45,7 +44,7 @@ Flange radius
 
 The flange radius is the outer radius of the robot's flange (see
 
-Fig. 57
+Fig. 47
 
 ). It is used during a safety check if the "check_flange" parameter is
 enabled (see
@@ -66,7 +65,7 @@ Elements
 
  section (see
 
-Fig. 56
+Fig. 46
 
 ).
 
@@ -129,16 +128,5 @@ now be shown in the
 
 Grippers
 
- section of the
-
-Web GUI
-
-'s
-
-CollisionCheck
-
- tab and can be used in the ItemPick and BoxPick modules.
-
-Troubleshooting
-
-My gripper has elements that cannot be modeled in the Web GUI
+ section of the Web GUI's Configuration ‣ CollisionCheck page and can
+be used in all rc_reason modules.

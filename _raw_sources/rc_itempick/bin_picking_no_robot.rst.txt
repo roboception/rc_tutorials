@@ -2,10 +2,10 @@
 
 .. _itempick-bin-picking-no-robot:
 
-Configuring ItemPick for Bin-Picking
+Configuring ItemPick for bin picking
 ======================================
 
-This tutorial shows how to configure the |itempick| component to work in a bin-picking
+This tutorial shows how to configure the |itempick| module to work in a bin-picking
 application. More specifically, the bin (or so-called Load Carrier)
 is configured in |itempick| and detected in the scene, in order to compute grasps only for items
 inside the bin itself.
@@ -25,7 +25,8 @@ Before we start
 This tutorials assumes that the previous tutorial :ref:`itempick-getting-started` has
 been completed.
 
-In order to go through this tutorial, a bin or so-called load carrier should be available (see :ref:`general-lc-config`).
+In order to go through this tutorial, a bin or so-called load carrier should be available
+(see :ref:`general-lc-config`).
 
 .. _itempick-bin-picking-no-robot-setup:
 
@@ -61,9 +62,9 @@ Detecting the load carrier
 
 After the load carrier has been configured, it is important to check that |itempick| can
 detect the load carrier in the scene.
-The |webgui|'s *ItemPick* tab offers a *Try Out* section
-for this purpose. One simply needs to specify the respective *load carrier id* and hit the *Detect*
-button.
+The |webgui|'s :menuselection:`Modules --> ItemPick` page offers a *Try Out* section
+for this purpose. One simply needs to specify the respective load carrier ID and hit the
+:guilabel:`Detect Grasp Points` button.
 As for the |restapi|, |itempick| offers a
 :ref:`detect_load_carriers<expl-itempick-srv-detect-lc>` service to
 trigger such detections.
@@ -168,7 +169,7 @@ trigger such detections.
 
 
 Detection results -- no matter whether triggered via |webgui| or |restapi| -- are visualized
-in the |webgui|'s *ItemPick* tab as *Load Carriers* image.
+in the |webgui|'s :menuselection:`Modules --> ItemPick` page as *Load Carriers* image.
 Sample detection results for *my-load-carrier1* are shown below.
 The detected load carrier is colored in blue, while its content is highlighted in green
 if inside the load carrier and in red if above the rim (overfill).
@@ -181,7 +182,7 @@ if inside the load carrier and in red if above the rim (overfill).
 
 .. note::
   While the ``detect_load_carriers`` service supports a list of ``load_carrier_ids``
-  as input argument, the current implementation only accepts one *load carrier id*
+  as input argument, the current implementation only accepts one load carrier ID
   in the list.
 
 .. note::
@@ -201,7 +202,7 @@ compute grasps only for objects that are inside the bin.
 
 To this purpose, the additional argument ``load_carrier_id`` should be added to the request to
 the REST-API for the ``compute_grasps`` service. As explained before, this is also possible in
-the *Try Out* section of the |webgui|'s *ItemPick* tab.
+the *Try Out* section of the |webgui|'s :menuselection:`Modules --> ItemPick` page.
 
 .. toggle-header::
   :header: **Request to the REST-API for getting grasps inside my-load-carrier1**
@@ -305,14 +306,14 @@ Computing collision free grasps
 --------------------------------------
 
 The :ref:`collision_check_getting_started` tutorial shows how to integrate |itempick|
-with the |collision| component.
+with the |collision| module.
 When the collision checking is enabled, all detected grasp points are checked
 for collisions between the gripper geometry and the load carrier.
 
 .. note::
   The x axis of a grasp computed by |itempick| corresponds to the longest
   axis of the :ref:`grasp ellipse<fig-itempick-grasp-surface>`.
-  When configuring a gripper in the |collision| component,
+  When configuring a gripper in the |collision| module,
   the x axis of the gripper should be set along the longest gripper elongation,
   in order to match the orientation of the computed grasps.
 
@@ -439,7 +440,7 @@ optional argument ``load_carrier_compartment`` that can be used to this purpose.
 
 .. note::
   The ``load_carrier_compartment`` argument can not be specified in the *Try Out* section of
-  |webgui|'s *ItemPick* tab.
+  |webgui|'s :menuselection:`Modules --> ItemPick` page.
 
 The compartment is a box whose ``pose`` is defined with respect to the load carrier reference frame.
 In this section we show how to select the compartment in :numref:`fig-itempick-lc-compartment`.
@@ -668,8 +669,8 @@ The code below shows how to place a ``compute_grasps`` request for items inside 
       }' | ConvertTo-Json -Depth 6
 
 
-Troublehooting
---------------
+Troubleshooting
+---------------
 
 * :ref:`The load carrier rim is not visible in the depth image<loadcarrier-faq-lc-rim-not-visible>`
 * :ref:`The load carrier is not detected or not detected robustly<loadcarrier-faq-lc-not-detected>`

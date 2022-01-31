@@ -2,7 +2,7 @@ FAQs and troubleshooting
 
 There are no grasps detected on the objects
 
-   Do objects appear in the depth image? (an additional RandomDot
+   Do objects appear in the depth image? (an additional rc_randomdot
    projector might be needed)
 
    Do the workpieces appear in the depth image without holes? (cfr.

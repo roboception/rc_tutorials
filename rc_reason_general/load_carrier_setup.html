@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring the load carrier &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Configuring the load carrier &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -53,10 +53,16 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_reason general tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -80,7 +86,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -90,7 +96,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -128,8 +134,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -144,7 +150,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -172,9 +178,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">rc_reason general tutorials</a> &raquo;</li>
+          <li><a href="overview.html">rc_reason general tutorials</a> &gt;</li>
         
       <li>Configuring the load carrier</li>
     
@@ -199,11 +205,11 @@
 The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-load-carriers"></span><a class="reference internal image-reference" href="../_images/load_carriers.png"><img alt="../_images/load_carriers.png" src="../_images/load_carriers.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Different models of load carriers</span></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Different models of load carriers</span></p>
 </div>
 <p>The easiest and recommended way to configure a load carrier is using the
-<em>LoadCarrier</em> module within the Web GUI. As an alternative, we also introduce
-the programmatic interface using the <em>rc_load_carrier</em> module, which offers
+<span class="menuselection">Modules ‣ LoadCarrier</span> page of the Web GUI. As an alternative,
+we also introduce the programmatic interface of the LoadCarrier module, which offers
 three services for managing load carriers via the <em>rc_visard</em>’s
 <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
@@ -215,9 +221,9 @@ three services for managing load carriers via the <em>rc_visard</em>’s
 <em>BoxPick</em>, <em>CADMatch</em> or <em>SilhouetteMatch</em>). In this section we show how to
 configure two different types of load carriers including some code examples.</p>
 <div class="section" id="load-carriers-with-a-solid-rim">
-<h2>Load carriers with a solid rim<a class="headerlink" href="#load-carriers-with-a-solid-rim" title="Permalink to this headline">¶</a></h2>
+<span id="loadcarrier-solid-rim"></span><h2>Load carriers with a solid rim<a class="headerlink" href="#load-carriers-with-a-solid-rim" title="Permalink to this headline">¶</a></h2>
 <p>The first model is the load carrier at the top left corner of
-<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. It will be configured with the unique id
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 15</span></a>. It will be configured with the unique ID
 <em>my-load-carrier1</em>. The manufacturer’s website reports the following
 dimensions:</p>
 <ul class="simple">
@@ -395,10 +401,10 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 </div>
 <div class="section" id="load-carriers-with-a-stepped-rim">
-<h2>Load carriers with a stepped rim<a class="headerlink" href="#load-carriers-with-a-stepped-rim" title="Permalink to this headline">¶</a></h2>
+<span id="loadcarrier-stepped-rim"></span><h2>Load carriers with a stepped rim<a class="headerlink" href="#load-carriers-with-a-stepped-rim" title="Permalink to this headline">¶</a></h2>
 <p>The second model is the load carrier at the top right corner of
-<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 16</span></a>. This load carrier will be configured with the
-unique id <em>my-load-carrier2</em>. The manufacturer’s website reports the following
+<a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 15</span></a>. This load carrier will be configured with the
+unique ID <em>my-load-carrier2</em>. The manufacturer’s website reports the following
 dimensions:</p>
 <ul class="simple">
 <li>Outer dimensions: 30 x 20 x 14.7 cm</li>
@@ -407,7 +413,7 @@ dimensions:</p>
 <p>In this model, the top load carrier rim is thinner than the actual difference between outer and
 inner dimensions. For this reason, we additionally need to specify the thickness values, which is
 approximately 0.013 m in both directions. The rim step height (the height of
-the step between the outer and the inner part of the rim) is 0.02m.</p>
+the step between the outer and the inner part of the rim) is 0.02 m.</p>
 <p>If not specified, the rim thickness is automatically computed from the difference between outer
 and inner dimensions, as it was the case for <em>my-load-carrier1</em>.</p>
 <p class="toggle-header"><strong>REST-API request for configuring my-load-carrier2</strong></p>
@@ -618,16 +624,16 @@ applications when the load carrier pose does not change. Setting the exact pose
 lowers latency and helps when working with load carriers that are hard to
 detect, for example transparent load carriers or load carriers with a very thin
 rim. The orientation prior should be used when the load carrier is not placed
-horizontally to facilitate the detection of the load carrier. Incorporating the
+horizontally, to facilitate the detection of the load carrier. Incorporating the
 exact pose of the load carrier is discussed below. Suppose the load carrier is
 set exactly at the following position:</p>
 <ul class="simple">
 <li>Translation: 0 x 0 x 50.0 cm</li>
 <li>Rotation (as quaternion):  0, 0, 0, 1</li>
 </ul>
-<p>These values can be directly entered in the Web GUI’s <em>Load Carrier</em> page
+<p>These values can be directly entered in the Web GUI’s <span class="menuselection">Modules ‣ LoadCarrier</span> page
 after activating “Set Pose” and choosing “Exact Pose” as pose type.
-Furthermore, the values can be communicated programatically through the
+Furthermore, the values can be communicated programmatically through the
 REST-API, as outlined below:</p>
 <p class="toggle-header"><strong>REST-API request for configuring the pose of my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
@@ -655,7 +661,7 @@ PowerShell</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
-<p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
 one needs to send a PUT request to the URL
 <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
@@ -663,22 +669,17 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier1&quot;</span><span class="p">,</span>
       <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.22</span>
       <span class="p">},</span>
       <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
-        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.37</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.215</span>
       <span class="p">},</span>
-      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
       <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
       <span class="nt">&quot;pose&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;position&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -694,7 +695,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
         <span class="p">}</span>
       <span class="p">},</span>
       <span class="nt">&quot;pose_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXACT_POSE&quot;</span>
-      <span class="p">}</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -715,25 +716,20 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </li>
 <li><dl class="first docutils">
 <dt><strong>service args</strong></dt>
-<dd><div class="first highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<dd><div class="first last highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;load_carrier&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier2&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my-load-carrier1&quot;</span><span class="p">,</span>
       <span class="nt">&quot;outer_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.147</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.22</span>
       <span class="p">},</span>
       <span class="nt">&quot;inner_dimensions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.243</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.162</span><span class="p">,</span>
-        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.1295</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.37</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">,</span>
+        <span class="nt">&quot;z&quot;</span><span class="p">:</span> <span class="mf">0.215</span>
       <span class="p">},</span>
-      <span class="nt">&quot;rim_thickness&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.013</span><span class="p">,</span>
-        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.013</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;rim_step_height&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span>
       <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
       <span class="nt">&quot;pose&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;position&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -749,11 +745,11 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
         <span class="p">}</span>
       <span class="p">},</span>
       <span class="nt">&quot;pose_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXACT_POSE&quot;</span>
-      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p class="last">}</p>
 </dd>
 </dl>
 </li>
@@ -769,22 +765,17 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
-<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, \</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier1\&quot;, \</span>
 <span class="s2">            \&quot;outer_dimensions\&quot;: { \</span>
-<span class="s2">                \&quot;x\&quot;: 0.3, \</span>
-<span class="s2">                \&quot;y\&quot;: 0.2, \</span>
-<span class="s2">                \&quot;z\&quot;: 0.147 \</span>
+<span class="s2">                \&quot;x\&quot;: 0.4, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.3, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.22 \</span>
 <span class="s2">            }, \</span>
 <span class="s2">            \&quot;inner_dimensions\&quot;: { \</span>
-<span class="s2">                \&quot;x\&quot;: 0.243, \</span>
-<span class="s2">                \&quot;y\&quot;: 0.162, \</span>
-<span class="s2">                \&quot;z\&quot;: 0.1295 \</span>
+<span class="s2">                \&quot;x\&quot;: 0.37, \</span>
+<span class="s2">                \&quot;y\&quot;: 0.27, \</span>
+<span class="s2">                \&quot;z\&quot;: 0.215 \</span>
 <span class="s2">            }, \</span>
-<span class="s2">            \&quot;rim_thickness\&quot;: { \</span>
-<span class="s2">                \&quot;x\&quot;: 0.013, \</span>
-<span class="s2">                \&quot;y\&quot;: 0.013 \</span>
-<span class="s2">            }, \</span>
-<span class="s2">            \&quot;rim_step_height\&quot;: 0.02, \</span>
 <span class="s2">            \&quot;pose_frame\&quot;: \&quot;camera\&quot;, \</span>
 <span class="s2">            \&quot;pose\&quot;: { \</span>
 <span class="s2">              \&quot;position\&quot;: { \</span>
@@ -813,22 +804,17 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
-<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier2\&quot;, ^</span>
+<span class="s2">            \&quot;id\&quot;: \&quot;my-load-carrier1\&quot;, ^</span>
 <span class="s2">            \&quot;outer_dimensions\&quot;: { ^</span>
-<span class="s2">                \&quot;x\&quot;: 0.3, ^</span>
-<span class="s2">                \&quot;y\&quot;: 0.2, ^</span>
-<span class="s2">                \&quot;z\&quot;: 0.147 ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.4, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.3, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.22 ^</span>
 <span class="s2">            }, ^</span>
 <span class="s2">            \&quot;inner_dimensions\&quot;: { ^</span>
-<span class="s2">                \&quot;x\&quot;: 0.243, ^</span>
-<span class="s2">                \&quot;y\&quot;: 0.162, ^</span>
-<span class="s2">                \&quot;z\&quot;: 0.1295 ^</span>
+<span class="s2">                \&quot;x\&quot;: 0.37, ^</span>
+<span class="s2">                \&quot;y\&quot;: 0.27, ^</span>
+<span class="s2">                \&quot;z\&quot;: 0.215 ^</span>
 <span class="s2">            }, ^</span>
-<span class="s2">            \&quot;rim_thickness\&quot;: { ^</span>
-<span class="s2">                \&quot;x\&quot;: 0.013, ^</span>
-<span class="s2">                \&quot;y\&quot;: 0.013 ^</span>
-<span class="s2">            }, ^</span>
-<span class="s2">            \&quot;rim_step_height\&quot;: 0.02,^</span>
 <span class="s2">            \&quot;pose_frame\&quot;: \&quot;camera\&quot;,^</span>
 <span class="s2">            \&quot;pose\&quot;: {^</span>
 <span class="s2">              \&quot;position\&quot;: {^</span>
@@ -857,22 +843,17 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
-<span class="s1">      &quot;id&quot;: &quot;my-load-carrier2&quot;,</span>
+<span class="s1">      &quot;id&quot;: &quot;my-load-carrier1&quot;,</span>
 <span class="s1">      &quot;outer_dimensions&quot;: {</span>
-<span class="s1">        &quot;x&quot;: 0.3,</span>
-<span class="s1">        &quot;y&quot;: 0.2,</span>
-<span class="s1">        &quot;z&quot;: 0.147</span>
+<span class="s1">        &quot;x&quot;: 0.4,</span>
+<span class="s1">        &quot;y&quot;: 0.3,</span>
+<span class="s1">        &quot;z&quot;: 0.22</span>
 <span class="s1">      },</span>
 <span class="s1">      &quot;inner_dimensions&quot;: {</span>
-<span class="s1">        &quot;x&quot;: 0.243,</span>
-<span class="s1">        &quot;y&quot;: 0.162,</span>
-<span class="s1">        &quot;z&quot;: 0.1295</span>
+<span class="s1">        &quot;x&quot;: 0.37,</span>
+<span class="s1">        &quot;y&quot;: 0.27,</span>
+<span class="s1">        &quot;z&quot;: 0.215</span>
 <span class="s1">      },</span>
-<span class="s1">      &quot;rim_thickness&quot;: {</span>
-<span class="s1">        &quot;x&quot;: 0.013,</span>
-<span class="s1">        &quot;y&quot;: 0.013</span>
-<span class="s1">      },</span>
-<span class="s1">      &quot;rim_step_height&quot;: 0.02,</span>
 <span class="s1">      &quot;pose_frame&quot;: &quot;camera&quot;,</span>
 <span class="s1">      &quot;pose&quot;: {</span>
 <span class="s1">        &quot;position&quot;: {</span>
@@ -930,7 +911,7 @@ the load carrier model previously stored.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -950,7 +931,7 @@ the load carrier model previously stored.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

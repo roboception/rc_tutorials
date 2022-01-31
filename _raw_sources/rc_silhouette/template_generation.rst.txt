@@ -52,7 +52,7 @@ The procedure for recording the required data consists of the following steps:
 #. Place 3 :ref:`AprilTags<sect-apriltag>` on the surface to form a triangle around the object.
    A sample background with AprilTags can be downloaded `here <http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf>`_.
 
-#. :ref:`Connect the rc_visard to your PC <general-network>` and open the *Camera* tab in the |webgui|.
+#. :ref:`Connect the rc_visard to your PC <general-network>` and open the **Camera** page in the |webgui|.
 
 #. Place the |rc_visard| perpendicular to the flat surface on which the object lies.
    The recommended distance of the |rc_visard| to the surface depends on the |rc_visard| model:
@@ -64,8 +64,8 @@ The procedure for recording the required data consists of the following steps:
       The object should be visible in both the left and right camera images.
       The distance should be increased if the object is not fully visible at the recommended distance.
 
-#. In the *Camera* tab, select an *Exposure region* around the object and check the illumination of the scene.
-   To get the best result, the gain of the |rc_visard| should be 0 db (see :ref:`general-exposure-gain`)
+#. In the **Camera** page, select an *Exposure region* around the object and check the illumination of the scene.
+   To get the best result, the gain of the |rc_visard| should be 0 dB (see :ref:`general-exposure-gain`)
    and the object should not cast any significant shadow.
 
     .. figure:: ../images/silhouette/screenshot_template_good.jpg
@@ -87,7 +87,8 @@ The procedure for recording the required data consists of the following steps:
 
       Sample scene with too strong direct light. The object casts shadows.
 
-All the data necessary for the template generation can be downloaded through the Web GUI in the camera tab by clicking on the camera button below the images. 
+All the data necessary for the template generation can be downloaded through the Web GUI
+in the **Camera** page by clicking on the camera button below the images.
 
 Measuring the object height
 ---------------------------
@@ -150,8 +151,7 @@ tutorial and the Out 1 mode of the |rcvisard| should be set to *ExposureAlternat
 With the |rc_visard|
 ````````````````````
 
-Use the *Download snapshot* button in camera tab (|rcvisard| image version 20.04.0 or newer) or
-follow the :ref:`data-recording` tutorial to capture the required images.
+Use the *Download snapshot* button in the **Camera** page of the |webgui|.
 
 Without the |rc_visard|
 ```````````````````````

@@ -101,7 +101,7 @@ GetNextGrasp
 This functions requires that Detect has been triggered before. It
 assigns the next available grasp pose and stores the pose in
 PolyScope's variable format (p[x, y, z, rx, ry, rz]). It is also
-possible to store the grasp id associated with this grasp.
+possible to store the grasp ID associated with this grasp.
 
 If no reachable grasp is detected and the
 
@@ -143,7 +143,7 @@ GetLcPose
 
 
 This function requires that Detect has been triggered with a load
-carrier id. It returns the pose of the detected load carrier. If no
+carrier ID. It returns the pose of the detected load carrier. If no
 load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be
 returned.
 

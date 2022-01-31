@@ -5,9 +5,9 @@
 Setting up the gripper
 ===========================
 
-This tutorial shows how to set up a gripper for the |collision| component.
+This tutorial shows how to set up a gripper for the :doc:`rcvisard:collisioncheck`' module.
 
-The gripper in the |collision| component represents the collision geometry of the real gripper mounted to the robot.
+The gripper in the |collision| module represents the collision geometry of the real gripper mounted to the robot.
 That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
 the robot's gripper, including cables, connectors etc.
 
@@ -20,8 +20,9 @@ In this tutorial we will show how to model the sample gripper shown in :numref:`
 
   Sample vacuum gripper to model for collision checking
 
-The easiest way to create a gripper is via the :ref:`sect-web-gui`'s *CollisionCheck* tab. The *Grippers* section lists all defined
-grippers and allows to edit and remove them. To create a new gripper, click on "+ Add a new gripper".
+The easiest way to create a gripper is via the :ref:`sect-web-gui`'s :menuselection:`Configuration --> CollisionCheck` page.
+The *Grippers* section lists all defined grippers and allows to edit and remove them.
+To create a new gripper, click on "+ Add a new gripper".
 
 A dialog window opens that allows creating the gripper. A 3D visualization on the left helps to check the created gripper geometry.
 Initially, it only shows the robot flange with a default radius and the flange coordinate frame.
@@ -97,9 +98,5 @@ Below the TCP offset, the gripper creator displays the position of the TCP in th
 
   Final model of the gripper geometry
 
-The last step of the gripper creation is to save the gripper. It will now be shown in the *Grippers* section of the :ref:`sect-web-gui`'s *CollisionCheck* tab and can be used in the ItemPick and BoxPick modules.
-
-Troubleshooting
----------------
-
-* :ref:`My gripper has elements that cannot be modeled in the Web GUI<collision-faq-complicated-gripper>`
+The last step of the gripper creation is to save the gripper. It will now be shown in the *Grippers* section
+of the |webgui|'s :menuselection:`Configuration --> CollisionCheck` page and can be used in all rc_reason modules.

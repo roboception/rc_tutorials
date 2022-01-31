@@ -5,7 +5,7 @@
 Getting started with ItemPick
 =============================
 
-This tutorial shows how to set up the |rcvisard| to start using the |itempick| component
+This tutorial shows how to set up the |rcvisard| to start using the |itempick| module
 and guides the reader to the computation of the first grasps.
 
 .. _itempick-getting-started-before:
@@ -18,8 +18,8 @@ In order to go through this tutorial, the following prerequisites should be met:
 .. rubric:: The |rcvisard| is properly configured:
 
 #. The |rc_visard|'s image version is at least 1.4 and
-   the |rc_visard|'s license includes the |itempick| component.
-   This can be verified on the :ref:`sect-web-gui`'s *System* tab.
+   the |rc_visard|'s license includes the |itempick| module.
+   This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 .. rubric:: One or more workpieces are in the field of view of the camera. They should meet the following requisites:
 
@@ -29,7 +29,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 #. The workpiece surface appears in the depth image.
    This can be verified by placing the workpiece in front of the |rcvisard| and checking the
-   :ref:`sect-web-gui`'s *Depth image* tab.
+   :ref:`sect-web-gui`'s **Depth image** page.
    If the workpiece presents holes or low confidence regions
    (i.e. average gray pixels in the Confidence image),
    one can follow the :ref:`general-tuning-image-parameters` tutorial.
@@ -60,8 +60,8 @@ The optimal distance to the objects depends on the |rc_visard| model, as shown i
 .. csv-table:: |itempick|'s recommended working range.
 	:header:  , Minimum distance, Maximum distance
 
-	"|rcvisard| 160","0.5 m","1.3 m"
-	"|rcvisard| 65","0.2 m","1.0 m"
+	"|rcvisard| 160m/c","0.5 m","1.3 m"
+	"|rcvisard| 65m/c","0.2 m","1.0 m"
 
 Since the depth accuracy declines quadratically with an object’s distance from the sensor,
 the |rc_visard| should be placed as close to the objects as possible.
@@ -78,12 +78,12 @@ the |rc_visard| should be placed as close to the objects as possible.
 Configuring image parameters
 ----------------------------
 
-Once the scene has been set up, we recommend to check the |webgui|'s *Depth image*
-tab to verify that the images are well-exposed and the depth image is dense
+Once the scene has been set up, we recommend to check the |webgui|'s **Depth image**
+page to verify that the images are well-exposed and the depth image is dense
 with no holes on the workpieces.
 The tutorial :ref:`general-tuning-image-parameters` covers all required steps to get the best quality for stereo and depth images.
 The depth image density can also be increased by adding the
-:ref:`RandomDot projector<general-projector>` to the |rcvisard|.
+:ref:`rc_randomdot projector<general-projector>` to the |rcvisard|.
 
 |itempick| provides its best results when the depth image quality is set to High or Full.
 The Static mode might be beneficial in static scenes, but it increases the data acquisition time.
@@ -103,7 +103,7 @@ Computing the first grasps
 --------------------------
 
 The :ref:`compute_grasps<expl-itempick-srv-compute-grasps>` service of the |itempick| module
-triggers the computation of suction grasps in the scene.
+triggers the computation of suction grasps on the objects in the scene.
 
 This section shows how to place a ``compute_grasps`` request to |itempick|
 using the |rcvisard|'s :ref:`sect-rest-api`. This can be done in :ref:`sect-swagger-ui`,
@@ -112,16 +112,17 @@ using a client library (e.g. from the robot controller).
 In this tutorial we focus on the first two options.
 
 .. note::
-  The ``compute_grasp`` can also be triggered in the ``Try Out`` section of the |webgui|'s *ItemPick* tab.
+  The ``compute_grasp`` service can also be triggered in the *Try Out* section
+  of the |webgui|'s :menuselection:`Modules --> ItemPick` page.
   The required arguments are pre-set with default values,
-  therefore the service can directly be called by hitting the ``Detect`` button.
+  therefore the service can be directly called by hitting the :guilabel:`Detect Grasp Points` button.
 
 In the below examples, the service will be triggered with the minimum set of required arguments.
 For this reason, the results might be sub-optimal
 (e.g. multiple grasps on a single workpiece, or grasps on unwanted objects).
 
-The images in the top section of the |webgui|'s *ItemPick* tab show the results
-of the last successful request to |itempick|.
+The images in the top section of the |webgui|'s :menuselection:`Modules --> ItemPick` page
+show the results of the last successful request to |itempick|.
 
 .. tabs::
 
@@ -229,8 +230,8 @@ of the last successful request to |itempick|.
   the monochrome images provided by the sensor, as shown in the result pictures in :numref:`fig-itempick-getting-started-grasps`.
 
 
-Troublehooting
---------------
+Troubleshooting
+---------------
 
 * :ref:`There are no grasps detected on the objects<faq-itempick-no-grasps>`
 * :ref:`There are too many grasps on one single object<faq-itempick-too-many-grasps>`

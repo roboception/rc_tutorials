@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Recording data with the rc_visard &mdash; Tutorials, FAQs, and more 0.4.0-27-gfab480c
+  <title>Recording data for evaluation &mdash; Tutorials, FAQs &amp; more 0.5.0
  documentation</title>
   
 
@@ -53,14 +53,20 @@
   
 
   
+
+  
+
+  
+
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs, and more 0.4.0-27-gfab480c
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
-        <link rel="next" title="Getting started with rc_visard and OpenCV" href="opencv_example.html"/>
-        <link rel="prev" title="Tuning of Image Parameters" href="parameters.html"/> 
+        <link rel="next" title="Getting started with the rc_visard and OpenCV" href="opencv_example.html"/>
+        <link rel="prev" title="Tuning of image parameters" href="parameters.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,7 +86,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs, and more
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
           
 
           
@@ -90,7 +96,7 @@
             
             
               <div class="version">
-                0.4
+                0.5
               </div>
             
           
@@ -117,8 +123,8 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of Image Parameters</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Recording data with the <em>rc_visard</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of image parameters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Recording data for evaluation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-single-snapshots">Downloading single snapshots</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recording-image-sequences">Recording image sequences</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#before-we-start">Before we start</a></li>
@@ -128,15 +134,15 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with <em>rc_visard</em> and OpenCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the RandomDot Projector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with the <em>rc_visard</em> and OpenCV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 </ul>
 
             
@@ -151,7 +157,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Tutorials, FAQs, and more</a>
+          <a href="../index.html">Tutorials, FAQs & more</a>
         
       </nav>
 
@@ -179,11 +185,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
         
-          <li><a href="overview.html">rc_visard tutorials</a> &raquo;</li>
+          <li><a href="overview.html">rc_visard tutorials</a> &gt;</li>
         
-      <li>Recording data with the <em>rc_visard</em></li>
+      <li>Recording data for evaluation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,26 +206,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="recording-data-with-the-rc-visard">
-<span id="data-recording"></span><h1>Recording data with the <em>rc_visard</em><a class="headerlink" href="#recording-data-with-the-rc-visard" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to record sample data sets with the <em>rc_visard</em>.</p>
+  <div class="section" id="recording-data-for-evaluation">
+<span id="data-recording"></span><h1>Recording data for evaluation<a class="headerlink" href="#recording-data-for-evaluation" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to record sample data sets with the <em>rc_visard</em> as single snapshots or
+image sequences.</p>
 <div class="section" id="downloading-single-snapshots">
 <h2>Downloading single snapshots<a class="headerlink" href="#downloading-single-snapshots" title="Permalink to this headline">¶</a></h2>
+<p>The recommended way to capture a snapshot of the current scene is via the rc_visard’s Web GUI.</p>
+<p>For evaluation of use-cases and support, Roboception requires snapshots taken from the <strong>Depth Image</strong> page
+of the Web GUI.</p>
+<p>A new snapshot of the current scene is downloaded by clicking on the camera icon below the image live streams
+(see <a class="reference internal" href="#fig-webgui-depth-image-snapshot"><span class="std std-numref">Fig. 9</span></a>).
+This will create an archive containing the left and right camera images, the disparity, error and confidence images,
+as well as the current point cloud as a ply file, and the rc_visard’s current parameters.</p>
 <blockquote>
 <div><div class="figure align-center" id="id2">
-<span id="fig-webgui-camera-snapshot"></span><a class="reference internal image-reference" href="../_images/webgui_camera_snapshot.png"><img alt="../_images/webgui_camera_snapshot.png" src="../_images/webgui_camera_snapshot.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Web GUI <em>Camera</em> tab with snapshot button</span></p>
+<span id="fig-webgui-depth-image-snapshot"></span><a class="reference internal image-reference" href="../_images/webgui_depth_image_snapshot.png"><img alt="../_images/webgui_depth_image_snapshot.png" src="../_images/webgui_depth_image_snapshot.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Web GUI <strong>Depth Image</strong> page with snapshot button</span></p>
 </div>
 </div></blockquote>
-<p>For downloading the left and right camera images of the current scene, go to the camera page in the rc_visard’s Web GUI and click on the “Download snapshot” camera button below the images (see <a class="reference internal" href="#fig-webgui-camera-snapshot"><span class="std std-numref">Fig. 9</span></a>). This will create an archive containing the left and right camera images, as well as the rc_visard’s current parameters, which can be downloaded.</p>
-<p>For downloading depth data, go to the depth image page in the rc_visard’s Web GUI and click on the “Download Snapshot” camera button below the images. This will create an archive containing the left and right camera images, the disparity, error and confidence images, as well as the current point cloud as a ply file, and the rc_visard’s current parameters.</p>
+<p>The steps below describe the optimal sensor setup before capturing snapshots:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">In the <strong>Camera</strong> page of the Web GUI</p>
+<blockquote>
+<div><ul class="simple">
+<li>make sure that the Exposure is set to <em>Auto</em></li>
+<li>optionally set an <em>Exposure Region</em> around the objects of interest</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<p>Steps 2 to 5 only apply to users of the <em>rc_randomdot</em> projector</p>
+<blockquote>
+<div><ol class="arabic" start="2">
+<li><p class="first">In the <strong>Camera</strong> page of the Web GUI, set the <em>Auto Exposure Mode</em> to <em>AdaptiveOut1</em></p>
+</li>
+<li><p class="first">Follow the <a class="reference internal" href="projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the rc_randomdot projector</span></a> tutorial to configure the projector</p>
+</li>
+<li><p class="first">In the <strong>Depth Image</strong> page of the Web GUI</p>
+<blockquote>
+<div><ul class="simple">
+<li>select <em>Single+Out1</em> as <em>Acquisition Mode</em></li>
+<li>increase the <em>Exposure Adaptation Timeout</em> to the maximum (2 seconds)</li>
+<li>press the <span class="guilabel">Acquire</span> button a few times</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Back on the <strong>Camera</strong> page of the Web GUI</p>
+<blockquote>
+<div><ul class="simple">
+<li>check that the <em>Out1 Reduction</em> value reported below the live image streams is below 50%.
+If not, decrease the aperture of the <em>rc_randomdot</em> projector, or add more light to the scene.</li>
+<li>increase the <em>Min Brightness</em> value, if the images appear too dark</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<p>Final verification steps for all users</p>
+<blockquote>
+<div><ol class="arabic simple" start="6">
+<li>Check that the <em>Gain</em> reported below the live image streams in the <strong>Camera</strong> page
+is as low as possible (ideally 0 dB). The <em>Gain</em> can be decreased by adding more light to the scene.</li>
+<li>Check that the <em>Confidence Image</em> in the <strong>Depth Image</strong> page is bright on the objects of interest.
+If not, follow the steps described in the <a class="reference internal" href="parameters.html#general-increasing-density"><span class="std std-ref">Increasing Density</span></a> tutorial.</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Users of the <em>rc_reason</em> software modules have also the possibility to download snapshots
+of the last detection from each module’s page in the Web GUI
+(currently available for LoadCarrier, ItemPick, BoxPick, and SilhouetteMatch).</p>
+<p class="last">These snapshots should be provided to Roboception in addition to Depth Image snapshots,
+captured as described above.</p>
+</div>
 </div>
 <div class="section" id="recording-image-sequences">
 <h2>Recording image sequences<a class="headerlink" href="#recording-image-sequences" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The following instructions are only applicably if you want to download image sequences
-(image streams) from the rc_visard. For recording single snapshots, follow the approach above.</p>
+<p class="last">The following instructions are only applicable if you want to download image sequences
+(image streams) from the <em>rc_visard</em>. For recording single snapshots, follow the approach above.</p>
 </div>
 <div class="section" id="before-we-start">
 <h3>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h3>
@@ -580,10 +649,10 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="opencv_example.html" class="btn btn-neutral float-right" title="Getting started with rc_visard and OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="opencv_example.html" class="btn btn-neutral float-right" title="Getting started with the rc_visard and OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="parameters.html" class="btn btn-neutral" title="Tuning of Image Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="parameters.html" class="btn btn-neutral" title="Tuning of image parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -592,7 +661,7 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Roboception GmbH.
+        &copy; Copyright 2022, Roboception GmbH.
 
     </p>
   </div> 
@@ -612,7 +681,7 @@ Try to connect the <em>rc_visard</em> to the host directly.</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0-27-gfab480c',
+            VERSION:'0.5.0',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
