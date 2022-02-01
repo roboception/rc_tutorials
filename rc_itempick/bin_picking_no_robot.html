@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for bin picking &mdash; Tutorials, FAQs &amp; more 0.5.0
+  <title>Configuring ItemPick for bin picking &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
  documentation</title>
   
 
@@ -62,7 +62,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -213,8 +213,8 @@ is configured in ItemPick and detected in the scene, in order to compute grasps 
 inside the bin itself.</p>
 <p>The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
 items inside the load carrier. For this, we will call the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v21.10)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v21.10)"><span>REST-API interface</span></a>.
-This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v21.10)"><span>Swagger UI</span></a>, in command lines or scripts using
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v22.01)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.01)"><span>REST-API interface</span></a>.
+This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v22.01)"><span>Swagger UI</span></a>, in command lines or scripts using
 <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically using a client library
 (e.g. from a robot controller). Here we focus on the first two options.</p>
 <div class="section" id="before-we-start">
@@ -251,7 +251,7 @@ The Web GUI’s <span class="menuselection">Modules ‣ ItemPick</span> page off
 for this purpose. One simply needs to specify the respective load carrier ID and hit the
 <span class="guilabel">Detect Grasp Points</span> button.
 As for the REST-API, ItemPick offers a
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#expl-itempick-srv-detect-lc" title="(in rc_visard v21.10)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+<span class="xref std std-ref">detect_load_carriers</span> service to
 trigger such detections.</p>
 <p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
@@ -540,7 +540,7 @@ for collisions between the gripper geometry and the load carrier.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The x axis of a grasp computed by ItemPick corresponds to the longest
-axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v21.10)"><span class="xref std std-ref">grasp ellipse</span></a>.
+axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v22.01)"><span class="xref std std-ref">grasp ellipse</span></a>.
 When configuring a gripper in the CollisionCheck module,
 the x axis of the gripper should be set along the longest gripper elongation,
 in order to match the orientation of the computed grasps.</p>
@@ -990,7 +990,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0',
+            VERSION:'0.5.0-1-g5c6f5aa',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -240,7 +240,7 @@ The process is described in the <a class="reference internal" href="template_gen
 <div class="section" id="setting-up-the-scene">
 <h2>Setting up the scene<a class="headerlink" href="#setting-up-the-scene" title="Permalink to this headline">¶</a></h2>
 <p>We recommend to mount the <em>rc_visard</em> on a tripod or a static support as explained
-in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v21.10)"><span>Mechanical interface</span></a> description.</p>
+in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v22.01)"><span>Mechanical interface</span></a> description.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The mounting should be stable such that the sensor remains static while SilhouetteMatch acquires data.</p>
@@ -285,7 +285,7 @@ orientation of the base plane relative to the <em>rc_visard</em>
 The scene must be set up such that the base plane can be detected reliably whenever a base-plane
 calibration is performed, as explained in <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>.</p>
 <p>For an <em>rc_visard</em> mounted on a robot, special handling is applied, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v21.10)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v22.01)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/base-plane.jpg"><img alt="../_images/base-plane.jpg" src="../_images/base-plane.jpg" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Examples for good and bad base-plane configurations.
@@ -386,11 +386,11 @@ and right camera image.
 The three tags should span a triangle around the objects, which is as large as possible.</p>
 <p>Only tags of the family “36h11” are detected.
 The minimum size depends on the distance to the tags
-(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v21.10)"><span>Tag reading</span></a> for more information).
+(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v22.01)"><span>Tag reading</span></a> for more information).
 A sample page with AprilTags for printing can be downloaded
 <a class="reference external" href="http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf">here</a>.
 When cutting them out, please make sure to leave a white border around the AprilTags
-(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v21.10)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).
+(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v22.01)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).
 More AprilTags from family “36h11” can be downloaded from the
 <a class="reference external" href="https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11">apriltag-imgs repository</a>.</p>
 <p>The tags should be placed directly on the base plane.
@@ -460,7 +460,7 @@ actual plane.</p>
 <p>Object detection can be triggered in the <em>Try Out</em> section of the Web GUI’s
 <span class="menuselection">Modules ‣ SilhouetteMatch</span> page.
 Triggering via REST-API is possible as well, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v21.10)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v22.01)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
 <p>In the <em>Try Out</em> section, the template that is to be detected must be selected by its name.
 Then, the detection is triggered with the <span class="guilabel">Detect Objects</span> button.
 The result will be shown in the table at the bottom of the page, as well as in the visualization
@@ -601,7 +601,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0',
+            VERSION:'0.5.0-1-g5c6f5aa',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

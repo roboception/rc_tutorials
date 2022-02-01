@@ -80,11 +80,8 @@ Try Out
 
  section for this purpose. One simply needs to specify the respective
 load carrier ID and hit the Detect Grasp Points button. As for the
-REST-API, ItemPick offers a
-
-detect_load_carriers
-
- service to trigger such detections.
+REST-API, ItemPick offers a *detect_load_carriers* service to trigger
+such detections.
 
 REST-API request for detecting my-load-carrier1
 
