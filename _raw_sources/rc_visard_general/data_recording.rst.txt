@@ -8,6 +8,10 @@ Recording data for evaluation
 This tutorial shows how to record sample data sets with the |rc_visard| as single snapshots or
 image sequences.
 
+In order to go through this tutorial, the |rc_visard| must be running the latest firmware
+(version |rcvisard_version|).
+This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
+
 Downloading single snapshots
 ----------------------------
 

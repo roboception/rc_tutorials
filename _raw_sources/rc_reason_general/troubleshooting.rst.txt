@@ -16,7 +16,7 @@ FAQs and troubleshooting
    When this happens, the :ref:`rc_randomdot projector<general-projector>` can be
    added to the |rcvisard| to increase the depth image density.
 
-   .. figure:: ../images/itempick/load_carrier_rim_missing.png
+   .. figure:: ../images/loadcarrier/load_carrier_rim_missing.png
      :width: 500px
      :align: center
 
@@ -25,9 +25,9 @@ FAQs and troubleshooting
    :header: **The load carrier is not detected or not detected robustly**
 
      * Is the load carrier fully visible in both the left and right camera image?
-     * Does the load carrier rim appear in the depth image? (cfr. :ref:`itempick-bin-picking-no-robot-setup`)
+     * Does the load carrier rim appear in the depth image? (cfr. :ref:`loadcarrier-detect-lc`)
      * Is the load carrier inside the region of interest (if specified)?
-     * Are the dimensions of the load carrier model correct? (cfr. :ref:`general-lc-config`)
+     * Are the dimensions of the load carrier model correct? (cfr. :ref:`loadcarrier-add-lc`)
 
        The manufacturer's dimensions might not be completely accurate. If the load carrier is not
        detected, we recommended to double check the configured dimensions.
@@ -52,7 +52,7 @@ FAQs and troubleshooting
    (left) and the *camera* pose frame (right).
 
    .. _fig-loadcarrier-faq-tilted-lc:
-   .. figure:: ../images/itempick/load_carrier_tilted.png
+   .. figure:: ../images/loadcarrier/load_carrier_tilted.png
       :width: 700px
       :align: center
 
@@ -72,7 +72,7 @@ FAQs and troubleshooting
 
        To trigger the ``set_load_carrier`` service via the REST-API for ``tilted-load-carrier-ext``,
        one needs to send a PUT request to the URL
-       ``http://<rc-visard-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier``,
+       ``http://<rc-visard-ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier``,
        where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
 
        The PUT body should include the following data, in JSON:
@@ -120,7 +120,7 @@ FAQs and troubleshooting
 
        To trigger the ``set_load_carrier`` service via the REST-API for ``tilted-load-carrier-ext``,
        one needs to send a PUT request to the URL
-       ``http://<rc-visard-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier``,
+       ``http://<rc-visard-ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier``,
        where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
 
        The PUT body should include the following data, in JSON:
@@ -181,7 +181,7 @@ FAQs and troubleshooting
      * Increase the ``crop_distace`` parameter (recommended for noisy data)
 
    .. _fig-loadcarrier-faq-load-carrier-floor:
-   .. figure:: ../images/itempick/load_carrier_floor.png
+   .. figure:: ../images/loadcarrier/load_carrier_floor.png
       :width: 700px
       :align: center
 

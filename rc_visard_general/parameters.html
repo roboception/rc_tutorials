@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tuning of image parameters &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+  <title>Tuning of image parameters &mdash; Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation</title>
   
 
@@ -62,11 +62,11 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Recording data for evaluation" href="data_recording.html"/>
-        <link rel="prev" title="Connecting and configuring rc_visard to a network" href="network_setup.html"/> 
+        <link rel="prev" title="Network configuration" href="network_setup.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -122,7 +122,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="network_setup.html">Connecting and configuring <em>rc_visard</em> to a network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_setup.html">Network configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning of image parameters</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we Start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#camera-parameters">Camera Parameters</a><ul>
@@ -227,6 +227,8 @@ related to color sensors as most modules are based on monochrome images.</p>
 <li>The <em>rc_visard</em> must be running and connected to a network or directly to a computer.</li>
 <li>The Web GUI of the <em>rc_visard</em> should be opened in a Web browser. This can be done with the
 <a class="reference external" href="https://roboception.com/en/download/">discovery tool</a> from Roboception.</li>
+<li>The <em>rc_visard</em> has the latest firmware (version 22.01).
+The firmware version can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ul>
 <p>This tutorial focuses on the Web GUI to set the parameters. It is also possible to use
 <a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v22.01)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v22.01)"><span>REST-API interface</span></a> for setting the parameters.</p>
@@ -318,7 +320,7 @@ camera image in the Web GUI.</p>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.</span></p>
 </div>
 <p>For setting the exposure region via REST-API, a PUT request must be sent to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/v1/nodes/rc_camera/parameters</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code>
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/v2/pipelines/0/nodes/rc_camera/parameters</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code>
 should be replaced by the actual IP of the <em>rc_visard</em>. For setting the exposure region to
 a size of 800x600 pixels that starts in image column 150 and image row 80, the following
 data must be sent:</p>
@@ -352,10 +354,10 @@ PowerShell</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== active docutils container">
 <ol class="arabic">
-<li><p class="first">The Swagger UI for setting camera parameters is located at:
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>.</p>
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
 </li>
-<li><p class="first">Select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/nodes/{node}/parameters</span></code></p>
+<li><p class="first">Under <em>pipeline nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/pipelines/{pipeline}/nodes/{node}/parameters</span></code></p>
 </li>
 <li><p class="first">Try out the call with the following values:</p>
 <blockquote>
@@ -378,7 +380,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;[ \</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, \</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, \</span>
@@ -391,7 +393,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_camera/parameters&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;[ ^</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_x\&quot;, \&quot;value\&quot;: 150 }, ^</span>
 <span class="s2">   { \&quot;name\&quot;: \&quot;exp_offset_y\&quot;, \&quot;value\&quot;:  80 }, ^</span>
@@ -404,7 +406,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_camera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_camera/parameters&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">[</span>
 <span class="s1">   { &quot;name&quot;: &quot;exp_offset_x&quot;, &quot;value&quot;: 150 },</span>
 <span class="s1">   { &quot;name&quot;: &quot;exp_offset_y&quot;, &quot;value&quot;:  80 },</span>
@@ -599,7 +601,7 @@ projector can be used to add texture to the scene.</p>
         <a href="data_recording.html" class="btn btn-neutral float-right" title="Recording data for evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network_setup.html" class="btn btn-neutral" title="Connecting and configuring rc_visard to a network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="network_setup.html" class="btn btn-neutral" title="Network configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -628,7 +630,7 @@ projector can be used to add texture to the scene.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-1-g5c6f5aa',
+            VERSION:'0.5.0-9-g8870d07',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

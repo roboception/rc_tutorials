@@ -15,8 +15,8 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 .. rubric:: The |rc_visard| is properly configured:
 
-#. The |rc_visard|'s image version is at least 1.8 and the |rc_visard|'s license includes the
-   |silm| module.
+#. The |rc_visard| is running the latest firmware (version |rcvisard_version|)
+   and the |rc_visard|'s license includes the |silm| module.
    This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 .. rubric:: One or more workpieces have been chosen and the templates for these objects have been
@@ -108,9 +108,9 @@ reconstruction of a texture-less base plane.
    With projector, a much denser point cloud (green points) is produced, especially
    for the texture-less base plane.
 
-|silm| provides best results when the depth image quality is set to High.
-The projector should be operated in *ExposureAlternateActive* mode or the stereo
-should work in *Single + Out1 Acquisition Mode*, meaning that the projected
+|silm| provides best results when the depth image quality is set to *High*.
+The projector should be operated in *ExposureAlternateActive* mode or the depth image
+Acquisition Mode should be set to *Single + Out1*, meaning that the projected
 pattern is not visible in the regular intensity images.
 Otherwise, the projector will interfere with |silm|'s object detection process.
 
@@ -142,7 +142,7 @@ See the following video for a walk-through of the uploading process.
    :header: *Video: Uploading a template*
 
     .. figure:: ../images/silhouette/template_upload.gif
-       :width: 600px
+       :width: 800px
        :align: center
 
 .. _silhouettematch-roi:
@@ -151,7 +151,7 @@ Configuring a region of interest
 ................................
 
 For both base-plane calibration and object detection, a 2D region of interest (ROI) can be applied.
-The |silm| module offers a ROI database, in which ROIs can be stored and referred to during
+A ROI database is available on the system, in which ROIs can be stored and referred to during
 base-plane calibration or object detection by their name.
 
 For configuring a new region of interest, the |webgui| offers an intuitive selection tool, which
@@ -161,7 +161,7 @@ is shown in the following video.
    :header: *Video: Configuring a ROI*
 
     .. figure:: ../images/silhouette/roi_creation.gif
-       :width: 600px
+       :width: 800px
        :align: center
 
 .. _silhouettematch-calibration:
@@ -219,7 +219,7 @@ The following video shows how to perform AprilTag-based base-plane calibration v
    :header: *Video: AprilTag-based base-plane calibration*
 
    .. figure:: ../images/silhouette/base-plane-calib-apriltag.gif
-      :width: 600px
+      :width: 800px
       :align: center
 
 .. _silhouettematch-base-plane-calib-stereo:
@@ -254,7 +254,7 @@ The following video shows how to perform stereo-based base-plane calibration via
    :header: *Video: Stereo-based base-plane calibration*
 
    .. figure:: ../images/silhouette/base-plane-calib-stereo.gif
-      :width: 600px
+      :width: 800px
       :align: center
 
 .. _silhouettematch-offset-parameter:
@@ -325,7 +325,7 @@ The following video shows how to trigger the object detection via the |webgui|.
    :header: *Video: Triggering object detection*
 
    .. figure:: ../images/silhouette/detect-objects.gif
-      :width: 600px
+      :width: 800px
       :align: center
 
 The object detection process is influenced by a couple of parameters.

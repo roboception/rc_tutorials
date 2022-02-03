@@ -68,7 +68,7 @@ Reboot the controller
 After rebooting the robot, the rc_visard_urcap application should be
 marked by a green tick in the URCaps Setup window (see
 
-Fig. 54
+Fig. 56
 
 ).
 
@@ -95,7 +95,7 @@ rc_visard
 
 Detailed instructions about network setup can be found in
 
-Connecting and configuring rc_visard to a network
+Network configuration
 
  tutorial.
 

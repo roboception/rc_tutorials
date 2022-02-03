@@ -18,9 +18,9 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard's image version is at least 1.8 and the rc_visard's
-license includes the SilhouetteMatch module. This can be verified on
-the System ‣ Firmware & License page of the Web GUI.
+The rc_visard is running the latest firmware (version 22.01) and the
+rc_visard's license includes the SilhouetteMatch module. This can be
+verified on the System ‣ Firmware & License page of the Web GUI.
 
 -[ One or more workpieces have been chosen and the templates for these
 objects have been generated: ]-
@@ -150,13 +150,17 @@ rc_randomdot projector
 
 
 SilhouetteMatch provides best results when the depth image quality is
-set to High. The projector should be operated in
+set to
+
+High
+
+. The projector should be operated in
 
 ExposureAlternateActive
 
- mode or the stereo should work in
+ mode or the depth image Acquisition Mode should be set to
 
-Single + Out1 Acquisition Mode
+Single + Out1
 
 , meaning that the projected pattern is not visible in the regular
 intensity images. Otherwise, the projector will interfere with
@@ -166,7 +170,7 @@ Configuring the load carrier
 
 The configuration of the load carrier is described in detail in
 
-Configuring the load carrier
+Configuring a load carrier
 
 .
 
@@ -202,9 +206,9 @@ Video: Uploading a template
 Configuring a region of interest
 
 For both base-plane calibration and object detection, a 2D region of
-interest (ROI) can be applied. The SilhouetteMatch module offers a ROI
-database, in which ROIs can be stored and referred to during base-
-plane calibration or object detection by their name.
+interest (ROI) can be applied. A ROI database is available on the
+system, in which ROIs can be stored and referred to during base-plane
+calibration or object detection by their name.
 
 For configuring a new region of interest, the Web GUI offers an
 intuitive selection tool, which is shown in the following video.

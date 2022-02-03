@@ -31,8 +31,8 @@ Before we start
 
 Before going through this tutorial, the following prerequisites should be met.
 
-#. The |rc_visard| has the latest firmware image and
-   the |rc_visard|'s license includes the
+#. The |rc_visard| is running the latest firmware (version |rcvisard_version|)
+   and the |rc_visard|'s license includes the
    `IOControl module <https://roboception.com/product/rc_reason-iocontrol/>`_.
    This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 

@@ -34,7 +34,7 @@ FAQs and troubleshooting
    :header: **An object is not detected properly**
 
    * Is the base-plane calibration (still) correct?
-     The right visualization on the |webgui| shows the size of the template that is being
+     The "Template" visualization on the |webgui| shows the size of the template that is being
      tried to match.
      Does it match the actual size of the objects on the left visualization?
 

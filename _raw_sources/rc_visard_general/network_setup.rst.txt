@@ -7,8 +7,8 @@
 
 .. _general-network:
 
-Connecting and configuring |rcvisard| to a network
-===================================================
+Network configuration
+=====================
 
 The |rc_visard| offers several options to connect and configure it
 to your network setup as shown below. In this tutorial we show how to properly configure
@@ -64,8 +64,8 @@ be referred to as ``rc_visard_id`` in the remainder of this tutorial.
 #. Optional: Download and install Roboception's `command line GenICam tools <https://github.com/roboception/rc_genicam_api/releases>`_.
 
 
-Connect and discover |rc_visard|
---------------------------------
+Connect and discover the |rc_visard|
+------------------------------------
 
 Once the |rc_visard| is connected to the host PC -- either directly or
 via a larger network -- run Roboception's discovery tool. A window will
@@ -77,12 +77,12 @@ similar to the figure below.
   :align: center
 
   Roboception's discovery tool found two devices in the network.
-  The device named named ``rc_visard`` is reachable from the host PC
+  The device named ``rc_visard`` is reachable from the host PC
   (because in this example the host was in the same subnet 10.0.2.x).
-  The second device ``demo`` is not reachable as it's IP address
+  The second device ``demo`` is not reachable as its IP address
   is in a totally different network.
 
-.. note:: You can re-run the discovery process any-time by clicking the
+.. note:: You can re-run the discovery process anytime by clicking the
     ``Rerun Discovery``-button.
 
 
@@ -140,8 +140,8 @@ and it should be reachable now.
 
 .. _sect-network-persistent-configuration:
 
-Configure |rc_visard|'s network settings
-----------------------------------------
+Configure the |rc_visard|'s network settings
+--------------------------------------------
 
 In general, two options exist to **permanently** configure the |rc_visard|'s network settings:
 
@@ -159,7 +159,12 @@ Option 1: The |rc_visard|'s |webgui|
 ''''''''''''''''''''''''''''''''''''
 
 The easiest way to access and permanently change the |rc_visard|'s network settings
-using a graphical user interface is its |webgui|. The network settings can be found
+using a graphical user interface is its |webgui|.
+
+The first step is to verify on the :menuselection:`System --> Firmware & License` page
+of the |webgui| that the |rc_visard| is running the latest firmware (version |rcvisard_version|).
+
+The network settings can be found
 on the :menuselection:`System --> Network Settings` page. Here, you can easily check the currently applied
 IP configuration method and change the network settings according to your local
 network.
@@ -222,7 +227,7 @@ In the following we give two examples.
         gc_config <rc_visard_id> -d 0 -p 0
 
 
-    .. rubric:: Reconnect |rc_visard| and confirm proper network settings
+    .. rubric:: Reconnect the |rc_visard| and confirm proper network settings
 
     In order to actually apply the changed network settings, the |rcvisard| needs to reconnect.
     Here several options exist:

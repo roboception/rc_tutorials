@@ -25,6 +25,8 @@ Before going through this tutorial, the following prerequisites should be met.
 #. One should know the serial number or user defined name of the |rc_visard|.
    The serial number is of the format 029xxxxx.
    It will be referred to as ``rc_visard_id`` in the remainder of this tutorial.
+#. The |rc_visard| has the latest firmware (version |rcvisard_version|).
+   The firmware version can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 .. rubric:: Download and install the following required client software:
 

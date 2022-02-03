@@ -22,6 +22,9 @@ related to color sensors as most modules are based on monochrome images.
 - The Web GUI of the |rc_visard| should be opened in a Web browser. This can be done with the
   `discovery tool <https://roboception.com/en/download/>`_ from Roboception.
 
+- The |rc_visard| has the latest firmware (version |rcvisard_version|).
+  The firmware version can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
+
 This tutorial focuses on the |webgui| to set the parameters. It is also possible to use
 :doc:`rcvisard:gigevision` and the :doc:`rcvisard:rest_api` for setting the parameters.
 
@@ -148,7 +151,7 @@ There are four parameters that define the exposure region: ``exp_offset_x``, ``e
    The outer rectangle represents the whole image and the inner rectangle represents the chosen exposure region.
 
 For setting the exposure region via REST-API, a PUT request must be sent to the URL
-``http://<rc_visard_ip>/api/v1/nodes/rc_camera/parameters``, where ``<rc-visard-ip>``
+``http://<rc_visard_ip>/api/v2/pipelines/0/nodes/rc_camera/parameters``, where ``<rc-visard-ip>``
 should be replaced by the actual IP of the |rc_visard|. For setting the exposure region to
 a size of 800x600 pixels that starts in image column 150 and image row 80, the following
 data must be sent:
@@ -168,9 +171,9 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
   .. group-tab:: Swagger UI
 
-    #. The Swagger UI for setting camera parameters is located at:
-       ``http://<rc-visard-ip>/api``.
-    #. Select ``PUT /nodes/{node}/parameters``
+    #. The Swagger UI can be reached at ``http://<rc-visard-ip>/api``,
+       where ``<rc-visard-ip>`` is the actual IP of the |rcvisard|.
+    #. Under *pipeline nodes*, select ``PUT /pipelines/{pipeline}/nodes/{node}/parameters``
     #. Try out the call with the following values:
 
         * **node:** ``rc_camera``
@@ -192,7 +195,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
       "[ \
          { \"name\": \"exp_offset_x\", \"value\": 150 }, \
          { \"name\": \"exp_offset_y\", \"value\":  80 }, \
@@ -207,7 +210,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      curl -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
       "[ ^
          { \"name\": \"exp_offset_x\", \"value\": 150 }, ^
          { \"name\": \"exp_offset_y\", \"value\":  80 }, ^
@@ -222,7 +225,7 @@ This can be done via the built-in Swagger UI, or from a shell via `curl <https:/
 
     .. code-block:: bash
 
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
       [
          { "name": "exp_offset_x", "value": 150 },
          { "name": "exp_offset_y", "value":  80 },

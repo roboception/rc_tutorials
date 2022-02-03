@@ -1,17 +1,76 @@
-Configuring the load carrier
+Configuring a load carrier
 
-Some samples of load carriers that can be used with the
+This tutorial shows how to configure a load carrier using the
 
-rc_reason
+LoadCarrierDB
 
- modules are shown below. The upper limit for the load carrier
-dimensions is 2.0 m x 2.0 m x 2.0 m.
+ database module.
+
+Configured load carriers are global and available in all detection
+modules (
+
+LoadCarrier
+
+,
+
+ItemPick
+
+,
+
+BoxPick
+
+,
+
+SilhouetteMatch
+
+ and
+
+CADMatch
+
+), for computing grasps or detecting objects in bin-picking
+applications. Specifically for the
+
+LoadCarrier
+
+ module, this tutorial also describes how to detect a load carrier in
+the scene.
+
+Before we start
+
+In order to go through this tutorial, the following prerequisites
+should be met:
+
+-[ The
+
+rc_visard
+
+ is properly configured: ]-
+
+The rc_visard is running the latest firmware (version 22.01) and the
+rc_visard's license includes the LoadCarrier module. This can be
+verified on the System ‣ Firmware & License page of the Web GUI.
+
+-[ A load carrier is available and placed in the field of view of the
+camera: ]-
+
+The picture below shows some sample load carriers that can be used for
+detection. The upper limit for the load carrier dimensions is 2.0 m x
+2.0 m x 2.0 m.
 
 
-The easiest and recommended way to configure a load carrier is using
-the Modules ‣ LoadCarrier page of the Web GUI. As an alternative, we
-also introduce the programmatic interface of the LoadCarrier module,
-which offers three services for managing load carriers via the
+Add a new load carrier
+
+The easiest and recommended way to configure a load carrier is via the
+Database ‣ Load Carriers page of the Web GUI. The
+
+Load Carriers
+
+ section on this page lists all defined load carriers and allows to
+edit and remove them.
+
+As an alternative, we also introduce the programmatic interface of the
+LoadCarrierDB database module, which offers three services for
+managing load carriers via the
 
 rc_visard
 
@@ -27,24 +86,8 @@ get_load_carriers,
 
 and delete_load_carriers.
 
-A configured load carrier is available in all detection modules (
-
-ItemPick
-
-,
-
-BoxPick
-
-,
-
-CADMatch
-
- or
-
-SilhouetteMatch
-
-). In this section we show how to configure two different types of
-load carriers including some code examples.
+In this section we show how to configure two different types of load
+carriers including some code examples.
 
 Load carriers with a solid rim
 
@@ -62,12 +105,10 @@ Outer dimensions: 40 x 30 x 22 cm
 
 Inner dimensions: 37 x 27 x 21.5 cm
 
-These values can be directly entered in the
-
-Load Carriers
-
- dialog of the Web GUI, with the only difference that the values need
-to be converted to meters.
+These values can be directly entered in the dialog that opens when
+clicking on "+ Add a new Load Carrier" on the Web GUI's Database ‣
+Load Carriers page, with the only difference that the values need to
+be converted to meters.
 
 REST-API request for configuring my-load-carrier1
 
@@ -78,7 +119,7 @@ To trigger the "set_load_carrier" service via the REST-API for
 my-load-carrier1
 
 , one needs to send a PUT request to the URL "http://<rc-visard-
-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
+ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier", where
 "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
@@ -107,13 +148,13 @@ The PUT body should include the following data, in JSON:
 
 Swagger UI
 
-The Swagger UI for putting a service request is located at http://<rc
-_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
-rvice, where <rc-visard-ip> should be replaced by the actual IP of the
-rc_visard.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
+
+Under global nodes, select PUT /nodes/{node}/services/{service}
 
 The following values are required to fill the request to the REST-API:
-node rc_load_carrier  service set_load_carrier  service args  {
+node rc_load_carrier_db  service set_load_carrier  service args  {
 "args": {     "load_carrier": {       "id": "my-load-carrier1",
 "outer_dimensions": {         "x": 0.4,         "y": 0.3,         "z":
 0.22       },       "inner_dimensions": {         "x": 0.37,
@@ -128,7 +169,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "{ \
        \"args\": { \
            \"load_carrier\": { \
@@ -160,7 +201,7 @@ curl
 
  command is in the path.
 
-   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "{ ^
        \"args\": { ^
            \"load_carrier\": { ^
@@ -188,7 +229,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
    {
      "args": {
        "load_carrier": {
@@ -246,7 +287,7 @@ To trigger the "set_load_carrier" service via the REST-API for
 my-load-carrier2
 
 , one needs to send a PUT request to the URL "http://<rc-visard-
-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
+ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier", where
 "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
@@ -280,13 +321,13 @@ The PUT body should include the following data, in JSON:
 
 Swagger UI
 
-The Swagger UI for putting a service request is located at http://<rc
-_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
-rvice, where <rc-visard-ip> should be replaced by the actual IP of the
-rc_visard.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
+
+Under global nodes, select PUT /nodes/{node}/services/{service}
 
 The following values are required to fill the request to the REST-API:
-node rc_load_carrier  service set_load_carrier  service args  {
+node rc_load_carrier_db  service set_load_carrier  service args  {
 "args": {     "load_carrier": {       "id": "my-load-carrier2",
 "outer_dimensions": {         "x": 0.3,         "y": 0.2,         "z":
 0.147       },       "inner_dimensions": {         "x": 0.243,
@@ -303,7 +344,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "{ \
        \"args\": { \
            \"load_carrier\": { \
@@ -340,7 +381,7 @@ curl
 
  command is in the path.
 
-   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "{ ^
        \"args\": { ^
            \"load_carrier\": { ^
@@ -373,7 +414,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
    {
      "args": {
        "load_carrier": {
@@ -420,9 +461,10 @@ Translation: 0 x 0 x 50.0 cm
 
 Rotation (as quaternion):  0, 0, 0, 1
 
-These values can be directly entered in the Web GUI's Modules ‣
-LoadCarrier page after activating "Set Pose" and choosing "Exact Pose"
-as pose type. Furthermore, the values can be communicated
+These values can be directly entered in the dialog that opens when
+clicking on "+ Add a new Load Carrier" on the Web GUI's Database ‣
+Load Carriers page, after activating "Set Pose" and choosing "Exact
+Pose" as pose type. Furthermore, the values can be communicated
 programmatically through the REST-API, as outlined below:
 
 REST-API request for configuring the pose of my-load-carrier1
@@ -434,7 +476,7 @@ To trigger the "set_load_carrier" service via the REST-API for
 my-load-carrier1
 
 , one needs to send a PUT request to the URL "http://<rc-visard-
-ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
+ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier", where
 "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
@@ -478,13 +520,13 @@ The PUT body should include the following data, in JSON:
 
 Swagger UI
 
-The Swagger UI for putting a service request is located at http://<rc
-_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
-rvice, where <rc-visard-ip> should be replaced by the actual IP of the
-rc_visard.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
+
+Under global nodes, select PUT /nodes/{node}/services/{service}
 
 The following values are required to fill the request to the REST-API:
-node rc_load_carrier  service set_load_carrier  service args  {
+node rc_load_carrier_db  service set_load_carrier  service args  {
 "args": {     "load_carrier": {       "id": "my-load-carrier1",
 "outer_dimensions": {         "x": 0.4,         "y": 0.3,         "z":
 0.22       },       "inner_dimensions": {         "x": 0.37,
@@ -503,7 +545,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "{ \
        \"args\": { \
            \"load_carrier\": { \
@@ -550,7 +592,7 @@ curl
 
  command is in the path.
 
-   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "{ ^
        \"args\": { ^
            \"load_carrier\": { ^
@@ -593,7 +635,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_load_carrier/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier" -ContentType 'application/json' -Method Put -Body '
    {
      "args": {
        "load_carrier": {
@@ -649,3 +691,155 @@ position
 Note: Making a "set_load_carrier" request with an existing
   "load_carrier_id" will overwrite the load carrier model previously
   stored.
+
+Detecting the load carrier
+
+After the load carrier has been configured, it can be detected using
+the LoadCarrier module. The Web GUI's Modules ‣ LoadCarrier page
+offers a
+
+Try Out
+
+ section for this purpose. One simply needs to specify the respective
+load carrier ID and hit the Detect Load Carrier button.
+
+Note: In the Web GUI's
+
+  Try Out
+
+   section it is also possible to add a new load carrier or edit
+  existing ones in the Load Carrier drop-down menu. This option is
+  also available in the
+
+  Try Out
+
+   section of all detection modules.
+
+As for the REST-API, the LoadCarrier module offers a
+
+detect_load_carriers
+
+ service to trigger such detections.
+
+REST-API request for detecting my-load-carrier1
+
+   REST-API
+
+   To trigger the "detect_load_carriers" service via the REST-API, one
+   needs to send a PUT request to the URL "http://<rc-visard-ip>/api/
+   v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers
+   ", where "<rc-visard-ip>" should be replaced by the actual IP of
+   the
+
+   rc_visard
+
+   .
+
+   The PUT body should include the following data, in JSON:
+
+      {
+        "args": {
+          "pose_frame": "camera",
+          "load_carrier_ids": [
+              "my-load-carrier1"
+          ]
+        }
+      }
+
+   Swagger UI
+
+   The Swagger UI can be reached at http://<rc-visard-ip>/api, where
+   <rc-visard-ip> is the actual IP of the rc_visard.
+
+   Under pipeline nodes, select PUT
+   /pipelines/{pipeline}/nodes/{node}/services/{service}
+
+   The following values are required to fill the request to the REST-
+   API:  node rc_load_carrier  service detect_load_carriers  service
+   args  {   "args": {     "pose_frame": "camera",
+   "load_carrier_ids": [         "my-load-carrier1"     ]   } }
+
+   curl (Linux)
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "RC_VISARD_IP=10.0.2.90").
+
+      curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      "{  \
+        \"args\": { \
+          \"pose_frame\": \"camera\", \
+          \"load_carrier_ids\": [ \
+            \"my-load-carrier1\" \
+          ] \
+        } \
+      }"
+
+   curl (Windows)
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "set "RC_VISARD_IP=10.0.2.90"") and the
+
+   curl
+
+    command is in the path.
+
+      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      "{  ^
+        \"args\": { ^
+          \"pose_frame\": \"camera\", ^
+          \"load_carrier_ids\": [ ^
+            \"my-load-carrier1\" ^
+          ] ^
+        } ^
+      }"
+
+   PowerShell
+
+   The following command assumes that the variable "RC_VISARD_IP" is
+   set to the actual IP of the
+
+   rc_visard
+
+    (e.g. "$RC_VISARD_IP="10.0.2.90"").
+
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers" -ContentType 'application/json' -Method Put -Body '
+      {
+        "args": {
+          "pose_frame": "camera",
+          "load_carrier_ids": [
+              "my-load-carrier1"
+          ]
+        }
+      }' | ConvertTo-Json -Depth 6
+
+Note: The LoadCarrier module has also the possibility to compute the
+  filling level of a load carrier. This can be done in the Web GUI's
+  Modules ‣ LoadCarrier page, by selecting "Filling Level Detection"
+  as Type of Detection in the
+
+  Try Out
+
+   section.
+
+Detection results -- no matter whether triggered via Web GUI or REST-
+API -- are visualized in the Web GUI's Modules ‣ LoadCarrier page.
+Sample detection results for
+
+my-load-carrier1
+
+ are shown below. The detected load carrier is colored in blue, while
+its content is highlighted in green if inside the load carrier and in
+red if above the rim (overfill).
+
+
+Note: While the "detect_load_carriers" service supports a list of
+  "load_carrier_ids" as input argument, the current implementation
+  only accepts one load carrier ID in the list.

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring the load carrier &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+  <title>Configuring a load carrier &mdash; Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation</title>
   
 
@@ -62,7 +62,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation" href="../index.html"/>
         <link rel="up" title="rc_reason general tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -123,10 +123,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_reason general tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring the load carrier</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-solid-rim">Load carriers with a solid rim</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#load-carriers-with-a-stepped-rim">Load carriers with a stepped rim</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier">Setting the exact pose or an orientation prior of a load carrier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring a load carrier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-new-load-carrier">Add a new load carrier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#load-carriers-with-a-solid-rim">Load carriers with a solid rim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-carriers-with-a-stepped-rim">Load carriers with a stepped rim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier">Setting the exact pose or an orientation prior of a load carrier</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#detecting-the-load-carrier">Detecting the load carrier</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
@@ -182,7 +187,7 @@
         
           <li><a href="overview.html">rc_reason general tutorials</a> &gt;</li>
         
-      <li>Configuring the load carrier</li>
+      <li>Configuring a load carrier</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,29 +204,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="configuring-the-load-carrier">
-<span id="general-lc-config"></span><h1>Configuring the load carrier<a class="headerlink" href="#configuring-the-load-carrier" title="Permalink to this headline">¶</a></h1>
-<p>Some samples of load carriers that can be used with the <em>rc_reason</em> modules are shown below.
-The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.</p>
+  <div class="section" id="configuring-a-load-carrier">
+<span id="general-lc-config"></span><h1>Configuring a load carrier<a class="headerlink" href="#configuring-a-load-carrier" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows how to configure a load carrier using the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html" title="(in rc_visard v22.01)"><span>LoadCarrierDB</span></a>
+database module.</p>
+<p>Configured load carriers are global and available in all detection modules (<em>LoadCarrier</em>,
+<em>ItemPick</em>, <em>BoxPick</em>, <em>SilhouetteMatch</em> and <em>CADMatch</em>),
+for computing grasps or detecting objects in bin-picking applications.
+Specifically for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html" title="(in rc_visard v22.01)"><span>LoadCarrier</span></a> module, this tutorial also describes
+how to detect a load carrier in the scene.</p>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>In order to go through this tutorial, the following prerequisites should be met:</p>
+<p class="rubric">The <em>rc_visard</em> is properly configured:</p>
+<ol class="arabic simple">
+<li>The <em>rc_visard</em> is running the latest firmware (version 22.01) and
+the <em>rc_visard</em>’s license includes the LoadCarrier module.
+This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
+</ol>
+<p class="rubric">A load carrier is available and placed in the field of view of the camera:</p>
+<ol class="arabic simple">
+<li>The picture below shows some sample load carriers that can be used for detection.
+The upper limit for the load carrier dimensions is 2.0 m x 2.0 m x 2.0 m.</li>
+</ol>
 <div class="figure align-center" id="id1">
 <span id="fig-load-carriers"></span><a class="reference internal image-reference" href="../_images/load_carriers.png"><img alt="../_images/load_carriers.png" src="../_images/load_carriers.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Different models of load carriers</span></p>
 </div>
-<p>The easiest and recommended way to configure a load carrier is using the
-<span class="menuselection">Modules ‣ LoadCarrier</span> page of the Web GUI. As an alternative,
-we also introduce the programmatic interface of the LoadCarrier module, which offers
-three services for managing load carriers via the <em>rc_visard</em>’s
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.01)"><span>REST-API interface</span></a>:</p>
+</div>
+<div class="section" id="add-a-new-load-carrier">
+<span id="loadcarrier-add-lc"></span><h2>Add a new load carrier<a class="headerlink" href="#add-a-new-load-carrier" title="Permalink to this headline">¶</a></h2>
+<p>The easiest and recommended way to configure a load carrier is via the
+<span class="menuselection">Database ‣ Load Carriers</span> page of the Web GUI.
+The <em>Load Carriers</em> section on this page lists all defined load carriers and allows
+to edit and remove them.</p>
+<p>As an alternative, we also introduce the programmatic interface of the LoadCarrierDB
+database module, which offers three services for managing load carriers
+via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.01)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-set-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">set_load_carrier</span></a>,</li>
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-get-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
-<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-delete-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-set-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">set_load_carrier</span></a>,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-get-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-delete-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
 </ul>
-<p>A configured load carrier is available in all detection modules (<em>ItemPick</em>,
-<em>BoxPick</em>, <em>CADMatch</em> or <em>SilhouetteMatch</em>). In this section we show how to
-configure two different types of load carriers including some code examples.</p>
+<p>In this section we show how to configure two different types of load carriers including some code examples.</p>
 <div class="section" id="load-carriers-with-a-solid-rim">
-<span id="loadcarrier-solid-rim"></span><h2>Load carriers with a solid rim<a class="headerlink" href="#load-carriers-with-a-solid-rim" title="Permalink to this headline">¶</a></h2>
+<span id="loadcarrier-solid-rim"></span><h3>Load carriers with a solid rim<a class="headerlink" href="#load-carriers-with-a-solid-rim" title="Permalink to this headline">¶</a></h3>
 <p>The first model is the load carrier at the top left corner of
 <a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 15</span></a>. It will be configured with the unique ID
 <em>my-load-carrier1</em>. The manufacturer’s website reports the following
@@ -230,7 +257,8 @@ dimensions:</p>
 <li>Outer dimensions: 40 x 30 x 22 cm</li>
 <li>Inner dimensions: 37 x 27 x 21.5 cm</li>
 </ul>
-<p>These values can be directly entered in the <em>Load Carriers</em> dialog of the Web GUI,
+<p>These values can be directly entered in the dialog that opens when clicking on
+“+ Add a new Load Carrier” on the Web GUI’s <span class="menuselection">Database ‣ Load Carriers</span> page,
 with the only difference that the values need to be converted to meters.</p>
 <p class="toggle-header"><strong>REST-API request for configuring my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
@@ -260,7 +288,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
 one needs to send a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -285,14 +313,15 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
-<li><p class="first">The Swagger UI for putting a service request is located at
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">Under <em>global nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/nodes/{node}/services/{service}</span></code></p>
 </li>
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier_db</span></code></p>
 </li>
 <li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
 </li>
@@ -328,7 +357,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
@@ -352,7 +381,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
@@ -376,7 +405,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
@@ -401,7 +430,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 </div>
 <div class="section" id="load-carriers-with-a-stepped-rim">
-<span id="loadcarrier-stepped-rim"></span><h2>Load carriers with a stepped rim<a class="headerlink" href="#load-carriers-with-a-stepped-rim" title="Permalink to this headline">¶</a></h2>
+<span id="loadcarrier-stepped-rim"></span><h3>Load carriers with a stepped rim<a class="headerlink" href="#load-carriers-with-a-stepped-rim" title="Permalink to this headline">¶</a></h3>
 <p>The second model is the load carrier at the top right corner of
 <a class="reference internal" href="#fig-load-carriers"><span class="std std-numref">Fig. 15</span></a>. This load carrier will be configured with the
 unique ID <em>my-load-carrier2</em>. The manufacturer’s website reports the following
@@ -444,7 +473,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier2</em>,
 one needs to send a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -474,14 +503,15 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
-<li><p class="first">The Swagger UI for putting a service request is located at
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">Under <em>global nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/nodes/{node}/services/{service}</span></code></p>
 </li>
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier_db</span></code></p>
 </li>
 <li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
 </li>
@@ -522,7 +552,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
@@ -551,7 +581,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
@@ -580,7 +610,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
@@ -615,7 +645,7 @@ the load carrier model previously stored.</p>
 </div>
 </div>
 <div class="section" id="setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier">
-<span id="setting-lc-pose"></span><h2>Setting the exact pose or an orientation prior of a load carrier<a class="headerlink" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier" title="Permalink to this headline">¶</a></h2>
+<span id="setting-lc-pose"></span><h3>Setting the exact pose or an orientation prior of a load carrier<a class="headerlink" href="#setting-the-exact-pose-or-an-orientation-prior-of-a-load-carrier" title="Permalink to this headline">¶</a></h3>
 <p>Users can specify an orientation prior, or the exact pose of the load carrier.
 Once users set the exact pose of the load carrier, any detection module will
 not estimate the position of the load carrier anymore. Instead, the load
@@ -631,7 +661,8 @@ set exactly at the following position:</p>
 <li>Translation: 0 x 0 x 50.0 cm</li>
 <li>Rotation (as quaternion):  0, 0, 0, 1</li>
 </ul>
-<p>These values can be directly entered in the Web GUI’s <span class="menuselection">Modules ‣ LoadCarrier</span> page
+<p>These values can be directly entered in the dialog that opens when clicking on
+“+ Add a new Load Carrier” on the Web GUI’s <span class="menuselection">Database ‣ Load Carriers</span> page,
 after activating “Set Pose” and choosing “Exact Pose” as pose type.
 Furthermore, the values can be communicated programmatically through the
 REST-API, as outlined below:</p>
@@ -663,7 +694,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> service via the REST-API for <em>my-load-carrier1</em>,
 one needs to send a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_load_carrier/services/set_load_carrier</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -703,14 +734,15 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
-<li><p class="first">The Swagger UI for putting a service request is located at
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">Under <em>global nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/nodes/{node}/services/{service}</span></code></p>
 </li>
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier_db</span></code></p>
 </li>
 <li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code></p>
 </li>
@@ -761,7 +793,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { \</span>
@@ -800,7 +832,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;load_carrier\&quot;: { ^</span>
@@ -839,7 +871,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_load_carrier/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;load_carrier&quot;: {</span>
@@ -886,7 +918,171 @@ the orientation prior does not require the translation of the load carrier, the
 <p class="last">Making a <code class="docutils literal notranslate"><span class="pre">set_load_carrier</span></code> request with an existing <code class="docutils literal notranslate"><span class="pre">load_carrier_id</span></code> will overwrite
 the load carrier model previously stored.</p>
 </div>
-<span class="target" id="loadcarrier-bin-picking-no-robot-detecting-lc"></span></div>
+</div>
+</div>
+<div class="section" id="detecting-the-load-carrier">
+<span id="loadcarrier-detect-lc"></span><h2>Detecting the load carrier<a class="headerlink" href="#detecting-the-load-carrier" title="Permalink to this headline">¶</a></h2>
+<p>After the load carrier has been configured, it can be detected using the LoadCarrier
+module.
+The Web GUI’s <span class="menuselection">Modules ‣ LoadCarrier</span> page offers a <em>Try Out</em> section
+for this purpose. One simply needs to specify the respective load carrier ID and hit the
+<span class="guilabel">Detect Load Carrier</span> button.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the Web GUI’s <em>Try Out</em> section it is also possible to add a new load carrier or edit
+existing ones in the Load Carrier drop-down menu.
+This option is also available in the <em>Try Out</em> section of all detection modules.</p>
+</div>
+<p>As for the REST-API, the LoadCarrier module offers a
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-detect-lc" title="(in rc_visard v22.01)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+trigger such detections.</p>
+<p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
+<div class="toggle-content docutils container">
+<blockquote>
+<div><div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UkVTVC1BUEk= docutils container">
+<div class="docutils container">
+REST-API</div>
+</div>
+<div class="item sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<div class="docutils container">
+Swagger UI</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<div class="docutils container">
+curl (Linux)</div>
+</div>
+<div class="item sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<div class="docutils container">
+curl (Windows)</div>
+</div>
+<div class="item sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<div class="docutils container">
+PowerShell</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
+<p>To trigger the <code class="docutils literal notranslate"><span class="pre">detect_load_carriers</span></code> service via the REST-API, one needs to send
+a PUT request to the URL
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<p>The PUT body should include the following data, in JSON:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;load_carrier_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;my-load-carrier1&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
+<ol class="arabic">
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">Under <em>pipeline nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/pipelines/{pipeline}/nodes/{node}/services/{service}</span></code></p>
+</li>
+<li><p class="first">The following values are required to fill the request to the REST-API:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>node</strong> <code class="docutils literal notranslate"><span class="pre">rc_load_carrier</span></code></p>
+</li>
+<li><p class="first"><strong>service</strong> <code class="docutils literal notranslate"><span class="pre">detect_load_carriers</span></code></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>service args</strong></dt>
+<dd><div class="first last highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;pose_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;load_carrier_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;my-load-carrier1&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<span class="s2">&quot;{  \</span>
+<span class="s2">  \&quot;args\&quot;: { \</span>
+<span class="s2">    \&quot;pose_frame\&quot;: \&quot;camera\&quot;, \</span>
+<span class="s2">    \&quot;load_carrier_ids\&quot;: [ \</span>
+<span class="s2">      \&quot;my-load-carrier1\&quot; \</span>
+<span class="s2">    ] \</span>
+<span class="s2">  } \</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">&quot;RC_VISARD_IP=10.0.2.90&quot;</span></code>) and the <em>curl</em> command is in the path.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<span class="s2">&quot;{  ^</span>
+<span class="s2">  \&quot;args\&quot;: { ^</span>
+<span class="s2">    \&quot;pose_frame\&quot;: \&quot;camera\&quot;, ^</span>
+<span class="s2">    \&quot;load_carrier_ids\&quot;: [ ^</span>
+<span class="s2">      \&quot;my-load-carrier1\&quot; ^</span>
+<span class="s2">    ] ^</span>
+<span class="s2">  } ^</span>
+<span class="s2">}&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
+<p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
+<em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_load_carrier/services/detect_load_carriers&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">  &quot;args&quot;: {</span>
+<span class="s1">    &quot;pose_frame&quot;: &quot;camera&quot;,</span>
+<span class="s1">    &quot;load_carrier_ids&quot;: [</span>
+<span class="s1">        &quot;my-load-carrier1&quot;</span>
+<span class="s1">    ]</span>
+<span class="s1">  }</span>
+<span class="s1">}&#39;</span> <span class="p">|</span> ConvertTo-Json -Depth <span class="m">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The LoadCarrier module has also the possibility to compute the filling level of a load carrier.
+This can be done in the Web GUI’s <span class="menuselection">Modules ‣ LoadCarrier</span> page,
+by selecting “Filling Level Detection” as Type of Detection in the <em>Try Out</em> section.</p>
+</div>
+<p>Detection results – no matter whether triggered via Web GUI or REST-API – are visualized
+in the Web GUI’s <span class="menuselection">Modules ‣ LoadCarrier</span> page.
+Sample detection results for <em>my-load-carrier1</em> are shown below.
+The detected load carrier is colored in blue, while its content is highlighted in green
+if inside the load carrier and in red if above the rim (overfill).</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/load_carriers_detected.png"><img alt="../_images/load_carriers_detected.png" src="../_images/load_carriers_detected.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Detection result for <em>my-load-carrier1</em> without overfill (left) and with overfill (right).</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While the <code class="docutils literal notranslate"><span class="pre">detect_load_carriers</span></code> service supports a list of <code class="docutils literal notranslate"><span class="pre">load_carrier_ids</span></code>
+as input argument, the current implementation only accepts one load carrier ID
+in the list.</p>
+</div>
+</div>
 </div>
 
 
@@ -931,7 +1127,7 @@ the load carrier model previously stored.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-1-g5c6f5aa',
+            VERSION:'0.5.0-9-g8870d07',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

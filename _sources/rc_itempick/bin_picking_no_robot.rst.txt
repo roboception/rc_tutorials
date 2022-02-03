@@ -2,8 +2,8 @@ Configuring ItemPick for bin picking
 
 This tutorial shows how to configure the ItemPick module to work in a
 bin-picking application. More specifically, the bin (or so-called Load
-Carrier) is configured in ItemPick and detected in the scene, in order
-to compute grasps only for items inside the bin itself.
+Carrier) is configured and detected in the scene, in order to compute
+grasps only for items inside the bin itself.
 
 The tutorial covers all the steps from configuration of a load carrier
 up to getting grasps for items inside the load carrier. For this, we
@@ -32,18 +32,27 @@ controller). Here we focus on the first two options.
 
 Before we start
 
-This tutorials assumes that the previous tutorial
+In order to go through this tutorial, the following prerequisites
+should be met:
+
+-[ The
+
+rc_visard
+
+ is properly configured: ]-
+
+The rc_visard is running the latest firmware (version 22.01) and the
+rc_visard's license includes the ItemPick module. This can be verified
+on the System ‣ Firmware & License page of the Web GUI.
+
+-[ The previous tutorial
 
 Getting started with ItemPick
 
- has been completed.
+ has been completed. ]-
 
-In order to go through this tutorial, a bin or so-called load carrier
-should be available (see
-
-Configuring the load carrier
-
-).
+-[ A load carrier is available and placed in the field of view of the
+camera ]-
 
 Setting up the scene
 
@@ -66,142 +75,16 @@ Configuring the load carrier
 
 The configuration of the load carrier is described in detail in
 
-Configuring the load carrier
+Configuring a load carrier
 
 .
 
+Before proceeding to the next steps, it is important to verify that
+the load carrier can be detected in the scene, as described in
+
 Detecting the load carrier
 
-After the load carrier has been configured, it is important to check
-that ItemPick can detect the load carrier in the scene. The Web GUI's
-Modules ‣ ItemPick page offers a
-
-Try Out
-
- section for this purpose. One simply needs to specify the respective
-load carrier ID and hit the Detect Grasp Points button. As for the
-REST-API, ItemPick offers a *detect_load_carriers* service to trigger
-such detections.
-
-REST-API request for detecting my-load-carrier1
-
-   REST-API
-
-   To trigger the "detect_load_carriers" service via the REST-API, one
-   needs to send a PUT request to the URL "http://<rc-visard-
-   ip>/api/v1/nodes/rc_itempick/services/detect_load_carriers", where
-   "<rc-visard-ip>" should be replaced by the actual IP of the
-
-   rc_visard
-
-   .
-
-   The PUT body should include the following data, in JSON:
-
-      {
-        "args": {
-          "pose_frame": "camera",
-          "load_carrier_ids": [
-              "my-load-carrier1"
-          ]
-        }
-      }
-
-   Swagger UI
-
-   The Swagger UI for putting a service request is located at http://
-   <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
-   ces_service, where <rc-visard-ip> should be replaced by the actual
-   IP of the rc_visard.
-
-   The following values are required to fill the request to the REST-
-   API:  node rc_itempick  service detect_load_carriers  service args
-   {   "args": {     "pose_frame": "camera",     "load_carrier_ids": [
-   "my-load-carrier1"     ]   } }
-
-   curl (Linux)
-
-   The following command assumes that the variable "RC_VISARD_IP" is
-   set to the actual IP of the
-
-   rc_visard
-
-    (e.g. "RC_VISARD_IP=10.0.2.90").
-
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/detect_load_carriers" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
-      "{  \
-        \"args\": { \
-          \"pose_frame\": \"camera\", \
-          \"load_carrier_ids\": [ \
-            \"my-load-carrier1\" \
-          ] \
-        } \
-      }"
-
-   curl (Windows)
-
-   The following command assumes that the variable "RC_VISARD_IP" is
-   set to the actual IP of the
-
-   rc_visard
-
-    (e.g. "set "RC_VISARD_IP=10.0.2.90"") and the
-
-   curl
-
-    command is in the path.
-
-      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/detect_load_carriers" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
-      "{  ^
-        \"args\": { ^
-          \"pose_frame\": \"camera\", ^
-          \"load_carrier_ids\": [ ^
-            \"my-load-carrier1\" ^
-          ] ^
-        } ^
-      }"
-
-   PowerShell
-
-   The following command assumes that the variable "RC_VISARD_IP" is
-   set to the actual IP of the
-
-   rc_visard
-
-    (e.g. "$RC_VISARD_IP="10.0.2.90"").
-
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/detect_load_carriers" -ContentType 'application/json' -Method Put -Body '
-      {
-        "args": {
-          "pose_frame": "camera",
-          "load_carrier_ids": [
-              "my-load-carrier1"
-          ]
-        }
-      }' | ConvertTo-Json -Depth 6
-
-Detection results -- no matter whether triggered via Web GUI or REST-
-API -- are visualized in the Web GUI's Modules ‣ ItemPick page as
-
-Load Carriers
-
- image. Sample detection results for
-
-my-load-carrier1
-
- are shown below. The detected load carrier is colored in blue, while
-its content is highlighted in green if inside the load carrier and in
-red if above the rim (overfill).
-
-
-Note: While the "detect_load_carriers" service supports a list of
-  "load_carrier_ids" as input argument, the current implementation
-  only accepts one load carrier ID in the list.
-
-Note: All points that are not colored in the load carrier
-  visualization image are not used for grasp computation. This can
-  happen if the depth image includes missing data or if the items
-  stick out of the bin by more than 10 cm.
+.
 
 Computing grasps inside a load carrier
 
@@ -223,8 +106,8 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
    To trigger the "compute_grasp" service via the REST-API, one needs
    to send a PUT request to the URL "http://<rc-visard-
-   ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
-   visard-ip>" should be replaced by the actual IP of the
+   ip>/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp",
+   where "<rc-visard-ip>" should be replaced by the actual IP of the
 
    rc_visard
 
@@ -243,10 +126,11 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
    Swagger UI
 
-   The Swagger UI for putting a service request is located at http://
-   <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
-   ces_service, where <rc-visard-ip> should be replaced by the actual
-   IP of the rc_visard.
+   The Swagger UI can be reached at http://<rc-visard-ip>/api, where
+   <rc-visard-ip> is the actual IP of the rc_visard.
+
+   Under pipeline nodes, select PUT
+   /pipelines/{pipeline}/nodes/{node}/services/{service}
 
    The following values are required to fill the request to the REST-
    API:  node rc_itempick  service compute_grasps  service args  {
@@ -263,7 +147,7 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
     (e.g. "RC_VISARD_IP=10.0.2.90").
 
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
       "{ \
           \"args\": { \
               \"pose_frame\": \"camera\", \
@@ -286,7 +170,7 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
     command is in the path.
 
-      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
       "{ ^
           \"args\": { ^
               \"pose_frame\": \"camera\", ^
@@ -305,7 +189,7 @@ Request to the REST-API for getting grasps inside my-load-carrier1
 
     (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
       {
         "args": {
           "pose_frame": "camera",
@@ -314,6 +198,14 @@ Request to the REST-API for getting grasps inside my-load-carrier1
           "suction_surface_width": 0.02
         }
       }' | ConvertTo-Json -Depth 6
+
+Detection results -- no matter whether triggered via Web GUI or REST-
+API -- are visualized in the Web GUI's Modules ‣ ItemPick page.
+
+Note: All points that are not colored in the load carrier
+  visualization image are not used for grasp computation. This can
+  happen if the depth image includes missing data or if the items
+  stick out of the bin by more than 10 cm.
 
 Computing collision free grasps
 
@@ -343,8 +235,8 @@ load-carrier1 with gripper my-gripper
 
    To trigger the "compute_grasp" service via the REST-API, one needs
    to send a PUT request to the URL "http://<rc-visard-
-   ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
-   visard-ip>" should be replaced by the actual IP of the
+   ip>/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp",
+   where "<rc-visard-ip>" should be replaced by the actual IP of the
 
    rc_visard
 
@@ -366,10 +258,11 @@ load-carrier1 with gripper my-gripper
 
    Swagger UI
 
-   The Swagger UI for putting a service request is located at http://
-   <rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_servi
-   ces_service, where <rc-visard-ip> should be replaced by the actual
-   IP of the rc_visard.
+   The Swagger UI can be reached at http://<rc-visard-ip>/api, where
+   <rc-visard-ip> is the actual IP of the rc_visard.
+
+   Under pipeline nodes, select PUT
+   /pipelines/{pipeline}/nodes/{node}/services/{service}
 
    The following values are required to fill the request to the REST-
    API:  node rc_itempick  service compute_grasps  service args  {
@@ -387,7 +280,7 @@ load-carrier1 with gripper my-gripper
 
     (e.g. "RC_VISARD_IP=10.0.2.90").
 
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
       "{ \
           \"args\": { \
               \"pose_frame\": \"camera\", \
@@ -413,7 +306,7 @@ load-carrier1 with gripper my-gripper
 
     command is in the path.
 
-      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
       "{ ^
           \"args\": { ^
               \"pose_frame\": \"camera\", ^
@@ -435,7 +328,7 @@ load-carrier1 with gripper my-gripper
 
     (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
       {
         "args": {
           "pose_frame": "camera",
@@ -499,8 +392,8 @@ REST-API
 
 To trigger the "compute_grasp" service via the REST-API, one needs to
 send a PUT request to the URL "http://<rc-visard-
-ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
-visard-ip>" should be replaced by the actual IP of the
+ip>/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp",
+where "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
 
@@ -539,10 +432,11 @@ The PUT body should include the following data, in JSON:
 
 Swagger UI
 
-The Swagger UI for putting a service request is located at http://<rc
-_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
-rvice, where <rc-visard-ip> should be replaced by the actual IP of the
-rc_visard.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
+
+Under pipeline nodes, select PUT
+/pipelines/{pipeline}/nodes/{node}/services/{service}
 
 The following values are required to fill the request to the REST-API:
 node rc_itempick  service compute_grasps  service args  {   "args": {
@@ -564,7 +458,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "{ \
        \"args\": { \
            \"pose_frame\": \"camera\", \
@@ -607,7 +501,7 @@ curl
 
  command is in the path.
 
-   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "{ ^
        \"args\": { ^
            \"pose_frame\": \"camera\", ^
@@ -646,7 +540,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
    {
      "args": {
        "pose_frame": "camera",

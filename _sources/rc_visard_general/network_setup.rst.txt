@@ -1,4 +1,4 @@
-Connecting and configuring rc_visard to a network
+Network configuration
 
 The
 
@@ -62,7 +62,7 @@ Download and install Roboception's discovery tool rcdiscover-gui.
 Optional: Download and install Roboception's command line GenICam
 tools.
 
-Connect and discover rc_visard
+Connect and discover the rc_visard
 
 Once the
 
@@ -77,7 +77,7 @@ rc_visard
 s that were discovered in the network similar to the figure below.
 
 
-Note: You can re-run the discovery process any-time by clicking the
+Note: You can re-run the discovery process anytime by clicking the
   "Rerun Discovery"-button.
 
 Note: The discovery tool is the central troubleshooting tool for
@@ -103,7 +103,7 @@ rc_visard
 required and you can skip the next section. You might still change the
 network settings according to your needs as described in
 
-Configure rc_visard's network settings
+Configure the rc_visard's network settings
 
  or directly head over to
 
@@ -163,7 +163,7 @@ Note: Since these settings are applied only
 
    back to the former network settings.
 
-Configure rc_visard's network settings
+Configure the rc_visard's network settings
 
 In general, two options exist to
 
@@ -198,6 +198,14 @@ The easiest way to access and permanently change the
 rc_visard
 
 's network settings using a graphical user interface is its Web GUI.
+
+The first step is to verify on the System ‣ Firmware & License page of
+the Web GUI that the
+
+rc_visard
+
+ is running the latest firmware (version 22.01).
+
 The network settings can be found on the System ‣ Network Settings
 page. Here, you can easily check the currently applied IP
 configuration method and change the network settings according to your
@@ -272,7 +280,7 @@ disable both the static IP option and the DHCP option via:
 
    gc_config <rc_visard_id> -d 0 -p 0
 
--[ Reconnect
+-[ Reconnect the
 
 rc_visard
 

@@ -23,14 +23,14 @@ The load carrier is not detected or not detected robustly
    Is the load carrier fully visible in both the left and right camera
    image?
 
-   Does the load carrier rim appear in the depth image? (cfr. Setting
-   up the scene)
+   Does the load carrier rim appear in the depth image? (cfr.
+   Detecting the load carrier)
 
    Is the load carrier inside the region of interest (if specified)?
 
-   Are the dimensions of the load carrier model correct? (cfr.
-   Configuring the load carrier)  The manufacturer's dimensions might
-   not be completely accurate. If the load carrier is not detected, we
+   Are the dimensions of the load carrier model correct? (cfr. Add a
+   new load carrier)  The manufacturer's dimensions might not be
+   completely accurate. If the load carrier is not detected, we
    recommended to double check the configured dimensions.
    Additionally, one can try increasing the model_tolerance parameter
    (e.g. to the maximum value).
@@ -50,7 +50,7 @@ following.
 
 Two sample cases are shown in
 
-Fig. 16
+Fig. 17
 
  for the
 
@@ -65,7 +65,7 @@ camera
 
 In the left case of
 
-Fig. 16
+Fig. 17
 
 , the load carrier ("tilted-load-carrier-ext") is rotated by an angle
 \theta around the y axis of the
@@ -88,8 +88,8 @@ following quaternion: \left[0, \sin(\theta/2), 0,
    To trigger the "set_load_carrier" service via the REST-API for
    "tilted-load-carrier-ext", one needs to send a PUT request to the
    URL "http://<rc-visard-
-   ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
-   "<rc-visard-ip>" should be replaced by the actual IP of the
+   ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier",
+   where "<rc-visard-ip>" should be replaced by the actual IP of the
 
    rc_visard
 
@@ -127,7 +127,7 @@ following quaternion: \left[0, \sin(\theta/2), 0,
 
 In the right case of
 
-Fig. 16
+Fig. 17
 
 , the load carrier ("tilted-load-carrier-cam") is parallel to the
 image plane. Its orientation in the
@@ -148,8 +148,8 @@ camera
    To trigger the "set_load_carrier" service via the REST-API for
    "tilted-load-carrier-ext", one needs to send a PUT request to the
    URL "http://<rc-visard-
-   ip>/api/v1/nodes/rc_load_carrier/services/set_load_carrier", where
-   "<rc-visard-ip>" should be replaced by the actual IP of the
+   ip>/api/v2/nodes/rc_load_carrier_db/services/set_load_carrier",
+   where "<rc-visard-ip>" should be replaced by the actual IP of the
 
    rc_visard
 
@@ -207,7 +207,7 @@ or the reconstruction of the load carrier floor is noisy.
 
 To improve the detection result as shown in
 
-Fig. 17
+Fig. 18
 
 , two options are available:
 

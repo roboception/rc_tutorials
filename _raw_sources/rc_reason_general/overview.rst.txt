@@ -3,7 +3,7 @@
 rc_reason general tutorials
 ================================
 
-This is the landing page for the |rc-reason| tutorials.
+This is the landing page for the `rc_reason <https://roboception.com/rc_reason-en/>`_ tutorials.
 
 .. toctree::
    :maxdepth: 2

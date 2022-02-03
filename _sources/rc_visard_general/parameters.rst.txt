@@ -27,6 +27,10 @@ to a computer.
 The Web GUI of the rc_visard should be opened in a Web browser. This
 can be done with the discovery tool from Roboception.
 
+The rc_visard has the latest firmware (version 22.01). The firmware
+version can be verified on the System ‣ Firmware & License page of the
+Web GUI.
+
 This tutorial focuses on the Web GUI to set the parameters. It is also
 possible to use
 
@@ -168,8 +172,8 @@ There are four parameters that define the exposure region:
 
 For setting the exposure region via REST-API, a PUT request must be
 sent to the URL
-"http://<rc_visard_ip>/api/v1/nodes/rc_camera/parameters", where "<rc-
-visard-ip>" should be replaced by the actual IP of the
+"http://<rc_visard_ip>/api/v2/pipelines/0/nodes/rc_camera/parameters",
+where "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
 
@@ -192,10 +196,11 @@ curl
 
 Swagger UI
 
-The Swagger UI for setting camera parameters is located at: http
-://<rc-visard-ip>/api.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
 
-Select PUT /nodes/{node}/parameters
+Under pipeline nodes, select PUT
+/pipelines/{pipeline}/nodes/{node}/parameters
 
 Try out the call with the following values:  node: rc_camera
 parameters:  [   { "name": "exp_offset_x", "value": 150 },   { "name":
@@ -211,7 +216,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "[ \
       { \"name\": \"exp_offset_x\", \"value\": 150 }, \
       { \"name\": \"exp_offset_y\", \"value\":  80 }, \
@@ -232,7 +237,7 @@ curl
 
  command is in the path.
 
-   curl -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_camera/parameters" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "[ ^
       { \"name\": \"exp_offset_x\", \"value\": 150 }, ^
       { \"name\": \"exp_offset_y\", \"value\":  80 }, ^
@@ -249,7 +254,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_camera/parameters" -ContentType 'application/json' -Method Put -Body '
    [
       { "name": "exp_offset_x", "value": 150 },
       { "name": "exp_offset_y", "value":  80 },

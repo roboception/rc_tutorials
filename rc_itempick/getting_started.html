@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with ItemPick &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+  <title>Getting started with ItemPick &mdash; Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation</title>
   
 
@@ -62,7 +62,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="Configuring ItemPick for bin picking" href="bin_picking_no_robot.html"/>
@@ -211,7 +211,7 @@ and guides the reader to the computation of the first grasps.</p>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em>’s image version is at least 1.4 and
+<li>The <em>rc_visard</em> is running the latest firmware (version 22.01) and
 the <em>rc_visard</em>’s license includes the ItemPick module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
@@ -272,7 +272,7 @@ The optimal distance to the objects depends on the <em>rc_visard</em> model, as 
 the <em>rc_visard</em> should be placed as close to the objects as possible.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/getting_started_setup.jpg"><img alt="../_images/getting_started_setup.jpg" src="../_images/getting_started_setup.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on a tripod approximately 0.7 m away
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Sample setup. The <em>rc_visard</em> 160 is mounted on a tripod approximately 0.7 m away
 from the objects.</span></p>
 </div>
 </div>
@@ -288,7 +288,7 @@ The depth image density can also be increased by adding the
 The Static mode might be beneficial in static scenes, but it increases the data acquisition time.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-itempick-getting-started-tuning-image"></span><a class="reference internal image-reference" href="../_images/getting_started_tuning_image.png"><img alt="../_images/getting_started_tuning_image.png" src="../_images/getting_started_tuning_image.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Sample images from the setup shown above: left image (top left), confidence image (bottom left),
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Sample images from the setup shown above: left image (top left), confidence image (bottom left),
 and depth image (right).</span></p>
 </div>
 </div>
@@ -339,7 +339,7 @@ PowerShell</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UkVTVC1BUEk= active docutils container">
 <p>To trigger the <code class="docutils literal notranslate"><span class="pre">compute_grasp</span></code> service via the REST-API, one needs to send
 a PUT request to the URL
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v1/nodes/rc_itempick/services/compute_grasp</span></code>,
+<code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
 <p>The PUT body should include the following data, in JSON:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -354,9 +354,10 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-U3dhZ2dlciBVSQ== docutils container">
 <ol class="arabic">
-<li><p class="first">The Swagger UI for putting a service request is located at
-<code class="docutils literal notranslate"><span class="pre">http://&lt;rc_visard_ip&gt;/api/swagger/index.html#!/nodes/put_nodes_node_services_service</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> should be replaced by the actual IP of the <em>rc_visard</em>.</p>
+<li><p class="first">The Swagger UI can be reached at <code class="docutils literal notranslate"><span class="pre">http://&lt;rc-visard-ip&gt;/api</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard-ip&gt;</span></code> is the actual IP of the <em>rc_visard</em>.</p>
+</li>
+<li><p class="first">Under <em>pipeline nodes</em>, select <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/pipelines/{pipeline}/nodes/{node}/services/{service}</span></code></p>
 </li>
 <li><p class="first">The following values are required to fill the request to the REST-API:</p>
 <blockquote>
@@ -387,7 +388,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoTGludXgp docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP=10.0.2.90</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X PUT <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d <span class="se">\</span>
 <span class="s2">&quot;{ \</span>
 <span class="s2">    \&quot;args\&quot;: { \</span>
 <span class="s2">        \&quot;pose_frame\&quot;: \&quot;camera\&quot;, \</span>
@@ -401,7 +402,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Y3VybCAoV2luZG93cyk= docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">RC_VISARD_IP=10.0.2.90</span></code>) and the <em>curl</em> command is in the path.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl.exe -X PUT <span class="s2">&quot;http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> -H  <span class="s2">&quot;Content-Type: application/json&quot;</span> -d ^
 <span class="s2">&quot;{ ^</span>
 <span class="s2">    \&quot;args\&quot;: { ^</span>
 <span class="s2">        \&quot;pose_frame\&quot;: \&quot;camera\&quot;, ^</span>
@@ -415,7 +416,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-UG93ZXJTaGVsbA== docutils container">
 <p>The following command assumes that the variable <code class="docutils literal notranslate"><span class="pre">RC_VISARD_IP</span></code> is set to the actual IP of the
 <em>rc_visard</em> (e.g. <code class="docutils literal notranslate"><span class="pre">$RC_VISARD_IP=&quot;10.0.2.90&quot;</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v1/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Invoke-RestMethod <span class="s2">&quot;http://</span><span class="nv">$RC_VISARD_IP</span><span class="s2">/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps&quot;</span> -ContentType <span class="s1">&#39;application/json&#39;</span> -Method Put -Body <span class="s1">&#39;</span>
 <span class="s1">{</span>
 <span class="s1">  &quot;args&quot;: {</span>
 <span class="s1">    &quot;pose_frame&quot;: &quot;camera&quot;,</span>
@@ -429,7 +430,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 </div>
 <div class="figure align-center" id="id4">
 <span id="fig-itempick-getting-started-grasps"></span><a class="reference internal image-reference" href="../_images/getting_started_grasps.png"><img alt="../_images/getting_started_grasps.png" src="../_images/getting_started_grasps.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Sample results on the scene shown above: surfaces image on the left and computed grasps on the
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Sample results on the scene shown above: surfaces image on the left and computed grasps on the
 right (including the available suction surface). By default, maximally 5 grasps are returned
 by the <code class="docutils literal notranslate"><span class="pre">compute_grasps</span></code> service. The sorting of the grasps takes into account the gravity
 vector, so that objects on top of a pile are grasped first.</span></p>
@@ -437,8 +438,8 @@ vector, so that objects on top of a pile are grasped first.</span></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <em>rc_visard</em> used in this tutorial is a color sensor
-(<a class="reference internal" href="#fig-itempick-getting-started-tuning-image"><span class="std std-numref">Fig. 19</span></a>). However, ItemPick works only on
-the monochrome images provided by the sensor, as shown in the result pictures in <a class="reference internal" href="#fig-itempick-getting-started-grasps"><span class="std std-numref">Fig. 20</span></a>.</p>
+(<a class="reference internal" href="#fig-itempick-getting-started-tuning-image"><span class="std std-numref">Fig. 20</span></a>). However, ItemPick works only on
+the monochrome images provided by the sensor, as shown in the result pictures in <a class="reference internal" href="#fig-itempick-getting-started-grasps"><span class="std std-numref">Fig. 21</span></a>.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting">
@@ -492,7 +493,7 @@ the monochrome images provided by the sensor, as shown in the result pictures in
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-1-g5c6f5aa',
+            VERSION:'0.5.0-9-g8870d07',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

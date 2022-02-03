@@ -17,7 +17,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 .. rubric:: The |rcvisard| is properly configured:
 
-#. The |rc_visard|'s image version is at least 1.4 and
+#. The |rc_visard| is running the latest firmware (version |rcvisard_version|) and
    the |rc_visard|'s license includes the |itempick| module.
    This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
@@ -130,7 +130,7 @@ show the results of the last successful request to |itempick|.
 
     To trigger the ``compute_grasp`` service via the REST-API, one needs to send
     a PUT request to the URL
-    ``http://<rc-visard-ip>/api/v1/nodes/rc_itempick/services/compute_grasp``,
+    ``http://<rc-visard-ip>/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp``,
     where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
 
     The PUT body should include the following data, in JSON:
@@ -147,9 +147,9 @@ show the results of the last successful request to |itempick|.
 
   .. group-tab:: Swagger UI
 
-    #. The Swagger UI for putting a service request is located at
-       ``http://<rc_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_service``,
-       where ``<rc-visard-ip>`` should be replaced by the actual IP of the |rcvisard|.
+    #. The Swagger UI can be reached at ``http://<rc-visard-ip>/api``,
+       where ``<rc-visard-ip>`` is the actual IP of the |rcvisard|.
+    #. Under *pipeline nodes*, select ``PUT /pipelines/{pipeline}/nodes/{node}/services/{service}``
     #. The following values are required to fill the request to the REST-API:
 
         * **node** ``rc_itempick``
@@ -172,7 +172,7 @@ show the results of the last successful request to |itempick|.
 
     .. code-block:: bash
 
-      curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+      curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
       "{ \
           \"args\": { \
               \"pose_frame\": \"camera\", \
@@ -188,7 +188,7 @@ show the results of the last successful request to |itempick|.
 
     .. code-block:: bash
 
-      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+      curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
       "{ ^
           \"args\": { ^
               \"pose_frame\": \"camera\", ^
@@ -204,7 +204,7 @@ show the results of the last successful request to |itempick|.
 
     .. code-block:: bash
 
-      Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+      Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
       {
         "args": {
           "pose_frame": "camera",

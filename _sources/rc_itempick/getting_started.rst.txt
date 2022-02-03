@@ -18,9 +18,9 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard's image version is at least 1.4 and the rc_visard's
-license includes the ItemPick module. This can be verified on the
-System ‣ Firmware & License page of the Web GUI.
+The rc_visard is running the latest firmware (version 22.01) and the
+rc_visard's license includes the ItemPick module. This can be verified
+on the System ‣ Firmware & License page of the Web GUI.
 
 -[ One or more workpieces are in the field of view of the camera. They
 should meet the following requisites: ]-
@@ -169,8 +169,8 @@ REST-API
 
 To trigger the "compute_grasp" service via the REST-API, one needs to
 send a PUT request to the URL "http://<rc-visard-
-ip>/api/v1/nodes/rc_itempick/services/compute_grasp", where "<rc-
-visard-ip>" should be replaced by the actual IP of the
+ip>/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasp",
+where "<rc-visard-ip>" should be replaced by the actual IP of the
 
 rc_visard
 
@@ -188,10 +188,11 @@ The PUT body should include the following data, in JSON:
 
 Swagger UI
 
-The Swagger UI for putting a service request is located at http://<rc
-_visard_ip>/api/swagger/index.html#!/nodes/put_nodes_node_services_se
-rvice, where <rc-visard-ip> should be replaced by the actual IP of the
-rc_visard.
+The Swagger UI can be reached at http://<rc-visard-ip>/api, where <rc-
+visard-ip> is the actual IP of the rc_visard.
+
+Under pipeline nodes, select PUT
+/pipelines/{pipeline}/nodes/{node}/services/{service}
 
 The following values are required to fill the request to the REST-API:
 node rc_itempick  service compute_grasps  service args  {   "args": {
@@ -207,7 +208,7 @@ rc_visard
 
  (e.g. "RC_VISARD_IP=10.0.2.90").
 
-   curl -X PUT "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
+   curl -X PUT "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d \
    "{ \
        \"args\": { \
            \"pose_frame\": \"camera\", \
@@ -229,7 +230,7 @@ curl
 
  command is in the path.
 
-   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v1/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
+   curl.exe -X PUT "http://%RC_VISARD_IP%/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -H  "accept: application/json" -H  "Content-Type: application/json" -d ^
    "{ ^
        \"args\": { ^
            \"pose_frame\": \"camera\", ^
@@ -247,7 +248,7 @@ rc_visard
 
  (e.g. "$RC_VISARD_IP="10.0.2.90"").
 
-   Invoke-RestMethod "http://$RC_VISARD_IP/api/v1/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
+   Invoke-RestMethod "http://$RC_VISARD_IP/api/v2/pipelines/0/nodes/rc_itempick/services/compute_grasps" -ContentType 'application/json' -Method Put -Body '
    {
      "args": {
        "pose_frame": "camera",
@@ -263,12 +264,12 @@ Note: The
 
    used in this tutorial is a color sensor (
 
-  Fig. 19
+  Fig. 20
 
   ). However, ItemPick works only on the monochrome images provided by
   the sensor, as shown in the result pictures in
 
-  Fig. 20
+  Fig. 21
 
   .
 

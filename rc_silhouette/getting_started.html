@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-1-g5c6f5aa
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -223,8 +223,8 @@ guides the reader to detecting the first objects.</p>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em>’s image version is at least 1.8 and the <em>rc_visard</em>’s license includes the
-SilhouetteMatch module.
+<li>The <em>rc_visard</em> is running the latest firmware (version 22.01)
+and the <em>rc_visard</em>’s license includes the SilhouetteMatch module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
 <p class="rubric">One or more workpieces have been chosen and the templates for these objects have been
@@ -320,15 +320,15 @@ reconstruction of a texture-less base plane.</p>
 With projector, a much denser point cloud (green points) is produced, especially
 for the texture-less base plane.</span></p>
 </div>
-<p>SilhouetteMatch provides best results when the depth image quality is set to High.
-The projector should be operated in <em>ExposureAlternateActive</em> mode or the stereo
-should work in <em>Single + Out1 Acquisition Mode</em>, meaning that the projected
+<p>SilhouetteMatch provides best results when the depth image quality is set to <em>High</em>.
+The projector should be operated in <em>ExposureAlternateActive</em> mode or the depth image
+Acquisition Mode should be set to <em>Single + Out1</em>, meaning that the projected
 pattern is not visible in the regular intensity images.
 Otherwise, the projector will interfere with SilhouetteMatch’s object detection process.</p>
 </div>
 <div class="section" id="configuring-the-load-carrier">
 <h2>Configuring the load carrier<a class="headerlink" href="#configuring-the-load-carrier" title="Permalink to this headline">¶</a></h2>
-<p>The configuration of the load carrier is described in detail in <a class="reference internal" href="../rc_reason_general/load_carrier_setup.html#general-lc-config"><span class="std std-ref">Configuring the load carrier</span></a>.</p>
+<p>The configuration of the load carrier is described in detail in <a class="reference internal" href="../rc_reason_general/load_carrier_setup.html#general-lc-config"><span class="std std-ref">Configuring a load carrier</span></a>.</p>
 </div>
 <div class="section" id="setting-up-silm">
 <h2>Setting up SilhouetteMatch<a class="headerlink" href="#setting-up-silm" title="Permalink to this headline">¶</a></h2>
@@ -348,7 +348,7 @@ See the following video for a walk-through of the uploading process.</p>
 <div class="toggle-content docutils container">
 <blockquote>
 <div><div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/template_upload.gif"><img alt="../_images/template_upload.gif" src="../_images/template_upload.gif" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/template_upload.gif"><img alt="../_images/template_upload.gif" src="../_images/template_upload.gif" style="width: 800px;" /></a>
 </div>
 </div></blockquote>
 </div>
@@ -356,7 +356,7 @@ See the following video for a walk-through of the uploading process.</p>
 <div class="section" id="configuring-a-region-of-interest">
 <span id="silhouettematch-roi"></span><h3>Configuring a region of interest<a class="headerlink" href="#configuring-a-region-of-interest" title="Permalink to this headline">¶</a></h3>
 <p>For both base-plane calibration and object detection, a 2D region of interest (ROI) can be applied.
-The SilhouetteMatch module offers a ROI database, in which ROIs can be stored and referred to during
+A ROI database is available on the system, in which ROIs can be stored and referred to during
 base-plane calibration or object detection by their name.</p>
 <p>For configuring a new region of interest, the Web GUI offers an intuitive selection tool, which
 is shown in the following video.</p>
@@ -364,7 +364,7 @@ is shown in the following video.</p>
 <div class="toggle-content docutils container">
 <blockquote>
 <div><div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/roi_creation.gif"><img alt="../_images/roi_creation.gif" src="../_images/roi_creation.gif" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/roi_creation.gif"><img alt="../_images/roi_creation.gif" src="../_images/roi_creation.gif" style="width: 800px;" /></a>
 </div>
 </div></blockquote>
 </div>
@@ -408,7 +408,7 @@ Right: Triangle is too small.</span></p>
 <p class="toggle-header"><em>Video: AprilTag-based base-plane calibration</em></p>
 <div class="toggle-content docutils container">
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/base-plane-calib-apriltag.gif"><img alt="../_images/base-plane-calib-apriltag.gif" src="../_images/base-plane-calib-apriltag.gif" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/base-plane-calib-apriltag.gif"><img alt="../_images/base-plane-calib-apriltag.gif" src="../_images/base-plane-calib-apriltag.gif" style="width: 800px;" /></a>
 </div>
 </div>
 </div>
@@ -433,7 +433,7 @@ the actual base-plane can be selected.</span></p>
 <p class="toggle-header"><em>Video: Stereo-based base-plane calibration</em></p>
 <div class="toggle-content docutils container">
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/base-plane-calib-stereo.gif"><img alt="../_images/base-plane-calib-stereo.gif" src="../_images/base-plane-calib-stereo.gif" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/base-plane-calib-stereo.gif"><img alt="../_images/base-plane-calib-stereo.gif" src="../_images/base-plane-calib-stereo.gif" style="width: 800px;" /></a>
 </div>
 </div>
 </div>
@@ -486,7 +486,7 @@ is marked in blue.</p>
 <p class="toggle-header"><em>Video: Triggering object detection</em></p>
 <div class="toggle-content docutils container">
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/detect-objects.gif"><img alt="../_images/detect-objects.gif" src="../_images/detect-objects.gif" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/detect-objects.gif"><img alt="../_images/detect-objects.gif" src="../_images/detect-objects.gif" style="width: 800px;" /></a>
 </div>
 </div>
 <p>The object detection process is influenced by a couple of parameters.
@@ -601,7 +601,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-1-g5c6f5aa',
+            VERSION:'0.5.0-9-g8870d07',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
