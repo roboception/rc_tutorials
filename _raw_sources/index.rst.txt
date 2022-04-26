@@ -17,5 +17,6 @@ Tutorials for the rc_visard_ and additionally available software modules.
    rc_silhouette/overview
    rc_collision_check/overview
    rc_urcap/overview
+   robot/overview
 
 .. _rc_visard: http://rc-visard.com

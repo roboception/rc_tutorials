@@ -3,7 +3,7 @@
 Universal Robots tutorials
 ==========================
 
-In this tutorial you will learn how to connect, configure, and use rc_visard with Universal Robots.
+In this tutorial you will learn how to connect, configure, and use the |rc_visard| with a Universal Robots robot.
 
 .. toctree::
     :maxdepth: 1

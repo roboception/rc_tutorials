@@ -390,6 +390,34 @@ Quality
 detection. The lower, the faster is the computation, but details of
 the objects might get lost.
 
+In case the
+
+rc_viscore
+
+ is used with SilhouetteMatch, reducing the resolution to
+
+Medium
+
+ or
+
+Low
+
+ often gives better results, because object boundaries become sharper.
+Only when very small parts need to be detected, the full resolution of
+the
+
+rc_viscore
+
+ should be used by setting the
+
+Quality
+
+ to
+
+High
+
+.
+
 
 Maximum Object Number
 

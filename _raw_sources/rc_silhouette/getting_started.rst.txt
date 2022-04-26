@@ -340,6 +340,12 @@ Quality
 The *Quality* parameter controls the resolution of the images used for object detection.
 The lower, the faster is the computation, but details of the objects might get lost.
 
+In case the |rc_viscore| is used with |silm|, reducing the resolution to *Medium* or
+*Low* often gives better results, because object boundaries become sharper. Only when
+very small parts need to be detected, the full resolution of the |rc_viscore| should be
+used by setting the *Quality* to *High*.
+
+
 .. figure:: ../images/silhouette/object-detection-quality.jpg
    :width: 1000px
    :align: center

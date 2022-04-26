@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-21-g2d63c2a
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-9-g8870d07
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-21-g2d63c2a
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -151,6 +151,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robot/overview.html">KUKA robot tutorials</a></li>
 </ul>
 
             
@@ -496,6 +497,10 @@ In the following, the parameters are described.</p>
 <span id="silhouettematch-quality"></span><h3>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">¶</a></h3>
 <p>The <em>Quality</em> parameter controls the resolution of the images used for object detection.
 The lower, the faster is the computation, but details of the objects might get lost.</p>
+<p>In case the <em>rc_viscore</em> is used with SilhouetteMatch, reducing the resolution to <em>Medium</em> or
+<em>Low</em> often gives better results, because object boundaries become sharper. Only when
+very small parts need to be detected, the full resolution of the <em>rc_viscore</em> should be
+used by setting the <em>Quality</em> to <em>High</em>.</p>
 <div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/object-detection-quality.jpg"><img alt="../_images/object-detection-quality.jpg" src="../_images/object-detection-quality.jpg" style="width: 1000px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Comparison of low (left) and high (right) quality.</span></p>
@@ -601,7 +606,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-9-g8870d07',
+            VERSION:'0.5.0-21-g2d63c2a',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
