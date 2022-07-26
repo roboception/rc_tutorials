@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Expert Functions &mdash; Tutorials, FAQs &amp; more 0.5.0-21-g2d63c2a
+  <title>Expert functions &mdash; Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-21-g2d63c2a
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -127,32 +127,26 @@
 <li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
 <li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sampleprogram.html">Sample program</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Expert Functions</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Expert functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general-functions">General functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rc-set-parameter">rc_set_parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-save-parameters">rc_save_parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rc-reset-parameters">rc_reset_parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-turn-on-projector">rc_turn_on_projector</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-turn-off-projector">rc_turn_off_projector</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#itempick-functions">ItemPick functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-ip-col">rc_trigger_ip_col</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-ip-grasp">rc_get_ip_grasp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-ip-lc-pose">rc_get_ip_lc_pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions-available-for-all-detections">Functions available for all detections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-get-module-grasp">rc_get_MODULE_grasp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-get-module-offset">rc_get_MODULE_offset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rc-get-module-lc-pose">rc_get_MODULE_lc_pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dedicated-boxpick-functions">Dedicated BoxPick functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rc-get-bp-item-size">rc_get_bp_item_size</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#boxpick-functions">BoxPick functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-compute-bp">rc_trigger_compute_bp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-item-size">rc_get_item_size</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-item-grasp">rc_get_item_grasp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-get-bp-lc-pose">rc_get_bp_lc_pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dedicated-silhouettematch-functions">Dedicated SilhouetteMatch functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rc-get-sil-pose">rc_get_sil_pose</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#silhouettematch-functions">SilhouetteMatch Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rc-trigger-compute-sil">rc_trigger_compute_sil</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-sil-grasp">get_sil_grasp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rc-silhouette-calibrate">rc_silhouette_calibrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dedicated-cadmatch-functions">Dedicated CADMatch functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rc-get-cad-pose">rc_get_cad_pose</a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +201,7 @@
         
           <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
         
-      <li>Expert Functions</li>
+      <li>Expert functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -225,17 +219,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="expert-functions">
-<span id="ur-expert-functions"></span><h1>Expert Functions<a class="headerlink" href="#expert-functions" title="Permalink to this headline">¶</a></h1>
+<span id="ur-expert-functions"></span><h1>Expert functions<a class="headerlink" href="#expert-functions" title="Permalink to this headline">¶</a></h1>
 <p>Functions can be added to the program with Universal Robots Advanced Program Structure ‘Script code’.</p>
 <div class="section" id="general-functions">
 <h2>General functions<a class="headerlink" href="#general-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="rc-set-parameter">
 <span id="ur-expert-functions-set-param"></span><h3>rc_set_parameter<a class="headerlink" href="#rc-set-parameter" title="Permalink to this headline">¶</a></h3>
-<p>This function can be used to set all rc_visard parameters. Parameters set with this function are not saved and will not be available after reboot.</p>
+<p>This function can be used to set all rc_visard parameters. Parameters set with this function are saved and will be available after a reboot.</p>
 <div class="section" id="input">
 <h4>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
 <li>node_name - name of the node as described in rc_visard manual</li>
 <li>parameter_name - name of the parameter that should be changed as described in rc_visard manual</li>
 <li>parameter_value - value of the parameter that should be changed as described in rc_visard manual</li>
@@ -243,233 +238,106 @@
 </div>
 <div class="section" id="output">
 <h4>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
-<p>True if the parameter was successful, false otherwise.</p>
+<p>True if the parameter was set successfully, false otherwise.</p>
 </div>
 </div>
-<div class="section" id="rc-save-parameters">
-<h3>rc_save_parameters<a class="headerlink" href="#rc-save-parameters" title="Permalink to this headline">¶</a></h3>
-<p>This function saves the currently set parameters persistently. Thereby, the same parameters will still apply after a reboot of the sensor. The node parameters are not persistent over firmware updates and rollbacks.</p>
+<div class="section" id="rc-reset-parameters">
+<h3>rc_reset_parameters<a class="headerlink" href="#rc-reset-parameters" title="Permalink to this headline">¶</a></h3>
+<p>This service resets all parameters of the module to its default values, as described in the manual. The reset does not affect sorting strategies and preferred orientations.</p>
 <div class="section" id="id1">
 <h4>Input<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
 <li>node_name - name of the node as described in rc_visard manual</li>
 </ul>
 </div>
 <div class="section" id="id2">
 <h4>Output<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>True if the parameter was successful, false otherwise.</p>
+<p>True if the parameter reset was successful, false otherwise.</p>
 </div>
 </div>
-<div class="section" id="rc-reset-parameters">
-<h3>rc_reset_parameters<a class="headerlink" href="#rc-reset-parameters" title="Permalink to this headline">¶</a></h3>
-<p>This service resets all parameters of the module to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.</p>
+</div>
+<div class="section" id="functions-available-for-all-detections">
+<h2>Functions available for all detections<a class="headerlink" href="#functions-available-for-all-detections" title="Permalink to this headline">¶</a></h2>
+<p>All detections permit using the following functions:</p>
+</div>
+<div class="section" id="rc-get-module-grasp">
+<h2>rc_get_MODULE_grasp<a class="headerlink" href="#rc-get-module-grasp" title="Permalink to this headline">¶</a></h2>
+<p>This function returns the grasp pose assigned to the grasp. <cite>MODULE</cite>
+needs to be one of <cite>ip</cite> (rc_itempick), <cite>bp</cite> (rc_boxpick),
+<cite>sil</cite> (rc_silhouettematch), or <cite>cad</cite> (rc_cadmatch).</p>
+<ul class="simple">
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
+</ul>
+<p>The grasp pose. If no grasp is available, it will return p[0,0,0,0,0,0].</p>
+</div>
+<div class="section" id="rc-get-module-offset">
+<h2>rc_get_MODULE_offset<a class="headerlink" href="#rc-get-module-offset" title="Permalink to this headline">¶</a></h2>
+<p>This function returns the grasp pose offset assigned to the grasp. <cite>MODULE</cite>
+needs to be one of <cite>ip</cite> (rc_itempick), <cite>bp</cite> (rc_boxpick),
+<cite>sil</cite> (rc_silhouettematch), or <cite>cad</cite> (rc_cadmatch).</p>
+<p>The [x,y,z] translation of the grasp offset. If no offset is available, it will return p[0,0,0].</p>
+</div>
+<div class="section" id="rc-get-module-lc-pose">
+<h2>rc_get_MODULE_lc_pose<a class="headerlink" href="#rc-get-module-lc-pose" title="Permalink to this headline">¶</a></h2>
+<p>This function returns the load carrier pose. <cite>MODULE</cite>
+needs to be one of <cite>ip</cite> (rc_itempick), <cite>bp</cite> (rc_boxpick),
+<cite>sil</cite> (rc_silhouettematch), or <cite>cad</cite> (rc_cadmatch).</p>
+<p>The load carrier pose. If no load carrier is detected, it will return p[0,0,0,0,0,0].</p>
+</div>
+<div class="section" id="dedicated-boxpick-functions">
+<h2>Dedicated BoxPick functions<a class="headerlink" href="#dedicated-boxpick-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rc-get-bp-item-size">
+<h3>rc_get_bp_item_size<a class="headerlink" href="#rc-get-bp-item-size" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the size in millimeters of the next item.</p>
 <div class="section" id="id3">
 <h4>Input<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-<li>node_name - name of the node as described in rc_visard manual</li>
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h4>Output<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>True if the parameter was successful, false otherwise.</p>
+<p>This function returns the size of the next available item. If no item is available, it will return [0,0].</p>
 </div>
 </div>
-<div class="section" id="rc-turn-on-projector">
-<h3>rc_turn_on_projector<a class="headerlink" href="#rc-turn-on-projector" title="Permalink to this headline">¶</a></h3>
-<p>This function sets the rc_visards ‘out_1’ to ‘ExposureAlternateActive’ mode.</p>
+</div>
+<div class="section" id="dedicated-silhouettematch-functions">
+<h2>Dedicated SilhouetteMatch functions<a class="headerlink" href="#dedicated-silhouettematch-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rc-get-sil-pose">
+<h3>rc_get_sil_pose<a class="headerlink" href="#rc-get-sil-pose" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the pose of a detected object.</p>
 <div class="section" id="id5">
 <h4>Input<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
 </ul>
 </div>
 <div class="section" id="id6">
 <h4>Output<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
+<p>This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].</p>
 </div>
 </div>
-<div class="section" id="rc-turn-off-projector">
-<h3>rc_turn_off_projector<a class="headerlink" href="#rc-turn-off-projector" title="Permalink to this headline">¶</a></h3>
-<p>This function set the <em>rc_visard</em>’s ‘out_1’ to ‘Low’ mode.</p>
+</div>
+<div class="section" id="dedicated-cadmatch-functions">
+<h2>Dedicated CADMatch functions<a class="headerlink" href="#dedicated-cadmatch-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rc-get-cad-pose">
+<h3>rc_get_cad_pose<a class="headerlink" href="#rc-get-cad-pose" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the pose of a detected object.</p>
 <div class="section" id="id7">
 <h4>Input<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
+<li>ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)</li>
+<li>pipeline - pipeline of the sensor</li>
 </ul>
 </div>
 <div class="section" id="id8">
 <h4>Output<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
-</div>
-</div>
-</div>
-<div class="section" id="itempick-functions">
-<h2>ItemPick functions<a class="headerlink" href="#itempick-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rc-trigger-ip-col">
-<h3>rc_trigger_ip_col<a class="headerlink" href="#rc-trigger-ip-col" title="Permalink to this headline">¶</a></h3>
-<p>This function triggers the grasp computation thread.</p>
-<div class="section" id="id9">
-<h4>Input<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-<li>suc_size - size of the suction cup in millimeters in format [suc_length_m, suc_width_m]</li>
-<li>lc_id - ID of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
-<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>gripper_is - ID of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
-<li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
-<li>pose_frame - pose frame that should be used for returned values</li>
-</ul>
-</div>
-<div class="section" id="id10">
-<h4>Output<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
-</div>
-</div>
-<div class="section" id="rc-get-ip-grasp">
-<h3>rc_get_ip_grasp<a class="headerlink" href="#rc-get-ip-grasp" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the pose of a single computed grasp in the robot base coordinate system. The ‘rc_trigger_compute_grasps’ function has to be triggered prior.</p>
-<div class="section" id="id11">
-<h4>Input<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id12">
-<h4>Output<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]</p>
-</div>
-</div>
-<div class="section" id="rc-get-ip-lc-pose">
-<h3>rc_get_ip_lc_pose<a class="headerlink" href="#rc-get-ip-lc-pose" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the pose of a load carrier in the robot base coordinate system. The ‘rc_trigger_compute_grasps’ function has to be triggered prior.</p>
-<div class="section" id="id13">
-<h4>Input<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id14">
-<h4>Output<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the detected load carrier. If no load carrier was detected it returns p[0,0,0,0,0,0]</p>
-</div>
-</div>
-</div>
-<div class="section" id="boxpick-functions">
-<h2>BoxPick functions<a class="headerlink" href="#boxpick-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rc-trigger-compute-bp">
-<h3>rc_trigger_compute_bp<a class="headerlink" href="#rc-trigger-compute-bp" title="Permalink to this headline">¶</a></h3>
-<p>This function triggers the item detection thread.</p>
-<div class="section" id="id15">
-<h4>Input<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-<li>rectangle - size of the rectangles in mm that should be detected [min_x, min_y, max_x, max_y]</li>
-<li>lc_id - ID of the load carrier that should be used (use ‘-1’ if no load carrier should be used)</li>
-<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>gripper_is - ID of the gripper that should be used (use ‘-1’ if no gripper should be used)</li>
-<li>offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)</li>
-<li>pose_frame - pose frame that should be used for returned values</li>
-</ul>
-</div>
-<div class="section" id="id16">
-<h4>Output<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
-</div>
-</div>
-<div class="section" id="rc-get-item-size">
-<h3>rc_get_item_size<a class="headerlink" href="#rc-get-item-size" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the size in millimeters of the next item. The ‘rc_trigger_compute_bp’ function has to be triggered prior.</p>
-<div class="section" id="id17">
-<h4>Input<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id18">
-<h4>Output<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the size of the next available item. If no item is available it returns [0,0]</p>
-</div>
-</div>
-<div class="section" id="rc-get-item-grasp">
-<h3>rc_get_item_grasp<a class="headerlink" href="#rc-get-item-grasp" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the grasp on a next detected item in the robot base coordinate system. <strong>To get the size of this item the rc_get_item_size function has to be called before this function.</strong> The ‘rc_trigger_compute_bp’ function has to be triggered prior.</p>
-<div class="section" id="id19">
-<h4>Input<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id20">
-<h4>Output<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]</p>
-</div>
-</div>
-<div class="section" id="rc-get-bp-lc-pose">
-<h3>rc_get_bp_lc_pose<a class="headerlink" href="#rc-get-bp-lc-pose" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the pose of a load carrier in the robot base coordinate system. The ‘rc_trigger_bp_item’ function has to be triggered prior.</p>
-<div class="section" id="id21">
-<h4>Input<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id22">
-<h4>Output<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the detected load carrier. If no load carrier was detected it returns p[0,0,0,0,0,0]</p>
-</div>
-</div>
-</div>
-<div class="section" id="silhouettematch-functions">
-<h2>SilhouetteMatch Functions<a class="headerlink" href="#silhouettematch-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rc-trigger-compute-sil">
-<h3>rc_trigger_compute_sil<a class="headerlink" href="#rc-trigger-compute-sil" title="Permalink to this headline">¶</a></h3>
-<p>This function triggers the detect objects thread.</p>
-<div class="section" id="id23">
-<h4>Input<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-<li>object_id  -id of the object that should be detected</li>
-<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>offset - offset that should be used for calculating the calibration plane</li>
-<li>pose_frame - pose frame that should be used for returned values</li>
-</ul>
-</div>
-<div class="section" id="id24">
-<h4>Output<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
-</div>
-</div>
-<div class="section" id="get-sil-grasp">
-<h3>get_sil_grasp<a class="headerlink" href="#get-sil-grasp" title="Permalink to this headline">¶</a></h3>
-<p>This function returns the size in millimeters of the next item. The ‘rc_trigger_bp_item’ function has to be triggered prior.</p>
-<div class="section" id="id25">
-<h4>Input<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-</ul>
-</div>
-<div class="section" id="id26">
-<h4>Output<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
-<p>This function returns the size of the next available item. If no item is available it returns [0,0]</p>
-</div>
-</div>
-<div class="section" id="rc-silhouette-calibrate">
-<h3>rc_silhouette_calibrate<a class="headerlink" href="#rc-silhouette-calibrate" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id27">
-<h4>Input<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li>ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)</li>
-<li>plane_est - plane estimation method (‘APRILTAG’ or ‘STEREO’)</li>
-<li>roi_id - ID of the region of interest that should be used (use ‘-1’ if no region of interest should be used)</li>
-<li>offset - offset that should be used for calculating the calibration plane</li>
-<li>pose_frame - pose frame that should be used for returned values</li>
-</ul>
-</div>
-<div class="section" id="id28">
-<h4>Output<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
-<p>This function does not return anything.</p>
+<p>This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].</p>
 </div>
 </div>
 </div>
@@ -517,7 +385,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-21-g2d63c2a',
+            VERSION:'0.5.0-23-gb8c2f87',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

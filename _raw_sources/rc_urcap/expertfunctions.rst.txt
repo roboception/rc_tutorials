@@ -2,226 +2,132 @@
 
 .. _ur-expert_functions:
 
-Expert Functions
-==================
+Expert functions
+================
 
 Functions can be added to the program with Universal Robots Advanced Program Structure 'Script code'.
 
 General functions
------------------------
+------------------
 
 .. _ur-expert_functions-set-param:
 
 rc_set_parameter
 ''''''''''''''''''
-This function can be used to set all rc_visard parameters. Parameters set with this function are not saved and will not be available after reboot.
+This function can be used to set all rc_visard parameters. Parameters set with this function are saved and will be available after a reboot.
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 * node_name - name of the node as described in rc_visard manual
 * parameter_name - name of the parameter that should be changed as described in rc_visard manual
 * parameter_value - value of the parameter that should be changed as described in rc_visard manual
 
 Output
 ^^^^^^^^^^^^^^^^^^
-True if the parameter was successful, false otherwise.
+True if the parameter was set successfully, false otherwise.
 
-
-rc_save_parameters
-'''''''''''''''''''''
-This function saves the currently set parameters persistently. Thereby, the same parameters will still apply after a reboot of the sensor. The node parameters are not persistent over firmware updates and rollbacks.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-* node_name - name of the node as described in rc_visard manual
-
-Output
-^^^^^^^^^^^^^^^^^^
-True if the parameter was successful, false otherwise.
 
 rc_reset_parameters
 '''''''''''''''''''''
-This service resets all parameters of the module to its default values, as described in the manual. The reset does not apply to regions of interest and load carriers.
+This service resets all parameters of the module to its default values, as described in the manual. The reset does not affect sorting strategies and preferred orientations.
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 * node_name - name of the node as described in rc_visard manual
 
 Output
 ^^^^^^^^^^^^^^^^^^
-True if the parameter was successful, false otherwise.
+True if the parameter reset was successful, false otherwise.
 
-rc_turn_on_projector
-'''''''''''''''''''''''
-This function sets the rc_visards 'out_1' to 'ExposureAlternateActive' mode.
 
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+Functions available for all detections
+--------------------------------------
+All detections permit using the following functions:
 
-Output
-^^^^^^^^^^^^^^^^^^
-This function does not return anything.
-
-rc_turn_off_projector
-'''''''''''''''''''''''''''
-This function set the |rc_visard|'s 'out_1' to 'Low' mode.
+rc_get_MODULE_grasp
+--------------------
+This function returns the grasp pose assigned to the grasp. `MODULE`
+needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick), 
+`sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 
 Output
 ^^^^^^^^^^^^^^^^^^
-This function does not return anything.
+The grasp pose. If no grasp is available, it will return p[0,0,0,0,0,0].
 
-ItemPick functions
------------------------
+rc_get_MODULE_offset
+--------------------
+This function returns the grasp pose offset assigned to the grasp. `MODULE`
+needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick), 
+`sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
 
-rc_trigger_ip_col
-'''''''''''''''''''''''''''''
-This function triggers the grasp computation thread.
+Output
+^^^^^^^^^^^^^^^^^^
+The [x,y,z] translation of the grasp offset. If no offset is available, it will return p[0,0,0].
+
+rc_get_MODULE_lc_pose
+--------------------
+This function returns the load carrier pose. `MODULE`
+needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick), 
+`sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
+
+Output
+^^^^^^^^^^^^^^^^^^
+The load carrier pose. If no load carrier is detected, it will return p[0,0,0,0,0,0].
+
+
+Dedicated BoxPick functions
+---------------------------
+
+rc_get_bp_item_size
+''''''''''''''''''''
+This function returns the size in millimeters of the next item. 
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-* suc_size - size of the suction cup in millimeters in format [suc_length_m, suc_width_m]
-* lc_id - ID of the load carrier that should be used (use '-1' if no load carrier should be used)
-* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
-* gripper_is - ID of the gripper that should be used (use '-1' if no gripper should be used)
-* offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)
-* pose_frame - pose frame that should be used for returned values
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 
 Output
 ^^^^^^^^^^^^^^^^^^
-This function does not return anything.
+This function returns the size of the next available item. If no item is available, it will return [0,0].
 
-rc_get_ip_grasp
-''''''''''''''''''
-This function returns the pose of a single computed grasp in the robot base coordinate system. The 'rc_trigger_compute_grasps' function has to be triggered prior.
+Dedicated SilhouetteMatch functions
+-----------------------------------
+
+rc_get_sil_pose
+'''''''''''''''
+This function returns the pose of a detected object.
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 
 Output
 ^^^^^^^^^^^^^^^^^^
-This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]
+This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].
 
-rc_get_ip_lc_pose
-''''''''''''''''''
-This function returns the pose of a load carrier in the robot base coordinate system. The 'rc_trigger_compute_grasps' function has to be triggered prior.
+Dedicated CADMatch functions
+----------------------------
+
+rc_get_cad_pose
+'''''''''''''''
+This function returns the pose of a detected object.
 
 Input
 ^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
+* ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
+* pipeline - pipeline of the sensor
 
 Output
 ^^^^^^^^^^^^^^^^^^
-This function returns the detected load carrier. If no load carrier was detected it returns p[0,0,0,0,0,0]
-
-BoxPick functions
------------------------
-
-rc_trigger_compute_bp
-''''''''''''''''''''''
-This function triggers the item detection thread.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-* rectangle - size of the rectangles in mm that should be detected [min_x, min_y, max_x, max_y]
-* lc_id - ID of the load carrier that should be used (use '-1' if no load carrier should be used)
-* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
-* gripper_is - ID of the gripper that should be used (use '-1' if no gripper should be used)
-* offset - offset for the pre grasp pose in tcp coordinate frame [offset_x_m, offset_y_m, offset_z_m] (use [] if collision is not checked or it should not be used)
-* pose_frame - pose frame that should be used for returned values
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function does not return anything.
-
-rc_get_item_size
-''''''''''''''''''
-This function returns the size in millimeters of the next item. The 'rc_trigger_compute_bp' function has to be triggered prior.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function returns the size of the next available item. If no item is available it returns [0,0]
-
-rc_get_item_grasp
-''''''''''''''''''
-This function returns the grasp on a next detected item in the robot base coordinate system. **To get the size of this item the rc_get_item_size function has to be called before this function.** The 'rc_trigger_compute_bp' function has to be triggered prior.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function returns the pose of the next available grasp. If no grasp is available it returns p[0,0,0,0,0,0]
-
-rc_get_bp_lc_pose
-''''''''''''''''''
-This function returns the pose of a load carrier in the robot base coordinate system. The 'rc_trigger_bp_item' function has to be triggered prior.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function returns the detected load carrier. If no load carrier was detected it returns p[0,0,0,0,0,0]
-
-SilhouetteMatch Functions
------------------------------
-
-rc_trigger_compute_sil
-''''''''''''''''''''''''
-This function triggers the detect objects thread.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-* object_id  -id of the object that should be detected
-* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
-* offset - offset that should be used for calculating the calibration plane
-* pose_frame - pose frame that should be used for returned values
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function does not return anything.
-
-get_sil_grasp
-''''''''''''''''''
-This function returns the size in millimeters of the next item. The 'rc_trigger_bp_item' function has to be triggered prior.
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function returns the size of the next available item. If no item is available it returns [0,0]
-
-rc_silhouette_calibrate
-''''''''''''''''''''''''''''''''
-
-Input
-^^^^^^^^^^^^^^^^^^
-* ip_address - ip address of the sensor that should be used (sensor with this ip has to be configured in installation node)
-* plane_est - plane estimation method ('APRILTAG' or 'STEREO')
-* roi_id - ID of the region of interest that should be used (use '-1' if no region of interest should be used)
-* offset - offset that should be used for calculating the calibration plane
-* pose_frame - pose frame that should be used for returned values
-
-Output
-^^^^^^^^^^^^^^^^^^
-This function does not return anything.
+This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].
