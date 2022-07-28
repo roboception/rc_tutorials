@@ -23,7 +23,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 22.04) and the
+The rc_visard is running the latest firmware (version 22.07) and the
 rc_visard's license includes the CollisionCheck module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 

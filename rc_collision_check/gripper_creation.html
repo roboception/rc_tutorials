@@ -198,7 +198,7 @@
             
   <div class="section" id="setting-up-the-gripper">
 <span id="collision-check-gripper-creation"></span><h1>Setting up the gripper<a class="headerlink" href="#setting-up-the-gripper" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to set up a gripper for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v22.04)"><span>CollisionCheck</span></a> module.</p>
+<p>This tutorial shows how to set up a gripper for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v22.07)"><span>CollisionCheck</span></a> module.</p>
 <p>The gripper in the CollisionCheck module represents the collision geometry of the real gripper mounted to the robot.
 That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
 the robot’s gripper, including cables, connectors etc.</p>
@@ -207,7 +207,7 @@ the robot’s gripper, including cables, connectors etc.</p>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 22.04) and
+<li>The <em>rc_visard</em> is running the latest firmware (version 22.07) and
 the <em>rc_visard</em>’s license includes the CollisionCheck module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
@@ -219,7 +219,7 @@ This can be verified on the <span class="menuselection">System ‣ Firmware &amp
 <span id="fig-collisioncheck-gripper-image"></span><a class="reference internal image-reference" href="../_images/gripper.png"><img alt="../_images/gripper.png" src="../_images/gripper.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
 </div>
-<p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v22.04)"><span>Web GUI</span></a>’s <span class="menuselection">Database ‣ Grippers</span>
+<p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v22.07)"><span>Web GUI</span></a>’s <span class="menuselection">Database ‣ Grippers</span>
 or <span class="menuselection">Configuration ‣ CollisionCheck</span> page.
 The <em>Grippers</em> section lists all defined grippers and allows to edit and remove them.
 All configured grippers are globally available to all detection modules that can use CollisionCheck.
