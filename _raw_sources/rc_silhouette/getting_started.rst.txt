@@ -27,6 +27,8 @@ In order to go through this tutorial, the following prerequisites should be met:
 #. |company| offers a template generation service on their website, where the user can
    request object templates.
    The process is described in the :ref:`silhouettematch-template-generation` tutorial.
+   Alternatively, DXF files can directly be uploaded onto the |rc_visard|, for details
+   see the same tutorial.
 
 Setting up the scene
 --------------------

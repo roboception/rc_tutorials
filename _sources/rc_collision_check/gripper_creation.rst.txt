@@ -23,7 +23,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 22.07) and the
+The rc_visard is running the latest firmware (version 22.10) and the
 rc_visard's license includes the CollisionCheck module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
@@ -31,7 +31,7 @@ Add a new gripper
 
 In this tutorial we will show how to model the sample gripper shown in
 
-Fig. 45
+Fig. 47
 
 .
 
@@ -63,7 +63,7 @@ Flange radius
 
 The flange radius is the outer radius of the robot's flange (see
 
-Fig. 47
+Fig. 49
 
 ). It is used during a safety check if the "check_flange" parameter is
 enabled (see
@@ -84,7 +84,7 @@ Elements
 
  section (see
 
-Fig. 46
+Fig. 48
 
 ).
 
@@ -100,7 +100,7 @@ The position of the cylinder in the flange coordinate frame is
 computed automatically when the button to automatically attach the
 element to its parent is active (see
 
-Fig. 48
+Fig. 50
 
 ). The position coordinates will in this case be 0 in x and y
 coordinates and half of the element's height in z direction. The
@@ -122,7 +122,7 @@ connector's heights, because the origin of each element is located in
 its geometric center and the pose of each element is defined in the
 origin of its parent element (see also
 
-Fig. 49
+Fig. 51
 
 ).
 

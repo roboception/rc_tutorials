@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Network configuration &mdash; Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
+  <title>Network configuration &mdash; Tutorials, FAQs &amp; more 0.5.0-27-g805ce11
  documentation</title>
   
 
@@ -62,7 +62,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-27-g805ce11
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="Tuning of image parameters" href="parameters.html"/>
@@ -288,7 +288,7 @@ is in a totally different network.</span></p>
 <p class="last">The discovery tool is the central troubleshooting tool for checking
 whether Roboception sensors are properly connected and reachable by the host PC or not.
 For a detailed description, please refer to the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v22.07)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v22.10)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
 </div>
 <p>If the <em>rc_visard</em> is reachable, a simple double-click on the respective
 row opens the sensor’s Web GUI which let’s you explore and visualize the
@@ -338,7 +338,7 @@ network settings.</p>
 <blockquote>
 <div><ul class="simple">
 <li>the <em>rc_visard</em>’s Web GUI, and</li>
-<li>any configuration tool compatible with <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v22.07)"><span class="xref std std-term">GigE Vision</span></a>® 2.0.</li>
+<li>any configuration tool compatible with <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v22.10)"><span class="xref std std-term">GigE Vision</span></a>® 2.0.</li>
 </ul>
 </div></blockquote>
 <p>We will give examples for both options below.</p>
@@ -354,7 +354,7 @@ by means of the discovery tool.</p>
 <p>The easiest way to access and permanently change the <em>rc_visard</em>’s network settings
 using a graphical user interface is its Web GUI.</p>
 <p>The first step is to verify on the <span class="menuselection">System ‣ Firmware &amp; License</span> page
-of the Web GUI that the <em>rc_visard</em> is running the latest firmware (version 22.07).</p>
+of the Web GUI that the <em>rc_visard</em> is running the latest firmware (version 22.10).</p>
 <p>The network settings can be found
 on the <span class="menuselection">System ‣ Network Settings</span> page. Here, you can easily check the currently applied
 IP configuration method and change the network settings according to your local
@@ -363,14 +363,14 @@ network.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">While the Web GUI provides an intuitive graphical user interface to
 configure the network settings, in the back-end, it uses the
-<em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.07)"><span class="xref std std-ref">REST-API</span></a>.
+<em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.10)"><span class="xref std std-ref">REST-API</span></a>.
 This offers programmatic access to the full network configuration
 and can be used also by developers.</p>
 </div>
 </div>
 <div class="section" id="option-2-configuration-via-genicam-gige-visionreg">
 <h3>Option 2: Configuration via GenICam/GigE Vision®<a class="headerlink" href="#option-2-configuration-via-genicam-gige-visionreg" title="Permalink to this headline">¶</a></h3>
-<p>The <em>rc_visard</em> complies to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v22.07)"><span class="xref std std-term">GigE Vision</span></a>® 2.0 standard, i.e.
+<p>The <em>rc_visard</em> complies to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v22.10)"><span class="xref std std-term">GigE Vision</span></a>® 2.0 standard, i.e.
 any configuration tool compatible with GigE Vision® can be used
 to configure the device and particularly its network settings.
 In the following we give two examples.</p>
@@ -431,7 +431,7 @@ and that the <em>rc_visard</em> is reachable from your host.</p>
 <p>For changing the network configuration via GenICam using a graphical interface,
 we recommend using the IpConfigTool that is part of the
 <a class="reference external" href="http://www.baumer.com/de-en/products/identification-image-processing/software/baumer-gapi-sdk/">Baumer GAPI SDK</a>.
-The <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-sdk" title="(in rc_visard v22.07)"><span class="xref std std-term">SDK</span></a> can be downloaded free of charge for Windows and Linux from <a class="reference external" href="http://www.baumer.com">http://www.baumer.com</a>.</p>
+The <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-sdk" title="(in rc_visard v22.10)"><span class="xref std std-term">SDK</span></a> can be downloaded free of charge for Windows and Linux from <a class="reference external" href="http://www.baumer.com">http://www.baumer.com</a>.</p>
 <p>After start-up, this tool scans for all available GigE Vision®
 sensors on the network. All <em>rc_visard</em> devices can be uniquely identified by their serial number and MAC address,
 which are both printed on the device.</p>
@@ -612,7 +612,7 @@ the <code class="docutils literal notranslate"><span class="pre">Rerun</span> <s
 device reboot. If no reaction is noticeable, the two minute time
 slot may have passed, requiring another reboot.</p>
 </div>
-<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v22.07)"><span class="xref std std-ref">default automatic network
+<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v22.10)"><span class="xref std std-ref">default automatic network
 configuration routine</span></a>
 and should either have an automatically assigned IP address from
 the DHCP server or a Link-Local address 169.254.x.x.</p>
@@ -687,7 +687,7 @@ for high loads</span></a>.</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-23-gb8c2f87',
+            VERSION:'0.5.0-27-g805ce11',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

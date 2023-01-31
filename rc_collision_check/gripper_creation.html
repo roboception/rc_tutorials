@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up the gripper &mdash; Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
+  <title>Setting up the gripper &mdash; Tutorials, FAQs &amp; more 0.5.0-27-g805ce11
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-23-gb8c2f87
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-27-g805ce11
  documentation" href="../index.html"/>
         <link rel="up" title="CollisionCheck tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with CollisionCheck" href="getting_started.html"/>
@@ -198,7 +198,7 @@
             
   <div class="section" id="setting-up-the-gripper">
 <span id="collision-check-gripper-creation"></span><h1>Setting up the gripper<a class="headerlink" href="#setting-up-the-gripper" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to set up a gripper for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v22.07)"><span>CollisionCheck</span></a> module.</p>
+<p>This tutorial shows how to set up a gripper for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/collisioncheck.html" title="(in rc_visard v22.10)"><span>CollisionCheck</span></a> module.</p>
 <p>The gripper in the CollisionCheck module represents the collision geometry of the real gripper mounted to the robot.
 That means, the outer geometry of the gripper has to be modeled in a way that it completely contains all parts of
 the robot’s gripper, including cables, connectors etc.</p>
@@ -207,19 +207,19 @@ the robot’s gripper, including cables, connectors etc.</p>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 22.07) and
+<li>The <em>rc_visard</em> is running the latest firmware (version 22.10) and
 the <em>rc_visard</em>’s license includes the CollisionCheck module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
 </div>
 <div class="section" id="add-a-new-gripper">
 <h2>Add a new gripper<a class="headerlink" href="#add-a-new-gripper" title="Permalink to this headline">¶</a></h2>
-<p>In this tutorial we will show how to model the sample gripper shown in <a class="reference internal" href="#fig-collisioncheck-gripper-image"><span class="std std-numref">Fig. 45</span></a>.</p>
+<p>In this tutorial we will show how to model the sample gripper shown in <a class="reference internal" href="#fig-collisioncheck-gripper-image"><span class="std std-numref">Fig. 47</span></a>.</p>
 <div class="figure align-center" id="id1">
 <span id="fig-collisioncheck-gripper-image"></span><a class="reference internal image-reference" href="../_images/gripper.png"><img alt="../_images/gripper.png" src="../_images/gripper.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">Sample vacuum gripper to model for collision checking</span></p>
 </div>
-<p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v22.07)"><span>Web GUI</span></a>’s <span class="menuselection">Database ‣ Grippers</span>
+<p>The easiest way to create a gripper is via the <a class="reference external" href="https://doc.rc-visard.com/latest/en/webgui.html#sect-web-gui" title="(in rc_visard v22.10)"><span>Web GUI</span></a>’s <span class="menuselection">Database ‣ Grippers</span>
 or <span class="menuselection">Configuration ‣ CollisionCheck</span> page.
 The <em>Grippers</em> section lists all defined grippers and allows to edit and remove them.
 All configured grippers are globally available to all detection modules that can use CollisionCheck.
@@ -228,17 +228,17 @@ To create a new gripper, click on “+ Add a new gripper”.</p>
 Initially, it only shows the robot flange with a default radius and the flange coordinate frame.</p>
 <div class="figure align-center" id="id2">
 <span id="fig-collisioncheck-gripper-add-element"></span><a class="reference internal image-reference" href="../_images/gripper_modal_add_element.png"><img alt="../_images/gripper_modal_add_element.png" src="../_images/gripper_modal_add_element.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">Creator dialog for gripper creation</span></p>
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Creator dialog for gripper creation</span></p>
 </div>
 <p>The gripper should be modeled in a way such that each element is completely contained in a cylinder or box.</p>
 <div class="figure align-center" id="id3">
 <span id="fig-collisioncheck-gripper-geometry-overlay-image"></span><a class="reference internal image-reference" href="../_images/gripper_geometry.png"><img alt="../_images/gripper_geometry.png" src="../_images/gripper_geometry.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.</span></p>
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Modeling of the gripper geometry with cylinders and boxes. R is the outer flange radius. The axes correspond to the flange coordinate frame.</span></p>
 </div>
 </div>
 <div class="section" id="flange-radius">
 <span id="collision-check-flange-radius"></span><h2>Flange radius<a class="headerlink" href="#flange-radius" title="Permalink to this headline">¶</a></h2>
-<p>The flange radius is the outer radius of the robot’s flange (see <a class="reference internal" href="#fig-collisioncheck-gripper-geometry-overlay-image"><span class="std std-numref">Fig. 47</span></a>).
+<p>The flange radius is the outer radius of the robot’s flange (see <a class="reference internal" href="#fig-collisioncheck-gripper-geometry-overlay-image"><span class="std std-numref">Fig. 49</span></a>).
 It is used during a safety check if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> parameter is enabled (see <a class="reference internal" href="getting_started.html#collision-check-check-flange"><span class="std std-ref">Check Flange</span></a>).
 It is required to set the flange radius even if the <code class="docutils literal notranslate"><span class="pre">check_flange</span></code> functionality will not be used.</p>
 </div>
@@ -246,29 +246,29 @@ It is required to set the flange radius even if the <code class="docutils litera
 <h2>Gripper elements<a class="headerlink" href="#gripper-elements" title="Permalink to this headline">¶</a></h2>
 <p>The gripper is built in the direction from the flange to the Tool Center Point (TCP) and consists of a list of elements which can
 be cylinders and boxes. To add a new
-element, click on the + symbol in the <em>Elements</em> section (see <a class="reference internal" href="#fig-collisioncheck-gripper-add-element"><span class="std std-numref">Fig. 46</span></a>).</p>
+element, click on the + symbol in the <em>Elements</em> section (see <a class="reference internal" href="#fig-collisioncheck-gripper-add-element"><span class="std std-numref">Fig. 48</span></a>).</p>
 <p>The first element of our sample gripper is a vacuum generator. We model it as a cylinder with the same height as the vacuum generator (0.083 m) and
 a radius corresponding to the maximal elongation of the vacuum generator along the z axis of the flange coordinate frame.
 It is important that the modeled collision geometry completely includes the real gripper element to prevent undetected collisions.
 Since the vacuum generator
 is mounted directly on the flange, we choose ‘Flange’ as parent element, which is selected by default for the first element.
 The position of the cylinder in the flange coordinate frame is computed automatically when the button to automatically attach the element
-to its parent is active (see <a class="reference internal" href="#fig-collisioncheck-gripper-automatic-attachment"><span class="std std-numref">Fig. 48</span></a>). The position coordinates will in this case be 0 in x and y coordinates and half of the element’s height in z
+to its parent is active (see <a class="reference internal" href="#fig-collisioncheck-gripper-automatic-attachment"><span class="std std-numref">Fig. 50</span></a>). The position coordinates will in this case be 0 in x and y coordinates and half of the element’s height in z
 direction. The origin of each element is located in its geometric center and the pose of each element is defined in the origin
 of its parent element. The origin of the flange element is located in the center of the flange’s bottom plane.</p>
 <div class="figure align-center" id="id4">
 <span id="fig-collisioncheck-gripper-automatic-attachment"></span><a class="reference internal image-reference" href="../_images/automatic_attachment.png"><img alt="../_images/automatic_attachment.png" src="../_images/automatic_attachment.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">The option for automatically attaching the element to its parent element is active.</span></p>
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">The option for automatically attaching the element to its parent element is active.</span></p>
 </div>
 <p>The second element of the gripper is a cylindrical connector part which we will also model as a cylinder. We use the height of the connector
 as height of the cylinder for the collision geometry. The radius of the cylinder again is the maximal elongation along the flange z axis.
 The parent of this cylinder is the vacuum generator and we again use the automatic attachment (on by default) to position the cylinder
 exactly below its parent element. In this case, the z coordinate of the connector is half of the sum of the
 parent’s and connector’s heights, because the origin of each element is located in its geometric center and the pose of each element is defined in the origin
-of its parent element (see also <a class="reference internal" href="#fig-collisioncheck-gripper-element-frames"><span class="std std-numref">Fig. 49</span></a>).</p>
+of its parent element (see also <a class="reference internal" href="#fig-collisioncheck-gripper-element-frames"><span class="std std-numref">Fig. 51</span></a>).</p>
 <div class="figure align-center" id="id5">
 <span id="fig-collisioncheck-gripper-element-frames"></span><a class="reference internal image-reference" href="../_images/gripper_frames_restapi.svg"><img alt="../_images/gripper_frames_restapi.svg" src="../_images/gripper_frames_restapi.svg" width="40%" /></a>
-<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Computation of an element’s position in the parent element’s origin</span></p>
+<p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">Computation of an element’s position in the parent element’s origin</span></p>
 </div>
 <p>The last element of the gripper is the suction part. It will be modeled as a box because it is elongated in one direction. We choose the
 box dimensions such that the suction part is completely contained in the box. It is important to check that the orientation of the modeled box
@@ -287,7 +287,7 @@ from the automatic attachment by 2mm in z direction, i.e. from (0, 0, 0.02) to (
 so that the TCP is shifted along the z-axis by 2 mm in negative direction.</p>
 <div class="figure align-center" id="id6">
 <span id="fig-collisioncheck-gripper-modal-image"></span><a class="reference internal image-reference" href="../_images/gripper_modal.png"><img alt="../_images/gripper_modal.png" src="../_images/gripper_modal.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Final model of the gripper geometry</span></p>
+<p class="caption"><span class="caption-number">Fig. 52 </span><span class="caption-text">Final model of the gripper geometry</span></p>
 </div>
 </div>
 <div class="section" id="checking-and-saving-the-gripper">
@@ -346,7 +346,7 @@ page and can be used in all rc_reason modules.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-23-gb8c2f87',
+            VERSION:'0.5.0-27-g805ce11',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

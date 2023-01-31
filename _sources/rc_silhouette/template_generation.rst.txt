@@ -6,7 +6,17 @@ generation service on their
 
 website
 
-, where the user can request these object templates.
+, where the user can request these object templates. Alternatively, if
+you have a DXF file of your object, you can directly create the
+template on the
+
+rc_visard
+
+, see
+
+DXF File
+
+.
 
 This tutorial shows how to gather the data required to request and
 generate a new object template.
@@ -20,6 +30,33 @@ Note: Object templates for simple shapes such as rectangles, circles
   .
 
 Obtaining the object model
+
+DXF file
+
+If you have a DXF drawing of your object, you can create the template
+directly on the
+
+rc_visard
+
+. To do so, open the Web GUI and navigate to Modules ‣
+SilhouetteMatch.
+
+At the bottom of the page, you'll find a list of currently installed
+templates.
+
+
+To create a new template from a given DXF file, press the "+" button.
+A window will open, allowing you to upload and configure a DXF file.
+
+
+Note: Currently, only DXF files consisting of a single layer are
+  allowed.
+
+For the "Object Height" parameter, please see
+
+Measuring the object height
+
+. The created template can then be used for detections.
 
 CAD model
 

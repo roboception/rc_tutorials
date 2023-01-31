@@ -10,7 +10,7 @@ In order to go through this tutorial, the
 
 rc_visard
 
- must be running the latest firmware (version 22.07). This can be
+ must be running the latest firmware (version 22.10). This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
 Downloading single snapshots

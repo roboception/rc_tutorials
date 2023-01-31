@@ -17,7 +17,7 @@ rc_set_parameter
 This function can be used to set all rc_visard parameters. Parameters set with this function are saved and will be available after a reboot.
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 * node_name - name of the node as described in rc_visard manual
@@ -25,7 +25,7 @@ Input
 * parameter_value - value of the parameter that should be changed as described in rc_visard manual
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 True if the parameter was set successfully, false otherwise.
 
 
@@ -34,13 +34,13 @@ rc_reset_parameters
 This service resets all parameters of the module to its default values, as described in the manual. The reset does not affect sorting strategies and preferred orientations.
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 * node_name - name of the node as described in rc_visard manual
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 True if the parameter reset was successful, false otherwise.
 
 
@@ -55,12 +55,12 @@ needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick),
 `sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 The grasp pose. If no grasp is available, it will return p[0,0,0,0,0,0].
 
 rc_get_MODULE_offset
@@ -70,7 +70,7 @@ needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick),
 `sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 The [x,y,z] translation of the grasp offset. If no offset is available, it will return p[0,0,0].
 
 rc_get_MODULE_lc_pose
@@ -80,7 +80,7 @@ needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick),
 `sil` (rc_silhouettematch), or `cad` (rc_cadmatch).
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 The load carrier pose. If no load carrier is detected, it will return p[0,0,0,0,0,0].
 
 
@@ -92,12 +92,12 @@ rc_get_bp_item_size
 This function returns the size in millimeters of the next item. 
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 This function returns the size of the next available item. If no item is available, it will return [0,0].
 
 Dedicated SilhouetteMatch functions
@@ -108,12 +108,12 @@ rc_get_sil_pose
 This function returns the pose of a detected object.
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].
 
 Dedicated CADMatch functions
@@ -124,10 +124,10 @@ rc_get_cad_pose
 This function returns the pose of a detected object.
 
 Input
-^^^^^^^^^^^^^^^^^^
+^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
 
 Output
-^^^^^^^^^^^^^^^^^^
+^^^^^^
 This function returns the pose of a detected object. If no object is detected, it will return p[0,0,0,0,0,0].

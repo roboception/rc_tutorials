@@ -6,10 +6,10 @@ Template generation
 ===================
 
 The SilhouetteMatch module requires special object templates for each type
-of object to be detected.
-|company| offers a template generation service on their
-`website <https://roboception.com/en/template-request/>`_,
-where the user can request these object templates.
+of object to be detected. |company| offers a template generation service on their
+`website <https://roboception.com/en/template-request/>`_, where the user can
+request these object templates. Alternatively, if you have a DXF file of your object,
+you can directly create the template on the |rc_visard|, see `DXF File`_.
 
 This tutorial shows how to gather the data required to request and
 generate a new object template.
@@ -21,6 +21,35 @@ generate a new object template.
 
 Obtaining the object model
 --------------------------
+
+DXF file
+````````
+
+If you have a DXF drawing of your object, you can create the template directly
+on the |rc_visard|. To do so, open the |webgui| and navigate to :menuselection:`Modules --> SilhouetteMatch`.
+
+At the bottom of the page, you'll find a list of currently installed templates.
+
+.. figure:: ../images/silhouette/template_list.png
+  :width: 400px
+  :align: center
+
+  List of available SilhouetteMatch templates
+
+To create a new template from a given DXF file, press the "+" button. A window will
+open, allowing you to upload and configure a DXF file.
+
+.. figure:: ../images/silhouette/template_dxf_wizard.png
+  :width: 400px
+  :align: center
+
+  Configuration window for creating a template from a DXF file
+
+.. note::
+  Currently, only DXF files consisting of a single layer are allowed.
+
+For the "Object Height" parameter, please see `Measuring the object height`_.
+The created template can then be used for detections.
 
 CAD model
 `````````
