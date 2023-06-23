@@ -27,7 +27,7 @@ to a computer.
 The Web GUI of the rc_visard should be opened in a Web browser. This
 can be done with the discovery tool from Roboception.
 
-The rc_visard has the latest firmware (version 22.10). The firmware
+The rc_visard has the latest firmware (version 23.04). The firmware
 version can be verified on the System ‣ Firmware & License page of the
 Web GUI.
 

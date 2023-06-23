@@ -207,19 +207,19 @@
             
   <div class="section" id="configuring-a-load-carrier">
 <span id="general-lc-config"></span><h1>Configuring a load carrier<a class="headerlink" href="#configuring-a-load-carrier" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial shows how to configure a load carrier using the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html" title="(in rc_visard v22.10)"><span>LoadCarrierDB</span></a>
+<p>This tutorial shows how to configure a load carrier using the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html" title="(in rc_visard v23.04)"><span>LoadCarrierDB</span></a>
 database module.</p>
 <p>Configured load carriers are global and available in all detection modules (<em>LoadCarrier</em>,
 <em>ItemPick</em>, <em>BoxPick</em>, <em>SilhouetteMatch</em> and <em>CADMatch</em>),
 for computing grasps or detecting objects in bin-picking applications.
-Specifically for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html" title="(in rc_visard v22.10)"><span>LoadCarrier</span></a> module, this tutorial also describes
+Specifically for the <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html" title="(in rc_visard v23.04)"><span>LoadCarrier</span></a> module, this tutorial also describes
 how to detect a load carrier in the scene.</p>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 22.10) and
+<li>The <em>rc_visard</em> is running the latest firmware (version 23.04) and
 the <em>rc_visard</em>’s license includes the LoadCarrier module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
@@ -241,11 +241,11 @@ The <em>Load Carriers</em> section on this page lists all defined load carriers 
 to edit and remove them.</p>
 <p>As an alternative, we also introduce the programmatic interface of the LoadCarrierDB
 database module, which offers three services for managing load carriers
-via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v22.10)"><span>REST-API interface</span></a>:</p>
+via the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v23.04)"><span>REST-API interface</span></a>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-set-lc" title="(in rc_visard v22.10)"><span class="xref std std-ref">set_load_carrier</span></a>,</li>
-<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-get-lc" title="(in rc_visard v22.10)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
-<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-delete-lc" title="(in rc_visard v22.10)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-set-lc" title="(in rc_visard v23.04)"><span class="xref std std-ref">set_load_carrier</span></a>,</li>
+<li><a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-get-lc" title="(in rc_visard v23.04)"><span class="xref std std-ref">get_load_carriers</span></a>,</li>
+<li>and <a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier_db.html#expl-loadcarrier-db-srv-delete-lc" title="(in rc_visard v23.04)"><span class="xref std std-ref">delete_load_carriers</span></a>.</li>
 </ul>
 <p>In this section we show how to configure two different types of load carriers including some code examples.</p>
 <div class="section" id="load-carriers-with-a-solid-rim">
@@ -935,7 +935,7 @@ existing ones in the Load Carrier drop-down menu.
 This option is also available in the <em>Try Out</em> section of all detection modules.</p>
 </div>
 <p>As for the REST-API, the LoadCarrier module offers a
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-detect-lc" title="(in rc_visard v22.10)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/loadcarrier.html#expl-loadcarrier-srv-detect-lc" title="(in rc_visard v23.04)"><span class="xref std std-ref">detect_load_carriers</span></a> service to
 trigger such detections.</p>
 <p class="toggle-header"><strong>REST-API request for detecting my-load-carrier1</strong></p>
 <div class="toggle-content docutils container">
