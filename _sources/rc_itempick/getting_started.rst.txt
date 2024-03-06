@@ -18,7 +18,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 23.04) and the
+The rc_visard is running the latest firmware (version 24.01) and the
 rc_visard's license includes the ItemPick module. This can be verified
 on the System ‣ Firmware & License page of the Web GUI.
 

@@ -27,7 +27,7 @@ Before we start
 Before going through this tutorial, the following prerequisites should
 be met.
 
-The rc_visard is running the latest firmware (version 23.04) and the
+The rc_visard is running the latest firmware (version 24.01) and the
 rc_visard's license includes the IOControl module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 

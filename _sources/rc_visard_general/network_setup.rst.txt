@@ -204,7 +204,7 @@ the Web GUI that the
 
 rc_visard
 
- is running the latest firmware (version 23.04).
+ is running the latest firmware (version 24.01).
 
 The network settings can be found on the System ‣ Network Settings
 page. Here, you can easily check the currently applied IP
