@@ -101,7 +101,7 @@ the *Auto Exposure Mode* to *AdaptiveOut1*.
 The text line under the live images on the **Camera** page now shows the *Out1
 Reduction* value in percent. This value describes the reduction of brightness
 of the image without projection as compared to the image with projection. The
-value should be between 25% to 50%. If the value is outside this range, the
+value should be between 10% to 20%. If the value is outside this range, the
 brightness of the projector should be adapted.
 
 For adapting the projector brightness, the aperture ring of the projector

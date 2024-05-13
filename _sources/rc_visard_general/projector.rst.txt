@@ -27,7 +27,7 @@ Before we start
 Before going through this tutorial, the following prerequisites should
 be met.
 
-The rc_visard is running the latest firmware (version 24.01) and the
+The rc_visard is running the latest firmware (version 24.04) and the
 rc_visard's license includes the IOControl module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
@@ -137,7 +137,7 @@ Out1 Reduction
 
  value in percent. This value describes the reduction of brightness of
 the image without projection as compared to the image with projection.
-The value should be between 25% to 50%. If the value is outside this
+The value should be between 10% to 20%. If the value is outside this
 range, the brightness of the projector should be adapted.
 
 For adapting the projector brightness, the aperture ring of the
