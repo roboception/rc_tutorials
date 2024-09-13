@@ -17,7 +17,7 @@ Downloading single snapshots
 
 The recommended way to capture a snapshot of the current scene is via the rc_visard's |webgui|.
 
-For evaluation of use-cases and support, Roboception requires snapshots taken from the **Depth Image** page
+For evaluation of use-cases and support, |company| requires snapshots taken from the **Depth Image** page
 of the |webgui|.
 
 A new snapshot of the current scene is downloaded by clicking on the camera icon below the image live streams
@@ -71,7 +71,7 @@ Final verification steps for all users
    of the last detection from each module’s page in the |webgui|
    (currently available for LoadCarrier, ItemPick, BoxPick, and SilhouetteMatch).
 
-   These snapshots should be provided to Roboception in addition to Depth Image snapshots,
+   These snapshots should be provided to |company| in addition to Depth Image snapshots,
    captured as described above.
 
 Recording image sequences
@@ -88,7 +88,7 @@ Before going through this tutorial, the following prerequisites should be met.
 .. rubric:: The |rc_visard| is up and running:
 
 #. The |rc_visard| is running and connected properly to the host.
-   One can verify that with our `discovery tool <https://roboception.com/en/download/>`_.
+   One can verify that with our `discovery tool <https://github.com/roboception/rcdiscover/releases>`_.
 #. One should know the serial number or user defined name of the |rc_visard|.
    The serial number is of the format 029xxxxx.
    It will be referred to as ``rc_visard_id`` in the remainder of this tutorial.

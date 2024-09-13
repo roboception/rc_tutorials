@@ -1,8 +1,5 @@
-Roboception Tutorials
+Roboception 3D Camera Tutorials
 
-Tutorials for the
-
-rc_visard
-
- and additionally available software modules.
+Tutorials for the Roboception 3D cameras and additionally available
+software modules.
 

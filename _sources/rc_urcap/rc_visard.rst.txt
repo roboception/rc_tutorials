@@ -20,20 +20,21 @@ in the installation node.
 
 Select module
 
-Select software module, either ItemPick, BoxPick or Common. ItemPick
-and BoxPick nodes offer functionality to tirgger the corresponding
-services. The common module is used for setting parameters.
+Select the software module, either ItemPick, BoxPick or Common. The
+ItemPick and BoxPick nodes offer functionality to trigger the
+corresponding services. The common module is used for setting
+parameters.
 
 
 Select function
 
-Select function for the module. The available functions depend on the
-selected module.
+Select the function of the module. The available functions depend on
+the selected module.
 
 
 Configure action
 
-After you have selected sensor, module and function a subpanel appears
-that enables you to set parameters, trigger computation or receive
-data.
+After you have selected a sensor, module and function, a subpanel
+appears that enables you to set parameters, trigger the computation or
+receive data.
 

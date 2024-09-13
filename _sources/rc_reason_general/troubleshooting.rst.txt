@@ -35,6 +35,8 @@ The load carrier is not detected or not detected robustly
    Additionally, one can try increasing the model_tolerance parameter
    (e.g. to the maximum value).
 
+   Make sure the min_plausibility parameter is not set too high.
+
    The load carrier is not on a horizontal surface
 
    The load carrier is deformed
@@ -42,11 +44,13 @@ The load carrier is not detected or not detected robustly
 The load carrier is not placed on a horizontal surface
 
 By default, the LoadCarrier module assumes that the load carrier is
-located on a horizontal surface. If that's not the case, one needs to
-provide the load carrier orientation as a prior with the load carrier
-model. The orientation prior can be set in the Web GUI's Modules ‣
-LoadCarrier page and via the REST-API, which is described in the
-following.
+located on a horizontal surface. If that's not the case, one needs set
+the "assume_gravity_aligned" parameter to false.
+
+Alternatively, one can provide the load carrier orientation as a prior
+with the load carrier model. The orientation prior can be set in the
+Web GUI's Modules ‣ LoadCarrier page and via the REST-API, which is
+described in the following.
 
 Two sample cases are shown in
 
@@ -185,20 +189,23 @@ camera
         }
       }
 
+The value of the "assume_gravity_aligned" parameter will be ignored
+for load carriers with an orientation prior set.
+
 The load carrier is deformed
 
-   One can try increasing the "model_tolerance" parameter (e.g. to the
-   maximum value).
+One can try increasing the "model_tolerance" parameter (e.g. to the
+maximum value).
 
-   For significantly deformed load carriers, the detection algorithm
-   might not provide reliable results. This can for example be the
-   case of cardboard boxes after several uses. An alternative for such
-   cases is to fix the load carrier placement and specify the exact
-   pose of the load carrier (please see
+For significantly deformed load carriers, the detection algorithm
+might not provide reliable results. This can for example be the case
+of cardboard boxes after several uses. An alternative for such cases
+is to fix the load carrier placement and specify the exact pose of the
+load carrier (please see
 
-   Setting the exact pose or an orientation prior of a load carrier
+Setting the exact pose or an orientation prior of a load carrier
 
-    for further discussion).
+ for further discussion).
 
 The load carrier floor is detected as load carrier content
 
@@ -213,39 +220,38 @@ Fig. 18
 
    Decrease the load carrier z inner dimension
 
-   Increase the crop_distace parameter (recommended for noisy data)
+   Increase the crop_distance parameter (recommended for noisy data)
 
 
 Objects on the load carrier floor are not detected as load carrier
 content
 
 This means that either the load carrier z inner dimension is too small
-or the the "crop_distace" parameter is too large.
+or the the "crop_distance" parameter is too large.
 
 There are multiple load carriers of the same type in the scene
 
-In the current implementation, the LoadCarrier module detects one load
-carrier with each "detect_load_carrier" or "detect_filling_level"
-request. Similarly, the
+The LoadCarrier module detects all load carriers matching the given
+load carrier model with each "detect_load_carrier" or
+"detect_filling_level" request. However, when a load carrier is used
+with the
 
 rc_reason
 
- modules using a load carrier can only detect a single load carrier.
-
-If there are multiple load carriers of the same type in the scene, we
-recommended to specify one ore more regions of interest, each one
-including one load carrier instance.
+ modules, only a single load carrier will be detected. If there are
+multiple load carriers of the same type in the scene, we recommended
+to specify one ore more regions of interest, each one including one
+load carrier instance.
 
 My load carrier doesn't move. How do I speed up my application?
 
-   One can reduce the estimation time for grasp points or object
-   detections inside the load carrier by avoiding repeated load-
-   carrier detection over multiple frames. The pose of the load
-   carrier can be estimated once and then set as an exact pose.
-   Subsequent grasp point computations or object detections use this
-   exact pose, without requiring any load carrier detection anymore.
-   Please see
+One can reduce the estimation time for grasp points or object
+detections inside the load carrier by avoiding repeated load-carrier
+detection over multiple frames. The pose of the load carrier can be
+estimated once and then set as an exact pose. Subsequent grasp point
+computations or object detections use this exact pose, without
+requiring any load carrier detection anymore. Please see
 
-   Setting the exact pose or an orientation prior of a load carrier
+Setting the exact pose or an orientation prior of a load carrier
 
-    for further discussion.
+ for further discussion.

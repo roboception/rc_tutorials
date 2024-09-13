@@ -41,7 +41,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 24.04) and the
+The rc_visard is running the latest firmware (version 24.07) and the
 rc_visard's license includes the ItemPick module. This can be verified
 on the System ‣ Firmware & License page of the Web GUI.
 
@@ -348,8 +348,8 @@ carrier and only get grasps for items inside this compartment. The
 "compute_grasps" service includes an optional argument
 "load_carrier_compartment" that can be used to this purpose.
 
-Note: The "load_carrier_compartment" argument can not be specified
-  in the
+Note: The "load_carrier_compartment" argument cannot be specified in
+  the
 
   Try Out
 

@@ -21,8 +21,11 @@ Hand-Eye Calibration
 
 Overview
 
-The CADMatch functionality is available in the generic rc_visard node.
-Please see
+The CADMatch functionality is available in the generic
+
+rc_visard
+
+ node. Please see
 
 Generic rc_visard node
 
@@ -36,7 +39,8 @@ The following functions are available for CADMatch:
 
 Detect: Triggers detection
 
-GetObjectPose: Gets the next pose after detection has been triggered
+GetObjectPose: Gets the next object pose after detection has been
+triggered
 
 GetNextGrasp: Gets the next grasp after detection has been triggered
 
@@ -49,8 +53,7 @@ Detect
 
 
 It is mandatory to choose the object that has to be detected. If
-necessary enter a region of interest, gripper and load carrier, but
-it's not mandatory.
+necessary, enter a region of interest, gripper and load carrier.
 
 GetObjectPose
 
@@ -59,7 +62,7 @@ This function requires that the Detect function has been triggered
 before. It returns the pose of the next available object that was
 detected and stores the pose in PolyScope's variable format.
 
-If no reachable template is matched and the
+If no reachable object is detected and the
 
 Stop program when pose is not available
 

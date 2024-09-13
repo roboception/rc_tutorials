@@ -81,7 +81,7 @@ Note: You can re-run the discovery process anytime by clicking the
   "Rerun Discovery"-button.
 
 Note: The discovery tool is the central troubleshooting tool for
-  checking whether Roboception sensors are properly connected and
+  checking whether Roboception 3D devices are properly connected and
   reachable by the host PC or not. For a detailed description, please
   refer to the
 
@@ -204,7 +204,7 @@ the Web GUI that the
 
 rc_visard
 
- is running the latest firmware (version 24.04).
+ is running the latest firmware (version 24.07).
 
 The network settings can be found on the System ‣ Network Settings
 page. Here, you can easily check the currently applied IP
@@ -238,7 +238,7 @@ GigE Vision
 Vision® can be used to configure the device and particularly its
 network settings. In the following we give two examples.
 
-Roboception's command-line tool gc_config
+gc_config command-line tool
 
 The command line GenICam tool "gc_config" gives full control over the
 

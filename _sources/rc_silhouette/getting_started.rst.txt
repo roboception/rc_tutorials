@@ -18,7 +18,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 24.04) and the
+The rc_visard is running the latest firmware (version 24.07) and the
 rc_visard's license includes the SilhouetteMatch module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
@@ -28,11 +28,9 @@ objects have been generated: ]-
 Suitable workpieces for SilhouetteMatch are described in the rc_visard
 user manual.
 
-Roboception offers a template generation service on their website,
-where the user can request object templates. The process is described
-in the Template generation tutorial. Alternatively, DXF files can
-directly be uploaded onto the rc_visard, for details see the same
-tutorial.
+The process for template generation is described in the Template
+generation tutorial. Alternatively, DXF files can directly be uploaded
+onto the rc_visard, for details see the same tutorial.
 
 Setting up the scene
 
@@ -186,7 +184,10 @@ Templates for new objects can be generated with Roboception's
 
 template generation service
 
-. The process is described in more detail in
+.
+
+The steps required for requesting a template are described in more
+detail in
 
 Template generation
 
@@ -245,10 +246,10 @@ on the distance to the tags (see
 
 Tag reading
 
- for more information). A sample page with AprilTags for printing can
-be downloaded
+ for more information). AprilTags of family "36h11" can be downloaded
+from the
 
-here
+apriltag-imgs repository
 
 . When cutting them out, please make sure to leave a white border
 around the AprilTags (see section
@@ -259,12 +260,7 @@ AprilTag
 
 rc_visard
 
- manual). More AprilTags from family "36h11" can be downloaded from
-the
-
-apriltag-imgs repository
-
-.
+ manual).
 
 The tags should be placed directly on the base plane. In case that is
 not possible, please refer to

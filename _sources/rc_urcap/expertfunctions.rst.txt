@@ -7,8 +7,12 @@ General functions
 
 rc_set_parameter
 
-This function can be used to set all rc_visard parameters. Parameters
-set with this function are saved and will be available after a reboot.
+This function can be used to set all
+
+rc_visard
+
+ parameters. Parameters set with this function are saved and will be
+available after a reboot.
 
 Input
 
@@ -32,8 +36,7 @@ True if the parameter was set successfully, false otherwise.
 rc_reset_parameters
 
 This service resets all parameters of the module to its default
-values, as described in the manual. The reset does not affect sorting
-strategies and preferred orientations.
+values, as described in the manual.
 
 Input
 

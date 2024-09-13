@@ -5,10 +5,20 @@
 Obtain dense depth images with the |projector|
 ======================================================
 
-This tutorial shows how to set up the |rcvisard| with the
-`rc_randomdot projector <https://roboception.com/product/random-dot-projector/>`_ to increase the
-density of depth images, as shown in :numref:`fig-general-projector-compare`.
-This is particularly recommended for objects and workspaces with little or no visual texture.
+.. only:: roboception
+
+  This tutorial shows how to set up the |rcvisard| with the
+  `rc_randomdot projector <https://roboception.com/accessories-for-robot-vision-solutions/rc-randomdot-pattern-projector/>`_ to increase the
+  density of depth images, as shown in :numref:`fig-general-projector-compare`.
+  This is particularly recommended for objects and workspaces with little or no visual texture.
+
+.. only:: basler
+
+  This tutorial shows how to set up the |rcvisard| with the
+  `rc_randomdot projector <https://www.baslerweb.com/de-de/shop/stereo-camera-randomdot-projector/>`_ to increase the
+  density of depth images, as shown in :numref:`fig-general-projector-compare`.
+  This is particularly recommended for objects and workspaces with little or no visual texture.
+  
 
 .. _fig-general-projector-compare:
 .. figure:: ../images/general/projector_compare.png
@@ -32,8 +42,7 @@ Before we start
 Before going through this tutorial, the following prerequisites should be met.
 
 #. The |rc_visard| is running the latest firmware (version |rcvisard_version|)
-   and the |rc_visard|'s license includes the
-   `IOControl module <https://roboception.com/product/rc_reason-iocontrol/>`_.
+   and the |rc_visard|'s license includes the IOControl module.
    This can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
 
 #. The |projector|, the network cable connecting it to the |rc_visard|, and a
@@ -62,10 +71,12 @@ Mounting the projector
 Mounting the projector is described in detail in the projector’s manual. Please
 see :doc:`rcprojector:installation`.
 
-.. note::
+.. only:: roboception
 
-    For projectors sold until 12/2020, the mounting instructions are available on the
-    `Roboception website <https://roboception.com/wp-content/uploads/2020/09/202008_rc_randomdot_quickstart_guide.pdf>`_.
+  .. note::
+
+      For projectors sold until 12/2020, the mounting instructions are available on the
+      `Roboception website <https://roboception.com/wp-content/uploads/2024/02/202108_rc_randomdot_white_quickstart_guide_en.pdf>`_.
 
 .. _general-projector-focus:
 

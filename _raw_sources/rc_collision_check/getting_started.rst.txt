@@ -50,9 +50,10 @@ Checking collisions
   with other modules are available in their tutorials and the manual. For using |collision| as a standalone product
   check the :doc:`rcvisard:collisioncheck` manual.
 
-After gripper and parameters are configured, filtering out the colliding grasps is quite straight forward. In the *Try Out* section of the
+After the gripper and the parameters are configured, filtering out the colliding grasps is quite straight forward. In the *Try Out* section of the
 |webgui|'s :menuselection:`Modules --> ItemPick` page, define the suction surface length and width corresponding
-to the real dimensions of the gripper's suction cup. After that, select the load carrier and gripper as shown in :numref:`fig-collision-tryout`.
+to the real dimensions of the gripper's suction cup. After that, select the load carrier. Then, enable the `Collision Check`
+and select the default gripper as shown in :numref:`fig-collision-tryout`.
 
 After clicking on the :guilabel:`Detect Grasp Points` button, only the collision-free grasps are returned.
 
@@ -65,7 +66,7 @@ After clicking on the :guilabel:`Detect Grasp Points` button, only the collision
 
 In the visualization images, the colliding grasps are drawn as red points and black ellipses as shown in
 :numref:`fig-collision-tryout-results`, but will not be listed in the 'Result of Grasp Point Detection' table.
-To get all detected grasps, users should trigger a new detection without selecting a gripper.
+To get all detected grasps, users should trigger a new detection without enabling `Collision Check`.
 
 .. _fig-collision-tryout-results:
 .. figure:: ../images/collisioncheck/grasp_points_collision_check.jpg

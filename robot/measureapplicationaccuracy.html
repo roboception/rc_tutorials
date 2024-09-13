@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to measure application accuracy &mdash; Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+  <title>How to measure application accuracy &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation" href="../index.html"/>
         <link rel="up" title="KUKA robot tutorials" href="overview.html"/>
         <link rel="prev" title="KUKA robot tutorials" href="overview.html"/> 
@@ -203,12 +203,12 @@ Especially errors in the orientation of the sensor may have serious effects.</p>
 </div>
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
-<p>To verify the hand-eye calibration you need a robot with a pointing tool tip, a Roboception 3D sensor, and a printer to print out the <cite>Robot-Test-Grid</cite>.
+<p>To verify the hand-eye calibration you need a robot with a pointing tool tip, a Roboception 3D camera, and a printer to print out the <cite>Robot-Test-Grid</cite>.
 We assume that the robot cell is operational, the TCP of the pointing tool tip is set and a hand-eye calibration has already been performed.</p>
 <p>The hand-eye calibration procedure is described in detail in the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html">rc_visard’s hand-eye calibration documentation</a>.
 See <a class="reference internal" href="../rc_urcap/handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a> for a Universal Robots tutorial.</p>
 <p>The KUKA KRL sample program can be downloaded here: <a class="reference external" href="https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy">https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy</a>.
-The program includes the KUKA KRL src and dat file and a printable version of the Roboception ‘Robot-Test-Grid’.</p>
+The program includes the KUKA KRL src and dat file and a printable version of the ‘Robot-Test-Grid’.</p>
 </div>
 <div class="section" id="program-overview">
 <h2>Program overview<a class="headerlink" href="#program-overview" title="Permalink to this headline">¶</a></h2>
@@ -276,7 +276,7 @@ is needed when driving to a position that is given by a vision system.
 If the coordinate system of the robot does not perfectly match the world, such deviations may occur.
 This is reflected in the hand-eye calibration error and the accuracy that is measured with the described method.
 For this reason, some robot manufacturers offer to calibrate the robot to the world.</div>
-<p>If you have any questions or issues, please do not hesitate to contact <a class="reference external" href="mailto:support&#37;&#52;&#48;roboception&#46;de">support<span>&#64;</span>roboception<span>&#46;</span>de</a> with a detailed error description.</p>
+<p>If you have any questions or issues, please do not hesitate to contact Roboception support with a detailed error description.</p>
 </div>
 </div>
 
@@ -320,7 +320,7 @@ For this reason, some robot manufacturers offer to calibrate the robot to the wo
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-29-g3590912',
+            VERSION:'0.5.0-40-g2a9c4f8',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

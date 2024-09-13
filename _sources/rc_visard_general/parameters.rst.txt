@@ -12,7 +12,7 @@ by tuning stereo matching parameters.
 This tutorial describes the steps for tuning parameters to get the
 best quality for stereo and depth images.
 
-Before we Start
+Before we start
 
 This tutorial applies to all
 
@@ -24,10 +24,10 @@ sensors as most modules are based on monochrome images.
 The rc_visard must be running and connected to a network or directly
 to a computer.
 
-The Web GUI of the rc_visard should be opened in a Web browser. This
+The Web GUI of the rc_visard should be opened in a web browser. This
 can be done with the discovery tool from Roboception.
 
-The rc_visard has the latest firmware (version 24.04). The firmware
+The rc_visard has the latest firmware (version 24.07). The firmware
 version can be verified on the System ‣ Firmware & License page of the
 Web GUI.
 
@@ -465,7 +465,7 @@ Random dot projectors, such as the
 
 rc_randomdot
 
- projector from Roboception, are best suited in this case. The
+ projector, are best suited in this case. The
 
 Obtain dense depth images with the rc_randomdot projector
 

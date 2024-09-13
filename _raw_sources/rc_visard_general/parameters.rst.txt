@@ -11,7 +11,7 @@ the depth image can often be improved by tuning stereo matching parameters.
 
 This tutorial describes the steps for tuning parameters to get the best quality for stereo and depth images.
 
-Before we Start
+Before we start
 ---------------
 
 This tutorial applies to all |rc_visard| models. However, it does not focus on parameters
@@ -19,8 +19,8 @@ related to color sensors as most modules are based on monochrome images.
 
 - The |rc_visard| must be running and connected to a network or directly to a computer.
 
-- The Web GUI of the |rc_visard| should be opened in a Web browser. This can be done with the
-  `discovery tool <https://roboception.com/en/download/>`_ from Roboception.
+- The Web GUI of the |rc_visard| should be opened in a web browser. This can be done with the
+  `discovery tool <https://github.com/roboception/rcdiscover/releases/>`_ from |company_partner|.
 
 - The |rc_visard| has the latest firmware (version |rcvisard_version|).
   The firmware version can be verified on the :menuselection:`System --> Firmware & License` page of the |webgui|.
@@ -385,7 +385,7 @@ texture as well as strongly repetitive texture. Typically, walls and tables are 
 without any texture. Other structures are highly repetitive. Both cases do not permit
 a proper stereo matching process. These objects and scene parts may not be important for the application,
 but if they are, then the only way to capture them is by adding an artificial texture by projection.
-Random dot projectors, such as the |projector| from Roboception, are best suited in this case.
+Random dot projectors, such as the |projector|, are best suited in this case.
 The :ref:`general-projector` tutorial describes the setup of the |projector|.
 
 Filtering errors

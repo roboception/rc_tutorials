@@ -9,7 +9,7 @@ This tutorial assumes that the tutorial
 
 Getting started with ItemPick
 
- has been completed, and the valid hand eye calibration has been
+ has been completed, and that a valid hand eye calibration has been
 stored on the
 
 rc_visard
@@ -45,11 +45,11 @@ ComputeGrasps
 
 
 It is mandatory to set the minimum and maximum length and width of the
-suction cup. If necessary enter a load carrier ID and/or a region of
-interest ID, but it's not mandatory.
+suction cup. If necessary, enter a load carrier ID and/or a region of
+interest ID.
 
-If the CollisionCheck license is available on the sensor it is also
-possible to set the gripper and pre grasp offset for the collision
+If the CollisionCheck license is available on the sensor, it is also
+possible to set the gripper and pre-grasp offset for the collision
 check.
 
 Note: The region of interest and load carrier have to be defined in
@@ -100,7 +100,7 @@ is used, RZ is based on the last waypoint orientation.
 
 Detected pose orientation The complete detected orientation is used.
 
-GetBpLcPose
+GetIpLcPose
 
 
 This function requires that ComputeGrasps has been triggered with a

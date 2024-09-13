@@ -22,7 +22,10 @@ Hand-Eye Calibration
 Overview
 
 The SilhouetteMatch functionality is available in the generic
-rc_visard node. Please see
+
+rc_visard
+
+ node. Please see
 
 Generic rc_visard node
 
@@ -36,13 +39,14 @@ The following functions are available for SilhouetteMatch:
 
 Detect: Triggers detection
 
-GetObjectPose: Gets the next pose after detection has been triggered
+GetObjectPose: Gets the next object pose after detection has been
+triggered
 
 GetNextGrasp: Gets the next grasp after detection has been triggered
 
 GetLCPose: Gets the pose of the detected load carrier
 
-CalibratePlane: Starts the plane calibration
+CalibratePlane: Starts the base plane calibration
 
 SetPreferredOrientation: Sets the Preferred Orientation based on the
 stored robot pose
@@ -51,8 +55,8 @@ Detect
 
 
 It is mandatory to choose the template that has to be detected. If
-necessary enter a region of interest, load carrier, gripper and
-offset, but it's not mandatory.
+necessary, enter a region of interest, load carrier, gripper and
+offset.
 
 GetObjectPose
 
@@ -161,7 +165,7 @@ Note: When the
 CalibratePlane
 
 
-This function starts the plane calibration procedure.
+This function starts the base plane calibration procedure.
 
 SetPreferredOrientation
 

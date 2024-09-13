@@ -14,15 +14,15 @@ General functions
 
 rc_set_parameter
 ''''''''''''''''''
-This function can be used to set all rc_visard parameters. Parameters set with this function are saved and will be available after a reboot.
+This function can be used to set all |rcvisard| parameters. Parameters set with this function are saved and will be available after a reboot.
 
 Input
 ^^^^^
 * ip_address - IP address of the sensor that should be used (sensor with this IP has to be configured in installation node)
 * pipeline - pipeline of the sensor
-* node_name - name of the node as described in rc_visard manual
-* parameter_name - name of the parameter that should be changed as described in rc_visard manual
-* parameter_value - value of the parameter that should be changed as described in rc_visard manual
+* node_name - name of the node as described in |rcvisard| manual
+* parameter_name - name of the parameter that should be changed as described in |rcvisard| manual
+* parameter_value - value of the parameter that should be changed as described in |rcvisard| manual
 
 Output
 ^^^^^^
@@ -31,7 +31,7 @@ True if the parameter was set successfully, false otherwise.
 
 rc_reset_parameters
 '''''''''''''''''''''
-This service resets all parameters of the module to its default values, as described in the manual. The reset does not affect sorting strategies and preferred orientations.
+This service resets all parameters of the module to its default values, as described in the manual. 
 
 Input
 ^^^^^
@@ -74,7 +74,7 @@ Output
 The [x,y,z] translation of the grasp offset. If no offset is available, it will return p[0,0,0].
 
 rc_get_MODULE_lc_pose
---------------------
+---------------------
 This function returns the load carrier pose. `MODULE`
 needs to be one of `ip` (rc_itempick), `bp` (rc_boxpick), 
 `sil` (rc_silhouettematch), or `cad` (rc_cadmatch).

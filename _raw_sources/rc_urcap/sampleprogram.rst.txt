@@ -3,11 +3,13 @@
 .. _sampleprogram-ur:
 
 Sample program
-======================
+==============
 
-This tutorial shows example program that uses ItemPick Module. Programs with similar structure can also be downloaded for SilhouetteMatch and BoxPick Modules.
+This tutorial shows a sample program that uses the ItemPick Module. Programs with similar structure can also be 
+downloaded for the SilhouetteMatch and BoxPick Modules.
 
-This program will only work properly for externally mounted sensor. In case of sensor mounted on the robot the computation should be triggered when the robot is stationary, so the movement has to be stopped in the observe position with `Wait is_steady()` command.
+This program will only work properly for an externally mounted sensor. In case of a robot-mounted sensor, the computation 
+should be triggered when the robot is stationary, so the movement has to be stopped in the observe position with the `Wait is_steady()` command.
 
 .. figure:: ../images/urcap/ip_program.png
   :width: 400px
@@ -18,40 +20,46 @@ This program will only work properly for externally mounted sensor. In case of s
 Before we start
 ---------------
 
-This tutorials assumes that the tutorial :ref:`itempick-getting-started` has
-been completed, and the valid hand eye calibration has been stored on the |rcvisard| as described in :ref:`ur-hand-eye`.
+This tutorial assumes that the tutorial :ref:`itempick-getting-started` has
+been completed, and that a valid hand eye calibration has been stored on the |rcvisard| as described in :ref:`ur-hand-eye`.
 
 Load the program
-------------------
+----------------
 
-The roboception picking sample programs can be downloaded from `here <http://roboception.com/wp-content/uploads/2020/01/roboception_URCap_examples.zip>`_. The programs can be then used and loaded as every standard program.
+The picking sample programs can be downloaded from `here <http://roboception.com/wp-content/uploads/2020/01/roboception_URCap_examples.zip>`_.
+The programs can then be used and loaded as every standard program.
 
 Setting up the program
------------------------
+----------------------
 
-Setting up ItemPick module
-'''''''''''''''''''''''''''''''
+Setting up the ItemPick module
+''''''''''''''''''''''''''''''
 
-To ensure proper working of the detection module it is necessary to setup and test the parameters in ComputeGrasp node. For details on how to do this see :ref:`ur-ip`
+To ensure proper working of the detection module it is necessary to setup and test the parameters in the ComputeGrasp node. 
+For details on how to do this see :ref:`ur-ip`.
 
-Depending on the application it also might be necessary to change the pose orientation in GetNextGrasp node. The variable name for the pose should not be changed, since it is used later in the program.
+Depending on the application it also might be necessary to change the pose orientation in the GetNextGrasp node.
+The variable name for the pose should not be changed, since it will be used later in the program.
 
 Setting up gripper actions
-'''''''''''''''''''''''''''''
-If the program is left as it is, the robot will just go to computed poses, but no grasping action will be performed. Therefore
+''''''''''''''''''''''''''
+If the program is left as it is, the robot will just go to the computed poses, but no grasping action will be performed. Therefore,
 it is necessary to specify how the gripper is working. Parts of the programs that should be filled are marked with a comment.
 
 Teaching poses
-'''''''''''''''''''''''''''''
+''''''''''''''
 
-Two waypoints have to be taught before the application can be run: observe_pose and drop_pose. Their position in the workspace depends on the cell layout and ItemPick settings used to compute grasps.
+Two waypoints have to be taught before the application can be run: observe_pose and drop_pose. 
+Their positions in the workspace depend on the cell layout and the ItemPick settings used to compute the grasps.
 
-When the rc_visard is mounted externally, depending on the scenario, there are different requirements for the robot pose at the waypoints and during movement between them:
+When the |rc_visard| is mounted externally, depending on the scenario, there are different requirements for 
+the robot pose at the waypoints and during movement between them:
 
 * If no load carrier or region of interest is being used, the robot must be completely outside the field of view of the camera
 * If a load carrier is used during the detection, the robot must not occlude the load carrier and the items to be grasped
-* If the region of interest is used during the detection, the robot must be completely outside the region of interest and must not occlude the items that should be grasped
+* If the region of interest is used during the detection, the robot must be completely outside the region of interest 
+  and must not occlude the items that should be grasped
 
-For the robot mounted sensor in the observe_pose all objects of interest has to be in the field of view of the sensor.
+For the robot-mounted sensor in the observe_pose all objects of interest have to be in the field of view of the sensor.
 
-Additionally the pre pick distance can be changed by changing the value of the 'prepick_offset' variable in 'BeforeStart' tab.
+Additionally the pre-pick distance can be changed by changing the value of the 'prepick_offset' variable in the 'BeforeStart' tab.

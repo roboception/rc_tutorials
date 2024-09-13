@@ -7,33 +7,59 @@ Getting started
 
 .. note::
 
-  |company|'s URCap is working with software 3.12.0 or newer for CB series, and 5.6.0 or newer for E-series. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: https://www.universal-robots.com/download/)
+  |company_partner|'s URCap is working with software 3.12.0 or newer for CB series, and 5.6.0 or newer for E-series. 
+  In case you are running an older software version, please update your controller (files can be downloaded 
+  from the UR website: https://www.universal-robots.com/download/)
 
 .. note::
-  |company|'s URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact |company| support.
+  |company_partner|'s URCap internally communicates with the daemon on port 49285. In the unlikely event that it causes a 
+  conflict with a URCap from a different vendor, please contact |company| support.
 
-|company|'s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the |rcvisard| , and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.
+|company|'s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the |rcvisard|, 
+and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.
 
 The basic bundle consists of:
 
-* `rc_visard 160 monochrome <https://roboception.com/product/rc_visard-160-monochrome/>`_
-* `rc_reason ItemPick Module <https://roboception.com/product/itempick/>`_
-* `Small Calibration-Grid <https://roboception.com/product/calibrationgrid/>`_ with pre-drilled mounting holes
-* `Connectivity Kit <https://roboception.com/product/connectivity-kit/>`_ with 5m network cable and 30W power supply
+.. only:: roboception
+
+  * `rc_visard 160 monochrome <https://roboception.com/3d-stereo-vision/rc-visard-3d-stereo-sensor/>`_
+  * `rc_reason ItemPick Module <https://roboception.com/itempick-singulation-software/>`_
+  * Small Calibration-Grid with pre-drilled mounting holes
+  * Connectivity Kit with 5m network cable and 30W power supply
+
+.. only:: basler
+
+  * `rc_visard 160 monochrome <https://www.baslerweb.com/de-de/shop/stereo-camera-rc-visard-160m/>`_
+  * `rc_reason ItemPick Module <https://www.baslerweb.com/de-de/shop/3d-itempick/>`_
+  * Small Calibration-Grid with pre-drilled mounting holes
+  * Connectivity Kit with 5m network cable and 30W power supply
 
 The kit including the projector consists of:
 
-* `rc_visard 160 monochrome <https://roboception.com/product/rc_visard-160-monochrome/>`_
-* `rc_reason ItemPick Module <https://roboception.com/product/itempick/>`_
-* `Small Calibration-Grid <https://roboception.com/product/calibrationgrid/>`_ with pre-drilled mounting holes
-* `Connectivity Kit <https://roboception.com/product/connectivity-kit/>`_ with 5m network cable and 60W power supply
-* `RandomDot Projector <https://roboception.com/product/random-dot-projector/>`_
-* `rc_reason IOControl Module <https://roboception.com/product/rc_reason-iocontrol/>`_
+
+.. only:: roboception
+
+  * `rc_visard 160 monochrome <https://roboception.com/3d-stereo-vision/rc-visard-3d-stereo-sensor/>`_
+  * `rc_reason ItemPick Module <https://roboception.com/itempick-singulation-software/>`_
+  * Small Calibration-Grid with pre-drilled mounting holes
+  * Connectivity Kit with 5m network cable and 60W power supply
+  * `RandomDot Projector <https://roboception.com/accessories-for-robot-vision-solutions/rc-randomdot-pattern-projector/>`_
+  * `rc_reason IOControl Module <https://roboception.com/software-tools/iocontrol/>`_
+
+
+.. only:: basler
+
+  * `rc_visard 160 monochrome <https://www.baslerweb.com/de-de/shop/stereo-camera-rc-visard-160m/>`_
+  * `rc_reason ItemPick Module <https://www.baslerweb.com/de-de/shop/3d-itempick/>`_
+  * Small Calibration-Grid with pre-drilled mounting holes
+  * Connectivity Kit with 5m network cable and 30W power supply
+  * `RandomDot Projector <https://www.baslerweb.com/de-de/shop/stereo-camera-randomdot-projector/>`_
+  * rc_reason IOControl Module
 
 
 Software installation
 ---------------------
-#. Download the URCap from `Roboception's download page <https://roboception.com/en/download/>`_
+#. Download the URCap from |company_partner|'s `download page <https://roboception.com/resources/knowledge-base/>`_
 
 #. Copy the URCap file to a USB flash drive
 
@@ -47,7 +73,8 @@ Software installation
 
 #. Reboot the controller
 
-After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window (see :numref:`fig_successful_installed_urcap`).
+After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window 
+(see :numref:`fig_successful_installed_urcap`).
 
 
 .. _fig_successful_installed_urcap:
@@ -62,9 +89,12 @@ After rebooting the robot, the rc_visard_urcap application should be marked by a
 
 
 Connect the sensor
------------------------
+------------------
 
-You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the |rcvisard| interface are not fully duplicated in URCap and are only available through the |webgui|. It might be necessary to use an external PC to configure the |rcvisard| or its software modules.
+You can connect the |rcvisard| directly to the ethernet port of the Universal Robot controller, or through a network switch.
+During setup, it is recommended to establish a connection via switch, since some parts of the |rcvisard| interface are not 
+fully duplicated in URCap and are only available through the |webgui|. It might be necessary to use an external PC to configure 
+the |rcvisard| or its software modules.
 
 Detailed instructions about network setup can be found in :ref:`general-network` tutorial.
 
@@ -73,12 +103,13 @@ Detailed instructions about network setup can be found in :ref:`general-network`
 #. In the installation node, set the IP address of the |rcvisard|
 
 .. note::
-    A Link-Local address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP server for network configuration.
+    A Link-Local address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP 
+    server for network configuration.
 
 .. figure:: ../images/urcap/installation_node.png
   :width: 300px
   :align: center
 
-  Sample setup. The robot has established a connection to |rcvisard| and displays status information, rectified left image, and depth image.
+  Sample setup. The robot has established a connection to the |rcvisard| and displays status information, rectified left image, and depth image.
 
 .. _urcap-installation-node-image:

@@ -12,7 +12,7 @@ Note: The hand-eye calibration has to be performed every time the
 Before we start
 
 To verify the hand-eye calibration you need a robot with a pointing
-tool tip, a Roboception 3D sensor, and a printer to print out the
+tool tip, a Roboception 3D camera, and a printer to print out the
 *Robot-Test-Grid*. We assume that the robot cell is operational, the
 TCP of the pointing tool tip is set and a hand-eye calibration has
 already been performed.
@@ -33,7 +33,7 @@ https://github.com/roboception/eki_examples/tree/master/examples/Meas
 ureApplicationAccuracy
 
 . The program includes the KUKA KRL src and dat file and a printable
-version of the Roboception 'Robot-Test-Grid'.
+version of the 'Robot-Test-Grid'.
 
 Program overview
 
@@ -120,7 +120,4 @@ measured with the described method. For this reason, some robot
 manufacturers offer to calibrate the robot to the world.
 
 If you have any questions or issues, please do not hesitate to contact
-
-support@roboception.de
-
- with a detailed error description.
+Roboception support with a detailed error description.

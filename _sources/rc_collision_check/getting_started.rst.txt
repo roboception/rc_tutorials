@@ -47,7 +47,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 24.04) and the
+The rc_visard is running the latest firmware (version 24.07) and the
 rc_visard's license includes the CollisionCheck and ItemPick modules.
 This can be verified on the System ‣ Firmware & License page of the
 Web GUI.
@@ -84,15 +84,16 @@ Note: To show the results of the CollisionCheck module, we will use
 
    manual.
 
-After gripper and parameters are configured, filtering out the
+After the gripper and the parameters are configured, filtering out the
 colliding grasps is quite straight forward. In the
 
 Try Out
 
  section of the Web GUI's Modules ‣ ItemPick page, define the suction
 surface length and width corresponding to the real dimensions of the
-gripper's suction cup. After that, select the load carrier and gripper
-as shown in
+gripper's suction cup. After that, select the load carrier. Then,
+enable the *Collision Check* and select the default gripper as shown
+in
 
 Fig. 53
 
@@ -109,7 +110,7 @@ Fig. 54
 
 , but will not be listed in the 'Result of Grasp Point Detection'
 table. To get all detected grasps, users should trigger a new
-detection without selecting a gripper.
+detection without enabling *Collision Check*.
 
 
 Setting a pre-grasp offset

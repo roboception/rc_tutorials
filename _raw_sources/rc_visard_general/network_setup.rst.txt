@@ -60,15 +60,15 @@ be referred to as ``rc_visard_id`` in the remainder of this tutorial.
 
 .. rubric:: Download and install client software on host PC
 
-#. Download and install Roboception's discovery tool `rcdiscover-gui <https://github.com/roboception/rcdiscover/releases>`_.
-#. Optional: Download and install Roboception's `command line GenICam tools <https://github.com/roboception/rc_genicam_api/releases>`_.
+#. Download and install |company_partner|'s discovery tool `rcdiscover-gui <https://github.com/roboception/rcdiscover/releases>`_.
+#. Optional: Download and install |company_partner|'s `command line GenICam tools <https://github.com/roboception/rc_genicam_api/releases>`_.
 
 
 Connect and discover the |rc_visard|
 ------------------------------------
 
 Once the |rc_visard| is connected to the host PC -- either directly or
-via a larger network -- run Roboception's discovery tool. A window will
+via a larger network -- run |company_partner|'s discovery tool. A window will
 open showing all |rc_visard|\ s that were discovered in the network
 similar to the figure below.
 
@@ -76,7 +76,7 @@ similar to the figure below.
   :width: 750px
   :align: center
 
-  Roboception's discovery tool found two devices in the network.
+  |company_partner|'s discovery tool found two devices in the network.
   The device named ``rc_visard`` is reachable from the host PC
   (because in this example the host was in the same subnet 10.0.2.x).
   The second device ``demo`` is not reachable as its IP address
@@ -87,7 +87,7 @@ similar to the figure below.
 
 
 .. note:: The discovery tool is the central troubleshooting tool for checking
-    whether Roboception sensors are properly connected and reachable by the host PC or not.
+    whether |company| 3D devices are properly connected and reachable by the host PC or not.
     For a detailed description, please refer to the
     :ref:`discovery tool's manual page <rcvisard:sect-discovery-of-rcvisard-devices>`.
 
@@ -184,13 +184,13 @@ to configure the device and particularly its network settings.
 In the following we give two examples.
 
 .. toggle-header::
-    :header: **Roboception's command-line tool gc_config**
+    :header: **gc_config command-line tool**
 
     The command line GenICam tool ``gc_config`` gives full control
     over the |rc_visard|'s network settings and lets you
     configure any IP address, sub-net and gateway according to
     your network setup.
-    It is part of Roboception's open-source convenience layer ``rc_genicam_api``,
+    It is part of |company_partner|'s open-source convenience layer ``rc_genicam_api``,
     which can be downloaded free of charge for Windows and Linux from https://github.com/roboception/rc_genicam_api/releases.
 
 
@@ -376,7 +376,7 @@ Troubleshooting
         Please make sure, the device is actually connected to the network.
 
         For discovery across sub-nets under Linux reverse path filtering
-        must be disabled. Using the debian package for Roboception's discovery
+        must be disabled. Using the debian package for |company_partner|'s discovery
         tool ``rcdiscover-gui``, this is or should have been done automatically
         during installation.
 

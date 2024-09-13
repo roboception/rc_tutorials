@@ -24,9 +24,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 
 #. Suitable workpieces for |silm| are described in the |rc_visard|
    `user manual <https://doc.rc-visard.com/latest/en/silhouettematch.html#suitable-objects>`_.
-#. |company| offers a template generation service on their website, where the user can
-   request object templates.
-   The process is described in the :ref:`silhouettematch-template-generation` tutorial.
+#. The process for template generation is described in the :ref:`silhouettematch-template-generation` tutorial.
    Alternatively, DXF files can directly be uploaded onto the |rc_visard|, for details
    see the same tutorial.
 
@@ -129,9 +127,16 @@ After setting up the scene, |silm| can now be configured.
 Getting a template
 ..................
 
-Templates for new objects can be generated with |company|'s
-`template generation service <https://roboception.com/en/template-request/>`_.
-The process is described in more detail in :ref:`silhouettematch-template-generation`.
+.. only:: roboception
+
+   Templates for new objects can be generated with Roboception's
+   `template generation service <https://download.roboception.com/silhouettematch-template-request/>`_.
+
+.. only:: basler
+
+   To request a template, please contact |company| support.
+
+The steps required for requesting a template are described in more detail in :ref:`silhouettematch-template-generation`.
 
 Uploading a template
 ....................
@@ -143,9 +148,9 @@ See the following video for a walk-through of the uploading process.
 .. toggle-header::
    :header: *Video: Uploading a template*
 
-    .. figure:: ../images/silhouette/template_upload.gif
-       :width: 800px
-       :align: center
+   .. figure:: ../images/silhouette/template_upload.gif
+      :width: 800px
+      :align: center
 
 .. _silhouettematch-roi:
 
@@ -192,12 +197,10 @@ The three tags should span a triangle around the objects, which is as large as p
 Only tags of the family "36h11" are detected.
 The minimum size depends on the distance to the tags
 (see :ref:`rcvisard:sect-tag-reading` for more information).
-A sample page with AprilTags for printing can be downloaded
-`here <http://roboception.com/wp-content/uploads/2019/09/april_tags.pdf>`_.
+AprilTags of family "36h11" can be downloaded from the
+`apriltag-imgs repository <https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11>`_.
 When cutting them out, please make sure to leave a white border around the AprilTags
 (see section :ref:`rcvisard:sect-apriltag` of the |rc_visard| manual).
-More AprilTags from family "36h11" can be downloaded from the
-`apriltag-imgs repository <https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11>`_.
 
 The tags should be placed directly on the base plane.
 In case that is not possible, please refer to :ref:`silhouettematch-offset-parameter`.

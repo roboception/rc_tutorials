@@ -3,7 +3,7 @@
 KUKA robot tutorials
 ====================
 
-In this tutorial you will learn how to use Roboception 3D sensors with KUKA robots.
+In this tutorial you will learn how to use |company| 3D cameras with KUKA robots.
 
 .. toctree::
     :maxdepth: 1

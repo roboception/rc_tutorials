@@ -11,7 +11,7 @@ Getting started with the |rc_visard| and OpenCV
 
 This tutorial shows how to get started with the |rc_visard| and |opencv|.
 We will show how to receive image streams from the |rc_visard| with |opencv|
-via Roboception's |genicam| Convenience Layer |rcgenapi|.
+via |company_partner|'s |genicam| Convenience Layer |rcgenapi|.
 
 Before we start
 ---------------
@@ -21,7 +21,7 @@ Before going through this tutorial, the following prerequisites should be met.
 .. rubric:: The |rc_visard| is up and running:
 
 #. The |rc_visard| is running and connected properly to a network or directly to a computer.
-   One can verify that with our `discovery tool <https://roboception.com/en/download/>`_.
+   One can verify that with our `discovery tool <https://github.com/roboception/rcdiscover/releases/>`_.
 #. One should know the serial number or user defined name of the |rc_visard|.
    The serial number is of the format 029xxxxx.
    It will be referred to as ``rc_visard_id`` in the remainder of this tutorial.
@@ -68,7 +68,7 @@ Compiling the example program
 We provide an example program which shows how to receive image streams from
 the |rc_visard| using |rcgenapi| and how to convert them to an
 |opencv| representation.
-The example can be downloaded from our
+The example can be downloaded from |company_partner|'s
 `GitHub repository <https://github.com/roboception/rc_visard_opencv_example>`_.
 
 To successfully compile the program, above prerequisites should be met.

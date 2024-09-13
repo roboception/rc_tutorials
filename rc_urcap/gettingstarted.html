@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started &mdash; Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+  <title>Getting started &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Hand-Eye Calibration" href="handeyecalibration.html"/>
@@ -203,33 +203,37 @@
 <span id="ur-getting-started"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Roboception’s URCap is working with software 3.12.0 or newer for CB series, and 5.6.0 or newer for E-series. In case you are running an older software version, please update your controller (files can be downloaded from the UR website: <a class="reference external" href="https://www.universal-robots.com/download/">https://www.universal-robots.com/download/</a>)</p>
+<p class="last">Roboception’s URCap is working with software 3.12.0 or newer for CB series, and 5.6.0 or newer for E-series.
+In case you are running an older software version, please update your controller (files can be downloaded
+from the UR website: <a class="reference external" href="https://www.universal-robots.com/download/">https://www.universal-robots.com/download/</a>)</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Roboception’s URCap is internally communicating with the daemon on port 49285. In the unlikely event that it causes a conflict with a URCap from a different vendor, please contact Roboception support.</p>
+<p class="last">Roboception’s URCap internally communicates with the daemon on port 49285. In the unlikely event that it causes a
+conflict with a URCap from a different vendor, please contact Roboception support.</p>
 </div>
-<p>Roboception’s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the <em>rc_visard</em> , and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.</p>
+<p>Roboception’s ItemPick Bundle for Universal Robots contains everything required to calibrate the robot and the <em>rc_visard</em>,
+and start your first program. The bundle is sold in two versions: with or without a RandomDot Projector.</p>
 <p>The basic bundle consists of:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://roboception.com/product/rc_visard-160-monochrome/">rc_visard 160 monochrome</a></li>
-<li><a class="reference external" href="https://roboception.com/product/itempick/">rc_reason ItemPick Module</a></li>
-<li><a class="reference external" href="https://roboception.com/product/calibrationgrid/">Small Calibration-Grid</a> with pre-drilled mounting holes</li>
-<li><a class="reference external" href="https://roboception.com/product/connectivity-kit/">Connectivity Kit</a> with 5m network cable and 30W power supply</li>
+<li><a class="reference external" href="https://roboception.com/3d-stereo-vision/rc-visard-3d-stereo-sensor/">rc_visard 160 monochrome</a></li>
+<li><a class="reference external" href="https://roboception.com/itempick-singulation-software/">rc_reason ItemPick Module</a></li>
+<li>Small Calibration-Grid with pre-drilled mounting holes</li>
+<li>Connectivity Kit with 5m network cable and 30W power supply</li>
 </ul>
 <p>The kit including the projector consists of:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://roboception.com/product/rc_visard-160-monochrome/">rc_visard 160 monochrome</a></li>
-<li><a class="reference external" href="https://roboception.com/product/itempick/">rc_reason ItemPick Module</a></li>
-<li><a class="reference external" href="https://roboception.com/product/calibrationgrid/">Small Calibration-Grid</a> with pre-drilled mounting holes</li>
-<li><a class="reference external" href="https://roboception.com/product/connectivity-kit/">Connectivity Kit</a> with 5m network cable and 60W power supply</li>
-<li><a class="reference external" href="https://roboception.com/product/random-dot-projector/">RandomDot Projector</a></li>
-<li><a class="reference external" href="https://roboception.com/product/rc_reason-iocontrol/">rc_reason IOControl Module</a></li>
+<li><a class="reference external" href="https://roboception.com/3d-stereo-vision/rc-visard-3d-stereo-sensor/">rc_visard 160 monochrome</a></li>
+<li><a class="reference external" href="https://roboception.com/itempick-singulation-software/">rc_reason ItemPick Module</a></li>
+<li>Small Calibration-Grid with pre-drilled mounting holes</li>
+<li>Connectivity Kit with 5m network cable and 60W power supply</li>
+<li><a class="reference external" href="https://roboception.com/accessories-for-robot-vision-solutions/rc-randomdot-pattern-projector/">RandomDot Projector</a></li>
+<li><a class="reference external" href="https://roboception.com/software-tools/iocontrol/">rc_reason IOControl Module</a></li>
 </ul>
 <div class="section" id="software-installation">
 <h2>Software installation<a class="headerlink" href="#software-installation" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Download the URCap from <a class="reference external" href="https://roboception.com/en/download/">Roboception’s download page</a></li>
+<li>Download the URCap from Roboception’s <a class="reference external" href="https://roboception.com/resources/knowledge-base/">download page</a></li>
 <li>Copy the URCap file to a USB flash drive</li>
 <li>Insert the USB drive into the USB port of the teach pendant or robot controller</li>
 <li>On the Welcome screen of the PolyScope Robot User Interface press the Setup Robot button first and then press the URCaps Setup button</li>
@@ -237,15 +241,19 @@
 <li>Navigate to the rc_visard_urcap file by clicking on your USB drive and selecting it. Confirm the selection by clicking on Open</li>
 <li>Reboot the controller</li>
 </ol>
-<p>After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window (see <a class="reference internal" href="#fig-successful-installed-urcap"><span class="std std-numref">Fig. 58</span></a>).</p>
-<div class="figure align-center" id="id5">
+<p>After rebooting the robot, the rc_visard_urcap application should be marked by a green tick in the URCaps Setup window
+(see <a class="reference internal" href="#fig-successful-installed-urcap"><span class="std std-numref">Fig. 58</span></a>).</p>
+<div class="figure align-center" id="id8">
 <span id="fig-successful-installed-urcap"></span><a class="reference internal image-reference" href="../_images/urcap_setup.png"><img alt="../_images/urcap_setup.png" src="../_images/urcap_setup.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Successfully installed <em>rc_visard</em> URCap.</span></p>
 </div>
 </div>
 <div class="section" id="connect-the-sensor">
 <span id="urcap-urcap-setup-image"></span><h2>Connect the sensor<a class="headerlink" href="#connect-the-sensor" title="Permalink to this headline">¶</a></h2>
-<p>You can connect the <em>rc_visard</em> directly to the ethernet port of the Universal Robot controller, or through a network switch. During setup, it is recommended to establish a connection via switch, since some parts of the <em>rc_visard</em> interface are not fully duplicated in URCap and are only available through the Web GUI. It might be necessary to use an external PC to configure the <em>rc_visard</em> or its software modules.</p>
+<p>You can connect the <em>rc_visard</em> directly to the ethernet port of the Universal Robot controller, or through a network switch.
+During setup, it is recommended to establish a connection via switch, since some parts of the <em>rc_visard</em> interface are not
+fully duplicated in URCap and are only available through the Web GUI. It might be necessary to use an external PC to configure
+the <em>rc_visard</em> or its software modules.</p>
 <p>Detailed instructions about network setup can be found in <a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Network configuration</span></a> tutorial.</p>
 <ol class="arabic simple">
 <li>Connect the <em>rc_visard</em> to the same network as the robot controller</li>
@@ -254,11 +262,12 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A Link-Local address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP server for network configuration.</p>
+<p class="last">A Link-Local address might change after reboot, therefore, we recommended assigning a static IP address or using a DHCP
+server for network configuration.</p>
 </div>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/installation_node.png"><img alt="../_images/installation_node.png" src="../_images/installation_node.png" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Sample setup. The robot has established a connection to <em>rc_visard</em> and displays status information, rectified left image, and depth image.</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Sample setup. The robot has established a connection to the <em>rc_visard</em> and displays status information, rectified left image, and depth image.</span></p>
 </div>
 <span class="target" id="urcap-installation-node-image"></span></div>
 </div>
@@ -305,7 +314,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-29-g3590912',
+            VERSION:'0.5.0-40-g2a9c4f8',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

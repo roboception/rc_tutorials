@@ -29,7 +29,7 @@ One should know the serial number or user defined name of the
 rc_visard. The serial number is of the format 029xxxxx. It will be
 referred to as rc_visard_id in the remainder of this tutorial.
 
-The rc_visard has the latest firmware (version 24.04). The firmware
+The rc_visard has the latest firmware (version 24.07). The firmware
 version can be verified on the System ‣ Firmware & License page of the
 Web GUI.
 
@@ -65,7 +65,7 @@ from the
 rc_visard
 
  using "rc_genicam_api" and how to convert them to an OpenCV
-representation. The example can be downloaded from our
+representation. The example can be downloaded from Roboception's
 
 GitHub repository
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ItemPick &mdash; Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+  <title>ItemPick &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="BoxPick" href="boxpick.html"/>
@@ -128,7 +128,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#computegrasps">ComputeGrasps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#getnextgrasp">GetNextGrasp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getbplcpose">GetBpLcPose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getiplcpose">GetIpLcPose</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
@@ -208,11 +208,12 @@
 <div class="section" id="before-we-start">
 <h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial assumes that the tutorial <a class="reference internal" href="../rc_itempick/getting_started.html#itempick-getting-started"><span class="std std-ref">Getting started with ItemPick</span></a> has
-been completed, and the valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
+been completed, and that a valid hand eye calibration has been stored on the <em>rc_visard</em> as described in <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-Eye Calibration</span></a>.</p>
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The ItemPick functionality is available in the generic rc_visard node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
+<p>The ItemPick functionality is available in the generic rc_visard node.
+Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
 <p>The following functions are available for ItemPick:</p>
 <ul class="simple">
 <li><strong>ComputeGrasps:</strong> Triggers grasp computation</li>
@@ -225,11 +226,13 @@ been completed, and the valid hand eye calibration has been stored on the <em>rc
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ip_compute_grasps.png"><img alt="../_images/ip_compute_grasps.png" src="../_images/ip_compute_grasps.png" style="width: 800px;" /></a>
 </div>
-<p>It is mandatory to set the minimum and maximum length and width of the suction cup. If necessary enter a load carrier ID and/or a region of interest ID, but it’s not mandatory.</p>
-<p>If the CollisionCheck license is available on the sensor it is also possible to set the gripper and pre grasp offset for the collision check.</p>
+<p>It is mandatory to set the minimum and maximum length and width of the suction cup.
+If necessary, enter a load carrier ID and/or a region of interest ID.</p>
+<p>If the CollisionCheck license is available on the sensor, it is also possible to set the gripper and pre-grasp offset for the collision check.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The region of interest and load carrier have to be defined in the Web GUI of the sensor. Only the regions of interest defined in ‘external’ frame are shown in the URCap.</p>
+<p class="last">The region of interest and load carrier have to be defined in the Web GUI of the sensor.
+Only the regions of interest defined in ‘external’ frame are shown in the URCap.</p>
 </div>
 </div>
 <div class="section" id="getnextgrasp">
@@ -237,11 +240,15 @@ been completed, and the valid hand eye calibration has been stored on the <em>rc
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ip_get_next_grasp.png"><img alt="../_images/ip_get_next_grasp.png" src="../_images/ip_get_next_grasp.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that the ComputeGrasps has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope’s variable format (e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).</p>
-<p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This function requires that the ComputeGrasps has been triggered before.
+It assigns the next available grasp pose and stores the pose in PolyScope’s variable format
+(e.g. p[-0.300517, -0.367119, -0.007997, -0.001221, 3.116277, 0.038892]).</p>
+<p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked,
+a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected
+(the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 <p>With the <em>‘Pose orientation’</em> drop-down menu it is possible to change the strategy of calculating the angle of the returned pose.
 There are four different options to choose from:</p>
@@ -252,15 +259,17 @@ There are four different options to choose from:</p>
 <li><strong>Detected pose orientation</strong> The complete detected orientation is used.</li>
 </ul>
 </div>
-<div class="section" id="getbplcpose">
-<h2>GetBpLcPose<a class="headerlink" href="#getbplcpose" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getiplcpose">
+<h2>GetIpLcPose<a class="headerlink" href="#getiplcpose" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ip_get_lc_pose.png"><img alt="../_images/ip_get_lc_pose.png" src="../_images/ip_get_lc_pose.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that ComputeGrasps has been triggered with a load carrier ID. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This function requires that ComputeGrasps has been triggered with a load carrier ID. It returns the pose of the detected load carrier.
+If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected
+(the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 </div>
 </div>
@@ -307,7 +316,7 @@ There are four different options to choose from:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-29-g3590912',
+            VERSION:'0.5.0-40-g2a9c4f8',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Obtain dense depth images with the rc_randomdot projector &mdash; Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+  <title>Obtain dense depth images with the rc_randomdot projector &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
         <link rel="next" title="rc_reason general tutorials" href="../rc_reason_general/overview.html"/>
@@ -206,10 +206,10 @@
   <div class="section" id="obtain-dense-depth-images-with-the-projector">
 <span id="general-projector"></span><h1>Obtain dense depth images with the <em>rc_randomdot</em> projector<a class="headerlink" href="#obtain-dense-depth-images-with-the-projector" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial shows how to set up the <em>rc_visard</em> with the
-<a class="reference external" href="https://roboception.com/product/random-dot-projector/">rc_randomdot projector</a> to increase the
+<a class="reference external" href="https://roboception.com/accessories-for-robot-vision-solutions/rc-randomdot-pattern-projector/">rc_randomdot projector</a> to increase the
 density of depth images, as shown in <a class="reference internal" href="#fig-general-projector-compare"><span class="std std-numref">Fig. 12</span></a>.
 This is particularly recommended for objects and workspaces with little or no visual texture.</p>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id2">
 <span id="fig-general-projector-compare"></span><a class="reference internal image-reference" href="../_images/projector_compare.png"><img alt="../_images/projector_compare.png" src="../_images/projector_compare.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">A scene including objects without visual texture (i.e. the intensity of the image
 is uniform over large parts of the scene) and the computed depth image without the <em>rc_randomdot</em> projector (center)
@@ -224,9 +224,8 @@ has been completed.</p>
 <span id="general-projector-before"></span><h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
 <p>Before going through this tutorial, the following prerequisites should be met.</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 24.04)
-and the <em>rc_visard</em>’s license includes the
-<a class="reference external" href="https://roboception.com/product/rc_reason-iocontrol/">IOControl module</a>.
+<li>The <em>rc_visard</em> is running the latest firmware (version 24.07)
+and the <em>rc_visard</em>’s license includes the IOControl module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 <li>The <em>rc_randomdot</em> projector, the network cable connecting it to the <em>rc_visard</em>, and a
 24 V, 60 W power supply are available.</li>
@@ -239,7 +238,7 @@ the <em>rc_visard</em> and the <em>rc_randomdot</em> projector together.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <em>rc_randomdot</em> projector is controlled via the GPIO Out 1 of the <em>rc_visard</em>
-(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v24.04)"><span>IO and Projector Control</span></a>).
+(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/iocontrol.html#sect-iocontrol" title="(in rc_visard v24.07)"><span>IO and Projector Control</span></a>).
 In this tutorial, Out 1 mode refers to the <em>rc_randomdot</em> projector mode.</p>
 </div>
 </div>
@@ -250,7 +249,7 @@ see <a class="reference external" href="https://doc.rc-randomdot.com/en/installa
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For projectors sold until 12/2020, the mounting instructions are available on the
-<a class="reference external" href="https://roboception.com/wp-content/uploads/2020/09/202008_rc_randomdot_quickstart_guide.pdf">Roboception website</a>.</p>
+<a class="reference external" href="https://roboception.com/wp-content/uploads/2024/02/202108_rc_randomdot_white_quickstart_guide_en.pdf">Roboception website</a>.</p>
 </div>
 </div>
 <div class="section" id="focusing-the-projector">
@@ -262,7 +261,7 @@ by setting the Out 1 mode to <em>High</em>.</p>
 Please unscrew the lens protection tube patently, until the rings of the lens are visible.
 Now, the focus can be adjusted by rotating one of the rings of the lens until
 the random dot pattern is sharp (<a class="reference internal" href="#fig-general-projector-focus"><span class="std std-numref">Fig. 13</span></a>).</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <span id="fig-general-projector-focus"></span><a class="reference internal image-reference" href="../_images/projector_focus.png"><img alt="../_images/projector_focus.png" src="../_images/projector_focus.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Blurred (left) and sharp (right) random dot pattern.</span></p>
 </div>
@@ -332,7 +331,7 @@ on the <strong>Depth Image</strong> page.</p>
 <p>Alternatively, the mounting of the <em>rc_randomdot</em> projector could be changed in order to have a different
 angle between the <em>rc_visard</em> and the projector itself. Reducing the aperture of the projector
 can also help in removing highlights.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <span id="fig-general-projector-highlights"></span><a class="reference internal image-reference" href="../_images/projector_highlights.png"><img alt="../_images/projector_highlights.png" src="../_images/projector_highlights.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Highlight in the camera image due to the <em>rc_randomdot</em> projector.</span></p>
 </div>
@@ -381,7 +380,7 @@ can also help in removing highlights.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-29-g3590912',
+            VERSION:'0.5.0-40-g2a9c4f8',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

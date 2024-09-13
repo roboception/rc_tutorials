@@ -22,7 +22,8 @@ Select which sensor to use. The sensor ip and name can be configured in the inst
 Select module
 -------------
 
-Select software module, either ItemPick, BoxPick or Common. ItemPick and BoxPick nodes offer functionality to tirgger the corresponding services. The common module is used for setting parameters.
+Select the software module, either ItemPick, BoxPick or Common. The ItemPick and BoxPick nodes offer functionality to trigger the corresponding services.
+The common module is used for setting parameters.
 
 .. figure:: ../images/urcap/rc_visard_gn_select_module.png
   :width: 800px
@@ -33,7 +34,7 @@ Select software module, either ItemPick, BoxPick or Common. ItemPick and BoxPick
 Select function
 ---------------
 
-Select function for the module. The available functions depend on the selected module.
+Select the function of the module. The available functions depend on the selected module.
 
 .. figure:: ../images/urcap/rc_visard_gn_select_function.png
   :width: 800px
@@ -44,11 +45,11 @@ Select function for the module. The available functions depend on the selected m
 Configure action
 ----------------
 
-After you have selected sensor, module and function a subpanel appears that enables you to set parameters, trigger computation or receive data.
+After you have selected a sensor, module and function, a subpanel appears that enables you to set parameters, trigger the computation or receive data.
 
 .. figure:: ../images/urcap/rc_visard_gn_subpanel.png
   :width: 800px
   :align: center
 
-  Sample of compute grasp function in itempick module..
+  Sample of the compute grasp function in ItemPick
 .. _urcap-ur_generic_node_sample:

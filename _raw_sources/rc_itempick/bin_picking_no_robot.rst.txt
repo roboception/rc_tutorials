@@ -318,7 +318,7 @@ grasps for items inside this compartment. The ``compute_grasps`` service include
 optional argument ``load_carrier_compartment`` that can be used to this purpose.
 
 .. note::
-  The ``load_carrier_compartment`` argument can not be specified in the *Try Out* section of
+  The ``load_carrier_compartment`` argument cannot be specified in the *Try Out* section of
   |webgui|'s :menuselection:`Modules --> ItemPick` page.
 
 The compartment is a box whose ``pose`` is defined with respect to the load carrier reference frame.

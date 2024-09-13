@@ -9,17 +9,16 @@ Note: Roboception's URCap is working with software 3.12.0 or newer
 
   )
 
-Note: Roboception's URCap is internally communicating with the
-  daemon on port 49285. In the unlikely event that it causes a
-  conflict with a URCap from a different vendor, please contact
-  Roboception support.
+Note: Roboception's URCap internally communicates with the daemon on
+  port 49285. In the unlikely event that it causes a conflict with a
+  URCap from a different vendor, please contact Roboception support.
 
 Roboception's ItemPick Bundle for Universal Robots contains everything
 required to calibrate the robot and the
 
 rc_visard
 
- , and start your first program. The bundle is sold in two versions:
+, and start your first program. The bundle is sold in two versions:
 with or without a RandomDot Projector.
 
 The basic bundle consists of:

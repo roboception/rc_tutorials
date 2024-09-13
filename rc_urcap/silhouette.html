@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+  <title>SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-29-g3590912
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Sample program" href="sampleprogram.html"/>
@@ -214,14 +214,15 @@
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The SilhouetteMatch functionality is available in the generic rc_visard node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work with generic <em>rc_visard</em> nodes.</p>
+<p>The SilhouetteMatch functionality is available in the generic <em>rc_visard</em> node. Please see <a class="reference internal" href="rc_visard.html#generic-rc-visard"><span class="std std-ref">Generic rc_visard node</span></a> in order to learn how to work
+with generic <em>rc_visard</em> nodes.</p>
 <p>The following functions are available for SilhouetteMatch:</p>
 <ul class="simple">
 <li><strong>Detect:</strong> Triggers detection</li>
-<li><strong>GetObjectPose:</strong> Gets the next pose after detection has been triggered</li>
+<li><strong>GetObjectPose:</strong> Gets the next object pose after detection has been triggered</li>
 <li><strong>GetNextGrasp:</strong> Gets the next grasp after detection has been triggered</li>
 <li><strong>GetLCPose:</strong> Gets the pose of the detected load carrier</li>
-<li><strong>CalibratePlane:</strong> Starts the plane calibration</li>
+<li><strong>CalibratePlane:</strong> Starts the base plane calibration</li>
 <li><strong>SetPreferredOrientation:</strong> Sets the Preferred Orientation based on the stored robot pose</li>
 </ul>
 </div>
@@ -230,18 +231,21 @@
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_detect.png"><img alt="../_images/sil_detect.png" src="../_images/sil_detect.png" style="width: 800px;" /></a>
 </div>
-<p>It is mandatory to choose the template that has to be detected. If necessary enter a region of interest, load carrier, gripper and offset, but it’s not mandatory.</p>
+<p>It is mandatory to choose the template that has to be detected. If necessary, enter a region of interest, load carrier, gripper and offset.</p>
 </div>
 <div class="section" id="getobjectpose">
 <h2>GetObjectPose<a class="headerlink" href="#getobjectpose" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_get_object_pose.png"><img alt="../_images/sil_get_object_pose.png" src="../_images/sil_get_object_pose.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that the Detect function has been triggered before. It returns the pose of the next available object that was detected and stores the pose in PolyScope’s variable format.</p>
-<p>If no reachable template is matched and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This function requires that the Detect function has been triggered before.
+It returns the pose of the next available object that was detected and stores the pose in PolyScope’s variable format.</p>
+<p>If no reachable template is matched and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear
+and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected
+(the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 <p>With the <em>‘Pick approach angle’</em> drop-down menu it is possible to change the strategy of calculating the angle of the returned pose.
 There are four different options to choose from:</p>
@@ -257,11 +261,14 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_get_next_grasp.png"><img alt="../_images/sil_get_next_grasp.png" src="../_images/sil_get_next_grasp.png" style="width: 800px;" /></a>
 </div>
-<p>This functions requires that Detect has been triggered before. It assigns the next available grasp pose and stores the pose in PolyScope’s variable format (p[x, y, z, rx, ry, rz]). It is also possible to store the grasp ID associated with this grasp.</p>
-<p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This functions requires that Detect has been triggered before. It assigns the next available grasp pose and stores the pose in
+PolyScope’s variable format (p[x, y, z, rx, ry, rz]). It is also possible to store the grasp ID associated with this grasp.</p>
+<p>If no reachable grasp is detected and the <strong>Stop program when pose is not available</strong> checkbox is checked, a popup will appear
+and the program will be terminated. If the checkbox is not checked, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected
+(the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 <p>With the <em>‘Pose orientation’</em> drop down menu it is possible to change the strategy of calculating the angle of the returned position.
 There are four different options to choose from:</p>
@@ -277,10 +284,12 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_get_lc_pose.png"><img alt="../_images/sil_get_lc_pose.png" src="../_images/sil_get_lc_pose.png" style="width: 800px;" /></a>
 </div>
-<p>This function requires that Detect has been triggered with a load carrier ID. It returns the pose of the detected load carrier. If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
+<p>This function requires that Detect has been triggered with a load carrier ID. It returns the pose of the detected load carrier.
+If no load carrier is detected, a zero pose (p[0,0,0,0,0,0]) will be returned.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected (the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
+<p class="last">When the <strong>Stop program when pose is not available</strong> checkbox is unchecked, the user has to catch the case when nothing is detected
+(the zero pose (p[0,0,0,0,0,0]) is returned). If this situation is not handled, it might lead to collision or undefined robot behavior.</p>
 </div>
 </div>
 <div class="section" id="calibrateplane">
@@ -288,14 +297,15 @@ There are four different options to choose from:</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_calibrate_plane.png"><img alt="../_images/sil_calibrate_plane.png" src="../_images/sil_calibrate_plane.png" style="width: 800px;" /></a>
 </div>
-<p>This function starts the plane calibration procedure.</p>
+<p>This function starts the base plane calibration procedure.</p>
 </div>
 <div class="section" id="setpreferredorientation">
 <h2>SetPreferredOrientation<a class="headerlink" href="#setpreferredorientation" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sil_set_preferred_orientation.png"><img alt="../_images/sil_set_preferred_orientation.png" src="../_images/sil_set_preferred_orientation.png" style="width: 800px;" /></a>
 </div>
-<p>This function sets the Preferred Orientation based on the stored robot pose. If it is not required to change this value during program execution, this node should be put in the Before Start section.</p>
+<p>This function sets the Preferred Orientation based on the stored robot pose. If it is not required to change this value during program execution,
+this node should be put in the Before Start section.</p>
 </div>
 </div>
 
@@ -341,7 +351,7 @@ There are four different options to choose from:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-29-g3590912',
+            VERSION:'0.5.0-40-g2a9c4f8',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

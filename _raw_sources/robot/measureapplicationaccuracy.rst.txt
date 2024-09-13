@@ -16,14 +16,14 @@ Especially errors in the orientation of the sensor may have serious effects.
 Before we start
 ---------------
 
-To verify the hand-eye calibration you need a robot with a pointing tool tip, a Roboception 3D sensor, and a printer to print out the `Robot-Test-Grid`.
+To verify the hand-eye calibration you need a robot with a pointing tool tip, a |company| 3D camera, and a printer to print out the `Robot-Test-Grid`.
 We assume that the robot cell is operational, the TCP of the pointing tool tip is set and a hand-eye calibration has already been performed.
 
 The hand-eye calibration procedure is described in detail in the `rc_visard's hand-eye calibration documentation <https://doc.rc-visard.com/latest/en/handeye_calibration.html>`_.
 See :ref:`ur-hand-eye` for a Universal Robots tutorial.
 
 The KUKA KRL sample program can be downloaded here: https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy.
-The program includes the KUKA KRL src and dat file and a printable version of the Roboception 'Robot-Test-Grid'.
+The program includes the KUKA KRL src and dat file and a printable version of the 'Robot-Test-Grid'.
 
 Program overview
 ----------------
@@ -31,9 +31,11 @@ The robot will trigger an AprilTag detection and move to the target on the robot
 In an ideal world the position of the tool tip should be exactly in the middle of the target and the
 orientation should be perpendicular to the AprilTags.
 
-.. raw:: html
+.. only:: roboception
+  
+  .. raw:: html
 
-  <p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+    <p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 
 .. _robot-measure_application_accuracy_overview:
@@ -112,4 +114,4 @@ The following points show possible causes and give hints how to solve them.
    This is reflected in the hand-eye calibration error and the accuracy that is measured with the described method.
    For this reason, some robot manufacturers offer to calibrate the robot to the world.
 
-If you have any questions or issues, please do not hesitate to contact support@roboception.de with a detailed error description.
+If you have any questions or issues, please do not hesitate to contact |company| support with a detailed error description.

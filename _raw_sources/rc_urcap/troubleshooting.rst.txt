@@ -1,7 +1,7 @@
 .. include:: ../global_rst.glb
 
 FAQs and troubleshooting
-==========================
+========================
 
 .. note::
   For problems connected directly to one of the modules please refer to module tutorials.
@@ -9,7 +9,7 @@ FAQs and troubleshooting
 .. toggle-header::
    :header: **I can connect to rc_visard's Web GUI but the sensor is not reachable from URCap**
 
-   Make sure that rc_visard and robot have a valid ip address in the same network segment.
+   Make sure that rc_visard and robot have a valid IP address in the same network segment.
 
 
 .. toggle-header::
@@ -18,11 +18,12 @@ FAQs and troubleshooting
    Currently it is not possible to work with multiple sensors connected to a single robot.
 
 .. toggle-header::
-   :header: **I can not install Roboception's URCap**
+   :header: **I cannot install URCap**
 
-   To install Roboception's URCap, the controller version has to be 3.7.0 or higher.
+   To install |company_partner|'s URCap, the controller version has to be 3.7.0 or higher.
 
 .. toggle-header::
    :header: **Is it possible to set the parameters of the rc_visard directly in UR program?**
 
-   It is possible to set |rc_visard| parameters with the :ref:`rc_set_parameter <ur-expert_functions-set-param>` Expert Function and Set Parameter common node.
+   It is possible to set |rc_visard| parameters with the :ref:`rc_set_parameter <ur-expert_functions-set-param>` 
+   Expert Function and Set Parameter common node.
