@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>End-to-End System Accuracy Test &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+ documentation" href="../index.html"/>
+        <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
+        <link rel="next" title="Generic rc_visard node" href="rc_visard.html"/>
+        <link rel="prev" title="Hand-eye calibration" href="handeyecalibration.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-eye calibration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-End System Accuracy Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements-and-setup">Requirements and setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verification-sheet">Verification sheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pointing-tool-requirements">Pointing tool requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tcp-configuration">TCP configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#verification-process">Verification process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#program-setup-and-execution">Program setup and execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-multiple-positions">Testing multiple positions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interpreting-results-and-next-steps">Interpreting results and next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadmatch.html">CADMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boxpick.html">BoxPick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="silhouette.html">SilhouetteMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampleprogram.html">Sample program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expertfunctions.html">Expert functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../robot/overview.html">KUKA robot tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs & more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
+        
+          <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
+        
+      <li>End-to-End System Accuracy Test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="end-to-end-system-accuracy-test">
+<span id="system-accuracy-test"></span><h1>End-to-End System Accuracy Test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Hand-eye calibrations can degrade over time due to small physical changes in your system setup, such as slight camera movements. This degradation typically manifests as inconsistent gripping behavior - objects may be gripped with an offset that varies depending on their workspace position. While this offset can be temporarily compensated for in a specific orientation, the problem will reappear when the objects are moved to different locations or orientations.</p>
+<p>This tutorial guides you through a systematic verification process to assess your complete system’s accuracy and identify potential issues. The test uses AprilTag markers and a precision pointing tool to verify the accuracy of the entire chain from vision detection to physical robot positioning.</p>
+</div>
+<div class="section" id="requirements-and-setup">
+<h2>Requirements and setup<a class="headerlink" href="#requirements-and-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verification-sheet">
+<h3>Verification sheet<a class="headerlink" href="#verification-sheet" title="Permalink to this headline">¶</a></h3>
+<p>Print the verification sheet in high quality, black and white. It is available in:</p>
+<ul class="simple">
+<li><a class="reference download internal" download="" href="../_downloads/731816e4d3a83effdbe85b380ff34fb0/End-to-end_Accuracy_Check_A4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">format</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/4332577fb8eeb8de0e01eb1eea336b55/End-to-end_Accuracy_Check_letter.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">format</span></code></a></li>
+</ul>
+<p>The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/End-to-end_Accuracy_Check_wh.svg"><img alt="Hand-eye calibration test sheet" src="../_images/End-to-end_Accuracy_Check_wh.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
+</div>
+</div>
+<div class="section" id="pointing-tool-requirements">
+<h3>Pointing tool requirements<a class="headerlink" href="#pointing-tool-requirements" title="Permalink to this headline">¶</a></h3>
+<p>For optimal accuracy, we strongly recommend using a rigid, dedicated pointing tool with a sharp tip (such as a dart tip) mounted directly to the robot flange. While it is possible to use a pointing tip attached to a flat surface for pickup with a suction gripper, this approach should only be used if the tip’s stability can be guaranteed, for example through a multi-cup suction gripper setup. The key requirement is that the tool provides a precise, sharp point that remains completely stable during measurements.</p>
+</div>
+<div class="section" id="tcp-configuration">
+<h3>TCP configuration<a class="headerlink" href="#tcp-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Configure the tool settings in your robot system:</p>
+<ol class="arabic simple">
+<li>Navigate to Installation → General → TCP in the UR menu</li>
+<li>Create a new TCP named ‘Pointing Tool’</li>
+<li>Configure the TCP transformation to match the physical tip position</li>
+<li>Navigate to Installation → General → Payload</li>
+<li>Use the built-in payload measurement function</li>
+<li>Save the configuration as ‘Pointing Tool’</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information on TCP and payload configuration, please refer to the official Universal Robots YouTube tutorial on <a class="reference external" href="https://www.youtube.com/watch?v=YnC-ccytJlw">Tool Configuration: TCP, orientation, payload &amp; center of gravity</a>.</p>
+</div>
+<p>Before proceeding, verify your TCP configuration:</p>
+<ol class="arabic simple">
+<li>Position the tool tip near a fixed reference point</li>
+<li>Rotate the tool around its Z-axis by navigating to the Move Menu, selecting Feature <cite>Tool</cite> and then changing the <cite>TCP Orientation</cite></li>
+<li>The physical tip should remain perfectly stationary during rotation. If the tip moves in a circular pattern, reconfigure the TCP</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TCP accuracy is crucial for reliable measurements. Even small offsets can significantly impact your verification results.</p>
+</div>
+</div>
+</div>
+<div class="section" id="verification-process">
+<h2>Verification process<a class="headerlink" href="#verification-process" title="Permalink to this headline">¶</a></h2>
+<p>The verification process combines vision and robotics to test the hand-eye calibration accuracy. First, the vision system detects both AprilTags on the verification sheet to establish their precise positions. Using these positions, the robot calculates the exact center point between the tags. The robot then moves the pointing tool’s tip to this calculated position. If the hand-eye calibration is accurate, the physical tip of the tool will align perfectly with the printed center crosshair marker on the sheet.</p>
+<div class="section" id="program-setup-and-execution">
+<h3>Program setup and execution<a class="headerlink" href="#program-setup-and-execution" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download the verification program: <a class="reference download internal" download="" href="../_downloads/4e30f6e9f4f2db54c1ab2af879bc5f08/End-to-end_Accuracy_Check.urp"><code class="xref download docutils literal notranslate"><span class="pre">End-to-end</span> <span class="pre">Accuracy</span> <span class="pre">Check</span></code></a></li>
+<li>Import the program into your UR robot</li>
+<li>Place the verification sheet in your workspace</li>
+<li>Execute the program</li>
+<li>Verify the pin alignment with the center marker</li>
+</ol>
+<div class="figure align-center" id="id2">
+<span id="urcap-system-accuracy-test-image"></span><a class="reference internal image-reference" href="../_images/system_accuracy_test.png"><img alt="../_images/system_accuracy_test.png" src="../_images/system_accuracy_test.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">End-to-end accuracy test program</span></p>
+</div>
+</div>
+<div class="section" id="testing-multiple-positions">
+<h3>Testing multiple positions<a class="headerlink" href="#testing-multiple-positions" title="Permalink to this headline">¶</a></h3>
+<p>Test the calibration in various configurations:</p>
+<ul class="simple">
+<li>Different positions across the workspace</li>
+<li>Various orientations</li>
+<li>Multiple heights (if applicable)</li>
+</ul>
+<p>Test at least 5-6 different positions to ensure comprehensive verification.</p>
+</div>
+</div>
+<div class="section" id="interpreting-results-and-next-steps">
+<h2>Interpreting results and next steps<a class="headerlink" href="#interpreting-results-and-next-steps" title="Permalink to this headline">¶</a></h2>
+<p>The verification is successful when the pin consistently touches the center marker regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on the application requirements.</p>
+<p>If you observe one of the following points, the verification has failed:</p>
+<ul class="simple">
+<li>Consistent offset from center marker</li>
+<li>Position-dependent accuracy variations</li>
+<li>Different results based on sheet orientation</li>
+</ul>
+<p>If verification fails, perform a complete recalibration using the <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-eye calibration</span></a> procedure.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rc_visard.html" class="btn btn-neutral float-right" title="Generic rc_visard node" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="handeyecalibration.html" class="btn btn-neutral" title="Hand-eye calibration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2025, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.5.0-68-g0179906',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
+  <title>Getting started with SilhouetteMatch &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -224,15 +224,14 @@ guides the reader to detecting the first objects.</p>
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 24.07)
+<li>The <em>rc_visard</em> is running the latest firmware (version 24.10)
 and the <em>rc_visard</em>’s license includes the SilhouetteMatch module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
 <p class="rubric">One or more workpieces have been chosen and the templates for these objects have been
 generated:</p>
 <ol class="arabic simple">
-<li>Suitable workpieces for SilhouetteMatch are described in the <em>rc_visard</em>
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#suitable-objects">user manual</a>.</li>
+<li>Suitable workpieces for SilhouetteMatch are described in the <span class="xref std std-ref">SilhouetteMatch user manual</span>.</li>
 <li>The process for template generation is described in the <a class="reference internal" href="template_generation.html#silhouettematch-template-generation"><span class="std std-ref">Template generation</span></a> tutorial.
 Alternatively, DXF files can directly be uploaded onto the <em>rc_visard</em>, for details
 see the same tutorial.</li>
@@ -241,7 +240,7 @@ see the same tutorial.</li>
 <div class="section" id="setting-up-the-scene">
 <h2>Setting up the scene<a class="headerlink" href="#setting-up-the-scene" title="Permalink to this headline">¶</a></h2>
 <p>We recommend to mount the <em>rc_visard</em> on a tripod or a static support as explained
-in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v24.07)"><span>Mechanical interface</span></a> description.</p>
+in the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/hardware_spec.html#sect-mechanical" title="(in rc_visard v24.10)"><span>Mechanical interface</span></a> description.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The mounting should be stable such that the sensor remains static while SilhouetteMatch acquires data.</p>
@@ -286,7 +285,7 @@ orientation of the base plane relative to the <em>rc_visard</em>
 The scene must be set up such that the base plane can be detected reliably whenever a base-plane
 calibration is performed, as explained in <a class="reference internal" href="#silhouettematch-calibration"><span class="std std-ref">Performing base-plane calibration</span></a>.</p>
 <p>For an <em>rc_visard</em> mounted on a robot, special handling is applied, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v24.07)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-hand-eye-calib" title="(in rc_visard v24.10)"><span class="xref std std-ref">SilhouetteMatch Hand-eye calibration</span></a>.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/base-plane.jpg"><img alt="../_images/base-plane.jpg" src="../_images/base-plane.jpg" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Examples for good and bad base-plane configurations.
@@ -385,11 +384,11 @@ and right camera image.
 The three tags should span a triangle around the objects, which is as large as possible.</p>
 <p>Only tags of the family “36h11” are detected.
 The minimum size depends on the distance to the tags
-(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v24.07)"><span>Tag reading</span></a> for more information).
+(see <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-tag-reading" title="(in rc_visard v24.10)"><span>Tag reading</span></a> for more information).
 AprilTags of family “36h11” can be downloaded from the
 <a class="reference external" href="https://github.com/AprilRobotics/apriltag-imgs/tree/64a553eeb9872944abfd4ad9258a644aded973fa/tag36h11">apriltag-imgs repository</a>.
 When cutting them out, please make sure to leave a white border around the AprilTags
-(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v24.07)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).</p>
+(see section <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v24.10)"><span>AprilTag</span></a> of the <em>rc_visard</em> manual).</p>
 <p>The tags should be placed directly on the base plane.
 In case that is not possible, please refer to <a class="reference internal" href="#silhouettematch-offset-parameter"><span class="std std-ref">Offset parameter</span></a>.</p>
 <p>All “36h11” tags in the scene are used for calibration.
@@ -457,7 +456,7 @@ actual plane.</p>
 <p>Object detection can be triggered in the <em>Try Out</em> section of the Web GUI’s
 <span class="menuselection">Modules ‣ SilhouetteMatch</span> page.
 Triggering via REST-API is possible as well, as described in
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v24.07)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/silhouettematch.html#sect-silhouettematch-services" title="(in rc_visard v24.10)"><span class="xref std std-ref">SilhouetteMatch Services</span></a>.</p>
 <p>In the <em>Try Out</em> section, the template that is to be detected must be selected by its name.
 Then, the detection is triggered with the <span class="guilabel">Detect Objects</span> button.
 The result will be shown in the table at the bottom of the page, as well as in the visualization
@@ -582,7 +581,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Roboception GmbH.
+        &copy; Copyright 2025, Roboception GmbH.
 
     </p>
   </div> 
@@ -602,7 +601,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-40-g2a9c4f8',
+            VERSION:'0.5.0-68-g0179906',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -615,6 +614,7 @@ Right: With a value of 0.95, many irrelevant noise edges are detected as well.</
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 

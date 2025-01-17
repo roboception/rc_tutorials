@@ -3,9 +3,9 @@
 KUKA robot tutorials
 ====================
 
-In this tutorial you will learn how to use |company| 3D cameras with KUKA robots.
+In this tutorial you will find examples on how to use |company| 3D cameras with KUKA robots.
 
 .. toctree::
     :maxdepth: 1
-
-    measureapplicationaccuracy
+    
+    kuka_system_accuracy_test

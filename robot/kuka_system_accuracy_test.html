@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>End-to-End System Accuracy Test &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+ documentation" href="../index.html"/>
+        <link rel="up" title="KUKA robot tutorials" href="overview.html"/>
+        <link rel="prev" title="KUKA robot tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">KUKA robot tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-End System Accuracy Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-materials-and-prerequisites">Required materials and prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verification-sheet">Verification sheet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-requirements-and-configuration">Tool requirements and configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-tool-components">Required tool components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tcp-configuration">TCP configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#measure-application-accuracy">Measure application accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpreting-results-and-next-steps">Interpreting results and next steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs & more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
+        
+          <li><a href="overview.html">KUKA robot tutorials</a> &gt;</li>
+        
+      <li>End-to-End System Accuracy Test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="end-to-end-system-accuracy-test">
+<span id="kuka-system-accuracy-test"></span><h1>End-to-End System Accuracy Test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Vision-guided robot systems can show positioning inaccuracies that often stem from a degraded hand-eye calibration, typically caused by small physical changes like camera movements. These inaccuracies manifest as inconsistent positioning - objects may be gripped with an offset that varies depending on their workspace position. While this offset can be temporarily compensated for in a specific orientation, the problem will reappear when objects are moved to different locations.</p>
+<p>This tutorial guides you through a systematic verification process to assess your complete system’s accuracy with KUKA robots and determine if recalibration is necessary. The test uses AprilTag markers and a precision pointing tool to verify the accuracy of the entire chain from vision detection to physical robot positioning.</p>
+</div>
+<div class="section" id="required-materials-and-prerequisites">
+<h2>Required materials and prerequisites<a class="headerlink" href="#required-materials-and-prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Before starting the verification:</p>
+<ul class="simple">
+<li>Ensure your robot cell is operational</li>
+<li>Confirm that a hand-eye calibration has been performed</li>
+</ul>
+<p>For details on the hand-eye calibration procedure, refer to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html" title="(in rc_visard v24.10)"><span class="xref std std-doc">Hand-eye calibration documentation</span></a>.</p>
+<p>For this verification process, you will need:</p>
+<ul class="simple">
+<li>A KUKA robot with a precision pointing tool (such as a dart tip)</li>
+<li>A Roboception 3D camera</li>
+<li>The verification sheet (printed in high quality)</li>
+<li>A soft mounting surface (foam board or cardboard)</li>
+</ul>
+<div class="section" id="verification-sheet">
+<h3>Verification sheet<a class="headerlink" href="#verification-sheet" title="Permalink to this headline">¶</a></h3>
+<p>Print the verification sheet in high quality, black and white. It is available in:</p>
+<ul class="simple">
+<li><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">format</span></code></li>
+<li><code class="xref download docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">format</span></code></li>
+</ul>
+<p>The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="robot/../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check.svg"><img alt="Hand-eye calibration test sheet" src="robot/../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="tool-requirements-and-configuration">
+<h2>Tool requirements and configuration<a class="headerlink" href="#tool-requirements-and-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-tool-components">
+<h3>Required tool components<a class="headerlink" href="#required-tool-components" title="Permalink to this headline">¶</a></h3>
+<p>A precision pointing tool is required for this verification process. This can be either a dedicated pointing tool (such as a dart tip) mounted directly to the robot flange, or a pointing tip attached to a flat surface that can be picked up using a suction gripper. The key requirement is that the tool provides a precise, sharp point for accurate measurements.</p>
+</div>
+<div class="section" id="tcp-configuration">
+<h3>TCP configuration<a class="headerlink" href="#tcp-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Configure the tool settings according to your KUKA robot system manual:</p>
+<ol class="arabic simple">
+<li>Define a new tool</li>
+<li>Set the TCP to match the physical tip position</li>
+<li>Configure the tool’s mass and center of gravity</li>
+<li>Save the tool configuration</li>
+</ol>
+<p>Before proceeding, verify your TCP configuration:</p>
+<ol class="arabic simple">
+<li>Position the tool tip near a fixed reference point</li>
+<li>Use the manual mode to rotate the tool around its Z-axis</li>
+<li>The physical tip should remain perfectly stationary during rotation</li>
+<li>If the tip moves in a circular pattern, reconfigure the TCP</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TCP accuracy is crucial for reliable measurements. Even small offsets can significantly impact your verification results.</p>
+</div>
+</div>
+</div>
+<div class="section" id="measure-application-accuracy">
+<h2>Measure application accuracy<a class="headerlink" href="#measure-application-accuracy" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download the KUKA KRL sample program from: <a class="reference external" href="https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy">https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy</a></li>
+<li>Print the robot test grid and stick it to a plane surface (e.g. cardboard).</li>
+<li>Place the robot test grid in the robot cell and make sure it is completely visible by the camera.</li>
+<li>Run the sample program, which will move the TCP of the robot to the robot test grid target in PTP motion.</li>
+<li>The program will stop as soon the target position is reached.</li>
+<li>Measure the deviation of the tool tip on the target with a ruler or a caliper gauge.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not drive the robot in automatic mode or with high speed! Always reduce the speed of the robot and use the manual mode.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No collision checks are active. Please make sure the robot has a collision-free path to the target position.</p>
+</div>
+<p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><div class="figure align-center" id="id2">
+<span id="robot-measure-application-accuracy-overview"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_overview.jpg"><img alt="../_images/measure_application_accuracy_overview.jpg" src="../_images/measure_application_accuracy_overview.jpg" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Overview of the test setup</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="robot-measure-application-accuracy-pointing"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_pointing.jpg"><img alt="../_images/measure_application_accuracy_pointing.jpg" src="../_images/measure_application_accuracy_pointing.jpg" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Robot pointing on target</span></p>
+</div>
+<p>It can also help to perform several measurements in the relevant working areas (e.g. pick area, place area etc.) of your robot cell. This might help in troubleshooting to see if the deviation is the same or if it changes depending on the position of the robot test grid.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To measure the translational deviation, the tool can be pushed into the cardboard by manually
+moving the robot in tool frame. To do this, move the tool in the direction of the Z axis until the tip
+of the tool pierces the paper. After removing the robot test grid from the cell, you can easily measure the deviation using a caliper gauge.</p>
+</div>
+</div>
+<div class="section" id="interpreting-results-and-next-steps">
+<h2>Interpreting results and next steps<a class="headerlink" href="#interpreting-results-and-next-steps" title="Permalink to this headline">¶</a></h2>
+<p>A well-calibrated system will show consistent alignment between the tool tip and center marker across all test positions.</p>
+<p>If the tool tip consistently deviates from the center marker, consider these potential causes:</p>
+<p><strong>Inaccurate TCP configuration</strong></p>
+<p>The most common cause of verification failures is an imprecise TCP configuration. Verify your TCP setup using the rotation test described in the TCP configuration section.</p>
+<p><strong>Inaccurate robot</strong></p>
+<p>While industrial robots typically offer excellent repeatability (sub-millimeter range), their absolute accuracy may vary. This affects positions provided by the vision system. Some robot manufacturers offer world calibration services to improve absolute accuracy.</p>
+<p><strong>Robot accuracy vs. repeatability</strong></p>
+<p>Industrial robots excel at repeatability (consistently returning to the same position), typically achieving sub-millimeter precision. However, absolute accuracy (moving to exact world coordinates) can be less precise. When a vision system provides target coordinates, this absolute accuracy becomes crucial.</p>
+<p>The difference between the robot’s internal coordinate system and real-world coordinates can lead to systematic offsets in your verification measurements. Some robot manufacturers offer world calibration services to minimize these discrepancies between the robot’s coordinate system and real-world coordinates.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you observe position-dependent deviations during verification (different offsets at different locations), this might indicate a world calibration issue rather than a hand-eye calibration problem.</p>
+</div>
+<p>If you have any questions or issues, please do not hesitate to contact Roboception support with a detailed error description.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="KUKA robot tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2025, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.5.0-68-g0179906',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

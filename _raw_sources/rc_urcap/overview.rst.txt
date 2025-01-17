@@ -10,6 +10,7 @@ In this tutorial you will learn how to connect, configure, and use the |rc_visar
 
     gettingstarted
     handeyecalibration
+    system-accuracy-test
     rc_visard
     cadmatch
     itempick

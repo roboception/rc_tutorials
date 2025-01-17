@@ -2,36 +2,49 @@
 
 .. _ur-hand-eye:
 
-Hand-Eye Calibration
-=====================
+Hand-eye calibration
+====================
 
-This tutorial shows how to calibrate the |rcvisard| to the robot, in order to determine its position relative to the robot base frame, 
-using |company_partner|'s URCap. The hand eye calibration procedure is described in detail in 
-the `Hand Eye Calibration documentation <https://doc.rc-visard.com/latest/en/handeye_calibration.html>`_.
+This tutorial guides you through the hand-eye calibration process with |company_partner|'s URCap. During this procedure, the spatial relationship between the camera and the robot system is established.
 
-.. note::
-  The calibration has to be performed every time the |rcvisard| is moved relative to the robot base.
+The camera can be used in two ways: either statically mounted in the workspace or attached directly to the robot. This choice determines how the calibration is performed and the type of transformation established. For detailed information on the calibration principles, refer to the :doc:`Hand-eye calibration documentation<rcvisard:handeye_calibration>`.
 
-Before we start
----------------
+Before you begin, ensure that you have completed the tutorials :ref:`ur-getting-started` and :ref:`general-tuning-image-parameters`.
 
-This tutorial assumes that the tutorials :ref:`ur-getting-started` and :ref:`general-tuning-image-parameters` have been completed.
+Static camera
+-------------
+In this configuration, the camera is mounted statically in the workspace, and the calibration grid is attached to the robot. The hand-eye calibration determines the transformation between the camera and the robot base frame. Ensure the camera is mounted rigidly, completely stable, and unaffected by robot movements or vibrations.
 
-Externally mounted sensor - mounting the calibration grid
----------------------------------------------------------
+.. .. _urcap-calibration-video:
+.. .. raw:: html
 
-The calibration grid for Universal Robots is delivered with 4 holes in the lower left-hand corner and can be mounted
-directly to the flange of the robot with four M6 screws. The mounting point is not located in the center of the grid 
-in order to reduce the chance of collisions with joint five during calibration movements.
-The grid should be mounted firmly with the positioning hole pointing towards the middle of the calibration grid in 
-direction of the shorter side.
+..     <div class="align-center" style="margin-bottom: 24px;">
+..         <video width="100%" style="max-width: 800px;" controls>
+..             <source src="../_static/videos/perfect_hec_pendant.webm" type="video/webm">
+..             Your browser does not support the video tag.
+..         </video>
+..         <p class="caption" style="text-align: center;">
+..             <span class="caption-text" style="font-style: italic;">Placeholder video for static sensor calibration</span>
+..         </p>
+..     </div>
+
+Mounting the calibration grid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The calibration grid includes has mounting holes in its upper-right corner for attachment to the robot's flange. This location maximizes the robot's range of motion during calibration. Secure the grid using four M6 screws (16 mm length), ensuring it is firmly fixed. Tighten each screw to exactly 4 Nm. The positioning hole in the robot flange should face the middle of the calibration grid's shorter side for proper alignment.
+
+.. warning::
+    Over-tightening the screws can bend the grid and impair calibration accuracy. Use a torque wrench to apply the correct torque of 4 Nm.
+
+.. note::  
+    The grid's mounting position on the robot flange does not affect the calibration results, as the transformation between the grid and the flange is automatically calculated during the process. Using a mounting adapter (as shown in the calibration video) can provide significant advantages. It ensures that the robot's joint configuration during calibration closely matches its configuration during picking operations, thereby reducing the impact of robot kinematic inaccuracies. Additionally, the adapter allows the grid to be positioned farther from the camera system, increasing the usable workspace and enabling a more diverse range of calibration poses.
 
 .. _urcap-ur_calibration_grid_mounting:
 .. figure:: ../images/urcap/ur_calibration_grid_mounting.jpg
   :width: 300px
   :align: center
 
-  Flange positioning hole pointing towards the middle of the calibration grid of the shorter side
+  Correct orientation: positioning hole points toward the middle of the grid's shorter side
+
 .. _urcap-calibration-grid-image:
 .. figure:: ../images/urcap/calibration_grid.jpg
   :width: 300px
@@ -39,63 +52,94 @@ direction of the shorter side.
 
   Calibration grid mounted on the robot
 
-Sensor mounted on the robot - mounting the sensor
--------------------------------------------------
 
-When using the sensor mounted on the robot, it has to be firmly mounted to the flange. 
-Before starting the calibration, the weight of the TCP has to be updated in 'TCP configuration' 
-and the calibration grid has to be placed in a way that it is not moving during the calibration.
+End effector configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Before starting the calibration, the correct payload and Tool Center Point (TCP) must be configured. A correct payload configuration ensures precise robot positioning and makes the free drive mode more responsive for teaching poses during calibration.
 
-Calibration program
--------------------
-The |rc-visard| hand-eye calibration procedure is implemented as a program node. During the procedure 
-the robot will move linear in tool-space with tool speed 0.5 m/s and tool acceleration 0.5 m/s2 
-between the poses taught by the user.
-The poses will automatically be sent to the |rcvisard|, and the calculated camera pose in the 
-robot base frame will be shown in the 'Calibration result' node.
+1. Navigate to Installation → General → TCP in the UR menu. Create a new TCP with the name 'Calibration Grid'. An arbitrary TCP-transformation could be used, but a zero-transformation is recommended for an overlap with the robot flange.
+2. Navigate to Installation → General → Payload in the UR menu. Use the UR's built-in payload measurement function to determine the calibration grid payload and apply the measured settings.
+3. Click 'Save...' in the top bar → 'Save Installation as...' and name it 'Calibration Grid'.
 
 .. note::
-  The calibration result is not automatically stored on the |rcvisard|. It is the user's 
-  responsibility to check the error associated with the calibration under 'Calibration result' 
-  and store it, provided the error is acceptable.
+    For more information on TCP and payload configuration, please refer to the official Universal Robots YouTube tutorial on `Tool Configuration: TCP, orientation, payload & center of gravity <https://www.youtube.com/watch?v=YnC-ccytJlw>`_.
 
-By default, for the duration of the calibration program with external camera, the TCP will 
-be set to the middle of the flange, and the payload will be set to the payload of the
-mounted calibration grid. If the calibration grid is not mounted directly on 
-the flange, or if it is not the only mounted element, TCP and payload have to be set 
-accordingly in the installation node, and the checkbox 'Use |company| TCP and payload' 
-in the main screen of calibration program has to be un-checked.
-For the calibration with robot mounted sensor, the user has to specify the 
-payload in robot installation node prior to the calibration procedure.
 
-In order to start a new calibration procedure:
 
-#. Create an empty program.
-#. Add the 'RC calibration' program node.
-#. Choose the sensor you want to calibrate and other calibration parameters (see :ref:`urcap-calibration-parameters-image`)
-#. Move the robot so that the grid is shown on the live view corresponding to the grid image on the right (see :ref:`urcap-calibration-store-pose-image`) and click the 'Store pose' button. Repeat this procedure for four poses.
-#. Run the program.
-#. When the popup informing about the success of the procedure is shown, go to the 'Calibration result' node, check the calibration result and click the 'Store calibration' button if the calibration should be stored persistently (see :ref:`urcap-calibration-successful-image`).
+Robot-mounted camera
+--------------------
+In this configuration, the camera is mounted on the robot, while the calibration grid is fixed in the workspace. The hand-eye calibration determines the transformation between the camera and the TCP selected during the calibration.
+
+.. warning::
+    The transformation between the TCP and the camera will be used to compute object poses relative to the robot's base frame when triggering detections, using the robot's current pose. Therefore, it is crucial to **use the same TCP during calibration and subsequent detection applications**.
+
+The camera must be mounted securely to the robot flange using appropriate mounting hardware. The mounting must be rigid and stable, free from any movement or play, and capable of withstanding robot accelerations without shifting.
+
+Mounting the calibration grid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Securely fixate the calibration grid in the workspace, ensuring it remains immobile during calibration. Position the grid so it is clearly visible to the camera and allows ample space for robot movement.
+
+End effector configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Mount the end effector required for your application.
+2. Navigate to Installation → General → TCP in the UR menu. Verify that the correct end-effector TCP is selected.
+3. Navigate to Installation → General → Payload and use the built-in payload measurement function to measure the complete payload (including end effector and mounted camera).
+4. Click 'Save...' → 'Save Installation as...' → name it 'Gripper with Camera'.
+
+.. note::
+    For more information on TCP and payload configuration, please refer to the official Universal Robots YouTube tutorial on `Tool Configuration: TCP, orientation, payload & center of gravity <https://www.youtube.com/watch?v=YnC-ccytJlw>`_.
+
+
+Using the hand-eye calibration program
+--------------------------------------
+The calibration process uses a program node that guides the robot through a series of poses. During calibration, the robot moves with linear tool-space motion, a tool speed of 0.5 m/s, and a tool acceleration of 0.5 m/s².
+
+For convenience, the checkbox 'Use |company| TCP and payload' is enabled by default. This setting assumes the calibration grid is mounted directly to the robot flange. However:
+
+- For static camera: It is recommended to configure a tool center point installation (because of the benefits in free drive mode) and disable the checkbox.
+- For robot-mounted camera: This checkbox must be disabled, and a TCP configuration and payload measurement is required.
+
+Step-by-step calibration
+^^^^^^^^^^^^^^^^^^^^^^^^
+1. Create an empty program
+2. Add the 'rc hand-eye calibration' program node
+3. In the node, select your sensor and configure the calibration parameters (:ref:`urcap-calibration-parameters-image`)
+4. For each of the eight 'Set pose' nodes:
+
+   - Refer to the reference image in the program node for guidance.
+   - Move the robot to achieve a similar grid position in the live camera view
+   - Click 'Store pose' once positioned
+5. Execute the program at 10% speed initially to react to potential collisions.
+6. After successful calibration:
+
+   - Review the results in the 'Calibration result' node
+   - Store the calibration if error values are acceptable (typically less than 2mm)
+
+.. note::
+    While positioning the robot, use the free drive mode while remaining in the calibration pose node to adjust the position. This keeps the live view visible during adjustment. Consider using the constraint-free drive mode for easier positioning in certain cases.
+
+.. note::
+    The reference images provided only serve as guidance. What is crucial is capturing eight distinctly different poses of the calibration grid.
 
 .. _urcap-calibration-parameters-image:
 .. figure:: ../images/urcap/calibration_parameters.png
-  :width: 300px
+  :width: 500px
   :align: center
 
-  Calibration parameters
+  Setting parameters in the rc hand-eye calibration node
 
 .. _urcap-calibration-store-pose-image:
 .. figure:: ../images/urcap/calibration_store_pose.png
-  :width: 300px
+  :width: 500px
   :align: center
 
-  Set pose
-
+  Set pose node
 
 .. _urcap-calibration-successful-image:
 .. figure:: ../images/urcap/calibration_successful.png
-  :width: 300px
+  :width: 500px
   :align: center
 
-  Calibration result
+  Calibration result node
 

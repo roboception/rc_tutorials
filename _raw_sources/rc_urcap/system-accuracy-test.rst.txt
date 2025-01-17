@@ -1,0 +1,103 @@
+.. include:: ../global_rst.glb
+
+.. _system-accuracy-test:
+
+End-to-End System Accuracy Test
+================================
+
+Introduction
+------------
+Hand-eye calibrations can degrade over time due to small physical changes in your system setup, such as slight camera movements. This degradation typically manifests as inconsistent gripping behavior - objects may be gripped with an offset that varies depending on their workspace position. While this offset can be temporarily compensated for in a specific orientation, the problem will reappear when the objects are moved to different locations or orientations.
+
+This tutorial guides you through a systematic verification process to assess your complete system's accuracy and identify potential issues. The test uses AprilTag markers and a precision pointing tool to verify the accuracy of the entire chain from vision detection to physical robot positioning.
+
+
+Requirements and setup
+----------------------
+
+Verification sheet
+^^^^^^^^^^^^^^^^^^
+Print the verification sheet in high quality, black and white. It is available in:
+
+- :download:`A4 format <../images/handeyecalib/End-to-end_Accuracy_Check_A4.pdf>`
+- :download:`Letter format <../images/handeyecalib/End-to-end_Accuracy_Check_letter.pdf>`
+
+The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
+
+.. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh.svg
+   :width: 300px
+   :align: center
+   :alt: Hand-eye calibration test sheet
+
+   Verification sheet showing AprilTags and center marker
+
+Pointing tool requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+For optimal accuracy, we strongly recommend using a rigid, dedicated pointing tool with a sharp tip (such as a dart tip) mounted directly to the robot flange. While it is possible to use a pointing tip attached to a flat surface for pickup with a suction gripper, this approach should only be used if the tip's stability can be guaranteed, for example through a multi-cup suction gripper setup. The key requirement is that the tool provides a precise, sharp point that remains completely stable during measurements.
+
+TCP configuration
+^^^^^^^^^^^^^^^^^
+Configure the tool settings in your robot system:
+
+1. Navigate to Installation → General → TCP in the UR menu
+2. Create a new TCP named 'Pointing Tool'
+3. Configure the TCP transformation to match the physical tip position
+4. Navigate to Installation → General → Payload
+5. Use the built-in payload measurement function
+6. Save the configuration as 'Pointing Tool'
+
+.. note::
+    For more information on TCP and payload configuration, please refer to the official Universal Robots YouTube tutorial on `Tool Configuration: TCP, orientation, payload & center of gravity <https://www.youtube.com/watch?v=YnC-ccytJlw>`_.
+
+Before proceeding, verify your TCP configuration:
+
+1. Position the tool tip near a fixed reference point
+2. Rotate the tool around its Z-axis by navigating to the Move Menu, selecting Feature `Tool` and then changing the `TCP Orientation`
+3. The physical tip should remain perfectly stationary during rotation. If the tip moves in a circular pattern, reconfigure the TCP
+
+.. warning::
+    TCP accuracy is crucial for reliable measurements. Even small offsets can significantly impact your verification results.
+
+
+Verification process
+--------------------
+The verification process combines vision and robotics to test the hand-eye calibration accuracy. First, the vision system detects both AprilTags on the verification sheet to establish their precise positions. Using these positions, the robot calculates the exact center point between the tags. The robot then moves the pointing tool's tip to this calculated position. If the hand-eye calibration is accurate, the physical tip of the tool will align perfectly with the printed center crosshair marker on the sheet.
+
+Program setup and execution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Download the verification program: :download:`End-to-end Accuracy Check <../images/handeyecalib/End-to-end_Accuracy_Check.urp>`
+2. Import the program into your UR robot
+3. Place the verification sheet in your workspace
+4. Execute the program
+5. Verify the pin alignment with the center marker
+
+.. _urcap-system-accuracy-test-image:
+.. figure:: ../images/urcap/system_accuracy_test.png
+  :width: 500px
+  :align: center
+
+  End-to-end accuracy test program
+
+Testing multiple positions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Test the calibration in various configurations:
+
+- Different positions across the workspace
+- Various orientations
+- Multiple heights (if applicable)
+
+Test at least 5-6 different positions to ensure comprehensive verification.
+
+Interpreting results and next steps
+-----------------------------------
+
+The verification is successful when the pin consistently touches the center marker regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on the application requirements.
+
+If you observe one of the following points, the verification has failed:
+
+- Consistent offset from center marker
+- Position-dependent accuracy variations
+- Different results based on sheet orientation
+
+If verification fails, perform a complete recalibration using the :ref:`ur-hand-eye` procedure.
+

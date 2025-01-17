@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuring ItemPick for bin picking &mdash; Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
+  <title>Configuring ItemPick for bin picking &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
  documentation</title>
   
 
@@ -62,7 +62,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-40-g2a9c4f8
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
  documentation" href="../index.html"/>
         <link rel="up" title="ItemPick tutorials" href="overview.html"/>
         <link rel="next" title="FAQs and troubleshooting" href="troubleshooting.html"/>
@@ -213,8 +213,8 @@ is configured and detected in the scene, in order to compute grasps only for ite
 inside the bin itself.</p>
 <p>The tutorial covers all the steps from configuration of a load carrier up to getting grasps for
 items inside the load carrier. For this, we will call the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v24.07)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v24.07)"><span>REST-API interface</span></a>.
-This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v24.07)"><span>Swagger UI</span></a>, in command lines or scripts using
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#sect-itempick-services" title="(in rc_visard v24.10)"><span class="xref std std-ref">ItemPick services</span></a> using the <em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v24.10)"><span>REST-API interface</span></a>.
+This can be done in <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api_swagger_ui.html#sect-swagger-ui" title="(in rc_visard v24.10)"><span>Swagger UI</span></a>, in command lines or scripts using
 <a class="reference external" href="https://curl.haxx.se/">curl</a>, and programmatically using a client library
 (e.g. from a robot controller). Here we focus on the first two options.</p>
 <div class="section" id="before-we-start">
@@ -222,7 +222,7 @@ This can be done in <a class="reference external" href="https://doc.rc-visard.co
 <p>In order to go through this tutorial, the following prerequisites should be met:</p>
 <p class="rubric">The <em>rc_visard</em> is properly configured:</p>
 <ol class="arabic simple">
-<li>The <em>rc_visard</em> is running the latest firmware (version 24.07) and
+<li>The <em>rc_visard</em> is running the latest firmware (version 24.10) and
 the <em>rc_visard</em>’s license includes the ItemPick module.
 This can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
 </ol>
@@ -400,7 +400,7 @@ for collisions between the gripper geometry and the load carrier.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The x axis of a grasp computed by ItemPick corresponds to the longest
-axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v24.07)"><span class="xref std std-ref">grasp ellipse</span></a>.
+axis of the <a class="reference external" href="https://doc.rc-visard.com/latest/en/itempick.html#fig-itempick-grasp-surface" title="(in rc_visard v24.10)"><span class="xref std std-ref">grasp ellipse</span></a>.
 When configuring a gripper in the CollisionCheck module,
 the x axis of the gripper should be set along the longest gripper elongation,
 in order to match the orientation of the computed grasps.</p>
@@ -832,7 +832,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Roboception GmbH.
+        &copy; Copyright 2025, Roboception GmbH.
 
     </p>
   </div> 
@@ -852,7 +852,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-40-g2a9c4f8',
+            VERSION:'0.5.0-68-g0179906',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -867,6 +867,7 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;rc-visard
       <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
       <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
       <script type="text/javascript" src="../_static/contentui.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 

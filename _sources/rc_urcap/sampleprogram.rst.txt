@@ -23,7 +23,7 @@ rc_visard
 
  as described in
 
-Hand-Eye Calibration
+Hand-eye calibration
 
 .
 

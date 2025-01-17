@@ -110,6 +110,6 @@ Detailed instructions about network setup can be found in :ref:`general-network`
   :width: 300px
   :align: center
 
-  Sample setup. The robot has established a connection to the |rcvisard| and displays status information, rectified left image, and depth image.
+  Sample setup. The robot has established a connection to the |rcvisard| and displays status information and the rectified left image.
 
 .. _urcap-installation-node-image:

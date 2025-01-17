@@ -18,15 +18,15 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 24.07) and the
+The rc_visard is running the latest firmware (version 24.10) and the
 rc_visard's license includes the SilhouetteMatch module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
 -[ One or more workpieces have been chosen and the templates for these
 objects have been generated: ]-
 
-Suitable workpieces for SilhouetteMatch are described in the rc_visard
-user manual.
+Suitable workpieces for SilhouetteMatch are described in the
+SilhouetteMatch user manual.
 
 The process for template generation is described in the Template
 generation tutorial. Alternatively, DXF files can directly be uploaded

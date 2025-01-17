@@ -22,8 +22,7 @@ In order to go through this tutorial, the following prerequisites should be met:
 .. rubric:: One or more workpieces have been chosen and the templates for these objects have been
             generated:
 
-#. Suitable workpieces for |silm| are described in the |rc_visard|
-   `user manual <https://doc.rc-visard.com/latest/en/silhouettematch.html#suitable-objects>`_.
+#. Suitable workpieces for |silm| are described in the :ref:`SilhouetteMatch user manual<rcvisard:sect-silhouettematch-suitable-objects>`.
 #. The process for template generation is described in the :ref:`silhouettematch-template-generation` tutorial.
    Alternatively, DXF files can directly be uploaded onto the |rc_visard|, for details
    see the same tutorial.
