@@ -1,5 +1,0 @@
-KUKA robot tutorials
-
-In this tutorial you will find examples on how to use Roboception 3D
-cameras with KUKA robots.
-

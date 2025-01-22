@@ -34,29 +34,44 @@ completely stable, and unaffected by robot movements or vibrations.
 
 Mounting the calibration grid
 
-The calibration grid includes has mounting holes in its upper-right
-corner for attachment to the robot's flange. This location maximizes
-the robot's range of motion during calibration. Secure the grid using
-four M6 screws (16 mm length), ensuring it is firmly fixed. Tighten
-each screw to exactly 4 Nm. The positioning hole in the robot flange
-should face the middle of the calibration grid's shorter side for
-proper alignment.
+The calibration grid can be easily and securely mounted to the robot
+using the provided mounting adapter kit. The following steps guide you
+through the mounting process.
+
+Required tools and materials
+
+T30 Torx driver
+
+Torque wrench (capable of 4 Nm and 8 Nm)
+
+Calibration grid mounting adapter
+
+8 M6x16mm lens head T30 Torx screws
+
+
+Mounting procedure
+
+Attach grid to adapter:  Locate the four mounting holes in the upper-
+right corner of the calibration grid  Mount the calibration grid to
+the adapter using four M6x16mm screws  Tighten each screw to 4 Nm
+using the torque wrench  If no torque wrench is available, hand-
+tighten the screws carefully. Avoid over-tightening!
+
+Mount adapter to robot:  Set wrist joint 3 of the robot to its neutral
+position (0°), with the flange alignment hole pointing away from the
+robot base  Select appropriate adapter orientation based on your
+workspace constraints  Secure the adapter to the robot flange using
+the remaining four M6x16mm flange screws  Tighten each screw to 8 Nm
+using the torque wrench
+
 
 Warning: Over-tightening the screws can bend the grid and impair
-  calibration accuracy. Use a torque wrench to apply the correct
-  torque of 4 Nm.
+  calibration accuracy. Always use the specified torque values.
 
-Note: The grid's mounting position on the robot flange does not
-  affect the calibration results, as the transformation between the
-  grid and the flange is automatically calculated during the process.
-  Using a mounting adapter (as shown in the calibration video) can
-  provide significant advantages. It ensures that the robot's joint
-  configuration during calibration closely matches its configuration
-  during picking operations, thereby reducing the impact of robot
-  kinematic inaccuracies. Additionally, the adapter allows the grid to
-  be positioned farther from the camera system, increasing the usable
-  workspace and enabling a more diverse range of calibration poses.
-
+Note: The neutral flange position ensures maximum range of motion
+  during calibration. While the adapter can be mounted in different
+  orientations, consider your workspace constraints when choosing the
+  mounting position.
 
 End effector configuration
 
@@ -67,8 +82,8 @@ responsive for teaching poses during calibration.
 
 Navigate to Installation → General → TCP in the UR menu. Create a new
 TCP with the name 'Calibration Grid'. An arbitrary TCP-transformation
-could be used, but a zero-transformation is recommended for an overlap
-with the robot flange.
+could be used, but a zero-transformation is recommended such that the
+TCP coincides with the tool flange.
 
 Navigate to Installation → General → Payload in the UR menu. Use the
 UR's built-in payload measurement function to determine the
@@ -136,21 +151,10 @@ Note: For more information on TCP and payload configuration, please
 
 Using the hand-eye calibration program
 
-The calibration process uses a program node that guides the robot
-through a series of poses. During calibration, the robot moves with
-linear tool-space motion, a tool speed of 0.5 m/s, and a tool
-acceleration of 0.5 m/s².
-
-For convenience, the checkbox 'Use Roboception TCP and payload' is
-enabled by default. This setting assumes the calibration grid is
-mounted directly to the robot flange. However:
-
-For static camera: It is recommended to configure a tool center point
-installation (because of the benefits in free drive mode) and disable
-the checkbox.
-
-For robot-mounted camera: This checkbox must be disabled, and a TCP
-configuration and payload measurement is required.
+The program is identical for both mounting configurations. It guides
+the robot through a series of poses that have to be taught before.
+During calibration, the robot moves with linear tool-space motion, a
+tool speed of 0.5 m/s, and a tool acceleration of 0.5 m/s².
 
 Step-by-step calibration
 
@@ -158,20 +162,23 @@ Create an empty program
 
 Add the 'rc hand-eye calibration' program node
 
-In the node, select your sensor and configure the calibration
-parameters (Setting parameters in the rc hand-eye calibration node)
+In the node, select your sensor and configure the mounting type and
+grid size
+
 
 For each of the eight 'Set pose' nodes:  Refer to the reference image
-in the program node for guidance.  Move the robot to achieve a similar
-grid position in the live camera view  Click 'Store pose' once
-positioned
+in the program node for guidance  Move the robot to achieve a similar
+grid position in the live camera view  Click 'Store waypoint' button
+once positioned
 
-Execute the program at 10% speed initially to react to potential
-collisions.
+
+Execute the program at around 25% speed initially to react to
+potential collisions.
 
 After successful calibration:  Review the results in the 'Calibration
 result' node  Store the calibration if error values are acceptable
 (typically less than 2mm)
+
 
 Note: While positioning the robot, use the free drive mode while
   remaining in the calibration pose node to adjust the position. This
@@ -181,4 +188,3 @@ Note: While positioning the robot, use the free drive mode while
 Note: The reference images provided only serve as guidance. What is
   crucial is capturing eight distinctly different poses of the
   calibration grid.
-

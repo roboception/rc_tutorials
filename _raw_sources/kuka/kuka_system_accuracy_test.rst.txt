@@ -2,8 +2,8 @@
 
 .. _kuka-system-accuracy-test:
 
-End-to-End System Accuracy Test
-===================================
+End-to-end system accuracy test
+===============================
 
 Introduction
 ------------
@@ -27,21 +27,39 @@ For this verification process, you will need:
 - The verification sheet (printed in high quality)
 - A soft mounting surface (foam board or cardboard)
 
-Verification sheet
-^^^^^^^^^^^^^^^^^^
-Print the verification sheet in high quality, black and white. It is available in:
 
-- :download:`A4 format <../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check_A4.pdf>`
-- :download:`Letter format <../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check_letter.pdf>`
+Requirements and setup
+----------------------
 
-The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
+.. only:: roboception
 
-.. figure:: ../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check.svg
-   :width: 300px
-   :align: center
-   :alt: Hand-eye calibration test sheet
+   Verification sheet
+   ^^^^^^^^^^^^^^^^^^
+   Download the :download:`End-to-end System Accuracy Check sheet <../images/handeyecalib/End-to-end_Accuracy_Check.pdf>`. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them. 
+   
+   Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
 
-   Verification sheet showing AprilTags and center marker
+   .. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh.svg
+      :width: 300px
+      :align: center
+      :alt: Hand-eye calibration test sheet
+
+      Verification sheet showing AprilTags and center marker
+
+.. only:: not roboception
+
+   Verification sheet
+   ^^^^^^^^^^^^^^^^^^
+   Download the :download:`End-to-end System Accuracy Check sheet <../images/handeyecalib/End-to-end_Accuracy_Check_nologo.pdf>`. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them. 
+   
+   Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
+
+   .. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh_nologo.svg
+      :width: 300px
+      :align: center
+      :alt: Hand-eye calibration test sheet
+
+      Verification sheet showing AprilTags and center marker
 
 Tool requirements and configuration
 -----------------------------------
@@ -72,12 +90,12 @@ Before proceeding, verify your TCP configuration:
 Measure application accuracy
 ----------------------------
 
-#. Download the KUKA KRL sample program from: https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy
-#. Print the robot test grid and stick it to a plane surface (e.g. cardboard).
-#. Place the robot test grid in the robot cell and make sure it is completely visible by the camera.
-#. Run the sample program, which will move the TCP of the robot to the robot test grid target in PTP motion.
-#. The program will stop as soon the target position is reached.
-#. Measure the deviation of the tool tip on the target with a ruler or a caliper gauge.
+#. Download the verification program from `Roboception's EKI_examples GitHub page <https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy>`_
+#. Print the robot test grid and stick it to a plane surface (e.g. cardboard)
+#. Place the robot test grid in the robot cell and make sure it is completely visible by the camera
+#. Run the sample program, which will move the TCP of the robot to the robot test grid target in PTP motion
+#. The program will stop as soon the target position is reached
+#. Measure the deviation of the tool tip on the target with a ruler or a caliper gauge
 
 .. warning::
   Do not drive the robot in automatic mode or with high speed! Always reduce the speed of the robot and use the manual mode.

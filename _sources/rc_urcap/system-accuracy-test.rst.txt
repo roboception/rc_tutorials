@@ -1,4 +1,4 @@
-End-to-End System Accuracy Test
+End-to-end system accuracy test
 
 Introduction
 
@@ -20,15 +20,14 @@ Requirements and setup
 
 Verification sheet
 
-Print the verification sheet in high quality, black and white. It is
-available in:
+Download the
 
-A4 format
+End-to-end System Accuracy Check sheet
 
-Letter format
+. It displays two AprilTags positioned in opposite corners with a
+center crosshair marker between them.
 
-The sheet displays two AprilTags positioned in opposite corners with a
-center crosshair marker between them. Mount the printed sheet on an
+Print the sheet in high quality, black and white. Mount the print on a
 planar but soft surface, such as foam board or cardboard. This allows
 the pointing tip to safely penetrate the paper if positioning offsets
 occur during verification.
@@ -81,6 +80,7 @@ If the tip moves in a circular pattern, reconfigure the TCP
 Warning: TCP accuracy is crucial for reliable measurements. Even
   small offsets can significantly impact your verification results.
 
+
 Verification process
 
 The verification process combines vision and robotics to test the
@@ -92,50 +92,79 @@ tool's tip to this calculated position. If the hand-eye calibration is
 accurate, the physical tip of the tool will align perfectly with the
 printed center crosshair marker on the sheet.
 
-Program setup and execution
+Program setup
 
-Download the verification program: End-to-end Accuracy Check
+Download the verification program zip file: End-to-end System Accuracy
+Test
 
-Import the program into your UR robot
+Unzip the file, providing you a .script, a .urp and a .txt file
 
-Place the verification sheet in your workspace
+Import the files into your robot using a USB stick or an SSH
+connection
 
-Execute the program
+Open the 'Pointing Tool' installation you created in the step before
 
-Verify the pin alignment with the center marker
+Open the 'End-to-end System Accuracy Test' program
 
+Select the 'out_of_way' waypoint in line 4, and use 'Edit Pose' to
+teach a pose with the robot not obstructing the camera view
 
-Testing multiple positions
+Program execution
 
-Test the calibration in various configurations:
+With the setup complete, lower the program speed to 30% and execute
+the program. The program is designed to run multiple passes - complete
+5-6 passes, placing the verification sheet in a new position and
+orientation for each iteration.
 
-Different positions across the workspace
+In each pass:
 
-Various orientations
+The robot moves to the 'out_of_way' waypoint, then shows a popup
+asking to trigger a detection
 
-Multiple heights (if applicable)
+Place the verification sheet in your workspace, ensuring the center is
+reachable by the robot
 
-Test at least 5-6 different positions to ensure comprehensive
-verification.
+'Continue' will trigger a detection, then show the calculated center
+point in another popup
+
+'Continue' will move the robot to 10cm above the center point, and
+then slowly lower the tip towards the center point
+
+The program shows a popup indicating the center has been reached
+
+Measure the deviation of the tool tip on the target with a ruler or a
+caliper gauge
+
+'Continue' will move the robot 10cm upwards
+
+Test different configurations by:
+
+Varying positions across the workspace
+
+Changing sheet orientations
+
+Using multiple heights (if applicable)
+
 
 Interpreting results and next steps
 
-The verification is successful when the pin consistently touches the
-center marker regardless of sheet position or orientation. Small
-offsets of less than 2 mm may be acceptable depending on the
+A successful verification shows the pin consistently touching the
+center marker, regardless of sheet position or orientation. Small
+offsets of less than 2 mm may be acceptable depending on your
 application requirements.
 
-If you observe one of the following points, the verification has
-failed:
+Watch for these indicators of potential problems:
 
-Consistent offset from center marker
+Consistent offset from the center marker
 
 Position-dependent accuracy variations
 
 Different results based on sheet orientation
 
-If verification fails, perform a complete recalibration using the
+For unsatisfactory results, first perform a complete recalibration
+using the
 
 Hand-eye calibration
 
- procedure.
+ procedure. If accuracy issues persist after recalibration, please
+contact Roboception support for further assistance.

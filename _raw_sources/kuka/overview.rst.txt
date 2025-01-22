@@ -1,0 +1,21 @@
+.. include:: ../global_rst.glb
+
+KUKA robot tutorials
+====================
+
+This tutorial collection demonstrates how to use |company| 3D cameras with KUKA robots using the EKI interface. The tutorials cover system verification, calibration, and various vision-guided robotics applications.
+
+:doc:`End-to-End System Accuracy Test <kuka_system_accuracy_test>`
+    explains how to verify your robot-camera system's accuracy and determine when recalibration is needed. This test helps ensure reliable and precise operation of your vision-guided robot system.
+
+`Roboception's EKI examples repository <https://github.com/roboception/eki_examples>`_
+    provides ready-to-use example applications that demonstrate common vision-guided robotics tasks. These include camera calibration, object detection, bin picking, and precision measurements. Each example comes with complete robot programs and proper error handling.
+
+    The examples showcase integration with various |rcreason| modules and can serve as starting points for your own applications. While the examples are ready to run, they should be carefully adapted to your specific robot setup and safety requirements.
+
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    kuka_system_accuracy_test

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>End-to-End System Accuracy Test &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+  <title>End-to-end system accuracy test &mdash; Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation" href="../index.html"/>
         <link rel="up" title="KUKA robot tutorials" href="overview.html"/>
         <link rel="prev" title="KUKA robot tutorials" href="overview.html"/> 
@@ -84,13 +84,6 @@
           </a>
 
           
-            
-            
-              <div class="version">
-                0.5
-              </div>
-            
-          
 
           
 <div role="search">
@@ -119,9 +112,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">KUKA robot tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-End System Accuracy Test</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-end system accuracy test</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#required-materials-and-prerequisites">Required materials and prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-materials-and-prerequisites">Required materials and prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements-and-setup">Requirements and setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#verification-sheet">Verification sheet</a></li>
 </ul>
 </li>
@@ -182,7 +176,7 @@
         
           <li><a href="overview.html">KUKA robot tutorials</a> &gt;</li>
         
-      <li>End-to-End System Accuracy Test</li>
+      <li>End-to-end system accuracy test</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,7 +194,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="end-to-end-system-accuracy-test">
-<span id="kuka-system-accuracy-test"></span><h1>End-to-End System Accuracy Test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
+<span id="kuka-system-accuracy-test"></span><h1>End-to-end system accuracy test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Vision-guided robot systems can show positioning inaccuracies that often stem from a degraded hand-eye calibration, typically caused by small physical changes like camera movements. These inaccuracies manifest as inconsistent positioning - objects may be gripped with an offset that varies depending on their workspace position. While this offset can be temporarily compensated for in a specific orientation, the problem will reappear when objects are moved to different locations.</p>
@@ -221,17 +215,16 @@
 <li>The verification sheet (printed in high quality)</li>
 <li>A soft mounting surface (foam board or cardboard)</li>
 </ul>
+</div>
+<div class="section" id="requirements-and-setup">
+<h2>Requirements and setup<a class="headerlink" href="#requirements-and-setup" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="verification-sheet">
 <h3>Verification sheet<a class="headerlink" href="#verification-sheet" title="Permalink to this headline">¶</a></h3>
-<p>Print the verification sheet in high quality, black and white. It is available in:</p>
-<ul class="simple">
-<li><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">format</span></code></li>
-<li><code class="xref download docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">format</span></code></li>
-</ul>
-<p>The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="robot/../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check.svg"><img alt="Hand-eye calibration test sheet" src="robot/../images/handeyecalib/Hand-eye_Calibration_Accuracy_Check.svg" width="300px" /></a>
-<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/7cdf11c978aa69c19e8c2770c853b514/End-to-end_Accuracy_Check.pdf"><code class="xref download docutils literal notranslate"><span class="pre">End-to-end</span> <span class="pre">System</span> <span class="pre">Accuracy</span> <span class="pre">Check</span> <span class="pre">sheet</span></code></a>. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them.</p>
+<p>Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/End-to-end_Accuracy_Check_wh.svg"><img alt="Hand-eye calibration test sheet" src="../_images/End-to-end_Accuracy_Check_wh.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
 </div>
 </div>
 </div>
@@ -266,12 +259,12 @@
 <div class="section" id="measure-application-accuracy">
 <h2>Measure application accuracy<a class="headerlink" href="#measure-application-accuracy" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Download the KUKA KRL sample program from: <a class="reference external" href="https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy">https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy</a></li>
-<li>Print the robot test grid and stick it to a plane surface (e.g. cardboard).</li>
-<li>Place the robot test grid in the robot cell and make sure it is completely visible by the camera.</li>
-<li>Run the sample program, which will move the TCP of the robot to the robot test grid target in PTP motion.</li>
-<li>The program will stop as soon the target position is reached.</li>
-<li>Measure the deviation of the tool tip on the target with a ruler or a caliper gauge.</li>
+<li>Download the verification program from <a class="reference external" href="https://github.com/roboception/eki_examples/tree/master/examples/MeasureApplicationAccuracy">Roboception’s EKI_examples GitHub page</a></li>
+<li>Print the robot test grid and stick it to a plane surface (e.g. cardboard)</li>
+<li>Place the robot test grid in the robot cell and make sure it is completely visible by the camera</li>
+<li>Run the sample program, which will move the TCP of the robot to the robot test grid target in PTP motion</li>
+<li>The program will stop as soon the target position is reached</li>
+<li>Measure the deviation of the tool tip on the target with a ruler or a caliper gauge</li>
 </ol>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -281,13 +274,13 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">No collision checks are active. Please make sure the robot has a collision-free path to the target position.</p>
 </div>
-<p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><div class="figure align-center" id="id2">
+<p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><div class="figure align-center" id="id4">
 <span id="robot-measure-application-accuracy-overview"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_overview.jpg"><img alt="../_images/measure_application_accuracy_overview.jpg" src="../_images/measure_application_accuracy_overview.jpg" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Overview of the test setup</span></p>
+<p class="caption"><span class="caption-number">Fig. 75 </span><span class="caption-text">Overview of the test setup</span></p>
 </div>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id5">
 <span id="robot-measure-application-accuracy-pointing"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_pointing.jpg"><img alt="../_images/measure_application_accuracy_pointing.jpg" src="../_images/measure_application_accuracy_pointing.jpg" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Robot pointing on target</span></p>
+<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Robot pointing on target</span></p>
 </div>
 <p>It can also help to perform several measurements in the relevant working areas (e.g. pick area, place area etc.) of your robot cell. This might help in troubleshooting to see if the deviation is the same or if it changes depending on the position of the robot test grid.</p>
 <div class="admonition note">
@@ -356,7 +349,7 @@ of the tool pierces the paper. After removing the robot test grid from the cell,
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-68-g0179906',
+            VERSION:'0.5.0-73-gf3c53ce',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

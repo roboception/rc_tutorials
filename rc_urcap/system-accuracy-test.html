@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>End-to-End System Accuracy Test &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+  <title>End-to-end system accuracy test &mdash; Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="Generic rc_visard node" href="rc_visard.html"/>
@@ -85,13 +85,6 @@
           </a>
 
           
-            
-            
-              <div class="version">
-                0.5
-              </div>
-            
-          
 
           
 <div role="search">
@@ -121,7 +114,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handeyecalibration.html">Hand-eye calibration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-End System Accuracy Test</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">End-to-end system accuracy test</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements-and-setup">Requirements and setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#verification-sheet">Verification sheet</a></li>
@@ -130,8 +123,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#verification-process">Verification process</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#program-setup-and-execution">Program setup and execution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#testing-multiple-positions">Testing multiple positions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#program-setup">Program setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#program-execution">Program execution</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#interpreting-results-and-next-steps">Interpreting results and next steps</a></li>
@@ -147,7 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../robot/overview.html">KUKA robot tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
 </ul>
 
             
@@ -194,7 +187,7 @@
         
           <li><a href="overview.html">Universal Robots tutorials</a> &gt;</li>
         
-      <li>End-to-End System Accuracy Test</li>
+      <li>End-to-end system accuracy test</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -212,7 +205,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="end-to-end-system-accuracy-test">
-<span id="system-accuracy-test"></span><h1>End-to-End System Accuracy Test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
+<span id="system-accuracy-test"></span><h1>End-to-end system accuracy test<a class="headerlink" href="#end-to-end-system-accuracy-test" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Hand-eye calibrations can degrade over time due to small physical changes in your system setup, such as slight camera movements. This degradation typically manifests as inconsistent gripping behavior - objects may be gripped with an offset that varies depending on their workspace position. While this offset can be temporarily compensated for in a specific orientation, the problem will reappear when the objects are moved to different locations or orientations.</p>
@@ -222,14 +215,10 @@
 <h2>Requirements and setup<a class="headerlink" href="#requirements-and-setup" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="verification-sheet">
 <h3>Verification sheet<a class="headerlink" href="#verification-sheet" title="Permalink to this headline">¶</a></h3>
-<p>Print the verification sheet in high quality, black and white. It is available in:</p>
-<ul class="simple">
-<li><a class="reference download internal" download="" href="../_downloads/731816e4d3a83effdbe85b380ff34fb0/End-to-end_Accuracy_Check_A4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A4</span> <span class="pre">format</span></code></a></li>
-<li><a class="reference download internal" download="" href="../_downloads/4332577fb8eeb8de0e01eb1eea336b55/End-to-end_Accuracy_Check_letter.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">format</span></code></a></li>
-</ul>
-<p>The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
-<div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/End-to-end_Accuracy_Check_wh.svg"><img alt="Hand-eye calibration test sheet" src="../_images/End-to-end_Accuracy_Check_wh.svg" width="300px" /></a>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/7cdf11c978aa69c19e8c2770c853b514/End-to-end_Accuracy_Check.pdf"><code class="xref download docutils literal notranslate"><span class="pre">End-to-end</span> <span class="pre">System</span> <span class="pre">Accuracy</span> <span class="pre">Check</span> <span class="pre">sheet</span></code></a>. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them.</p>
+<p>Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/End-to-end_Accuracy_Check_wh1.svg"><img alt="Hand-eye calibration test sheet" src="../_images/End-to-end_Accuracy_Check_wh1.svg" width="300px" /></a>
 <p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
 </div>
 </div>
@@ -262,46 +251,69 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">TCP accuracy is crucial for reliable measurements. Even small offsets can significantly impact your verification results.</p>
 </div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/pointing_device_ur.jpg"><img alt="../_images/pointing_device_ur.jpg" src="../_images/pointing_device_ur.jpg" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Pointing tool mounted to the robot flange</span></p>
+</div>
 </div>
 </div>
 <div class="section" id="verification-process">
 <h2>Verification process<a class="headerlink" href="#verification-process" title="Permalink to this headline">¶</a></h2>
 <p>The verification process combines vision and robotics to test the hand-eye calibration accuracy. First, the vision system detects both AprilTags on the verification sheet to establish their precise positions. Using these positions, the robot calculates the exact center point between the tags. The robot then moves the pointing tool’s tip to this calculated position. If the hand-eye calibration is accurate, the physical tip of the tool will align perfectly with the printed center crosshair marker on the sheet.</p>
-<div class="section" id="program-setup-and-execution">
-<h3>Program setup and execution<a class="headerlink" href="#program-setup-and-execution" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="program-setup">
+<h3>Program setup<a class="headerlink" href="#program-setup" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Download the verification program: <a class="reference download internal" download="" href="../_downloads/4e30f6e9f4f2db54c1ab2af879bc5f08/End-to-end_Accuracy_Check.urp"><code class="xref download docutils literal notranslate"><span class="pre">End-to-end</span> <span class="pre">Accuracy</span> <span class="pre">Check</span></code></a></li>
-<li>Import the program into your UR robot</li>
-<li>Place the verification sheet in your workspace</li>
-<li>Execute the program</li>
-<li>Verify the pin alignment with the center marker</li>
+<li>Download the verification program zip file: <a class="reference download internal" download="" href="../_downloads/a9b5273c396cbad4ff8dd34e2f02b531/End-to-end_System_Accuracy_Test.zip"><code class="xref download docutils literal notranslate"><span class="pre">End-to-end</span> <span class="pre">System</span> <span class="pre">Accuracy</span> <span class="pre">Test</span></code></a></li>
+<li>Unzip the file, providing you a .script, a .urp and a .txt file</li>
+<li>Import the files into your robot using a USB stick or an SSH connection</li>
+<li>Open the ‘Pointing Tool’ installation you created in the step before</li>
+<li>Open the ‘End-to-end System Accuracy Test’ program</li>
+<li>Select the ‘out_of_way’ waypoint in line 4, and use ‘Edit Pose’ to teach a pose with the robot not obstructing the camera view</li>
 </ol>
-<div class="figure align-center" id="id2">
-<span id="urcap-system-accuracy-test-image"></span><a class="reference internal image-reference" href="../_images/system_accuracy_test.png"><img alt="../_images/system_accuracy_test.png" src="../_images/system_accuracy_test.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">End-to-end accuracy test program</span></p>
 </div>
-</div>
-<div class="section" id="testing-multiple-positions">
-<h3>Testing multiple positions<a class="headerlink" href="#testing-multiple-positions" title="Permalink to this headline">¶</a></h3>
-<p>Test the calibration in various configurations:</p>
+<div class="section" id="program-execution">
+<h3>Program execution<a class="headerlink" href="#program-execution" title="Permalink to this headline">¶</a></h3>
+<p>With the setup complete, lower the program speed to 30% and execute the program. The program is designed to run multiple passes - complete 5-6 passes, placing the verification sheet in a new position and orientation for each iteration.</p>
+<p>In each pass:</p>
+<ol class="arabic simple">
+<li>The robot moves to the ‘out_of_way’ waypoint, then shows a popup asking to trigger a detection</li>
+<li>Place the verification sheet in your workspace, ensuring the center is reachable by the robot</li>
+<li>‘Continue’ will trigger a detection, then show the calculated center point in another popup</li>
+<li>‘Continue’ will move the robot to 10cm above the center point, and then slowly lower the tip towards the center point</li>
+<li>The program shows a popup indicating the center has been reached</li>
+<li>Measure the deviation of the tool tip on the target with a ruler or a caliper gauge</li>
+<li>‘Continue’ will move the robot 10cm upwards</li>
+</ol>
+<p>Test different configurations by:</p>
 <ul class="simple">
-<li>Different positions across the workspace</li>
-<li>Various orientations</li>
-<li>Multiple heights (if applicable)</li>
+<li>Varying positions across the workspace</li>
+<li>Changing sheet orientations</li>
+<li>Using multiple heights (if applicable)</li>
 </ul>
-<p>Test at least 5-6 different positions to ensure comprehensive verification.</p>
+<div class="figure align-center" id="id5">
+<span id="urcap-system-accuracy-out-of-way"></span><a class="reference internal image-reference" href="../_images/system_accuracy_out_of_way.png"><img alt="../_images/system_accuracy_out_of_way.png" src="../_images/system_accuracy_out_of_way.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Out-of-way position popup</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="urcap-system-accuracy-center-point"></span><a class="reference internal image-reference" href="../_images/system_accuracy_center_point.png"><img alt="../_images/system_accuracy_center_point.png" src="../_images/system_accuracy_center_point.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Center point popup</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="urcap-system-accuracy-center-reached"></span><a class="reference internal image-reference" href="../_images/system_accuracy_center_reached.png"><img alt="../_images/system_accuracy_center_reached.png" src="../_images/system_accuracy_center_reached.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Center reached popup</span></p>
+</div>
 </div>
 </div>
 <div class="section" id="interpreting-results-and-next-steps">
 <h2>Interpreting results and next steps<a class="headerlink" href="#interpreting-results-and-next-steps" title="Permalink to this headline">¶</a></h2>
-<p>The verification is successful when the pin consistently touches the center marker regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on the application requirements.</p>
-<p>If you observe one of the following points, the verification has failed:</p>
+<p>A successful verification shows the pin consistently touching the center marker, regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on your application requirements.</p>
+<p>Watch for these indicators of potential problems:</p>
 <ul class="simple">
-<li>Consistent offset from center marker</li>
+<li>Consistent offset from the center marker</li>
 <li>Position-dependent accuracy variations</li>
 <li>Different results based on sheet orientation</li>
 </ul>
-<p>If verification fails, perform a complete recalibration using the <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-eye calibration</span></a> procedure.</p>
+<p>For unsatisfactory results, first perform a complete recalibration using the <a class="reference internal" href="handeyecalibration.html#ur-hand-eye"><span class="std std-ref">Hand-eye calibration</span></a> procedure. If accuracy issues persist after recalibration, please contact Roboception support for further assistance.</p>
 </div>
 </div>
 
@@ -347,7 +359,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-68-g0179906',
+            VERSION:'0.5.0-73-gf3c53ce',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

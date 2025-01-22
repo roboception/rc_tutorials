@@ -17,4 +17,4 @@ Tutorials for the |company| 3D cameras and additionally available software modul
    rc_silhouette/overview
    rc_collision_check/overview
    rc_urcap/overview
-   robot/overview
+   kuka/overview

@@ -2,7 +2,7 @@
 
 .. _system-accuracy-test:
 
-End-to-End System Accuracy Test
+End-to-end system accuracy test
 ================================
 
 Introduction
@@ -15,22 +15,37 @@ This tutorial guides you through a systematic verification process to assess you
 Requirements and setup
 ----------------------
 
-Verification sheet
-^^^^^^^^^^^^^^^^^^
-Print the verification sheet in high quality, black and white. It is available in:
+.. only:: roboception
 
-- :download:`A4 format <../images/handeyecalib/End-to-end_Accuracy_Check_A4.pdf>`
-- :download:`Letter format <../images/handeyecalib/End-to-end_Accuracy_Check_letter.pdf>`
+   Verification sheet
+   ^^^^^^^^^^^^^^^^^^
+   Download the :download:`End-to-end System Accuracy Check sheet <../images/handeyecalib/End-to-end_Accuracy_Check.pdf>`. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them. 
+   
+   Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
 
-The sheet displays two AprilTags positioned in opposite corners with a center crosshair marker between them. Mount the printed sheet on an planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
+   .. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh.svg
+      :width: 300px
+      :align: center
+      :alt: Hand-eye calibration test sheet
 
-.. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh.svg
-   :width: 300px
-   :align: center
-   :alt: Hand-eye calibration test sheet
+      Verification sheet showing AprilTags and center marker
 
-   Verification sheet showing AprilTags and center marker
+.. only:: not roboception
 
+   Verification sheet
+   ^^^^^^^^^^^^^^^^^^
+   Download the :download:`End-to-end System Accuracy Check sheet <../images/handeyecalib/End-to-end_Accuracy_Check_nologo.pdf>`. It displays two AprilTags positioned in opposite corners with a center crosshair marker between them. 
+   
+   Print the sheet in high quality, black and white. Mount the print on a planar but soft surface, such as foam board or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.
+
+   .. figure:: ../images/handeyecalib/End-to-end_Accuracy_Check_wh_nologo.svg
+      :width: 300px
+      :align: center
+      :alt: Hand-eye calibration test sheet
+
+      Verification sheet showing AprilTags and center marker
+
+  
 Pointing tool requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 For optimal accuracy, we strongly recommend using a rigid, dedicated pointing tool with a sharp tip (such as a dart tip) mounted directly to the robot flange. While it is possible to use a pointing tip attached to a flat surface for pickup with a suction gripper, this approach should only be used if the tip's stability can be guaranteed, for example through a multi-cup suction gripper setup. The key requirement is that the tool provides a precise, sharp point that remains completely stable during measurements.
@@ -59,45 +74,78 @@ Before proceeding, verify your TCP configuration:
     TCP accuracy is crucial for reliable measurements. Even small offsets can significantly impact your verification results.
 
 
+.. figure:: ../images/robot/pointing_device_ur.jpg
+  :width: 500px
+  :align: center
+
+  Pointing tool mounted to the robot flange
+
+
 Verification process
 --------------------
 The verification process combines vision and robotics to test the hand-eye calibration accuracy. First, the vision system detects both AprilTags on the verification sheet to establish their precise positions. Using these positions, the robot calculates the exact center point between the tags. The robot then moves the pointing tool's tip to this calculated position. If the hand-eye calibration is accurate, the physical tip of the tool will align perfectly with the printed center crosshair marker on the sheet.
 
-Program setup and execution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Download the verification program: :download:`End-to-end Accuracy Check <../images/handeyecalib/End-to-end_Accuracy_Check.urp>`
-2. Import the program into your UR robot
-3. Place the verification sheet in your workspace
-4. Execute the program
-5. Verify the pin alignment with the center marker
+Program setup
+^^^^^^^^^^^^^
 
-.. _urcap-system-accuracy-test-image:
-.. figure:: ../images/urcap/system_accuracy_test.png
+#. Download the verification program zip file: :download:`End-to-end System Accuracy Test <../ur_programs/End-to-end_System_Accuracy_Test.zip>` 
+#. Unzip the file, providing you a .script, a .urp and a .txt file
+#. Import the files into your robot using a USB stick or an SSH connection
+#. Open the 'Pointing Tool' installation you created in the step before
+#. Open the 'End-to-end System Accuracy Test' program
+#. Select the 'out_of_way' waypoint in line 4, and use 'Edit Pose' to teach a pose with the robot not obstructing the camera view
+
+Program execution
+^^^^^^^^^^^^^^^^^
+With the setup complete, lower the program speed to 30% and execute the program. The program is designed to run multiple passes - complete 5-6 passes, placing the verification sheet in a new position and orientation for each iteration.
+
+In each pass:
+
+#. The robot moves to the 'out_of_way' waypoint, then shows a popup asking to trigger a detection
+#. Place the verification sheet in your workspace, ensuring the center is reachable by the robot
+#. 'Continue' will trigger a detection, then show the calculated center point in another popup
+#. 'Continue' will move the robot to 10cm above the center point, and then slowly lower the tip towards the center point
+#. The program shows a popup indicating the center has been reached
+#. Measure the deviation of the tool tip on the target with a ruler or a caliper gauge
+#. 'Continue' will move the robot 10cm upwards
+
+Test different configurations by:
+
+- Varying positions across the workspace
+- Changing sheet orientations
+- Using multiple heights (if applicable)
+
+.. _urcap-system-accuracy-out-of-way:
+.. figure:: ../images/urcap/system_accuracy_out_of_way.png
   :width: 500px
   :align: center
 
-  End-to-end accuracy test program
+  Out-of-way position popup
 
-Testing multiple positions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-Test the calibration in various configurations:
+.. _urcap-system-accuracy-center-point:
+.. figure:: ../images/urcap/system_accuracy_center_point.png
+  :width: 500px
+  :align: center
 
-- Different positions across the workspace
-- Various orientations
-- Multiple heights (if applicable)
+  Center point popup
 
-Test at least 5-6 different positions to ensure comprehensive verification.
+.. _urcap-system-accuracy-center-reached:
+.. figure:: ../images/urcap/system_accuracy_center_reached.png
+  :width: 500px
+  :align: center
+
+  Center reached popup
 
 Interpreting results and next steps
 -----------------------------------
 
-The verification is successful when the pin consistently touches the center marker regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on the application requirements.
+A successful verification shows the pin consistently touching the center marker, regardless of sheet position or orientation. Small offsets of less than 2 mm may be acceptable depending on your application requirements.
 
-If you observe one of the following points, the verification has failed:
+Watch for these indicators of potential problems:
 
-- Consistent offset from center marker
+- Consistent offset from the center marker
 - Position-dependent accuracy variations
 - Different results based on sheet orientation
 
-If verification fails, perform a complete recalibration using the :ref:`ur-hand-eye` procedure.
+For unsatisfactory results, first perform a complete recalibration using the :ref:`ur-hand-eye` procedure. If accuracy issues persist after recalibration, please contact |company| support for further assistance.
 

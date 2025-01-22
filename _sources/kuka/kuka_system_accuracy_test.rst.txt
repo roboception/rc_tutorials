@@ -1,4 +1,4 @@
-End-to-End System Accuracy Test
+End-to-end system accuracy test
 
 Introduction
 
@@ -41,17 +41,18 @@ The verification sheet (printed in high quality)
 
 A soft mounting surface (foam board or cardboard)
 
+Requirements and setup
+
 Verification sheet
 
-Print the verification sheet in high quality, black and white. It is
-available in:
+Download the
 
-A4 format
+End-to-end System Accuracy Check sheet
 
-Letter format
+. It displays two AprilTags positioned in opposite corners with a
+center crosshair marker between them.
 
-The sheet displays two AprilTags positioned in opposite corners with a
-center crosshair marker between them. Mount the printed sheet on an
+Print the sheet in high quality, black and white. Mount the print on a
 planar but soft surface, such as foam board or cardboard. This allows
 the pointing tip to safely penetrate the paper if positioning offsets
 occur during verification.
@@ -96,22 +97,22 @@ Warning: TCP accuracy is crucial for reliable measurements. Even
 
 Measure application accuracy
 
-Download the KUKA KRL sample program from: https://github.com/robocep
-tion/eki_examples/tree/master/examples/MeasureApplicationAccuracy
+Download the verification program from Roboception's EKI_examples
+GitHub page
 
 Print the robot test grid and stick it to a plane surface (e.g.
-cardboard).
+cardboard)
 
 Place the robot test grid in the robot cell and make sure it is
-completely visible by the camera.
+completely visible by the camera
 
 Run the sample program, which will move the TCP of the robot to the
-robot test grid target in PTP motion.
+robot test grid target in PTP motion
 
-The program will stop as soon the target position is reached.
+The program will stop as soon the target position is reached
 
 Measure the deviation of the tool tip on the target with a ruler or a
-caliper gauge.
+caliper gauge
 
 Warning: Do not drive the robot in automatic mode or with high
   speed! Always reduce the speed of the robot and use the manual mode.

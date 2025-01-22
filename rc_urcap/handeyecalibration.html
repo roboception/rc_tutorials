@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hand-eye calibration &mdash; Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+  <title>Hand-eye calibration &mdash; Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation</title>
   
 
@@ -54,10 +54,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-68-g0179906
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-73-gf3c53ce
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
-        <link rel="next" title="End-to-End System Accuracy Test" href="system-accuracy-test.html"/>
+        <link rel="next" title="End-to-end system accuracy test" href="system-accuracy-test.html"/>
         <link rel="prev" title="Getting started" href="gettingstarted.html"/> 
 
   
@@ -84,13 +84,6 @@
           
           </a>
 
-          
-            
-            
-              <div class="version">
-                0.5
-              </div>
-            
           
 
           
@@ -123,6 +116,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hand-eye calibration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#static-camera">Static camera</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mounting-the-calibration-grid">Mounting the calibration grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#required-tools-and-materials">Required tools and materials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-procedure">Mounting procedure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#end-effector-configuration">End effector configuration</a></li>
 </ul>
 </li>
@@ -137,7 +132,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="system-accuracy-test.html">End-to-End System Accuracy Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system-accuracy-test.html">End-to-end system accuracy test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_visard.html">Generic rc_visard node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cadmatch.html">CADMatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="itempick.html">ItemPick</a></li>
@@ -148,7 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../robot/overview.html">KUKA robot tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
 </ul>
 
             
@@ -222,29 +217,57 @@
 <p>In this configuration, the camera is mounted statically in the workspace, and the calibration grid is attached to the robot. The hand-eye calibration determines the transformation between the camera and the robot base frame. Ensure the camera is mounted rigidly, completely stable, and unaffected by robot movements or vibrations.</p>
 <div class="section" id="mounting-the-calibration-grid">
 <h3>Mounting the calibration grid<a class="headerlink" href="#mounting-the-calibration-grid" title="Permalink to this headline">¶</a></h3>
-<p>The calibration grid includes has mounting holes in its upper-right corner for attachment to the robot’s flange. This location maximizes the robot’s range of motion during calibration. Secure the grid using four M6 screws (16 mm length), ensuring it is firmly fixed. Tighten each screw to exactly 4 Nm. The positioning hole in the robot flange should face the middle of the calibration grid’s shorter side for proper alignment.</p>
+<p>The calibration grid can be easily and securely mounted to the robot using the provided mounting adapter kit. The following steps guide you through the mounting process.</p>
+</div>
+<div class="section" id="required-tools-and-materials">
+<h3>Required tools and materials<a class="headerlink" href="#required-tools-and-materials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>T30 Torx driver</li>
+<li>Torque wrench (capable of 4 Nm and 8 Nm)</li>
+<li>Calibration grid mounting adapter</li>
+<li>8 M6x16mm lens head T30 Torx screws</li>
+</ul>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/ur_calibration_grid_mounting.jpg"><img alt="../_images/ur_calibration_grid_mounting.jpg" src="../_images/ur_calibration_grid_mounting.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Required tools and materials for grid mounting</span></p>
+</div>
+</div>
+<div class="section" id="mounting-procedure">
+<h3>Mounting procedure<a class="headerlink" href="#mounting-procedure" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Attach grid to adapter:<ul>
+<li>Locate the four mounting holes in the upper-right corner of the calibration grid</li>
+<li>Mount the calibration grid to the adapter using four M6x16mm screws</li>
+<li>Tighten each screw to 4 Nm using the torque wrench</li>
+<li>If no torque wrench is available, hand-tighten the screws carefully. Avoid over-tightening!</li>
+</ul>
+</li>
+<li>Mount adapter to robot:<ul>
+<li>Set wrist joint 3 of the robot to its neutral position (0°), with the flange alignment hole pointing away from the robot base</li>
+<li>Select appropriate adapter orientation based on your workspace constraints</li>
+<li>Secure the adapter to the robot flange using the remaining four M6x16mm flange screws</li>
+<li>Tighten each screw to 8 Nm using the torque wrench</li>
+</ul>
+</li>
+</ol>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/calibration_grid.jpg"><img alt="../_images/calibration_grid.jpg" src="../_images/calibration_grid.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Calibration grid properly mounted using the adapter</span></p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Over-tightening the screws can bend the grid and impair calibration accuracy. Use a torque wrench to apply the correct torque of 4 Nm.</p>
+<p class="last">Over-tightening the screws can bend the grid and impair calibration accuracy. Always use the specified torque values.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The grid’s mounting position on the robot flange does not affect the calibration results, as the transformation between the grid and the flange is automatically calculated during the process. Using a mounting adapter (as shown in the calibration video) can provide significant advantages. It ensures that the robot’s joint configuration during calibration closely matches its configuration during picking operations, thereby reducing the impact of robot kinematic inaccuracies. Additionally, the adapter allows the grid to be positioned farther from the camera system, increasing the usable workspace and enabling a more diverse range of calibration poses.</p>
-</div>
-<div class="figure align-center" id="id4">
-<span id="urcap-ur-calibration-grid-mounting"></span><a class="reference internal image-reference" href="../_images/ur_calibration_grid_mounting.jpg"><img alt="../_images/ur_calibration_grid_mounting.jpg" src="../_images/ur_calibration_grid_mounting.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Correct orientation: positioning hole points toward the middle of the grid’s shorter side</span></p>
-</div>
-<div class="figure align-center" id="id5">
-<span id="urcap-calibration-grid-image"></span><a class="reference internal image-reference" href="../_images/calibration_grid.jpg"><img alt="../_images/calibration_grid.jpg" src="../_images/calibration_grid.jpg" style="width: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Calibration grid mounted on the robot</span></p>
+<p class="last">The neutral flange position ensures maximum range of motion during calibration. While the adapter can be mounted in different orientations, consider your workspace constraints when choosing the mounting position.</p>
 </div>
 </div>
 <div class="section" id="end-effector-configuration">
 <h3>End effector configuration<a class="headerlink" href="#end-effector-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Before starting the calibration, the correct payload and Tool Center Point (TCP) must be configured. A correct payload configuration ensures precise robot positioning and makes the free drive mode more responsive for teaching poses during calibration.</p>
 <ol class="arabic simple">
-<li>Navigate to Installation → General → TCP in the UR menu. Create a new TCP with the name ‘Calibration Grid’. An arbitrary TCP-transformation could be used, but a zero-transformation is recommended for an overlap with the robot flange.</li>
+<li>Navigate to Installation → General → TCP in the UR menu. Create a new TCP with the name ‘Calibration Grid’. An arbitrary TCP-transformation could be used, but a zero-transformation is recommended such that the TCP coincides with the tool flange.</li>
 <li>Navigate to Installation → General → Payload in the UR menu. Use the UR’s built-in payload measurement function to determine the calibration grid payload and apply the measured settings.</li>
 <li>Click ‘Save…’ in the top bar → ‘Save Installation as…’ and name it ‘Calibration Grid’.</li>
 </ol>
@@ -282,31 +305,43 @@
 </div>
 <div class="section" id="using-the-hand-eye-calibration-program">
 <h2>Using the hand-eye calibration program<a class="headerlink" href="#using-the-hand-eye-calibration-program" title="Permalink to this headline">¶</a></h2>
-<p>The calibration process uses a program node that guides the robot through a series of poses. During calibration, the robot moves with linear tool-space motion, a tool speed of 0.5 m/s, and a tool acceleration of 0.5 m/s².</p>
-<p>For convenience, the checkbox ‘Use Roboception TCP and payload’ is enabled by default. This setting assumes the calibration grid is mounted directly to the robot flange. However:</p>
-<ul class="simple">
-<li>For static camera: It is recommended to configure a tool center point installation (because of the benefits in free drive mode) and disable the checkbox.</li>
-<li>For robot-mounted camera: This checkbox must be disabled, and a TCP configuration and payload measurement is required.</li>
-</ul>
+<p>The program is identical for both mounting configurations. It guides the robot through a series of poses that have to be taught before.
+During calibration, the robot moves with linear tool-space motion, a tool speed of 0.5 m/s, and a tool acceleration of 0.5 m/s².</p>
 <div class="section" id="step-by-step-calibration">
 <h3>Step-by-step calibration<a class="headerlink" href="#step-by-step-calibration" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Create an empty program</li>
 <li>Add the ‘rc hand-eye calibration’ program node</li>
-<li>In the node, select your sensor and configure the calibration parameters (<a class="reference internal" href="#urcap-calibration-parameters-image"><span class="std std-ref">Setting parameters in the rc hand-eye calibration node</span></a>)</li>
+<li>In the node, select your sensor and configure the mounting type and grid size</li>
+</ol>
+<div class="figure align-center" id="id6">
+<span id="urcap-calibration-parameters-image"></span><a class="reference internal image-reference" href="../_images/calibration_parameters.png"><img alt="../_images/calibration_parameters.png" src="../_images/calibration_parameters.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Setting parameters in the rc hand-eye calibration node</span></p>
+</div>
+<ol class="arabic simple" start="4">
 <li>For each of the eight ‘Set pose’ nodes:<ul>
-<li>Refer to the reference image in the program node for guidance.</li>
+<li>Refer to the reference image in the program node for guidance</li>
 <li>Move the robot to achieve a similar grid position in the live camera view</li>
-<li>Click ‘Store pose’ once positioned</li>
+<li>Click ‘Store waypoint’ button once positioned</li>
 </ul>
 </li>
-<li>Execute the program at 10% speed initially to react to potential collisions.</li>
+</ol>
+<div class="figure align-center" id="id7">
+<span id="urcap-calibration-store-pose-image"></span><a class="reference internal image-reference" href="../_images/calibration_store_pose.png"><img alt="../_images/calibration_store_pose.png" src="../_images/calibration_store_pose.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Set pose node</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Execute the program at around 25% speed initially to react to potential collisions.</li>
 <li>After successful calibration:<ul>
 <li>Review the results in the ‘Calibration result’ node</li>
 <li>Store the calibration if error values are acceptable (typically less than 2mm)</li>
 </ul>
 </li>
 </ol>
+<div class="figure align-center" id="id8">
+<span id="urcap-calibration-successful-image"></span><a class="reference internal image-reference" href="../_images/calibration_successful.png"><img alt="../_images/calibration_successful.png" src="../_images/calibration_successful.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Calibration result node</span></p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While positioning the robot, use the free drive mode while remaining in the calibration pose node to adjust the position. This keeps the live view visible during adjustment. Consider using the constraint-free drive mode for easier positioning in certain cases.</p>
@@ -314,18 +349,6 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The reference images provided only serve as guidance. What is crucial is capturing eight distinctly different poses of the calibration grid.</p>
-</div>
-<div class="figure align-center" id="id6">
-<span id="urcap-calibration-parameters-image"></span><a class="reference internal image-reference" href="../_images/calibration_parameters.png"><img alt="../_images/calibration_parameters.png" src="../_images/calibration_parameters.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Setting parameters in the rc hand-eye calibration node</span></p>
-</div>
-<div class="figure align-center" id="id7">
-<span id="urcap-calibration-store-pose-image"></span><a class="reference internal image-reference" href="../_images/calibration_store_pose.png"><img alt="../_images/calibration_store_pose.png" src="../_images/calibration_store_pose.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Set pose node</span></p>
-</div>
-<div class="figure align-center" id="id8">
-<span id="urcap-calibration-successful-image"></span><a class="reference internal image-reference" href="../_images/calibration_successful.png"><img alt="../_images/calibration_successful.png" src="../_images/calibration_successful.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Calibration result node</span></p>
 </div>
 </div>
 </div>
@@ -341,7 +364,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="system-accuracy-test.html" class="btn btn-neutral float-right" title="End-to-End System Accuracy Test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="system-accuracy-test.html" class="btn btn-neutral float-right" title="End-to-end system accuracy test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gettingstarted.html" class="btn btn-neutral" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -373,7 +396,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-68-g0179906',
+            VERSION:'0.5.0-73-gf3c53ce',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
