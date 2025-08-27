@@ -35,7 +35,10 @@ For this verification process, you will need:
 
 A KUKA robot with a precision pointing tool (such as a dart tip)
 
-A Roboception 3D camera
+A Roboception rc_visard or rc_cube with an EKI Bridge license
+
+The EKI XML configuration file for detecting AprilTags (node
+rc_april_tag_detect, service detect, see EKI XML configuration files)
 
 The verification sheet (printed in high quality)
 
