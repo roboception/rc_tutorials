@@ -30,7 +30,28 @@ In this configuration, the camera is mounted statically in the workspace, and th
 
 Mounting the calibration grid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The calibration grid can be easily and securely mounted to the robot using the provided mounting adapter kit. The following steps guide you through the mounting process.
+The calibration grid can be securely mounted to the robot using a mounting adapter. You can use the available manufacturing files to create this adapter yourself.
+
+Manufacturing the adapter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. only:: roboception
+
+    The manufacturing files for the grid adapter can be downloaded from the `Customer area download page <https://download.roboception.com/>`_.
+
+.. only:: not roboception
+
+    The manufacturing files for the grid adapter can be obtained from the |company| support.
+
+We strongly recommend milling the adapter out of **aluminum**. The adapter **must not be 3D printed**. 
+Rigidity of the adapter must be guaranteed for the hand-eye calibration to be accurate. 
+The slightest flex in the adapter will significantly degrade calibration accuracy.
+
+.. note::
+    |company| is not responsible for any breakage, equipment damage, or inaccuracies resulting from the use of a self-manufactured adapter.
+
+.. warning::
+    If the manufactured adapter exhibits any flex or play, the resulting calibration will be inaccurate. Always ensure a rigid mounting.
 
 
 Required tools and materials
