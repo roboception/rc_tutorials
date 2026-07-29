@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hand-eye calibration &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>Hand-eye calibration &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="../index.html"/>
         <link rel="up" title="Universal Robots tutorials" href="overview.html"/>
         <link rel="next" title="End-to-end system accuracy test" href="system-accuracy-test.html"/>
@@ -106,10 +106,12 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Universal Robots tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
@@ -211,8 +213,8 @@
   <div class="section" id="hand-eye-calibration">
 <span id="ur-hand-eye"></span><h1>Hand-eye calibration<a class="headerlink" href="#hand-eye-calibration" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial guides you through the hand-eye calibration process with Roboception’s URCap. During this procedure, the spatial relationship between the camera and the robot system is established.</p>
-<p>The camera can be used in two ways: either statically mounted in the workspace or attached directly to the robot. This choice determines how the calibration is performed and the type of transformation established. For detailed information on the calibration principles, refer to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html" title="(in rc_visard v26.04)"><span class="xref std std-doc">Hand-eye calibration documentation</span></a>.</p>
-<p>Before you begin, ensure that you have completed the tutorials <a class="reference internal" href="gettingstarted.html#ur-getting-started"><span class="std std-ref">Getting started</span></a> and <a class="reference internal" href="../rc_visard_general/parameters.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of image parameters</span></a>.</p>
+<p>The camera can be used in two ways: either statically mounted in the workspace or attached directly to the robot. This choice determines how the calibration is performed and the type of transformation established. For detailed information on the calibration principles, refer to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html" title="(in rc_visard v26.07)"><span class="xref std std-doc">Hand-eye calibration documentation</span></a>.</p>
+<p>Before you begin, ensure that you have completed the tutorials <a class="reference internal" href="gettingstarted.html#ur-getting-started"><span class="std std-ref">Getting started</span></a> and <a class="reference internal" href="../image_tuning/camera_tuning.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of camera images</span></a>.</p>
 <div class="section" id="static-camera">
 <h2>Static camera<a class="headerlink" href="#static-camera" title="Permalink to this headline">¶</a></h2>
 <p>In this configuration, the camera is mounted statically in the workspace, and the calibration grid is attached to the robot. The hand-eye calibration determines the transformation between the camera and the robot base frame. Ensure the camera is mounted rigidly, completely stable, and unaffected by robot movements or vibrations.</p>
@@ -245,7 +247,7 @@ The slightest flex in the adapter will significantly degrade calibration accurac
 </ul>
 <div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/ur_calibration_grid_mounting.jpg"><img alt="../_images/ur_calibration_grid_mounting.jpg" src="../_images/ur_calibration_grid_mounting.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Required tools and materials for grid mounting</span></p>
+<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Required tools and materials for grid mounting</span></p>
 </div>
 </div>
 <div class="section" id="mounting-procedure">
@@ -268,7 +270,7 @@ The slightest flex in the adapter will significantly degrade calibration accurac
 </ol>
 <div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/calibration_grid.jpg"><img alt="../_images/calibration_grid.jpg" src="../_images/calibration_grid.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Calibration grid properly mounted using the adapter</span></p>
+<p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Calibration grid properly mounted using the adapter</span></p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -332,7 +334,7 @@ During calibration, the robot moves with linear tool-space motion, a tool speed 
 </ol>
 <div class="figure align-center" id="id6">
 <span id="urcap-calibration-parameters-image"></span><a class="reference internal image-reference" href="../_images/calibration_parameters.png"><img alt="../_images/calibration_parameters.png" src="../_images/calibration_parameters.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Setting parameters in the rc hand-eye calibration node</span></p>
+<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">Setting parameters in the rc hand-eye calibration node</span></p>
 </div>
 <ol class="arabic simple" start="4">
 <li>For each of the eight ‘Set pose’ nodes:<ul>
@@ -344,7 +346,7 @@ During calibration, the robot moves with linear tool-space motion, a tool speed 
 </ol>
 <div class="figure align-center" id="id7">
 <span id="urcap-calibration-store-pose-image"></span><a class="reference internal image-reference" href="../_images/calibration_store_pose.png"><img alt="../_images/calibration_store_pose.png" src="../_images/calibration_store_pose.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Set pose node</span></p>
+<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Set pose node</span></p>
 </div>
 <ol class="arabic simple" start="5">
 <li>Execute the program at around 25% speed initially to react to potential collisions.</li>
@@ -356,7 +358,7 @@ During calibration, the robot moves with linear tool-space motion, a tool speed 
 </ol>
 <div class="figure align-center" id="id8">
 <span id="urcap-calibration-successful-image"></span><a class="reference internal image-reference" href="../_images/calibration_successful.png"><img alt="../_images/calibration_successful.png" src="../_images/calibration_successful.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Calibration result node</span></p>
+<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Calibration result node</span></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -392,7 +394,7 @@ During calibration, the robot moves with linear tool-space motion, a tool speed 
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -412,7 +414,7 @@ During calibration, the robot moves with linear tool-space motion, a tool speed 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

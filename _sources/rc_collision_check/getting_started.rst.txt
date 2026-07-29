@@ -47,7 +47,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 26.04) and the
+The rc_visard is running the latest firmware (version 26.07) and the
 rc_visard's license includes the CollisionCheck and ItemPick modules.
 This can be verified on the System ‣ Firmware & License page of the
 Web GUI.
@@ -95,7 +95,7 @@ gripper's suction cup. After that, select the load carrier. Then,
 enable the *Collision Check* and select the default gripper as shown
 in
 
-Fig. 53
+Fig. 57
 
 .
 
@@ -106,7 +106,7 @@ free grasps are returned.
 In the visualization images, the colliding grasps are drawn as red
 points and black ellipses as shown in
 
-Fig. 54
+Fig. 58
 
 , but will not be listed in the 'Result of Grasp Point Detection'
 table. To get all detected grasps, users should trigger a new
@@ -141,7 +141,7 @@ Collision Distance
    meters between any part of the gripper geometry and any of the load
    carrier’s walls for a grasp to be considered collision free.
 
-   Fig. 56
+   Fig. 60
 
     visualizes this distance. This parameter should be increased if
    the module returns valid grasps too close to the load carrier's

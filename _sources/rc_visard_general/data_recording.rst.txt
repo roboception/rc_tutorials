@@ -10,7 +10,7 @@ In order to go through this tutorial, the
 
 rc_visard
 
- must be running the latest firmware (version 26.04). This can be
+ must be running the latest firmware (version 26.07). This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
 Downloading single snapshots
@@ -28,7 +28,7 @@ Depth Image
 A new snapshot of the current scene is downloaded by clicking on the
 camera icon below the image live streams (see
 
-Fig. 9
+Fig. 12
 
 ). This will create an archive containing the left and right camera
 images, the disparity, error and confidence images, as well as the
@@ -52,8 +52,8 @@ rc_randomdot
    In the Camera page of the Web GUI, set the Auto Exposure Mode to
    AdaptiveOut1
 
-   Follow the Obtain dense depth images with the rc_randomdot
-   projector tutorial to configure the projector
+   Follow the Configuring the rc_randomdot projector tutorial to
+   configure the projector
 
    In the Depth Image page of the Web GUI  select Single+Out1 as
    Acquisition Mode  increase the Exposure Adaptation Timeout to the
@@ -73,7 +73,7 @@ Final verification steps for all users
 
    Check that the Confidence Image in the Depth Image page is bright
    on the objects of interest. If not, follow the steps described in
-   the Increasing Density tutorial.
+   the Tuning of depth images tutorial.
 
 Note: Users of the
 

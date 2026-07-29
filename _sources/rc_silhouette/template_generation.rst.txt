@@ -101,10 +101,10 @@ distance.
 
 In the Camera page, select an Exposure region around the object and
 check the illumination of the scene. To get the best result, the gain
-of the rc_visard should be 0 dB (see Exposure and Gain Settings) and
-the object should not cast any significant shadow.    Sample scene
-with proper lighting conditions. The gain value is 0 dB and there are
-no shadows on the object and its vicinity.    Sample scene with too
+of the rc_visard should be 0 dB (see Improving image quality) and the
+object should not cast any significant shadow.    Sample scene with
+proper lighting conditions. The gain value is 0 dB and there are no
+shadows on the object and its vicinity.    Sample scene with too
 little light. The gain value is too high.    Sample scene with too
 strong direct light. The object casts shadows.
 
@@ -154,7 +154,7 @@ rc_randomdot
 
  projector should be setup as described in the
 
-Obtain dense depth images with the rc_randomdot projector
+Configuring the rc_randomdot projector
 
  tutorial and the Out 1 mode of the
 

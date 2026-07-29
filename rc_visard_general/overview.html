@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rc_visard tutorials &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>rc_visard tutorials &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -54,10 +54,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="../index.html"/>
         <link rel="next" title="Network configuration" href="network_setup.html"/>
-        <link rel="prev" title="Roboception 3D Camera Tutorials" href="../index.html"/> 
+        <link rel="prev" title="Configuring the rc_randomdot projector" href="../image_tuning/projector.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,17 +105,17 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">rc_visard tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html">Network configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of image parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data for evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with the <em>rc_visard</em> and OpenCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
@@ -194,12 +194,6 @@
 <li class="toctree-l2"><a class="reference internal" href="network_setup.html#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parameters.html">Tuning of image parameters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html#before-we-start">Before we start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html#camera-parameters">Camera Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html#depth-image-tuning">Depth Image Tuning</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="data_recording.html">Recording data for evaluation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="data_recording.html#downloading-single-snapshots">Downloading single snapshots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_recording.html#recording-image-sequences">Recording image sequences</a></li>
@@ -210,16 +204,6 @@
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html#compiling-the-example-program">Compiling the example program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html#running-the-example-program">Running the example program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html#explanation-of-the-example-s-source-code">Explanation of the example’s source code</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#before-we-start">Before we start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#mounting-the-projector">Mounting the projector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#focusing-the-projector">Focusing the projector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#configuring-the-projector-brightness">Configuring the projector brightness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#selecting-projector-working-mode">Selecting projector working mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#configuring-the-exposure">Configuring the exposure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html#more-optimization-tricks">More optimization tricks</a></li>
 </ul>
 </li>
 </ul>
@@ -239,7 +223,7 @@
         <a href="network_setup.html" class="btn btn-neutral float-right" title="Network configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Roboception 3D Camera Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../image_tuning/projector.html" class="btn btn-neutral" title="Configuring the rc_randomdot projector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -248,7 +232,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -268,7 +252,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

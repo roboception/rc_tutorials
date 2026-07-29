@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Roboception 3D Camera Tutorials &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>Roboception 3D Camera Tutorials &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -54,9 +54,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="#"/>
-        <link rel="next" title="rc_visard tutorials" href="rc_visard_general/overview.html"/> 
+        <link rel="next" title="Image tuning" href="image_tuning/overview.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -104,10 +104,12 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuka/overview.html">KUKA robot tutorials</a></li>
@@ -177,12 +179,16 @@
 <p>Tutorials for the Roboception 3D cameras and additionally available software modules.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="image_tuning/overview.html">Image tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image_tuning/camera_tuning.html">Tuning of camera images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tuning/depth_tuning.html">Tuning of depth images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tuning/projector.html">Configuring the <em>rc_randomdot</em> projector</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rc_visard_general/overview.html">rc_visard tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rc_visard_general/network_setup.html">Network configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rc_visard_general/parameters.html">Tuning of image parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_visard_general/data_recording.html">Recording data for evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_visard_general/opencv_example.html">Getting started with the <em>rc_visard</em> and OpenCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rc_visard_general/projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rc_reason_general/overview.html">rc_reason general tutorials</a><ul>
@@ -200,6 +206,10 @@
 <li class="toctree-l2"><a class="reference internal" href="rc_silhouette/template_generation.html">Template generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_silhouette/getting_started.html">Getting started with SilhouetteMatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rc_silhouette/troubleshooting.html">FAQs and troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rc_cadmatch/overview.html">CADMatch tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rc_cadmatch/grasp_teaching.html">Grasp Teaching</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rc_collision_check/overview.html">CollisionCheck tutorials</a><ul>
@@ -237,7 +247,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="rc_visard_general/overview.html" class="btn btn-neutral float-right" title="rc_visard tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="image_tuning/overview.html" class="btn btn-neutral float-right" title="Image tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -247,7 +257,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -267,7 +277,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

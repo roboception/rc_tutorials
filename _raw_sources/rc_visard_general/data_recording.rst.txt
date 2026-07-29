@@ -63,7 +63,7 @@ Final verification steps for all users
      is as low as possible (ideally 0 dB). The *Gain* can be decreased by adding more light to the scene.
 
   7. Check that the *Confidence Image* in the **Depth Image** page is bright on the objects of interest.
-     If not, follow the steps described in the :ref:`general-increasing-density` tutorial.
+     If not, follow the steps described in the :ref:`general-tuning-depth-parameters` tutorial.
 
 .. note::
 

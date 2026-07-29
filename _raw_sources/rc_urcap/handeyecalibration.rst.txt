@@ -29,11 +29,11 @@ In this configuration, the camera is mounted statically in the workspace, and th
 ..     </div>
 
 Mounting the calibration grid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The calibration grid can be securely mounted to the robot using a mounting adapter. You can use the available manufacturing files to create this adapter yourself.
 
 Manufacturing the adapter
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. only:: roboception
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Network configuration &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>Network configuration &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -62,10 +62,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="../index.html"/>
         <link rel="up" title="rc_visard tutorials" href="overview.html"/>
-        <link rel="next" title="Tuning of image parameters" href="parameters.html"/>
+        <link rel="next" title="Recording data for evaluation" href="data_recording.html"/>
         <link rel="prev" title="rc_visard tutorials" href="overview.html"/> 
 
   
@@ -114,6 +114,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">rc_visard tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Network configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
@@ -132,15 +133,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="parameters.html">Tuning of image parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_recording.html">Recording data for evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencv_example.html">Getting started with the <em>rc_visard</em> and OpenCV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projector.html">Obtain dense depth images with the <em>rc_randomdot</em> projector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
@@ -215,7 +215,7 @@ the <em>rc_visard</em>’s IP settings as well as optimizing the host PC’s net
 for the high data throughput.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="../_images/networking.png"><img alt="../_images/networking.png" src="../_images/networking.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The <em>rc_visard</em> can be connected either directly to the host PC (left) or via
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">The <em>rc_visard</em> can be connected either directly to the host PC (left) or via
 a larger network (right). In terms of IP settings it supports configuration
 via <a class="reference external" href="https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol">DHCP</a>,
 via <a class="reference external" href="https://en.wikipedia.org/wiki/Link-local_address">Link-Local</a>,
@@ -265,7 +265,7 @@ open showing all <em>rc_visard</em>s that were discovered in the network
 similar to the figure below.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/rcdiscover-gui.png"><img alt="../_images/rcdiscover-gui.png" src="../_images/rcdiscover-gui.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Roboception’s discovery tool found two devices in the network.
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Roboception’s discovery tool found two devices in the network.
 The device named <code class="docutils literal notranslate"><span class="pre">rc_visard</span></code> is reachable from the host PC
 (because in this example the host was in the same subnet 10.0.2.x).
 The second device <code class="docutils literal notranslate"><span class="pre">demo</span></code> is not reachable as its IP address
@@ -281,7 +281,7 @@ is in a totally different network.</span></p>
 <p class="last">The discovery tool is the central troubleshooting tool for checking
 whether Roboception 3D devices are properly connected and reachable by the host PC or not.
 For a detailed description, please refer to the
-<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v26.04)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-discovery-of-rcvisard-devices" title="(in rc_visard v26.07)"><span class="xref std std-ref">discovery tool’s manual page</span></a>.</p>
 </div>
 <p>If the <em>rc_visard</em> is reachable, a simple double-click on the respective
 row opens the sensor’s Web GUI which let’s you explore and visualize the
@@ -331,7 +331,7 @@ network settings.</p>
 <blockquote>
 <div><ul class="simple">
 <li>the <em>rc_visard</em>’s Web GUI, and</li>
-<li>any configuration tool compatible with <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v26.04)"><span class="xref std std-term">GigE Vision</span></a>® 2.0.</li>
+<li>any configuration tool compatible with <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v26.07)"><span class="xref std std-term">GigE Vision</span></a>® 2.0.</li>
 </ul>
 </div></blockquote>
 <p>We will give examples for both options below.</p>
@@ -347,7 +347,7 @@ by means of the discovery tool.</p>
 <p>The easiest way to access and permanently change the <em>rc_visard</em>’s network settings
 using a graphical user interface is its Web GUI.</p>
 <p>The first step is to verify on the <span class="menuselection">System ‣ Firmware &amp; License</span> page
-of the Web GUI that the <em>rc_visard</em> is running the latest firmware (version 26.04).</p>
+of the Web GUI that the <em>rc_visard</em> is running the latest firmware (version 26.07).</p>
 <p>The network settings can be found
 on the <span class="menuselection">System ‣ Network Settings</span> page. Here, you can easily check the currently applied
 IP configuration method and change the network settings according to your local
@@ -356,14 +356,14 @@ network.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">While the Web GUI provides an intuitive graphical user interface to
 configure the network settings, in the back-end, it uses the
-<em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v26.04)"><span class="xref std std-ref">REST-API</span></a>.
+<em>rc_visard</em>’s <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html#sect-rest-api" title="(in rc_visard v26.07)"><span class="xref std std-ref">REST-API</span></a>.
 This offers programmatic access to the full network configuration
 and can be used also by developers.</p>
 </div>
 </div>
 <div class="section" id="option-2-configuration-via-genicam-gige-visionreg">
 <h3>Option 2: Configuration via GenICam/GigE Vision®<a class="headerlink" href="#option-2-configuration-via-genicam-gige-visionreg" title="Permalink to this headline">¶</a></h3>
-<p>The <em>rc_visard</em> complies to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v26.04)"><span class="xref std std-term">GigE Vision</span></a>® 2.0 standard, i.e.
+<p>The <em>rc_visard</em> complies to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-gige-vision" title="(in rc_visard v26.07)"><span class="xref std std-term">GigE Vision</span></a>® 2.0 standard, i.e.
 any configuration tool compatible with GigE Vision® can be used
 to configure the device and particularly its network settings.
 In the following we give two examples.</p>
@@ -424,7 +424,7 @@ and that the <em>rc_visard</em> is reachable from your host.</p>
 <p>For changing the network configuration via GenICam using a graphical interface,
 we recommend using the IpConfigTool that is part of the
 <a class="reference external" href="http://www.baumer.com/de-en/products/identification-image-processing/software/baumer-gapi-sdk/">Baumer GAPI SDK</a>.
-The <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-sdk" title="(in rc_visard v26.04)"><span class="xref std std-term">SDK</span></a> can be downloaded free of charge for Windows and Linux from <a class="reference external" href="http://www.baumer.com">http://www.baumer.com</a>.</p>
+The <a class="reference external" href="https://doc.rc-visard.com/latest/en/glossary.html#term-sdk" title="(in rc_visard v26.07)"><span class="xref std std-term">SDK</span></a> can be downloaded free of charge for Windows and Linux from <a class="reference external" href="http://www.baumer.com">http://www.baumer.com</a>.</p>
 <p>After start-up, this tool scans for all available GigE Vision®
 sensors on the network. All <em>rc_visard</em> devices can be uniquely identified by their serial number and MAC address,
 which are both printed on the device.</p>
@@ -605,7 +605,7 @@ the <code class="docutils literal notranslate"><span class="pre">Rerun</span> <s
 device reboot. If no reaction is noticeable, the two minute time
 slot may have passed, requiring another reboot.</p>
 </div>
-<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v26.04)"><span class="xref std std-ref">default automatic network
+<p>Now, the <em>rc_visard</em> follows its <a class="reference external" href="https://doc.rc-visard.com/latest/en/installation.html#sect-auto-network-configuration" title="(in rc_visard v26.07)"><span class="xref std std-ref">default automatic network
 configuration routine</span></a>
 and should either have an automatically assigned IP address from
 the DHCP server or a Link-Local address 169.254.x.x.</p>
@@ -648,7 +648,7 @@ for high loads</span></a>.</div></blockquote>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="parameters.html" class="btn btn-neutral float-right" title="Tuning of image parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_recording.html" class="btn btn-neutral float-right" title="Recording data for evaluation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="rc_visard tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -660,7 +660,7 @@ for high loads</span></a>.</div></blockquote>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -680,7 +680,7 @@ for high loads</span></a>.</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

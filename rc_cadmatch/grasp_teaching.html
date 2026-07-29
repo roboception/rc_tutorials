@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Grasp Teaching &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+ documentation" href="../index.html"/>
+        <link rel="up" title="CADMatch tutorials" href="overview.html"/>
+        <link rel="next" title="CollisionCheck tutorials" href="../rc_collision_check/overview.html"/>
+        <link rel="prev" title="CADMatch tutorials" href="overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">CADMatch tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grasp Teaching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-approach">General Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grasp-teaching-using-the-robot">Grasp Teaching Using the Robot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs & more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
+        
+          <li><a href="overview.html">CADMatch tutorials</a> &gt;</li>
+        
+      <li>Grasp Teaching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grasp-teaching">
+<span id="teach-grasps"></span><h1>Grasp Teaching<a class="headerlink" href="#grasp-teaching" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-approach">
+<h2>General Approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">¶</a></h2>
+<p>CADMatch grasps are normally defined in the WebGUI, in the same way as in
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/silhouettematch.html" title="(in rc_cube v26.07)"><span>SilhouetteMatch and SilhouetteMatchAI</span></a>. This is an interactive process: you click on the object
+surface to place a grasp, then move and rotate it into position. For more details, see
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.07)"><span>Setting of grasp points</span></a>.</p>
+<p>This workflow is sufficient for most use cases. In some situations, however, the accuracy it
+delivers is not enough. Very long grippers, or grippers that contact the object at multiple
+distant points, are highly sensitive to rotational errors. For these cases, you can teach
+grasps using the robot instead.</p>
+<div class="figure" id="id1">
+<span id="fig-example-grasp"></span><img alt="../_images/difficult-grasp-def.png" src="../_images/difficult-grasp-def.png" />
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">An example where placing the grasp through the GUI alone can be tricky: the gripper is very long,
+and therefore very sensitive to rotational errors. It contacts the object at two distant points,
+which makes an accurate definition even more important.</span></p>
+</div>
+</div>
+<div class="section" id="grasp-teaching-using-the-robot">
+<h2>Grasp Teaching Using the Robot<a class="headerlink" href="#grasp-teaching-using-the-robot" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Before you can teach grasp points, make sure you have completed the
+<a class="reference internal" href="../rc_urcap/handeyecalibration.html"><span class="doc">Hand-eye calibration</span></a> and can run detections in the “external” frame.</p>
+</div>
+<p>To teach grasp points using the robot, follow these steps:</p>
+<ol class="arabic">
+<li><p class="first">Place a single object in the scene so that it is visible to the camera.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you cannot avoid having multiple objects in the scene, use a region of interest
+(<a class="reference external" href="https://doc.rc-cube.com/latest/en/roi.html#sect-roi-definition" title="(in rc_cube v26.07)"><span>Region of interest</span></a>) or a pose prior (<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-pose-priors" title="(in rc_cube v26.07)"><span>Setting of pose priors</span></a>)
+to restrict CADMatch to a single object.</p>
+</div>
+</li>
+<li><p class="first">Confirm that the CADMatch detections are robust, adjusting the detection parameters if necessary.
+The grasp teaching service rejects unstable detections.</p>
+<div class="figure" id="id2">
+<img alt="../_images/successful-detection.png" src="../_images/successful-detection.png" />
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Using the TryOut section of the WebGUI, make sure that the object can be detected robustly in the scene</span></p>
+</div>
+</li>
+<li><p class="first">Move the robot so that the gripper is positioned as it would be to pick the object
+(see <a class="reference internal" href="#fig-example-grasp"><span class="std std-numref">Fig. 47</span></a>). This pose becomes the grasp definition. If this is the first
+(or only) grasp you are teaching, you can also reposition the object to fit the gripper better.</p>
+<div class="figure" id="id3">
+<img alt="../_images/gripper-at-location2.png" src="../_images/gripper-at-location2.png" />
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Approach the desired grasping pose with the robot, and take note of the TCP pose (see the overlayed frame)</span></p>
+</div>
+</li>
+<li><p class="first">Record this TCP pose, or save it in a variable when running from a robot program. You can
+optionally pair each pose with a grasp_id.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We provide an example KRL robot program for KUKA robots that teaches grasps using touch-up at our
+<a class="reference external" href="https://github.com/roboception/eki_examples/blob/master/examples/CADMatch/TeachGrasps/README_EN.md">github eki_examples</a>.</p>
+</div>
+</li>
+<li><p class="first">Repeat this for every grasp point you want to teach. <strong>Once the first pose has been saved, the
+part must not be moved again.</strong></p>
+</li>
+<li><p class="first">When you have finished recording TCP poses, move the robot out of the way and call the
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#expl-cadmatch-srv-detect-object-and-teach-grasps" title="(in rc_cube v26.07)"><span>detect_object_and_teach_grasps</span></a> CADMatch service. It takes the list of TCP poses (and,
+optionally, their grasp_ids) and converts them into grasp poses.</p>
+</li>
+<li><p class="first">When the service finishes successfully, you can rename and edit the grasp points in the WebGUI.
+There you can also adjust advanced settings such as replication and priority (see
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.07)"><span>Setting of grasp points</span></a> for more details). Each grasp carries the grasp_id of its
+corresponding TCP pose; grasps without a custom grasp_id receive a default, numbered ID.</p>
+<div class="figure" id="id4">
+<img alt="../_images/webgui-taught-grasp.png" src="../_images/webgui-taught-grasp.png" />
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Once taught, the grasp point can be edited using the WebGUI</span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rc_collision_check/overview.html" class="btn btn-neutral float-right" title="CollisionCheck tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="CADMatch tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2026, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.5.0-81-gb5ad4d1',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -18,7 +18,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 26.04) and the
+The rc_visard is running the latest firmware (version 26.07) and the
 rc_visard's license includes the ItemPick module. This can be verified
 on the System ‣ Firmware & License page of the Web GUI.
 
@@ -34,7 +34,7 @@ The workpiece surface appears in the depth image. This can be verified
 by placing the workpiece in front of the rc_visard and checking the
 Web GUI's Depth image page. If the workpiece presents holes or low
 confidence regions (i.e. average gray pixels in the Confidence image),
-one can follow the Tuning of image parameters tutorial.
+one can follow the Tuning of camera images tutorial.
 
 The workpiece has at least the minimum dimensions required by the
 ItemPick module. This threshold is set to 300 pixels in the depth
@@ -101,7 +101,7 @@ Depth image
  page to verify that the images are well-exposed and the depth image
 is dense with no holes on the workpieces. The tutorial
 
-Tuning of image parameters
+Tuning of camera images
 
  covers all required steps to get the best quality for stereo and
 depth images. The depth image density can also be increased by adding

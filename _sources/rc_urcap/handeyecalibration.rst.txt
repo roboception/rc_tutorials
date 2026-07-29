@@ -20,7 +20,7 @@ Getting started
 
  and
 
-Tuning of image parameters
+Tuning of camera images
 
 .
 

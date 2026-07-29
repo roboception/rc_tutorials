@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Template generation &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>Template generation &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="../index.html"/>
         <link rel="up" title="SilhouetteMatch tutorials" href="overview.html"/>
         <link rel="next" title="Getting started with SilhouetteMatch" href="getting_started.html"/>
@@ -106,6 +106,7 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
@@ -130,6 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">FAQs and troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
@@ -262,7 +264,7 @@ it is also possible to generate a template based on data captured with an <em>rc
 <ol class="arabic">
 <li><p class="first">Place the object on a flat, monochrome surface in contrasting color.</p>
 </li>
-<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v26.04)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.</p>
+<li><p class="first">Place 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v26.07)"><span class="xref std std-ref">AprilTags</span></a> on the surface to form a triangle around the object.</p>
 </li>
 <li><p class="first"><a class="reference internal" href="../rc_visard_general/network_setup.html#general-network"><span class="std std-ref">Connect the rc_visard to your PC</span></a> and open the <strong>Camera</strong> page in the Web GUI.</p>
 </li>
@@ -281,7 +283,7 @@ The distance should be increased if the object is not fully visible at the recom
 </div></blockquote>
 </li>
 <li><p class="first">In the <strong>Camera</strong> page, select an <em>Exposure region</em> around the object and check the illumination of the scene.
-To get the best result, the gain of the <em>rc_visard</em> should be 0 dB (see <a class="reference internal" href="../rc_visard_general/parameters.html#general-exposure-gain"><span class="std std-ref">Exposure and Gain Settings</span></a>)
+To get the best result, the gain of the <em>rc_visard</em> should be 0 dB (see <a class="reference internal" href="../image_tuning/camera_tuning.html#general-exposure-gain"><span class="std std-ref">Improving image quality</span></a>)
 and the object should not cast any significant shadow.</p>
 <blockquote>
 <div><div class="figure align-center" id="id6">
@@ -339,9 +341,9 @@ If the second template is used, the detected object might be flipped.</span></p>
 in which the object needs to be detected.
 Roboception will use these images to test the generated template and, if necessary,
 suggest changes to improve the detection performance.</p>
-<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v26.04)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
+<p>For recording the scene, 3 <a class="reference external" href="https://doc.rc-visard.com/latest/en/tagdetect.html#sect-apriltag" title="(in rc_visard v26.07)"><span class="xref std std-ref">AprilTags</span></a> should be placed in the field of view of both cameras.
 If a <em>rc_randomdot</em> projector is available, the plane calibration can also be performed using depth data.
-In this case, the <em>rc_randomdot</em> projector should be setup as described in the <a class="reference internal" href="../rc_visard_general/projector.html#general-projector"><span class="std std-ref">Obtain dense depth images with the rc_randomdot projector</span></a>
+In this case, the <em>rc_randomdot</em> projector should be setup as described in the <a class="reference internal" href="../image_tuning/projector.html#general-projector"><span class="std std-ref">Configuring the rc_randomdot projector</span></a>
 tutorial and the Out 1 mode of the <em>rc_visard</em> should be set to <em>ExposureAlternateActive</em>.</p>
 <div class="figure align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/example_scene.png"><img alt="../_images/example_scene.png" src="../_images/example_scene.png" style="width: 750px;" /></a>
@@ -391,7 +393,7 @@ to add an additional external light source.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -411,7 +413,7 @@ to add an additional external light source.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

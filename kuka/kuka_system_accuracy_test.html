@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>End-to-end system accuracy test &mdash; Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+  <title>End-to-end system accuracy test &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-77-g8477b21
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
  documentation" href="../index.html"/>
         <link rel="up" title="KUKA robot tutorials" href="overview.html"/>
         <link rel="prev" title="KUKA robot tutorials" href="overview.html"/> 
@@ -105,10 +105,12 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../image_tuning/overview.html">Image tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">KUKA robot tutorials</a><ul class="current">
@@ -213,12 +215,12 @@ pointing tool to verify the accuracy of the entire chain from vision detection t
 <li>Ensure your robot cell is operational</li>
 <li>Confirm that a hand-eye calibration has been performed</li>
 </ul>
-<p>For details on the hand-eye calibration procedure, refer to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html" title="(in rc_visard v26.04)"><span class="xref std std-doc">Hand-eye calibration documentation</span></a>.</p>
+<p>For details on the hand-eye calibration procedure, refer to the <a class="reference external" href="https://doc.rc-visard.com/latest/en/handeye_calibration.html" title="(in rc_visard v26.07)"><span class="xref std std-doc">Hand-eye calibration documentation</span></a>.</p>
 <p>For this verification process, you will need:</p>
 <ul class="simple">
 <li>A KUKA robot with a precision pointing tool (such as a dart tip)</li>
 <li>A Roboception <em>rc_visard</em> or <em>rc_cube</em> with an EKI Bridge license</li>
-<li>The EKI XML configuration file for detecting AprilTags (node <code class="docutils literal notranslate"><span class="pre">rc_april_tag_detect</span></code>, service <code class="docutils literal notranslate"><span class="pre">detect</span></code>, see <a class="reference external" href="https://doc.rc-visard.com/latest/en/eki.html#sect-eki-configs" title="(in rc_visard v26.04)"><span>EKI XML configuration files</span></a>)</li>
+<li>The EKI XML configuration file for detecting AprilTags (node <code class="docutils literal notranslate"><span class="pre">rc_april_tag_detect</span></code>, service <code class="docutils literal notranslate"><span class="pre">detect</span></code>, see <a class="reference external" href="https://doc.rc-visard.com/latest/en/eki.html#sect-eki-configs" title="(in rc_visard v26.07)"><span>EKI XML configuration files</span></a>)</li>
 <li>The verification sheet (printed in high quality)</li>
 <li>A soft mounting surface (foam board or cardboard)</li>
 </ul>
@@ -233,7 +235,7 @@ It displays two AprilTags positioned in opposite corners with a center crosshair
 or cardboard. This allows the pointing tip to safely penetrate the paper if positioning offsets occur during verification.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/End-to-end_Accuracy_Check_wh.svg"><img alt="Hand-eye calibration test sheet" src="../_images/End-to-end_Accuracy_Check_wh.svg" width="300px" /></a>
-<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
+<p class="caption"><span class="caption-number">Fig. 77 </span><span class="caption-text">Verification sheet showing AprilTags and center marker</span></p>
 </div>
 </div>
 </div>
@@ -288,11 +290,11 @@ accurate measurements.</p>
 </div>
 <p align="center"><iframe width="560" height="315" src="https://roboception.com/wp-content/uploads/How-to-measure-application-accuracy.mp4" title="Video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><div class="figure align-center" id="id4">
 <span id="robot-measure-application-accuracy-overview"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_overview.jpg"><img alt="../_images/measure_application_accuracy_overview.jpg" src="../_images/measure_application_accuracy_overview.jpg" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 75 </span><span class="caption-text">Overview of the test setup</span></p>
+<p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">Overview of the test setup</span></p>
 </div>
 <div class="figure align-center" id="id5">
 <span id="robot-measure-application-accuracy-pointing"></span><a class="reference internal image-reference" href="../_images/measure_application_accuracy_pointing.jpg"><img alt="../_images/measure_application_accuracy_pointing.jpg" src="../_images/measure_application_accuracy_pointing.jpg" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Robot pointing on target</span></p>
+<p class="caption"><span class="caption-number">Fig. 80 </span><span class="caption-text">Robot pointing on target</span></p>
 </div>
 <p>It can also help to perform several measurements in the relevant working areas (e.g. pick area, place area etc.)
 of your robot cell. This might help in troubleshooting to see if the deviation is the same or if it changes
@@ -355,7 +357,7 @@ a detailed error description.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2025, Roboception GmbH.
+        &copy; Copyright 2026, Roboception GmbH.
 
     </p>
   </div> 
@@ -375,7 +377,7 @@ a detailed error description.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-77-g8477b21',
+            VERSION:'0.5.0-81-gb5ad4d1',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

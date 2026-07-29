@@ -18,7 +18,7 @@ rc_visard
 
  is properly configured: ]-
 
-The rc_visard is running the latest firmware (version 26.04) and the
+The rc_visard is running the latest firmware (version 26.07) and the
 rc_visard's license includes the SilhouetteMatch module. This can be
 verified on the System ‣ Firmware & License page of the Web GUI.
 
@@ -114,7 +114,7 @@ so no objects are flipped.
 
 Good illumination of the scene must be ensured; a gain of 0 db (see
 
-Exposure and Gain Settings
+Improving image quality
 
 ) on the Web GUI's
 
@@ -129,7 +129,7 @@ Configuring image parameters
 For base-plane calibration as well as for object detection, it's most
 important that the images are well exposed. The tutorial about
 
-Camera Parameters
+Tuning of camera images
 
  covers the steps required to get best quality images.
 
@@ -140,7 +140,7 @@ Performing base-plane calibration
 ), it's additionally required to ensure high quality depth images,
 which is covered by the tutorial about
 
-Depth Image Tuning
+Tuning of depth images
 
 . It is recommended to employ a
 

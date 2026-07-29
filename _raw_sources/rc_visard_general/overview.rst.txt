@@ -9,7 +9,5 @@ This is the landing page for the |rc-visard|' tutorials.
    :maxdepth: 2
 
    network_setup
-   parameters
    data_recording
    opencv_example.rst
-   projector

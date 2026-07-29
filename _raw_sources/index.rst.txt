@@ -11,10 +11,12 @@ Tutorials for the |company| 3D cameras and additionally available software modul
 .. toctree::
    :maxdepth: 2
 
+   image_tuning/overview
    rc_visard_general/overview
    rc_reason_general/overview
    rc_itempick/overview
    rc_silhouette/overview
+   rc_cadmatch/overview
    rc_collision_check/overview
    rc_urcap/overview
    kuka/overview

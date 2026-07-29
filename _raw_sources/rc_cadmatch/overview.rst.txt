@@ -1,0 +1,11 @@
+.. include:: ../global_rst.glb
+
+CADMatch tutorials
+================================
+
+This is the landing page for the :doc:`rccube:cadmatch`' tutorials.
+
+.. toctree::
+   :maxdepth: 2
+
+   grasp_teaching

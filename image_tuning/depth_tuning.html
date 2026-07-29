@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tuning of depth images &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+ documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/default.css" type="text/css" />
+  
+
+  
+
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+ documentation" href="../index.html"/>
+        <link rel="up" title="Image tuning" href="overview.html"/>
+        <link rel="next" title="Configuring the rc_randomdot projector" href="projector.html"/>
+        <link rel="prev" title="Tuning of camera images" href="camera_tuning.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tutorials, FAQs & more
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Image tuning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="camera_tuning.html">Tuning of camera images</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning of depth images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before we start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#improving-depth-image-quality">Improving depth image quality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ensure-proper-acquisition">Ensure proper acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pattern-projection">Pattern projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters-for-improving-quality-and-accuracy">Parameters for improving quality and accuracy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rarely-needed-parameters">Rarely needed parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reducing-processing-time">Reducing processing time</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="projector.html">Configuring the <em>rc_randomdot</em> projector</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_visard_general/overview.html">rc_visard tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_reason_general/overview.html">rc_reason general tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_itempick/overview.html">ItemPick tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_silhouette/overview.html">SilhouetteMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_cadmatch/overview.html">CADMatch tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_collision_check/overview.html">CollisionCheck tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rc_urcap/overview.html">Universal Robots tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kuka/overview.html">KUKA robot tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tutorials, FAQs & more</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Tutorials, FAQs & more</a> &gt;</li>
+        
+          <li><a href="overview.html">Image tuning</a> &gt;</li>
+        
+      <li>Tuning of depth images</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tuning-of-depth-images">
+<span id="general-tuning-depth-parameters"></span><h1>Tuning of depth images<a class="headerlink" href="#tuning-of-depth-images" title="Permalink to this headline">¶</a></h1>
+<p>Depth images are the source for most <em>rc_reason</em> modules. This tutorial looks into depth image parameter tuning for stereo cameras from Roboception.</p>
+<p>In addition to improving the depth image quality, some settings help to reduce the processing time. This tutorial discusses both aspects separately and explains how they influence each other.</p>
+<div class="section" id="before-we-start">
+<h2>Before we start<a class="headerlink" href="#before-we-start" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial focuses on the <em>rc_visard</em>, <em>rc_visard NG</em> and <em>rc_viscore</em> cameras. The cameras may be operated standalone or by an <em>rc_cube</em> or <em>rc_reason_stack</em> as the computing device.</p>
+<ul class="simple">
+<li>The <a class="reference internal" href="camera_tuning.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of camera images</span></a> tutorial must be completed before proceeding with this one.</li>
+<li>The device should have the latest firmware (version 26.07).
+The firmware version can be verified on the <span class="menuselection">System ‣ Firmware &amp; License</span> page of the Web GUI.</li>
+</ul>
+<p>This tutorial explains how to set the parameters using the Web GUI. The parameters can also be set via
+<a class="reference external" href="https://doc.rc-visard.com/latest/en/gigevision.html" title="(in rc_visard v26.07)"><span>GigE Vision 2.0/GenICam image interface</span></a> and the <a class="reference external" href="https://doc.rc-visard.com/latest/en/rest_api.html" title="(in rc_visard v26.07)"><span>REST-API interface</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All parameter changes are applied immediately and persist across reboots.</p>
+</div>
+</div>
+<div class="section" id="improving-depth-image-quality">
+<h2>Improving depth image quality<a class="headerlink" href="#improving-depth-image-quality" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Depth Image</strong> page of the Web GUI shows the left camera image, the depth image and the confidence image, and allows the parameters to be changed. Below the images is a line with important values, such as the actual minimum and maximum distance used for stereo matching.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/image_tuning_depth_status.png"><img alt="../_images/image_tuning_depth_status.png" src="../_images/image_tuning_depth_status.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Live camera image, depth image and confidence image, with status values shown below, as provided on the <em>Depth Image</em> page of the Web GUI.</span></p>
+</div>
+<p>By default, depth images are computed continuously. However, if the camera is set to software triggering, the acquire button must be pressed to obtain a depth image.</p>
+<p>Depth images often contain invalid values, which appear black in the depth image shown in the Web GUI. This occurs in scene parts that are outside the defined working range, as well as on the left side of objects, because there, part of the background is not visible in the right camera image. This effect is called occlusion and is entirely normal.</p>
+<p>The depth image quality is best judged by looking at the confidence image: the quality is higher if the image is denser (i.e. has fewer black areas) and if the confidence is high (i.e. white rather than gray).</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/image_tuning_confidence.png"><img alt="../_images/image_tuning_confidence.png" src="../_images/image_tuning_confidence.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The left image shows a sparse, low-confidence image. In the middle image, the result is dense, but the confidence is still low, i.e. gray instead of white. The right image shows a good confidence image, which is both dense and high in confidence.</span></p>
+</div>
+<div class="section" id="ensure-proper-acquisition">
+<span id="depth-ensure-proper-acquisition"></span><h3>Ensure proper acquisition<a class="headerlink" href="#ensure-proper-acquisition" title="Permalink to this headline">¶</a></h3>
+<p>Before tuning the actual depth image parameters, it is important to ensure that images are acquired with proper contrast and without overexposure. When using auto exposure (see <a class="reference internal" href="camera_tuning.html#general-tuning-image-parameters"><span class="std std-ref">Tuning of camera images</span></a>), the <em>Exposure Adaptation Timeout</em> should be increased. This prevents images from being used for stereo matching before the auto exposure has properly adjusted the image brightness. No additional time is taken if the exposure time is already adjusted or if HDR or manual exposure is used. Therefore, it is generally recommended to set this timeout to 1-2 seconds.</p>
+</div>
+<div class="section" id="pattern-projection">
+<h3>Pattern projection<a class="headerlink" href="#pattern-projection" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The random dot projector is discussed in more detail in a separate <a class="reference internal" href="projector.html#general-projector"><span class="std std-ref">tutorial</span></a>. This section briefly describes the most important steps.</p>
+</div>
+<p>The most effective way to improve depth image quality is to use the random dot projector to ensure proper scene texture. This makes the depth image denser and less noisy. It is useful to acquire depth images in single-shot mode to avoid constant flickering. This is done by selecting <em>Single+Out1</em> on the depth image page.</p>
+<p>If auto exposure is used, it is strongly recommended to set the <em>Auto Exposure Mode</em> on the camera page to <em>AdaptiveOut1</em>. In this mode, the auto exposure ensures that images with projection are not overexposed. However, this can lead to very dark images without projection if the projector is too strong. To determine the optimal strength, set <em>Out1 / Projector</em> on the camera page to <em>ExposureAlternateActive</em>. The <em>Out1 Reduction</em> value below the images then shows how much the auto exposure reduces the brightness because of the projector. Ideally, this value should be between 20% and 30%.</p>
+<p>The strength of the projector can be reduced by closing the <a class="reference external" href="https://doc.rc-randomdot.com/en/installation.html#adjusting-aperture">aperture of the lens</a>.</p>
+<p>The <em>rc_viscore</em> additionally allows its strength to be reduced using the <em>Out1 Ratio</em> parameter. This parameter is available on the camera page by expanding the <em>IOControl Settings</em> block.</p>
+<p>If the <em>Out1 Reduction</em> value is below 15% while the projector operates at full strength,
+reducing environmental light should be considered. Otherwise, the projector becomes ineffective.</p>
+<p>Even with proper auto exposure settings, the projector can cause overexposure on reflective surfaces. To reduce this effect, the <em>Double-Shot</em> feature on the depth image page can be turned on. It additionally computes a depth image from an image pair without projection and uses it to fill holes.</p>
+</div>
+<div class="section" id="parameters-for-improving-quality-and-accuracy">
+<h3>Parameters for improving quality and accuracy<a class="headerlink" href="#parameters-for-improving-quality-and-accuracy" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Double-Shot</em> function is also useful without a projector. In this case, it additionally computes the depth image at a lower resolution to fill holes.</p>
+<p>The purpose of the <em>Quality</em> setting is to determine the resolution at which the depth image is computed. The default setting, <em>High</em>, is strongly recommended, as it gives the best results in almost all cases. The settings <em>Medium</em> and <em>Low</em> should only be considered if processing time is an issue. <em>Full</em> can give slightly more accurate data, but despite the much higher processing time, it can lead to less dense depth images, because noise is more pronounced at full image resolution than in downscaled images.</p>
+<p>Due to memory limitations, the quality setting <em>Full</em> usually leads to a reduced depth range, depending on the camera and the computing device. If memory is insufficient, the minimum distance used is increased, which is a problem for parts of the scene that are closer than this distance. The minimum distance used is shown below the images on the depth image page. If this minimum distance is larger than desired, it can be reduced by decreasing the <em>Maximum Distance</em> as much as the application allows. If the resulting depth range is then insufficient for the application, the quality has to be reduced to <em>High</em>.</p>
+</div>
+<div class="section" id="rarely-needed-parameters">
+<h3>Rarely needed parameters<a class="headerlink" href="#rarely-needed-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The <em>Static</em> parameter causes several images of a static scene to be collected in order to minimize image noise through averaging. Its effect is very limited, but it significantly increases latency. It is kept mainly for historical reasons.</p>
+<p>There are further parameters for smoothing, filling and filtering out small artifacts. It is strongly recommended to keep these parameters at their default settings, as they are beneficial in almost all cases and the additional processing time is negligible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Smoothing is implemented so that it does not oversmooth discontinuities or fine details. It improves the depth image in almost all situations, and many <em>rc_reason</em> modules rely on smoothed depth images. Therefore, it is strongly recommended to always keep smoothing turned on.</p>
+</div>
+<p>Similarly, filtering the output by a minimum confidence is recommended only in very specific situations, since the <em>rc_reason</em> modules themselves use the confidence image to decide how much to trust each depth pixel. Filtering by the maximum depth error is discouraged.</p>
+</div>
+</div>
+<div class="section" id="reducing-processing-time">
+<h2>Reducing processing time<a class="headerlink" href="#reducing-processing-time" title="Permalink to this headline">¶</a></h2>
+<p>The <em>Quality</em> setting has the biggest effect on the processing time, but also the strongest effect on the depth image quality. Therefore, it is suggested to keep this at <em>High</em> unless the options below do not have the desired impact.</p>
+<p>If the workspace covers only part of the image, stereo matching can be restricted to this part by selecting a <em>Stereo Region of Interest</em> on the depth image page. After pressing the button, a rectangular region can be selected in the images.</p>
+<p>In addition, the <em>Minimum Distance</em> should be increased as much as possible to save computation time. In contrast, decreasing the <em>Maximum Distance</em> has no effect on the computation time, because the computational effort and accuracy are much lower at greater distances.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="projector.html" class="btn btn-neutral float-right" title="Configuring the rc_randomdot projector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="camera_tuning.html" class="btn btn-neutral" title="Tuning of camera images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2026, Roboception GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.5.0-81-gb5ad4d1',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/js/open-toggle.js"></script>
+      <script type="text/javascript" src="../_static/js/image-popup.js"></script>
+      <script type="text/javascript" src="../_static/contentui.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
