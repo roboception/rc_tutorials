@@ -26,7 +26,7 @@ been completed, and that a valid hand eye calibration has been stored on the |rc
 Load the program
 ----------------
 
-The picking sample programs can be downloaded from `here <http://roboception.com/wp-content/uploads/2020/01/roboception_URCap_examples.zip>`_.
+The picking sample programs can be downloaded from `here <http://roboception.com/wp-content/uploads/roboception_URCap_examples.zip>`_.
 The programs can then be used and loaded as every standard program.
 
 Setting up the program

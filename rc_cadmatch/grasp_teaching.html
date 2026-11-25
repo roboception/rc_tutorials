@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Grasp Teaching &mdash; Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+  <title>Grasp Teaching &mdash; Tutorials, FAQs &amp; more 0.5.0-83-gad65233
  documentation</title>
   
 
@@ -54,7 +54,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-81-gb5ad4d1
+    <link rel="top" title="Tutorials, FAQs &amp; more 0.5.0-83-gad65233
  documentation" href="../index.html"/>
         <link rel="up" title="CADMatch tutorials" href="overview.html"/>
         <link rel="next" title="CollisionCheck tutorials" href="../rc_collision_check/overview.html"/>
@@ -190,9 +190,9 @@
 <div class="section" id="general-approach">
 <h2>General Approach<a class="headerlink" href="#general-approach" title="Permalink to this headline">¶</a></h2>
 <p>CADMatch grasps are normally defined in the WebGUI, in the same way as in
-<a class="reference external" href="https://doc.rc-cube.com/latest/en/silhouettematch.html" title="(in rc_cube v26.07)"><span>SilhouetteMatch and SilhouetteMatchAI</span></a>. This is an interactive process: you click on the object
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/silhouettematch.html" title="(in rc_cube v26.10)"><span>SilhouetteMatch and SilhouetteMatchAI</span></a>. This is an interactive process: you click on the object
 surface to place a grasp, then move and rotate it into position. For more details, see
-<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.07)"><span>Setting of grasp points</span></a>.</p>
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.10)"><span>Setting of grasp points</span></a>.</p>
 <p>This workflow is sufficient for most use cases. In some situations, however, the accuracy it
 delivers is not enough. Very long grippers, or grippers that contact the object at multiple
 distant points, are highly sensitive to rotational errors. For these cases, you can teach
@@ -217,7 +217,7 @@ which makes an accurate definition even more important.</span></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you cannot avoid having multiple objects in the scene, use a region of interest
-(<a class="reference external" href="https://doc.rc-cube.com/latest/en/roi.html#sect-roi-definition" title="(in rc_cube v26.07)"><span>Region of interest</span></a>) or a pose prior (<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-pose-priors" title="(in rc_cube v26.07)"><span>Setting of pose priors</span></a>)
+(<a class="reference external" href="https://doc.rc-cube.com/latest/en/roi.html#sect-roi-definition" title="(in rc_cube v26.10)"><span>Region of interest</span></a>) or a pose prior (<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-pose-priors" title="(in rc_cube v26.10)"><span>Setting of pose priors</span></a>)
 to restrict CADMatch to a single object.</p>
 </div>
 </li>
@@ -248,12 +248,12 @@ optionally pair each pose with a grasp_id.</p>
 part must not be moved again.</strong></p>
 </li>
 <li><p class="first">When you have finished recording TCP poses, move the robot out of the way and call the
-<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#expl-cadmatch-srv-detect-object-and-teach-grasps" title="(in rc_cube v26.07)"><span>detect_object_and_teach_grasps</span></a> CADMatch service. It takes the list of TCP poses (and,
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#expl-cadmatch-srv-detect-object-and-teach-grasps" title="(in rc_cube v26.10)"><span>detect_object_and_teach_grasps</span></a> CADMatch service. It takes the list of TCP poses (and,
 optionally, their grasp_ids) and converts them into grasp poses.</p>
 </li>
 <li><p class="first">When the service finishes successfully, you can rename and edit the grasp points in the WebGUI.
 There you can also adjust advanced settings such as replication and priority (see
-<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.07)"><span>Setting of grasp points</span></a> for more details). Each grasp carries the grasp_id of its
+<a class="reference external" href="https://doc.rc-cube.com/latest/en/cadmatch.html#sect-cadmatch-grasps" title="(in rc_cube v26.10)"><span>Setting of grasp points</span></a> for more details). Each grasp carries the grasp_id of its
 corresponding TCP pose; grasps without a custom grasp_id receive a default, numbered ID.</p>
 <div class="figure" id="id4">
 <img alt="../_images/webgui-taught-grasp.png" src="../_images/webgui-taught-grasp.png" />
@@ -306,7 +306,7 @@ corresponding TCP pose; grasps without a custom grasp_id receive a default, numb
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.0-81-gb5ad4d1',
+            VERSION:'0.5.0-83-gad65233',
             LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

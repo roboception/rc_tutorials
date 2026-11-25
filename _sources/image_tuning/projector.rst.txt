@@ -32,7 +32,7 @@ Before going through this tutorial, the following prerequisites should
 be met.
 
 The rc_visard, rc_cube or rc_reason_stack are running the latest
-firmware (version 26.07) and the rc_visard's license includes the
+firmware (version 26.10) and the rc_visard's license includes the
 IOControl module. This can be verified on the System ‣ Firmware &
 License page of the Web GUI.
 

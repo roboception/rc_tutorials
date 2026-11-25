@@ -38,7 +38,7 @@ rc_reason_stack
 The Tuning of camera images tutorial must be completed before
 proceeding with this one.
 
-The device should have the latest firmware (version 26.07). The
+The device should have the latest firmware (version 26.10). The
 firmware version can be verified on the System ‣ Firmware & License
 page of the Web GUI.
 

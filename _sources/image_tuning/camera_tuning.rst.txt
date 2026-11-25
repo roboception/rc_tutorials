@@ -42,7 +42,7 @@ details about network setup.
 The Web GUI should be opened in a web browser. This can be done with
 the discovery tool from Roboception.
 
-The device should have the latest firmware (version 26.07). The
+The device should have the latest firmware (version 26.10). The
 firmware version can be verified on the System ‣ Firmware & License
 page of the Web GUI.
 
